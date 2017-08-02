@@ -2,15 +2,23 @@
 
 Lodash for types.
 
+### Background?
+
+I'd been trying to type a library (Ramda -- [repo](http://ramdajs.com/docs/), [typings](https://github.com/types/npm-ramda/)), and found that there would be a lot more return types we *could* be figuring out the types for -- no-one had just quite figured out how to compose the basic type operators to construct larger building blocks yet. That is where this library comes in.
+
+### Docs?
+
+None yet. Check the [source and/or specs](https://github.com/tycho01/typical/tree/master/src)!
+
+### [Progress](https://github.com/Microsoft/TypeScript/issues/16392)
+
 ### Notes
 
-- For me `npm test` seems to hand, while manually running `tsc src/spec.ts` works fine. Dunno why.
+- For me `npm test` seems to hang, while manually running `tsc src/spec.ts` works fine. Dunno why.
 
 ### Contributing
 
 Just do a search in the code base for `error` or run the tests (see above). Should find plenty issues left. Many should get resolved once #17456 lands at least, so might as well check only after.
-
-### [Progress](https://github.com/Microsoft/TypeScript/issues/16392)
 
 ### Todo
 
