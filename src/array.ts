@@ -1,7 +1,7 @@
 import { The, Obj, NumObj, List } from './util';
 import { Inc, Dec, Add, Subtract } from './number';
 import { NumbersEqual } from './comp';
-import { DefinitelyYes } from './union';
+import { DefinitelyYes } from './boolean';
 import { ObjectHasKey } from './object';
 import { NumberToString, StringToNumber, TupleToObject } from './cast';
 import { TestArr, NumArr } from './fixtures';
@@ -16,14 +16,7 @@ type ArrPrototypeMethods = 'length' | 'push' | 'pop' | 'concat' | 'join' | 'reve
 
 export type ArrayProp<R extends List<any>> = R[-1];
 
-// export type SafeArr<R extends { [i: number]: any }, Name extends string, Param extends number> = R & Array<{[K in Name]: Param }>;
-
-// export type SwitchArr<Param extends number, Name extends string, R /*extends List<any>*/> = SafeArr<R, Name, Param>[Param];
-// ^ #15768, TS2536 `X cannot be used to index Y` on generic
-// ^ ... this could be suppressed using `skipLibCheck: true`
-// ^ comment Array constraint to allow use of Partial<NumArr>
-
-// export type TupleProp<Arr extends List<any>, I extends number> = SwitchArr<I, 'indexNotInArray', Partial<Arr>>;
+// export type TupleProp<Arr extends List<any>, I extends number> = Arr[I];
 // // ^ just use tpl[i]
 
 export type TupleHasIndex<

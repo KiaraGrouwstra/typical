@@ -1,5 +1,5 @@
 import { the, Obj } from './util';
-import { KeyedSafe, Keyed, ObjectHasKey, HasKey, SafeObj, SwitchObj, ObjectHasKeySafe, ObjProp, Omit, Overwrite,
+import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjProp, Omit, Overwrite,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify } from './object';
 import { Diff } from './union';
 import { NumArr } from './fixtures';
@@ -21,11 +21,6 @@ the<'0', HasKey<NumArr, 5>>();
 the<'1', HasKey<{ a: 1 }, 'a'>>();
 // ^ error: 0
 the<'0', HasKey<{ a: 1 }, 'b'>>();
-
-the<{a:1} & Obj<'Err'>, SafeObj<{a:1}, 'Err'>>();
-
-the<1, SwitchObj<'a', 'Err', {a:1}>>();
-the<'Err', SwitchObj<'b', 'Err', {a:1}>>();
 
 the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>();
 the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>();

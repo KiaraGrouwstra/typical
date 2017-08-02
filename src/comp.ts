@@ -1,18 +1,19 @@
 import { The, If } from './util';
 import { NumberToString, StringToNumber } from './cast';
 import { Dec } from './number';
-import { ObjectHasKey } from './object';
-import { DefinitelyYes } from './union';
+import { DefinitelyYes } from './boolean';
+import { UnionHasKey } from './union';
 
 export type StringsEqual<
   A extends string,
   B extends string
-> = ObjectHasKey<{[P in A]: 'hi' }, B>;
+> = UnionHasKey<A, B>;
 
 export type NumbersEqual<
   A extends number,
   B extends number
 > = DefinitelyYes<StringsEqual<NumberToString[StringToNumber[A]], NumberToString[StringToNumber[B]]>>;
+// > = UnionHasKey<NumberToString[StringToNumber[A]], NumberToString[StringToNumber[B]]>;
 // ^ #15768, TS2536 `X cannot be used to index Y` on generic
 
 export type Gt<

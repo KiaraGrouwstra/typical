@@ -1,6 +1,5 @@
 import { the, Obj } from './util';
-import { UnionHasKey, Indeterminate, Determinate, DefinitelyYes, DefinitelyNo, UnionToObject, UnionToObjectSafe,
-  IntersectionUnions, UnionContained, UnionEmpty, UnionsOverlap, IsUnion, Diff, UnionDiff } from './union';
+import { UnionHasKey, UnionToObject, IntersectionUnions, UnionContained, UnionEmpty, UnionsOverlap, IsUnion, Diff, UnionDiff } from './union';
 import { ObjectHasKey } from './object';
 
 import { And } from './boolean';
@@ -16,31 +15,7 @@ the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>();
 the<'0', UnionHasKey<'a'|'b', 'toString'>>();
 // ^ error: Type '() => string' does not satisfy the constraint '"0"'.
 
-// the<'1', UnionHasKey<'0'|'1','0'>>();
-// the<'1', UnionHasKey<'0'|'1','1'>>();
-// the<'1', UnionHasKey<'0'|'1','0'> | UnionHasKey<'0'|'1','1'>>();
-// the<'1', And<UnionHasKey<'0'|'1','0'>, UnionHasKey<'0'|'1','1'>>>();
-the<'1', Indeterminate<'0'|'1'>>();
-// ^ broke, along with dependents!
-// ^ regression in recent TS?
-the<'0', Indeterminate<'0'>>();
-the<'0', Indeterminate<'1'>>();
-
-the<'0', Determinate<'0'|'1'>>();
-the<'1', Determinate<'0'>>();
-the<'1', Determinate<'1'>>();
-
-the<'0', DefinitelyYes<'0'|'1'>>();
-the<'0', DefinitelyYes<'0'>>();
-the<'1', DefinitelyYes<'1'>>();
-
-the<'0', DefinitelyNo<'0'|'1'>>();
-the<'1', DefinitelyNo<'0'>>();
-the<'0', DefinitelyNo<'1'>>();
-
 the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>();
-
-the<{ b: 'b', c: 'c' } & Obj<never>, UnionToObjectSafe<'b' | 'c'>>();
 
 // the<2|3, IntersectionUnions<1|2|3, 2|3|4>>(); // only strings allowed
 the<'b'|'c', IntersectionUnions<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>();

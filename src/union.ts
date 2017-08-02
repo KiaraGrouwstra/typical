@@ -1,24 +1,14 @@
 import { the, Obj } from './util';
-import { Not, And } from './boolean';
+import { Not, And, DefinitelyYes } from './boolean';
 import { ObjectHasKey, KeyedSafe } from './object';
+
+// note: all operations here are about unions of string literals.
+// could rename this module to `string`, but it operates on the unions, not the actual strings.
 
 export type UnionHasKey<Union extends string, K extends string> = ({[S in Union]: '1' } & Obj<'0'>)[K];
 // export type UnionHasKey<Union extends string, K extends string> = And<({[S in Union]: '1' } & Obj<'0'>)[K], ({[S in K]: '1' } & Obj<'0'>)[Union]>;
 
-export type Indeterminate<T extends string> = And<
-  UnionHasKey<T, '0'>,
-  UnionHasKey<T, '1'>
->;
-
-export type Determinate<T extends string> = Not<Indeterminate<T>>;
-
-export type DefinitelyYes<T extends string> = And<T, Determinate<T>>;
-
-export type DefinitelyNo<T extends string> = And<Not<T>, Determinate<T>>;
-
 export type UnionToObject<Keys extends string> = { [K in Keys]: K };
-
-export type UnionToObjectSafe<T extends string> = UnionToObject<T> & Obj<never>;
 
 export type IntersectionUnions<Big extends string, Small extends string> = KeyedSafe<UnionToObject<Small>>[Big];
 
@@ -43,7 +33,7 @@ export type Diff<T extends string, U extends string> =
 
 // v alternative for older TS
 type UnionDiff_<Big extends string, Small extends string> =
-  {[K in Big]: { 1: UnionToObjectSafe<Big>[K], 0: never }[Not<UnionHasKey<Small, K>>]}//[Big];
+  {[K in Big]: { 1: (UnionToObject<Big> & Obj<never>)[K], 0: never }[Not<UnionHasKey<Small, K>>]}//[Big];
 
 export type UnionDiff<
   Big extends string,

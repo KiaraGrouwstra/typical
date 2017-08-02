@@ -27,10 +27,6 @@ export type HasKey<T, K extends number|string> = If<
 // ^ Type 'T' does not satisfy the constraint 'any[]'.
 // ^ Type 'K' does not satisfy the constraint 'string'.
 
-export type SafeObj<O extends Obj<any>, Name extends string> = O & Obj<Name>; // , Param extends string // Obj<{[K in Name]: Param }>
-
-export type SwitchObj<Param extends string, Name extends string, O extends Obj<any>> = SafeObj<O, Name>[Param]; // , Param
-
 export type ObjectHasKeySafe<O extends object, K extends string> = UnionsOverlap<keyof O, K>;
 
 export type ObjProp<O extends Obj<any>, K extends string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;

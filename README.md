@@ -10,6 +10,8 @@ Just do a search in the code base for `error`. Should find a bunch. Many should 
 
 # Todo
 
+- figure out modules/namespaces?
+
 Thinking of good names to distinguish the following things that are all a lot like arrays:
 - `Array<number>` (list: homogeneous array of unknown length)
 - `[number, string]` (tuple: fixed-length array)

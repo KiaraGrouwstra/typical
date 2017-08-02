@@ -3,7 +3,6 @@ import { StringsEqual, NumbersEqual, Gt, Lt, Gte, Lte /*, Max, Min*/ } from './c
 
 the<'1', StringsEqual<'a', 'a'>>();
 the<'0', StringsEqual<'a', 'b'>>();
-// type NumbersEqual<A extends number, B extends number> = ObjectHasKey<{ [P in NumberToString[A]]: 'hi' }, NumberToString[B]>;
 
 the<'1', NumbersEqual<123, 123>>();
 the<'0', NumbersEqual<123, 456>>();
