@@ -1,0 +1,14 @@
+{
+  "name": "typical",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "tsc src/spec.ts"
+  },
+  "author": "Tycho Grouwstra",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^2.5.0-dev.20170626"
+  }
+}
