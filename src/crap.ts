@@ -60,3 +60,25 @@ the<string, string & (string | 'a')>();
 the<'a', 'a' & (string | 'a')>();
 // hit and miss: hit (| intersection)
 the<string, string & (string | number)>();
+
+// basic operations
+the<1, [1][0]>();
+the<'a', keyof {a:1}>();
+the<{a:'a'}, {[P in 'a']:P}>();
+the<number & string, number & string>();
+the<number | string, number | string>();
+
+// never
+// the<never, never[0]>(); // Property '0' does not exist on type 'never'
+// the<never, [1][never]>(); // Type 'never' cannot be used as an index type
+the<never, keyof never>();
+the<{}, {[P in never]:P}>();
+// the<never, number & never>(); // number? wth? wasn't this fixed in TS 2.5?
+the<number, number | never>();
+
+// unions
+the<1|2, [1,2,3][0|1]>();
+the<1|'a', ([1,2,3]|['a','b'])[0]>();
+the<'a'|'b', keyof ({a:1}|{b:1})>();
+the<{a:'a'}|{b:'b'}, {[P in 'a'|'b']:P}>();
+the<(number & boolean) | (number & string), number & (boolean | string)>();

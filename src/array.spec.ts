@@ -5,8 +5,14 @@ import { TupleToObject } from './cast';
 import { NumArr, TestArr } from './fixtures';
 
 the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>();
+// the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>(); // fails, it's broader
+the<Vector<number | string, 3>, { 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }>();
+the<{ 0: number | string, 1: number | string, 2: number | string, length: 3 }, Vector<number | string, 3>>();
+the<{ 0: number, 1: number, length: 2 } | { 0: number, 1: number, 2: number, length: 3 }, Vector<number, 2 | 3>>();
 
 the<0, ArrayProp<Array<0>>>();
+the<0 | 1, ArrayProp<Array<0 | 1>>>();
+the<0 | 1, ArrayProp<Array<0> | Array<1>>>();
 
 // the<0, TupleProp<[0], 0>>();
 // the<0, TupleProp<[0], 1>>();
@@ -15,10 +21,13 @@ the<0, ArrayProp<Array<0>>>();
 
 the<'1', TupleHasIndex<NumArr, 1>>();
 the<'0', TupleHasIndex<NumArr, -1>>();
+the<'0'|'1', TupleHasIndex<NumArr, -1|1>>();
+the<'0'|'1', TupleHasIndex<NumArr | ['a'], 1>>();
 // the<'1', TupleHasIndex<{a:1}, 'a'>>();
 // the<'0', TupleHasIndex<{a:1}, 'b'>>();
 // the<'1', TupleHasIndex<{ 1: "hi" }, 1>>();
 // the<'0', TupleHasIndex<{ 1: "hi" }, -1>>();
+// // ^ no objects
 
 the<'1', IsArrayType<NumArr>>();
 the<'1', IsArrayType<any[]>>();
@@ -35,6 +44,7 @@ the<3, Length<TupleToObject<TestArr>>>();
 the<3, Length<TestArr>>();
 the<0, Length<any[]>>();
 the<2, Length<{ 0: 'a', 1: 'b' }>>();
+the<0|3, Length<any[]|TestArr>>();
 
 // the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>();
 // // ^ does not terminate?
