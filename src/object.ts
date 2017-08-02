@@ -8,8 +8,6 @@ type PrototypeMethods = 'toLocaleString' | 'toString' //| 'constructor' | 'hasOw
 type Prototype = {[K in PrototypeMethods]: K };
 // type PrototypeHas<K extends string> = ObjectHasKey<Prototype, K>;
 
-// export type ObjectProp<O extends Obj<any>, K extends string> = O[K]; // trivial
-
 export type Keyed<T> = {[K in keyof T]: K };
 
 export type KeyedSafe<T> = Keyed<T> & Obj<never>;
@@ -29,7 +27,14 @@ export type HasKey<T, K extends number|string> = If<
 
 export type ObjectHasKeySafe<O extends object, K extends string> = UnionsOverlap<keyof O, K>;
 
-export type ObjProp<O extends Obj<any>, K extends string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
+// export type ObjectProp<O extends Obj<any>, K extends string> =
+//     O[K]; // trivial, but breaks on `toString` key
+export type ObjectProp<O extends Obj<any>, K extends string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
+// export type ObjectProp<O extends Obj<any>, K extends string> =
+//     If<And<UnionsOverlap<keyof O, 'toString' | 'toLocaleString'>, And<ObjectHasStringIndex<O>, Not<UnionHasKey<keyof T, K>>>>, O[string], O[K]>
+// // ^ should prevent 'toString' issues, but ObjectHasStringIndex is not possible today yet though,
+// // while the current implementations of UnionHasKey and UnionsOverlap won't suffice as they suffer from the same bug.
+// // An alternative based on union iteration could potentially prevent this.
 
 export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>; // {[P in Diff<keyof T, K>]: T[P]}
 
@@ -50,3 +55,17 @@ export interface ObjectHasStringIndex {
 // // ^ getting the return type of a function: proposal #6606
 
 export type Simplify<T> = Pick<T, keyof T>;
+
+// export type ObjectLength = ...
+// // check the length (number of keys) of a given heterogeneous object type. doable given `UnionLength` or (object iteration + `Inc`).
+
+// types not possible yet:
+// `ObjectHasStringIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
+// `ObjectHasNumberIndex`: ditto.
+// `ObjectNumberKeys`: a `number` variant of `keyof`. could be pulled off given union iteration (`Partial` -> iterate to filter / cast back to number literals)... but still hard to scale past natural numbers.
+// `ObjectSymbolKeys`: a `Symbol` variant of `keyof`. no clue how to go about this unless by checking a whitelisted set such as those found in standard library prototype. this feels sorta useless though.
+// `ObjectHasElem`: check whether a heterogeneous object type contains a given type among its elements. This could be done given `TypesEq`.
+// `FilterObject`: can be done already for fixed conditions; using a predicate function needs `ReturnType`
+// `map` over heterogeneous objects: probably just needs `ReturnType`.
+// object iteration: useful for e.g. `ObjectToArray`. This could enable union iteration, or the other way around.
+// One strategy that comes to mind relies on converting keys to tuple (given UnionToArray) then using array iteration.

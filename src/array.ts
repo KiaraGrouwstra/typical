@@ -25,6 +25,9 @@ export type TupleHasIndex<
 > = ({[K in keyof Arr]: '1' } & Array<'0'>)[StringToNumber[I]];
 // ^ #15768, TS2536 `X cannot be used to index Y` on generic
 
+// export type TupleHasElem = ...
+// // check whether a tuple type contains a given type among its elements. This could be done given `TypesEq` (#6606)
+
 export type IsArrayType<T> = DefinitelyYes<ObjectHasKey<T, ArrPrototypeMethods>>
 
 // parallel to lists with known length

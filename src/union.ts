@@ -40,3 +40,12 @@ export type UnionDiff<
   Small extends string,
   Step extends UnionDiff_<Big, Small> = UnionDiff_<Big, Small>
 > = Step[Big];
+
+// todo:
+// - a way to access union elements, e.g. going from "a" | "b" | "c" to "a". this could enable union iteration using Diff if they're all string literals, which in turn could enable object iteration. or the other way around.
+// - IsUnionType -- solvable today only for unions consisting of known sets of keys, see my Indeterminate; a proper solution could be made using union iteration or a way to access arbitrary / random elements (e.g. with conversion to tuple type)
+// - UnionLength: check the length of a union, i.e. how many options it is composed of.
+// - UnionHasType: general case, check whether a union of arbitrary types contains a given type.
+// could be achieved using TypesEq. plugging a union into it should return e.g. "0" | "1" in case it contains a match -- at that point UnionHasKey works.
+// - UnionHasType: general case, check whether a union of arbitrary types contains a given type.
+// could be achieved using TypesEq. plugging a union into it should return e.g. "0" | "1" in case it contains a match -- at that point UnionHasKey works.

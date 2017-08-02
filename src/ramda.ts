@@ -34,6 +34,23 @@ export type ZipObjectFn<R extends List<string>, R2 extends List<any>, I extends 
   { 1: ZipObjectFn<R, R2, Inc[I], Overwrite<T, { [P in R[I]]: R2[I] }>>, 0: T }[TupleHasIndex<R, I>];
 the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>();
 
+// `reduce`: needs `ReturnType` (#6606) for its dynamic reducer functions. see #12512 for Ramda functions that need this.
+
+// type MapFn<
+//     F extends (v: T) => any,
+//     Tpl extends T[],
+//     T,
+//     // if empty tuple allowed:
+//     // I extends number = 0,
+//     // Acc = []
+//     // otherwise:
+//     I extends number = 1,
+//     Acc = [F(Tpl[0])]
+// > = { 1: MapFn<F, Tpl, T, Inc[I], [...Acc, F(Tpl[I])]>; 0: Acc; }[TupleHasIndex<Tpl, Int>];
+// // ^ needs #5453
+// declare function mapTuple<F extends (v: T) => any, Tpl extends T[], T>(f: F, tpl: Tpl): MapFn<F, Tpl, T>;
+// // ^ needs #6606
+
 // #12838
 declare function inc(n: number): number; // +1
 declare function identity<T>(a: T): T;
