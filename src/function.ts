@@ -16,6 +16,20 @@ export type Fn<A extends any[], R=void> = {
 }[The<number, Length<A>>];
 // `ObjectHasKey` and by extension `TupleLength` suffer from #17456
 
+// unbind: in TS already automatically happens when it should in JS (getting a method without directly applying it).
+// export type Unbind<F extends (this: This, ...args: Args) => R, This, Args extends any[], R> = Fn<[This, ...Args], R>;
+// // ^ can't capture params in generic until maybe #5453, error "A rest parameter must be of an array type."
+// // ^ #6606 upgrade: don't capture `R`, instead use `F(this: This, ...Args)`
+// export type Unbind<F extends (this: This, t1: T1) => R, This, R, T1> = Fn<[This, T1], R>;
+// export type Unbind<F extends (this: This, t1: T1, t2: T2) => R, This, R, T1, T2> = Fn<[This, T1, T2], R>;
+// export type Unbind<F extends (this: This, t1: T1, t2: T2, t3: T3) => R, This, R, T1, T2, T3> = Fn<[This, T1, T2, T3], R>;
+// ...
+// ^ wait, discriminating generic `F` type probably needs #6606 overloads
+// complication: most stdlib methods don't have the `this` param specified. fix that. wonder why it isn't added implicitly...
+
+// export type Bind<F extends (this: This, ...args: Args) => R, This, Args, R, T extends This> = Fn<Args, F(this: T, ...Args)>;
+// // ^ doesn't handle other params yet. `unbind` notes above apply as well.
+
 // todo:
 // - `ReturnType`: get the return type of function expressions -- #6606 (dupes: #4233, #6239, #16372)
 // - conversion of parameters from/to tuple types: see variadic kinds at #5453
