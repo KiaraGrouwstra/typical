@@ -9,7 +9,7 @@ export interface isT<T> {
   (v: any): '0';
 }
 
-// export type Matches<V, T> = typeof isT<T>(V);
+// export type Matches<V, T> = isT<T>(V);
 // // ^ this is where things fail until #6606
 // let isBool: isT<boolean>
 // let falseBool = isBool(false) // 1

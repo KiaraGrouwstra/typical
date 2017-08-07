@@ -12,13 +12,9 @@ None yet. Check the [source and/or specs](https://github.com/tycho01/typical/tre
 
 ### [Progress](https://github.com/Microsoft/TypeScript/issues/16392)
 
-### Notes
-
-- For me `npm test` seems to hang, while manually running `tsc src/spec.ts` works fine. Dunno why.
-
 ### Contributing
 
-Just do a search in the code base for `error` or run the tests (see above). Should find plenty issues left. Many should get resolved once #17456 lands at least, so might as well check only after.
+Run the tests (`npm test`), then check `errors.log`. Many issues should get resolved once #17456 lands at least, so might as well check only after.
 
 ### Todo
 
