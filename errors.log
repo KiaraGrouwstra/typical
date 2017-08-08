@@ -1,0 +1,53 @@
+error TS2550: Generic type instantiation is excessively deep and possibly infinite.
+src/array.spec.ts(32,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/array.spec.ts(33,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/array.spec.ts(34,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/array.spec.ts(37,33): error TS2344: Type 'AppendNumObj<{ 0: "a"; 1: "b"; }, "c", 0>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; }'.
+  Property '2' is missing in type 'AppendNumObj<{ 0: "a"; 1: "b"; }, "c", 0>'.
+src/array.spec.ts(40,41): error TS2344: Type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; }'.
+  Property '2' is missing in type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>'.
+src/array.spec.ts(55,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+src/array.spec.ts(67,8): error TS2344: Type '123 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | ...' does not satisfy the constraint '0'.
+  Type '123' is not assignable to type '0'.
+src/array.ts(59,27): error TS2321: Excessive stack depth comparing types '{ length: { 1: 0; 0: any[({ 1: { 1: "1"; } & Obj<"0">; } & Obj<Obj<"0">>)[({ 0: "1"; } & Obj<"0">...' and 'ArrayLike<any>'.
+src/boolean.spec.ts(24,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/boolean.spec.ts(30,10): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+src/boolean.ts(6,37): error TS2536: Type 'T' cannot be used to index type '{ '1': "0"; '0': "1"; }'.
+src/cast.spec.ts(8,28): error TS2537: Type 'NumberToString' has no matching index signature for type 'number'.
+src/cast.spec.ts(12,28): error TS2537: Type 'StringToNumber' has no matching index signature for type 'string'.
+src/cast.spec.ts(23,36): error TS2344: Type 'NumObjToList<{ 0: "a"; 1: "b"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Types of property 'length' are incompatible.
+    Type '0' is not assignable to type '2'.
+src/cast.spec.ts(24,44): error TS2344: Type 'NumObjToList<Pick<{ 0: "a"; } & { 1: "b"; } & { 2: "c"; }, "0" | "1" | "2">>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
+  Types of property 'length' are incompatible.
+    Type '0' is not assignable to type '3'.
+src/list.spec.ts(6,52): error TS2344: Type 'Overwrite<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; }, { length: 4; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; length: 4; }'.
+  Property '2' is missing in type 'Overwrite<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; }, { length: 4; }>'.
+src/list.spec.ts(18,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+src/list.spec.ts(21,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+src/list.spec.ts(24,44): error TS2344: Type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
+  Property '1' is missing in type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">'.
+src/list.spec.ts(27,10): error TS2344: Type '{ length: -1; }' does not satisfy the constraint '"c"'.
+src/list.ts(31,11): error TS2550: Generic type instantiation is excessively deep and possibly infinite.
+src/object.spec.ts(2,68): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/object"' has no exported member 'ObjProp'.
+src/object.spec.ts(18,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/object.spec.ts(21,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/object.spec.ts(29,10): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+src/object.spec.ts(42,12): error TS2344: Type 'any' does not satisfy the constraint 'never'.
+src/object.spec.ts(43,12): error TS2344: Type 'any' does not satisfy the constraint 'never'.
+src/object.spec.ts(45,12): error TS2344: Type 'any' does not satisfy the constraint 'never'.
+src/object.spec.ts(59,25): error TS2344: Type '"a" | "b" | "c" | ("toString" & (() => string))' does not satisfy the constraint '"b" | "toString" | "c"'.
+  Type '"a"' is not assignable to type '"b" | "toString" | "c"'.
+src/union.spec.ts(15,10): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
+src/union.spec.ts(38,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/union.spec.ts(39,10): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+src/union.spec.ts(44,14): error TS2344: Type '"a" | "b" | "c"' does not satisfy the constraint '"a" | "b"'.
+  Type '"c"' is not assignable to type '"a" | "b"'.
+src/union.spec.ts(46,21): error TS2344: Type '"a" | "b" | ("toString" & (() => string))' does not satisfy the constraint '"a" | "toString"'.
+  Type '"b"' is not assignable to type '"a" | "toString"'.
+src/union.spec.ts(48,10): error TS2344: Type '"a" | "b"' does not satisfy the constraint '"b"'.
+  Type '"a"' is not assignable to type '"b"'.
+src/union.spec.ts(55,10): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
