@@ -22,7 +22,7 @@ export type ReverseList<
   I extends number = 0,
   J extends number = LengthList<R>,
   Acc extends List<any> = { length: number }
-> = { 0: Overwrite<Acc, { length: I }>, 1: Reverse<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
+> = { 0: Overwrite<Acc, { length: I }>, 1: ReverseList<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
 // ^ take an ArrayLike, outputs a list with known length
 
 // shared between numerical objects, including lists with known length
