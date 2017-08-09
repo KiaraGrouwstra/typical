@@ -17,7 +17,7 @@ export type Or<
 
 // equality checks: use StringsEqual
 
-export type Indeterminate<T extends string> = And<
+export type Indeterminate<T extends Bool> = And<
   UnionHasKey<T, '0'>,
   UnionHasKey<T, '1'>
 >;
