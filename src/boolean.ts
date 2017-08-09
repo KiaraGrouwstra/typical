@@ -3,7 +3,7 @@ import { UnionHasKey } from './union';
 
 export type Falsy = undefined | null | 0 | '' | void | never;
 
-export type Not<T extends string> = { '1': '0'; '0': '1'; }[T];
+export type Not<T extends '0'|'1'> = { '1': '0'; '0': '1'; }[T];
 
 export type And<
   A extends string,
@@ -23,7 +23,7 @@ export type Determinate<T extends string> = Not<Indeterminate<T>>;
 
 export type DefinitelyYes<T extends string> = And<T, Determinate<T>>;
 
-export type DefinitelyNo<T extends string> = And<Not<T>, Determinate<T>>;
+export type DefinitelyNo<T extends '0'|'1'> = And<Not<T>, Determinate<T>>;
 
 // export type IsFalsy<V> = Matches<V, Falsy>;
 // export type IsTruthy<V> = Not<IsFalsy<V>>;
