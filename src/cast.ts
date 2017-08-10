@@ -3,7 +3,6 @@ import { Not, Falsy } from './boolean';
 import { Inc } from './number';
 import { Length, TupleHasIndex } from './array';
 import { Simplify, Omit } from './object';
-import { TestArr } from './fixtures';
 
 // boolean:
 

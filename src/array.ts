@@ -3,8 +3,7 @@ import { Inc, Dec, Add, Subtract } from './number';
 import { NumbersEqual } from './comp';
 import { DefinitelyYes } from './boolean';
 import { ObjectHasKey } from './object';
-import { NumberToString, StringToNumber, TupleToObject } from './cast';
-import { TestArr, NumArr } from './fixtures';
+import { NumberToString, StringToNumber } from './cast';
 
 export type Vector<T, N extends number, I extends number = 0, Acc = { length: N }> =
   { 1: Acc, 0: Vector<T, N, Inc[I], Acc & { [P in NumberToString[I]]: T }> }[NumbersEqual<I, N>];

@@ -1,7 +1,6 @@
 import { If, Obj, The, Intersection } from './util';
 import { UnionHasKey, UnionsOverlap, Diff } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
-import { NumArr } from './fixtures';
 import { NumberToString, StringToNumber } from './cast';
 
 type PrototypeMethods = 'toLocaleString' | 'toString' //| 'constructor' | 'hasOwnProperty' | 'isPrototypeOf' | 'propertyIsEnumerable' | 'valueOf' | '__defineGetter__' | '__defineSetter__' | '__lookupGetter__' | '__lookupSetter__' | '__proto__';
