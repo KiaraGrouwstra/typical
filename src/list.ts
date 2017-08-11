@@ -31,15 +31,15 @@ export type FirstIndex<R extends NumObj<any>, I extends number = 0> =
   { 1: I, 0: FirstIndex<R, Inc[I]> }[ObjectHasKey<R, I>];
 // ^ error TS2550: Generic type instantiation is excessively deep and possibly infinite.
 
-export type IncIndex<R extends List<any>, N extends number, I extends number = 0 /*FirstIndex<R>*/, Acc = { length: R['length'] }> =
-  { 0: Acc, 1: IncIndex<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
+// export type IncIndex<R extends List<any>, N extends number, I extends number = 0 /*FirstIndex<R>*/, Acc = { length: R['length'] }> =
+//   { 0: Acc, 1: IncIndex<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
 
 // unique
 
-export type DecIndex<R extends List<any>, N extends number, I extends number = FirstIndex<R>, Acc = { length: R['length'] }> =
-  { 0: Acc, 1: DecIndex<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
+// export type DecIndex<R extends List<any>, N extends number, I extends number = FirstIndex<R>, Acc = { length: R['length'] }> =
+//   { 0: Acc, 1: DecIndex<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
 
-export type ZeroIndex<R extends List<any>, I extends number = FirstIndex<R>> = /*If<ObjectHasKey<R, 0>, R,*/ DecIndex<R, I, I>//>;
+// export type ZeroIndex<R extends List<any>, I extends number = FirstIndex<R>> = /*If<ObjectHasKey<R, 0>, R,*/ DecIndex<R, I, I>//>;
 
 export type Prepend<
   R extends List<any>,

@@ -18,17 +18,17 @@ export type Subtract<
   B extends number
 > = { 1: A, 0: Subtract<Dec[A], Dec[B]> }[NumbersEqual<0, B>];
 
-export type Mult<
-  A extends number,
-  B extends number,
-  Acc extends number = 0
-> = { 1: Acc, 0: Mult<A, Dec[B], Add<Acc, A>> }[NumbersEqual<0, B>];
+// export type Mult<
+//   A extends number,
+//   B extends number,
+//   Acc extends number = 0
+// > = { 1: Acc, 0: Mult<A, Dec[B], Add<Acc, A>> }[NumbersEqual<0, B>];
 
-export type Pow<
-  Base extends number,
-  Exp extends number,
-  Acc extends number = 1
-> = { 1: Acc, 0: Pow<Base, Dec[Exp], Mult<Acc, Base>> }[NumbersEqual<0, Exp>];
+// export type Pow<
+//   Base extends number,
+//   Exp extends number,
+//   Acc extends number = 1
+// > = { 1: Acc, 0: Pow<Base, Dec[Exp], Mult<Acc, Base>> }[NumbersEqual<0, Exp>];
 
 // export type DivFloor<
 //   A extends number,

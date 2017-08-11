@@ -1,36 +1,82 @@
 error TS2550: Generic type instantiation is excessively deep and possibly infinite.
+src/array.spec.ts(2,57): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'AppendNumObj'.
+src/array.spec.ts(2,71): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'ConcatNumObjs'.
+src/array.spec.ts(3,1): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'IncIndexNumbObj'.
+src/array.spec.ts(3,18): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'ListFrom'.
+src/array.spec.ts(3,36): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'Reverse'.
+src/array.spec.ts(3,60): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'TupleLastIndex'.
+src/array.spec.ts(3,76): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'FirstElem'.
 src/array.spec.ts(32,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/array.spec.ts(33,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/array.spec.ts(34,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
-src/array.spec.ts(37,33): error TS2344: Type 'AppendNumObj<{ 0: "a"; 1: "b"; }, "c", 0>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; }'.
-  Property '2' is missing in type 'AppendNumObj<{ 0: "a"; 1: "b"; }, "c", 0>'.
-src/array.spec.ts(40,41): error TS2344: Type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; }'.
-  Property '2' is missing in type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>'.
 src/array.spec.ts(55,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   Property '0' is missing in type '{ length: 2; }'.
 src/array.spec.ts(67,8): error TS2344: Type '123 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | ...' does not satisfy the constraint '0'.
   Type '123' is not assignable to type '0'.
-src/array.ts(59,27): error TS2321: Excessive stack depth comparing types '{ length: { 1: 0; 0: any[({ 1: { 1: "1"; } & Obj<"0">; } & Obj<Obj<"0">>)[({ 0: "1"; } & Obj<"0">...' and 'ArrayLike<any>'.
-src/boolean.spec.ts(24,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
-src/boolean.spec.ts(30,10): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+src/array.ts(9,29): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/array.ts(9,51): error TS2536: Type 'I' cannot be used to index type 'NumberToString'.
+src/array.ts(24,45): error TS2536: Type 'I' cannot be used to index type 'StringToNumber'.
+src/array.ts(47,18): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/array.ts(47,50): error TS2344: Type 'I' does not satisfy the constraint 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/array.ts(67,31): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/array.ts(67,53): error TS2536: Type 'I' cannot be used to index type 'NumberToString'.
+src/array.ts(67,73): error TS2536: Type 'I' cannot be used to index type 'R'.
+src/array.ts(78,25): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/array.ts(78,37): error TS2536: Type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...' cannot be used to index type 'R'.
+src/array.ts(78,39): error TS2536: Type 'I' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/array.ts(92,69): error TS2304: Cannot find name 'TupleLastIndex'.
+src/array.ts(93,27): error TS2536: Type 'I' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/array.ts(93,39): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
 src/cast.spec.ts(8,28): error TS2537: Type 'NumberToString' has no matching index signature for type 'number'.
 src/cast.spec.ts(12,28): error TS2537: Type 'StringToNumber' has no matching index signature for type 'string'.
-src/cast.spec.ts(23,36): error TS2344: Type 'NumObjToList<{ 0: "a"; 1: "b"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  Types of property 'length' are incompatible.
-    Type '0' is not assignable to type '2'.
-src/cast.spec.ts(24,44): error TS2344: Type 'NumObjToList<Pick<{ 0: "a"; } & { 1: "b"; } & { 2: "c"; }, "0" | "1" | "2">>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
-  Types of property 'length' are incompatible.
-    Type '0' is not assignable to type '3'.
-src/list.spec.ts(6,52): error TS2344: Type 'Overwrite<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; }, { length: 4; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; length: 4; }'.
-  Property '2' is missing in type 'Overwrite<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; }, { length: 4; }>'.
-src/list.spec.ts(18,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  Property '0' is missing in type '{ length: 2; }'.
-src/list.spec.ts(21,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  Property '0' is missing in type '{ length: 2; }'.
-src/list.spec.ts(24,44): error TS2344: Type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
-  Property '1' is missing in type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">'.
-src/list.spec.ts(27,10): error TS2344: Type '{ length: -1; }' does not satisfy the constraint '"c"'.
-src/list.ts(31,11): error TS2550: Generic type instantiation is excessively deep and possibly infinite.
+src/cast.ts(28,24): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/cast.ts(28,38): error TS2536: Type 'I' cannot be used to index type 'R'.
+src/cast.ts(31,31): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/cast.ts(34,25): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/cast.ts(34,47): error TS2536: Type 'I' cannot be used to index type 'NumberToString'.
+src/cast.ts(34,67): error TS2536: Type 'I' cannot be used to index type 'R'.
+src/cast.ts(37,23): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/cast.ts(37,45): error TS2536: Type 'I' cannot be used to index type 'NumberToString'.
+src/cast.ts(37,65): error TS2536: Type 'I' cannot be used to index type 'R'.
+src/comp.ts(16,18): error TS2536: Type 'A' cannot be used to index type 'StringToNumber'.
+src/comp.ts(17,18): error TS2536: Type 'B' cannot be used to index type 'StringToNumber'.
+src/comp.ts(27,37): error TS2536: Type 'A' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(27,45): error TS2536: Type 'B' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(35,37): error TS2536: Type 'A' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(35,45): error TS2536: Type 'B' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(43,38): error TS2536: Type 'A' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(43,46): error TS2536: Type 'B' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(51,38): error TS2536: Type 'A' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/comp.ts(51,46): error TS2536: Type 'B' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/function.spec.ts(2,10): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/function"' has no exported member 'Fn'.
+src/list.spec.ts(2,72): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/list"' has no exported member 'IncIndex'.
+src/list.spec.ts(2,82): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/list"' has no exported member 'DecIndex'.
+src/list.spec.ts(2,92): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/list"' has no exported member 'ZeroIndex'.
+src/list.spec.ts(6,52): error TS2344: Type 'Overwrite<any, { length: 4; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; length: 4; }'.
+  Property '0' is missing in type 'Overwrite<any, { length: 4; }>'.
+src/list.spec.ts(11,36): error TS2344: Type 'Overwrite<{ length: number; } & { 0: "a" | "b"; } & { 1: "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+  Types of property '0' are incompatible.
+    Type '"a" | "b"' is not assignable to type '"b"'.
+      Type '"a"' is not assignable to type '"b"'.
+src/list.ts(4,25): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'ListFrom'.
+src/list.ts(13,42): error TS2536: Type 'Len' cannot be used to index type 'StringToNumber'.
+src/list.ts(13,84): error TS2536: Type 'Len' cannot be used to index type 'StringToNumber'.
+src/list.ts(16,17): error TS2304: Cannot find name 'IncIndex'.
+src/list.ts(25,59): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/list.ts(25,67): error TS2304: Cannot find name 'Dec'.
+src/list.ts(25,89): error TS2536: Type 'I' cannot be used to index type 'NumberToString'.
+src/list.ts(25,109): error TS2536: Type 'J' cannot be used to index type 'R'.
+src/list.ts(31,28): error TS2536: Type 'I' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/list.ts(31,54): error TS2344: Type 'I' does not satisfy the constraint 'string'.
+  Type 'number' is not assignable to type 'string'.
+src/list.ts(47,16): error TS2304: Cannot find name 'IncIndex'.
+src/number.spec.ts(2,35): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/number"' has no exported member 'Mult'.
+src/number.spec.ts(2,41): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/number"' has no exported member 'Pow'.
+src/number.ts(14,20): error TS2536: Type 'A' cannot be used to index type '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2...'.
+src/number.ts(14,28): error TS2536: Type 'B' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/number.ts(19,25): error TS2536: Type 'A' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
+src/number.ts(19,33): error TS2536: Type 'B' cannot be used to index type '[-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...'.
 src/object.spec.ts(2,68): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/object"' has no exported member 'ObjProp'.
 src/object.spec.ts(18,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/object.spec.ts(21,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
@@ -38,15 +84,13 @@ src/object.spec.ts(29,10): error TS2344: Type '"1"' does not satisfy the constra
 src/object.spec.ts(42,12): error TS2344: Type 'any' does not satisfy the constraint 'never'.
 src/object.spec.ts(43,12): error TS2344: Type 'any' does not satisfy the constraint 'never'.
 src/object.spec.ts(45,12): error TS2344: Type 'any' does not satisfy the constraint 'never'.
-src/object.spec.ts(59,25): error TS2344: Type '"a" | "b" | "c" | ("toString" & (() => string))' does not satisfy the constraint '"b" | "toString" | "c"'.
-  Type '"a"' is not assignable to type '"b" | "toString" | "c"'.
+src/object.spec.ts(101,13): error TS2344: Type 'Pick<[1, 2, 3], "map" | "filter" | "0" | "1" | "2" | "push" | "pop" | "concat" | "join" | "revers...' does not satisfy the constraint '[1, 2, 3]'.
+  Property 'length' is missing in type 'Pick<[1, 2, 3], "map" | "filter" | "0" | "1" | "2" | "push" | "pop" | "concat" | "join" | "revers...'.
+src/object.ts(40,63): error TS2536: Type 'P' cannot be used to index type 'T'.
+src/object.ts(40,72): error TS2536: Type 'P' cannot be used to index type 'K'.
 src/union.spec.ts(15,10): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
 src/union.spec.ts(38,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/union.spec.ts(39,10): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
-src/union.spec.ts(44,14): error TS2344: Type '"a" | "b" | "c"' does not satisfy the constraint '"a" | "b"'.
-  Type '"c"' is not assignable to type '"a" | "b"'.
-src/union.spec.ts(46,21): error TS2344: Type '"a" | "b" | ("toString" & (() => string))' does not satisfy the constraint '"a" | "toString"'.
+src/union.spec.ts(46,21): error TS2344: Type '"b" | ("toString" & (() => string))' does not satisfy the constraint '"a" | "toString"'.
   Type '"b"' is not assignable to type '"a" | "toString"'.
-src/union.spec.ts(48,10): error TS2344: Type '"a" | "b"' does not satisfy the constraint '"b"'.
-  Type '"a"' is not assignable to type '"b"'.
 src/union.spec.ts(55,10): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
