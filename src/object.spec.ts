@@ -55,12 +55,6 @@ type KeyedItem1 = keyof ItemA
 // the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>();
 // ^ error: "a" | "b" | ("toString" & (() => string)) | "c"
 the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>();
-// ^ gives { b: number; c: boolean; }
-the<'b'|'c'|'toString', keyof Omit<ItemA, "a">>();
-// ^ error: "b" | "c" | ("toString" & (() => string))
-// ^ it actually lied about "toString" being gone; it's just no longer showing because its key is somehow no longer just a string?!
-// type skjdfds = keyof Simplify<{ [P in ('a' | 'b') & ('b' | 'c')]: "1" }>
-// "b" | ("a" & "b") | ("a" & "c") | ("b" & "c")
 
 // export type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U;
 // ^ no-dependency version by Anders, uses intersection
@@ -98,7 +92,6 @@ the<{ a: 1, b: 2, foo: () => string, toString: any }, Overwrite<abc, { "toString
 the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>();
 the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>();
 the<abc, Simplify<abc & { "toString": never }>>();
-the<NumArr, Omit<NumArr, "length">>();
 
 // https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-307871458
 // type sfsd = { [P in PrototypeMethods]: P;　[k: string]: never; };

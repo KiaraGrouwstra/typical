@@ -37,7 +37,10 @@ export type ObjectProp<O extends Obj<any>, K extends string, Default = never> = 
 
 export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>; // {[P in Diff<keyof T, K>]: T[P]}
 
-export type Overwrite<K, T> = {[P in keyof T | keyof K]: { 1: T[P], 0: K[P] }[ObjectHasKey<T, P>]};
+export type Overwrite<
+  K extends Obj<any>,
+  T extends Obj<any>
+> = {[P in keyof T | keyof K]: { 1: T[P], 0: K[P] }[ObjectHasKey<T, P>]};
 
 export type IntersectionObjectKeys<A, B> = Pick<KeyedSafe<B>, keyof A>[keyof A];
 

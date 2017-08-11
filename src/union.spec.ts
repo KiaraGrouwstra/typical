@@ -42,11 +42,9 @@ the<'1', IsUnion<'a' | undefined>>();
 // ^ error: not all strings
 
 the<'a'|'b', Diff<"a" | "b" | "c", "c" | "d">>();
-// ^ error: Type '"a" | "b" | "c"' does not satisfy the constraint '"a" | "b"'.
-the<'a'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>();
-// ^ error: () => string
+the<'b'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>();
+// ^ ("toString" & (() => string))
 the<'b', Diff<'a' | 'b', 'a' | 'toString'>>();
-// ^ error: Type '"a" | "b"' does not satisfy the constraint '"b"'.
 
 the<'a', UnionDiff<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>();
 the<'b'|'toString', UnionDiff<'a' | 'b' | 'toString', 'a'>>();

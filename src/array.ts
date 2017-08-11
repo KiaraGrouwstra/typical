@@ -44,7 +44,7 @@ export type IsArrayType<T> = DefinitelyYes<ObjectHasKey<T, ArrPrototypeMethods>>
 // shared with numerical objects, though not lists with known length
 
 export type Length<R extends NumObj<any>, I extends number = 0> =
-  { 1: Length<R, Inc[I]>, 0: I }[ObjectHasKey<R, I>];
+  { 1: Length<R, Inc[I]>, 0: I }[ObjectHasKey<R, NumberToString[I]>];
 
 // export type IncIndexNumbObj<R extends NumObj<any>, N extends number, I extends number = 0 /*FirstIndex<R>*/, Acc = { length: Length<R> }> =
 //   { 0: Acc, 1: IncIndexNumbObj<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
