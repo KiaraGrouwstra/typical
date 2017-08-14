@@ -1,18 +1,17 @@
-src/array.spec.ts(2,57): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'AppendNumObj'.
-src/array.spec.ts(2,71): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'ConcatNumObjs'.
-src/array.spec.ts(3,1): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'IncIndexNumbObj'.
 src/array.spec.ts(3,18): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'ListFrom'.
-src/array.spec.ts(3,36): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'Reverse'.
-src/array.spec.ts(3,60): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'TupleLastIndex'.
-src/array.spec.ts(3,76): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'FirstElem'.
 src/array.spec.ts(32,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/array.spec.ts(33,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/array.spec.ts(34,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+src/array.spec.ts(37,33): error TS2344: Type 'AppendNumObj<{ 0: "a"; 1: "b"; }, "c", 0>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; }'.
+  Property '2' is missing in type 'AppendNumObj<{ 0: "a"; 1: "b"; }, "c", 0>'.
+src/array.spec.ts(40,41): error TS2344: Type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; }'.
+  Property '2' is missing in type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>'.
 src/array.spec.ts(55,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   Property '0' is missing in type '{ length: 2; }'.
 src/array.spec.ts(67,8): error TS2344: Type 'number' does not satisfy the constraint '0'.
 src/array.ts(24,5): error TS2536: Type 'StringToNumber[I]' cannot be used to index type '{ [K in keyof Arr]: "1"; } & "0"[]'.
-src/array.ts(92,69): error TS2304: Cannot find name 'TupleLastIndex'.
+src/array.ts(38,17): error TS2536: Type 'StringToNumber[Len]' cannot be used to index type 'NumberToString'.
+src/array.ts(87,96): error TS2536: Type 'StringToNumber[I]' cannot be used to index type 'Dec'.
 src/boolean.spec.ts(24,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/boolean.spec.ts(30,10): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
 src/cast.spec.ts(23,36): error TS2344: Type 'NumObjToList<{ 0: "a"; 1: "b"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
@@ -23,23 +22,22 @@ src/cast.spec.ts(24,44): error TS2344: Type 'NumObjToList<Pick<{ 0: "a"; } & { 1
     Type '0' is not assignable to type '3'.
 src/comp.ts(16,3): error TS2536: Type 'StringToNumber[A]' cannot be used to index type 'NumberToString'.
 src/comp.ts(17,3): error TS2536: Type 'StringToNumber[B]' cannot be used to index type 'NumberToString'.
-src/function.spec.ts(2,10): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/function"' has no exported member 'Fn'.
-src/list.spec.ts(2,72): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/list"' has no exported member 'IncIndex'.
-src/list.spec.ts(2,82): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/list"' has no exported member 'DecIndex'.
-src/list.spec.ts(2,92): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/list"' has no exported member 'ZeroIndex'.
-src/list.spec.ts(6,52): error TS2344: Type 'Overwrite<any, { length: 4; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; length: 4; }'.
-  Property '0' is missing in type 'Overwrite<any, { length: 4; }>'.
+src/list.spec.ts(6,52): error TS2344: Type 'Overwrite<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; }, { length: 4; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; length: 4; }'.
+  Property '2' is missing in type 'Overwrite<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; }, { length: 4; }>'.
 src/list.spec.ts(11,36): error TS2344: Type 'Overwrite<{ length: number; } & { 0: "a" | "b"; } & { 1: "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
   Types of property '0' are incompatible.
     Type '"a" | "b"' is not assignable to type '"b"'.
       Type '"a"' is not assignable to type '"b"'.
+src/list.spec.ts(18,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+src/list.spec.ts(21,36): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+src/list.spec.ts(24,44): error TS2344: Type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
+  Property '1' is missing in type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">'.
 src/list.ts(4,25): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/array"' has no exported member 'ListFrom'.
 src/list.ts(13,27): error TS2536: Type 'StringToNumber[Len]' cannot be used to index type 'NumberToString'.
 src/list.ts(13,80): error TS2536: Type 'StringToNumber[Len]' cannot be used to index type 'Inc'.
-src/list.ts(16,17): error TS2304: Cannot find name 'IncIndex'.
-src/list.ts(47,16): error TS2304: Cannot find name 'IncIndex'.
-src/number.spec.ts(2,35): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/number"' has no exported member 'Mult'.
-src/number.spec.ts(2,41): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/number"' has no exported member 'Pow'.
+src/list.ts(31,11): error TS2550: Generic type instantiation is excessively deep and possibly infinite.
 src/object.spec.ts(2,68): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/object"' has no exported member 'ObjProp'.
 src/object.spec.ts(18,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 src/object.spec.ts(21,10): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
