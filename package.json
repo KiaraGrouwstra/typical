@@ -9,6 +9,12 @@
   "author": "Tycho Grouwstra",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^2.5.0-dev.20170808"
+    "tsst": "^0.2.7",
+    "typescript": "github:microsoft/typescript"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.41",
+    "karma": "^1.7.0",
+    "mocha": "^3.5.0"
   }
 }
