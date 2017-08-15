@@ -10,7 +10,7 @@ export type AppendList<
   R extends List<any>,
   T,
   Len extends number = LengthList<R>
-> = Overwrite<R & { [P in NumberToString[StringToNumber[Len]]]: T }, { length: Inc[StringToNumber[Len]] }>;
+> = Overwrite<R & { [P in NumberToString[Len]]: T }, { length: Inc[StringToNumber[Len]] }>;
 
 export type ConcatLists<A extends List<any>, B extends List<any>> = 
   Overwrite<A & IncIndex<B, A['length']>, { length: Add<A['length'], B['length']> }>;

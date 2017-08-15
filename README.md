@@ -14,7 +14,7 @@ None yet. Check the [source and/or specs](https://github.com/tycho01/typical/tre
 
 ### Contributing
 
-Run the tests (`npm test`), then check `errors.log`. Many issues should get resolved once #17456 lands at least, so might as well check only after.
+Run the tests (`npm test`) or check `errors.log`.
 
 ### Todo
 

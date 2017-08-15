@@ -4,17 +4,16 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "test": "tsc src/spec.ts | tee errors.log"
+    "pretest": "tsst -b \"**/*.test.ts\" -d ./js-tests",
+    "test": "mocha js-tests/**/*.test.js | tee errors.log",
+    "build": "tsc"
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
-  "dependencies": {
-    "tsst": "^0.2.7",
-    "typescript": "github:microsoft/typescript"
-  },
   "devDependencies": {
     "@types/mocha": "^2.2.41",
-    "karma": "^1.7.0",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "tsst": "^0.3.2",
+    "typescript": "github:microsoft/typescript"
   }
 }

@@ -13,10 +13,10 @@ export type NumbersEqual<
   A extends number,
   B extends number
 > = DefinitelyYes<StringsEqual<
-  NumberToString[StringToNumber[A]],
-  NumberToString[StringToNumber[B]]
+  NumberToString[A],
+  NumberToString[B]
 >>;
-// > = UnionHasKey<NumberToString[StringToNumber[A]], NumberToString[StringToNumber[B]]>;
+// > = UnionHasKey<NumberToString[A], NumberToString[B]>;
 // ^ #15768, TS2536 `X cannot be used to index Y` on generic
 
 export type Gt<

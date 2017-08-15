@@ -37,6 +37,10 @@ export type ObjectProp<O extends Obj<any>, K extends string, Default = never> = 
 
 export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>; // {[P in Diff<keyof T, K>]: T[P]}
 
+// export type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U;
+// ^ no-dependency version by Anders, uses intersection
+// export type Overwrite<T, U, Int = { [P in Diff<keyof T, keyof U>]: T[P] } & U> = Pick<Int, keyof Int>;
+// ^ my attempt at cleaning out the intersection, somehow makes FromPairs/ZipObject fail
 export type Overwrite<
   K extends Obj<any>,
   T extends Obj<any>

@@ -35,7 +35,7 @@ export type AppendNumObj<
   R extends NumObj<any>,
   T,
   Len extends number = Length<R>
-> = R & { [P in NumberToString[StringToNumber[Len]]]: T };
+> = R & { [P in NumberToString[Len]]: T };
 // ^ #15768
 
 export type ConcatNumObjs<A extends NumObj<any>, B extends NumObj<any>> = 

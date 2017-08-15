@@ -1,7 +1,12 @@
-import { the, If, List, Obj } from './util';
+import { tsst, the } from 'tsst';
+import { If, List, Obj } from './util';
 import { TupleHasIndex } from './array';
-import { Overwrite, HasKey } from './object';
+import { Overwrite, HasKey } from '././srcobject';
 import { Inc } from './number';
+
+describe(`util`, () => {
+
+  describe(`the`, () => {
 
 // Ramda functions listed in #12512 redone with iteration:
 

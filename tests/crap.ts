@@ -1,6 +1,13 @@
-import { the, List } from './util';
+import { tsst, the } from 'tsst';
+import { List } from './util';
 import { Simplify } from './object';
 import { TupleToObject } from './cast';
+
+/*
+// regex find-replace pair to turn `the` statements into `tsst` tests:
+^((the<.*>\(\));?.*)
+    it(`$2`, () => {\n      tsst(() => {\n        $1\n      }).expectToCompile();\n    });\n
+*/
 
 // test interplay types
 type asdfInt = ({ a: 1 } & { c: 4 } & { b: 2, a: string } & { [k: string]: 3 })['a']
@@ -40,6 +47,8 @@ var t5b: [number, string] = <ArrProto<[1, "a", "b"]>> [1, "a", "b"];
 var t5c: TupleToObject<[number, string]> = [1, "a", "b"];
 var t5d: TupleToObject<[number, string]> = <TupleToObject<[1, "a", "b"]>> [1, "a", "b"];
 var t5e: TupleToObject<[number, string]> = <ArrProto<[1, "a", "b"]>> [1, "a", "b"];
+
+// type neverAccessTest = {a:1}[never]
 
 // check how type moving works:
 // no match: messed up intersection
