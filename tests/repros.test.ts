@@ -13,7 +13,7 @@ describe(`repros`, () => {
         type Wrap<O> = Length<O>;
         // type Wrap<O, Len extends Length<O> = Length<O>> = Len;
         // ^ old work-around, same result here
-        the<2, Wrap<{ 0: 'a', 1: 'b' }>>;
+        the<2, Wrap<{ 0: 'a', 1: 'b' }>>();
         // ^ 0 :(
       }).expectToCompile();
     });

@@ -4,9 +4,9 @@ import { TupleHasIndex } from './array';
 import { Overwrite, HasKey } from '././srcobject';
 import { Inc } from './number';
 
-describe(`util`, () => {
+// describe(`util`, () => {
 
-  describe(`the`, () => {
+//   describe(`the`, () => {
 
 // Ramda functions listed in #12512 redone with iteration:
 
@@ -68,3 +68,7 @@ compose(identity, inc); // nope, number => {}
 // also no reasoning backward:
 compose(inc, identity); // {} => number
 pipe   (identity, inc); // {} => number
+
+//   });
+
+// });
