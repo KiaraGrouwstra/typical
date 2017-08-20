@@ -3,7 +3,7 @@
   array
     Vector
       ✓ the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>()
-      1) the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>()
+      × the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>()
       ✓ the<Vector<number | string, 3>, { 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }>()
       ✓ the<{ 0: number | string, 1: number | string, 2: number | string, length: 3 }, Vector<number | string, 3>>()
       ✓ the<{ 0: number, 1: number, length: 2 } | { 0: number, 1: number, 2: number, length: 3 }, Vector<number, 2 | 3>>()
@@ -28,7 +28,7 @@
     IsArrayType
       ✓ the<'1', IsArrayType<NumArr>>()
       ✓ the<'1', IsArrayType<any[]>>()
-      2) the<'1', IsArrayType<{ length: 2 }>>()
+      × the<'1', IsArrayType<{ length: 2 }>>()
     AppendNumObj
       ✓ the<{ 0: 'a', 1: 'b', 2: 'c' }, AppendNumObj<{ 0: 'a', 1: 'b' }, 'c'>>()
     Length
@@ -40,7 +40,7 @@
     ListFrom
       ✓ the<{ 0: 'c', 1: 'd', length: 2 }, ListFrom<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>()
     ListTo
-      3) the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>()
+      × the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>()
     Reverse
       ✓ the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>()
     TupleLastElem
@@ -51,19 +51,19 @@
     FirstElem
       ✓ the<'a', FirstElem<TestArr>>()
     TupleFirstIndex
-      4) the<0, TupleFirstIndex<TestArr>>()
+      × the<0, TupleFirstIndex<TestArr>>()
 
   boolean
     Not
       ✓ Not<'0'> -> '1'
       ✓ Not<'1'> -> '0'
-      5) Not<'2'> -> Bool
+      × Not<'2'> -> Bool
       - Not<'true'> -> '0'
       - Not<'false'> -> '1'
-      6) Not<any> -> never
+      × Not<any> -> never
       ✓ Not<never> -> Bool
-      7) Not<true> -> '0'
-      8) Not<false> -> '1'
+      × Not<true> -> '0'
+      × Not<false> -> '1'
     And
       ✓ And<'1', '1'> -> '1'
       ✓ And<'0', '1'> -> '0'
@@ -71,10 +71,10 @@
       ✓ Or<'1', '0'> -> '1'
       ✓ Or<'0', '0'> -> '0'
     UnionHasKey
-      9) UnionHasKey<Bool,'0'> -> '1'
-      10) UnionHasKey<Bool,'1'> -> '1'
-      11) UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1'
-      12) And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1'
+      × UnionHasKey<Bool,'0'> -> '1'
+      × UnionHasKey<Bool,'1'> -> '1'
+      × UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1'
+      × And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1'
     Indeterminate
       ✓ Indeterminate<Bool> -> '1'
       ✓ Indeterminate<'0'> -> '0'
@@ -144,11 +144,11 @@
       ✓ the<'1', Lte<2, 3>>()
       ✓ the<'1', Lte<3, 3>>()
     Max
-      13) the<6, Max<3, 6>>()
-      14) the<5, Max<5, 2>>()
+      × the<6, Max<3, 6>>()
+      × the<5, Max<5, 2>>()
     Min
-      15) the<3, Min<3, 6>>()
-      16) the<2, Min<5, 2>>()
+      × the<3, Min<3, 6>>()
+      × the<2, Min<5, 2>>()
 
   function
     Fn
@@ -160,13 +160,13 @@
     LengthList
       ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>()
     ReverseList
-      17) the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>()
+      × the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>()
     FirstIndex
       ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>()
     DecIndex
-      18) the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>()
+      × the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>()
     ZeroIndex
-      19) the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>()
+      × the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>()
     ListTail
       ✓ the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>()
     DifferenceLists
@@ -187,9 +187,9 @@
       ✓ the<9, Pow<3, 2>>()
       ✓ the<8, Pow<2, 3>>()
     DivFloor
-      20) the<2, DivFloor<5, 2>>()
+      × the<2, DivFloor<5, 2>>()
     Modulo
-      21) the<1, Modulo<5, 2>>()
+      × the<1, Modulo<5, 2>>()
 
   object
     Keyed
@@ -204,16 +204,16 @@
       ✓ the<'0', ObjectHasKey<NumArr, -1>>()
     HasKey
       ✓ the<'0', HasKey<any[], 2>>()
-      22) the<'1', HasKey<NumArr, 2>>()
+      × the<'1', HasKey<NumArr, 2>>()
       ✓ the<'0', HasKey<NumArr, 5>>()
-      23) the<'1', HasKey<{ a: 1 }, 'a'>>()
+      × the<'1', HasKey<{ a: 1 }, 'a'>>()
       ✓ the<'0', HasKey<{ a: 1 }, 'b'>>()
     ObjectHasKeySafe
       ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>()
       ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>()
-      24) the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>()
+      × the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>()
       ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>()
@@ -225,10 +225,10 @@
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>()
     ObjProp
       ✓ the<1, ObjProp<{ a: 1 }, 'a'>>()
-      25) the<never, ObjProp<{ a: 1 }, 'b'>>()
-      26) the<never, ObjProp<{ a: 1 }, 'toString'>>()
+      × the<never, ObjProp<{ a: 1 }, 'b'>>()
+      × the<never, ObjProp<{ a: 1 }, 'toString'>>()
       ✓ the<1, ObjProp<{ a: 1, toString(): string }, 'a'>>()
-      27) the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>()
+      × the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>()
       ✓ the<() => string, ObjProp<{ a: 1, toString(): string }, 'toString'>>()
     Omit
       ✓ the<{ b: number, c: boolean }, Omit<Item1, "a">>()
@@ -262,6 +262,10 @@
       ✓ the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>()
       ✓ the<abc, Simplify<abc & { "toString": never }>>()
 
+  repros
+    × 16018
+    ✓ 17908
+
   type
     ✓ compiles
 
@@ -273,7 +277,7 @@
       ✓ the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>()
       ✓ the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>()
       ✓ the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>()
-      28) the<'0', UnionHasKey<'a'|'b', 'toString'>>()
+      × the<'0', UnionHasKey<'a'|'b', 'toString'>>()
     UnionToObject
       ✓ the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>()
     IntersectionUnions
@@ -295,10 +299,10 @@
       ✓ the<'1', UnionsOverlap<'a', 'a' | 'b'>>()
       ✓ the<'0', UnionsOverlap<'a', 'c'>>()
     IsUnion
-      29) the<'1', IsUnion<'a' | 'b'>>()
-      30) the<'0', IsUnion<'a'>>()
+      × the<'1', IsUnion<'a' | 'b'>>()
+      × the<'0', IsUnion<'a'>>()
       ✓ the<'0', IsUnion<never>>()
-      31) the<'1', IsUnion<'a' | undefined>>()
+      × the<'1', IsUnion<'a' | undefined>>()
     Diff
       ✓ the<'a'|'b', Diff<"a" | "b" | "c", "c" | "d">>()
       ✓ the<'b'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>()
@@ -307,12 +311,14 @@
       ✓ the<'a', UnionDiff<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>()
       ✓ the<'b'|'toString', UnionDiff<'a' | 'b' | 'toString', 'a'>>()
       ✓ the<'b', UnionDiff<'a' | 'b', 'a' | 'toString'>>()
-      32) the<'0', ObjectHasKey<{ a: 1 }, "toString">>()
+      × the<'0', ObjectHasKey<{ a: 1 }, "toString">>()
 
   util
     the
       ✓ works with matching types
       ✓ fails with clashing types
+      ✓ protects from never when flipped
+      ✓ protects from any
     If
       ✓ has then
       ✓ has else
@@ -320,135 +326,139 @@
       ✓ intersects
 
 
-  179 passing (69ms)
+  182 passing (53ms)
   6 pending
-  32 failing
+  33 failing
 
-  1) array Vector the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>():
+  × array Vector the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>():
      Error: the string "[object Object]" was thrown, throw an Error :)
   
 
-  2) array IsArrayType the<'1', IsArrayType<{ length: 2 }>>():
+  × array IsArrayType the<'1', IsArrayType<{ length: 2 }>>():
      Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
   
 
-  3) array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>():
+  × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>():
      Error: the string "[object Object]" was thrown, throw an Error :)
   
 
-  4) array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
+  × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
      Error: the string "Type 'number' does not satisfy the constraint '0'." was thrown, throw an Error :)
   
 
-  5) boolean Not Not<'2'> -> Bool:
+  × boolean Not Not<'2'> -> Bool:
      Error: the string "Type '\"2\"' does not satisfy the constraint '\"0\" | \"1\"'." was thrown, throw an Error :)
   
 
-  6) boolean Not Not<any> -> never:
+  × boolean Not Not<any> -> never:
      Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
-  7) boolean Not Not<true> -> '0':
+  × boolean Not Not<true> -> '0':
      Error: the string "Type 'true' does not satisfy the constraint '\"0\" | \"1\"'." was thrown, throw an Error :)
   
 
-  8) boolean Not Not<false> -> '1':
+  × boolean Not Not<false> -> '1':
      Error: the string "Type 'false' does not satisfy the constraint '\"0\" | \"1\"'." was thrown, throw an Error :)
   
 
-  9) boolean UnionHasKey UnionHasKey<Bool,'0'> -> '1':
+  × boolean UnionHasKey UnionHasKey<Bool,'0'> -> '1':
      Error: the string "Cannot find name 'UnionHasKey'." was thrown, throw an Error :)
   
 
-  10) boolean UnionHasKey UnionHasKey<Bool,'1'> -> '1':
+  × boolean UnionHasKey UnionHasKey<Bool,'1'> -> '1':
      Error: the string "Cannot find name 'UnionHasKey'." was thrown, throw an Error :)
   
 
-  11) boolean UnionHasKey UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1':
+  × boolean UnionHasKey UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1':
      Error: the string "Cannot find name 'UnionHasKey'." was thrown, throw an Error :)
   
 
-  12) boolean UnionHasKey And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1':
+  × boolean UnionHasKey And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1':
      Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
   
 
-  13) comp Max the<6, Max<3, 6>>():
+  × comp Max the<6, Max<3, 6>>():
      Error: the string "Cannot find name 'Max'." was thrown, throw an Error :)
   
 
-  14) comp Max the<5, Max<5, 2>>():
+  × comp Max the<5, Max<5, 2>>():
      Error: the string "Cannot find name 'Max'." was thrown, throw an Error :)
   
 
-  15) comp Min the<3, Min<3, 6>>():
+  × comp Min the<3, Min<3, 6>>():
      Error: the string "Cannot find name 'Min'." was thrown, throw an Error :)
   
 
-  16) comp Min the<2, Min<5, 2>>():
+  × comp Min the<2, Min<5, 2>>():
      Error: the string "Cannot find name 'Min'." was thrown, throw an Error :)
   
 
-  17) list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
+  × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
      Error: the string "[object Object]" was thrown, throw an Error :)
   
 
-  18) list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>():
+  × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>():
      Error: the string "[object Object]" was thrown, throw an Error :)
   
 
-  19) list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>():
+  × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>():
      Error: the string "[object Object]" was thrown, throw an Error :)
   
 
-  20) number DivFloor the<2, DivFloor<5, 2>>():
+  × number DivFloor the<2, DivFloor<5, 2>>():
      Error: the string "Cannot find name 'DivFloor'." was thrown, throw an Error :)
   
 
-  21) number Modulo the<1, Modulo<5, 2>>():
+  × number Modulo the<1, Modulo<5, 2>>():
      Error: the string "Cannot find name 'Modulo'." was thrown, throw an Error :)
   
 
-  22) object HasKey the<'1', HasKey<NumArr, 2>>():
+  × object HasKey the<'1', HasKey<NumArr, 2>>():
      Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
   
 
-  23) object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>():
+  × object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>():
      Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
   
 
-  24) object ObjectHasKeySafe the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>():
+  × object ObjectHasKeySafe the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>():
      Error: the string "Type '\"1\"' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
   
 
-  25) object ObjProp the<never, ObjProp<{ a: 1 }, 'b'>>():
+  × object ObjProp the<never, ObjProp<{ a: 1 }, 'b'>>():
      Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
-  26) object ObjProp the<never, ObjProp<{ a: 1 }, 'toString'>>():
+  × object ObjProp the<never, ObjProp<{ a: 1 }, 'toString'>>():
      Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
-  27) object ObjProp the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>():
+  × object ObjProp the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>():
      Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
-  28) util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
+  × repros 16018:
+     Error: the string "Type 'I' cannot be used to index type '[1, 2, 3, 4, 5]'." was thrown, throw an Error :)
+  
+
+  × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
      Error: the string "Type '() => string' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
   
 
-  29) util IsUnion the<'1', IsUnion<'a' | 'b'>>():
+  × util IsUnion the<'1', IsUnion<'a' | 'b'>>():
      Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
   
 
-  30) util IsUnion the<'0', IsUnion<'a'>>():
+  × util IsUnion the<'0', IsUnion<'a'>>():
      Error: the string "Type '\"1\"' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
   
 
-  31) util IsUnion the<'1', IsUnion<'a' | undefined>>():
+  × util IsUnion the<'1', IsUnion<'a' | undefined>>():
      Error: the string "[object Object]" was thrown, throw an Error :)
   
 
-  32) util UnionDiff the<'0', ObjectHasKey<{ a: 1 }, "toString">>():
+  × util UnionDiff the<'0', ObjectHasKey<{ a: 1 }, "toString">>():
      Error: the string "Type '() => string' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
   
 

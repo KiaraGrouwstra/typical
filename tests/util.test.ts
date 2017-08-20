@@ -17,6 +17,18 @@ describe(`util`, () => {
       }).expectToFailWith('does not satisfy');
     });
 
+    it(`protects from never when flipped`, () => {
+      tsst(() => {
+        the<never, string>();
+      }).expectToFailWith('does not satisfy');
+    });
+
+    it(`protects from any`, () => {
+      tsst(() => {
+        the<string, any>();
+      }).expectToFailWith('does not satisfy');
+    });
+
   });
 
   describe(`If`, () => {

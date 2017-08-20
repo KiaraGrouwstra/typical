@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "pretest": "tsst -b \"**/*.test.ts\" -d ./js-tests",
-    "test": "mocha js-tests/**/*.test.js | tee errors.log",
+    "test": "mocha js-tests/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
     "build": "tsc"
   },
   "author": "Tycho Grouwstra",
@@ -13,7 +13,7 @@
   "devDependencies": {
     "@types/mocha": "^2.2.41",
     "mocha": "^3.5.0",
-    "tsst": "^0.3.2",
+    "tsst": "github:TheOtherSamP/ts-semantic-testing",
     "typescript": "github:microsoft/typescript"
   }
 }

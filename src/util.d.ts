@@ -11,7 +11,7 @@ export type If<Cond extends Bool, Then, Else> = { 1: Then, 0: Else }[Cond];
 export type The<T, V extends T> = V;
 
 // function version, useful to test types at compile time
-export function the<T, V extends T>() {}
+export declare function the<T, V extends T>(): '1';
 
 // just make an intersection type -- this wrapper helps to beat error `Type ... does not satisfy the constraint ...`
 export type Intersection<A, B> = A & B;
