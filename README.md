@@ -19,6 +19,9 @@ Run the tests (`npm test`) or check `errors.log`.
 ### Todo
 
 - figure out modules/namespaces?
+- switch numbers to strings
+- directly use `length` on tuples
+- ditch `List` / `NumObj` after #5453 tuple spread
 
 Thinking of good names to distinguish the following things that are all a lot like arrays:
 - `Array<number>` (list: homogeneous array of unknown length)

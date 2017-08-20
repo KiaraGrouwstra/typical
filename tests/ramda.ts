@@ -45,12 +45,8 @@ the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>();
 //     F extends (v: T) => any,
 //     Tpl extends T[],
 //     T,
-//     // if empty tuple allowed:
-//     // I extends number = 0,
-//     // Acc = []
-//     // otherwise:
-//     I extends number = 1,
-//     Acc = [F(Tpl[0])]
+//     I extends number = 0,
+//     Acc = []
 // > = { 1: MapFn<F, Tpl, T, Inc[I], [...Acc, F(Tpl[I])]>; 0: Acc; }[TupleHasIndex<Tpl, Int>];
 // // ^ needs #5453
 // declare function mapTuple<F extends (v: T) => any, Tpl extends T[], T>(f: F, tpl: Tpl): MapFn<F, Tpl, T>;

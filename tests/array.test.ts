@@ -180,7 +180,7 @@ describe(`array`, () => {
 
   });
 
-  // describe(`ConcatNumObjs`, () => {
+  describe(`ConcatNumObjs`, () => {
 
   //   it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd' }, ConcatNumObjs<{ 0: 'a', 1: 'b' }, { 0: 'c', 1: 'd' }>>()`, () => {
   //     tsst(() => {
@@ -188,9 +188,9 @@ describe(`array`, () => {
   //     }).expectToCompile();
   //   });
 
-  //   // ^ error: missing prop 2
+    // ^ error: missing prop 2
 
-  // });
+  });
 
   describe(`Length`, () => {
 
@@ -233,7 +233,8 @@ describe(`array`, () => {
     //     the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>();
     //   }).expectToCompile();
     // });
-    // // ^ does not terminate?
+
+    // ^ does not terminate?
 
   });
 
