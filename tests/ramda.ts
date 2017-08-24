@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst';
 import { If, List, Obj } from './util';
 import { TupleHasIndex } from './array';
-import { Overwrite, HasKey } from '././srcobject';
+import { Overwrite, HasKey } from './object';
 import { Inc } from './number';
 
 // describe(`util`, () => {
