@@ -1,5 +1,6 @@
 import { tsst, the } from 'tsst';
 import { If, List, Obj } from './util';
+import { StringToNumber } from './cast';
 import { TupleHasIndex } from './array';
 import { Overwrite, HasKey } from './object';
 import { Inc } from './number';
@@ -10,15 +11,15 @@ import { Inc } from './number';
 
 // Ramda functions listed in #12512 redone with iteration:
 
-export type PathFn<T, R extends List<string|number>, I extends number = 0> =
-  { 1: PathFn<T[R[I]], R, Inc[I]>, 0: T }[TupleHasIndex<R, I>];
-the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', 1, 'd']>>();
+export type PathFn<T extends { [k: string]: any }, R extends Array<string>, I extends string = '0'> =
+    { 1: PathFn<T[R[StringToNumber[I]]], R, Inc[I]>, 0: T }[TupleHasIndex<R, I>];
+the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>();
 
-export declare function path<T, R extends List<string|number>>(obj: T, path: R): PathFn<T, R>;
-let par1: { a: { b: ['c', { d: 'e' }] } } = { a: { b: ['c', { d: 'e' }] } };
-let par2: ['a', 'b', 1, 'd'] = ['a', 'b', 1, 'd'];
-const pathTest = path(par1, par2);
-// fails :(, should also yield "e"
+export declare function path<T extends { [k: string]: any }, R extends Array<string>>(obj: T, path: R): PathFn<T, R>;
+let obj: { a: { b: ['c', { d: 'e' }] } };
+let keys: ['a', 'b', '1', 'd'];
+const pathTest = path(obj, keys);
+// "e"
 
 export type PathOrFn<T, Def, R extends List<string|number>, I extends number = 0> =
   { 1: If<HasKey<T, R[I]>, PathOrFn<T[R[I]], Def, R, Inc[I]>, Def>, 0: T }[TupleHasIndex<R, I>];
