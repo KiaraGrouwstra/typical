@@ -62,6 +62,12 @@ export interface ObjectHasStringIndex {
 
 export type Simplify<T> = Pick<T, keyof T>;
 
+export type Swap<
+    T extends Obj<string>,
+    Keys extends keyof T = keyof T,
+    Vals extends string = T[Keys]
+> = {[P1 in Vals]: {[P2 in Keys]: If<UnionHasKey<T[P2], P1>, P2, never> }[Keys]};
+
 // export type ObjectLength = ...
 // // check the length (number of keys) of a given heterogeneous object type. doable given `UnionLength` or (object iteration + `Inc`).
 

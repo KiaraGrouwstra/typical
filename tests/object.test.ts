@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst';
 import { Obj } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjProp, Omit, Overwrite,
-IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify } from './object';
+IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap } from './object';
 import { Diff } from './union';
 import { NumArr } from './fixtures';
 
@@ -319,6 +319,16 @@ describe(`object`, () => {
     it(`the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>()`, () => {
       tsst(() => {
         the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Swap`, () => {
+
+    it(`the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>()`, () => {
+      tsst(() => {
+        the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>();
       }).expectToCompile();
     });
 
