@@ -38,3 +38,14 @@ Known edge-cases to test for:
 - sub-types: given sub-types of the envisioned input (e.g. `'a'` -> `'a' & string`), the output should also extend that of the original (for `A < B`, `F<A> < F<B>`)
 - super-types: given super-types of the envisioned input, the output should also be a super-type of the original (for `A > B`, `F<A> > F<B>`)
 - prototypes: type functions should be tested for input involving methods on `Object.prototype` -- that is, for objects try having an explicit `toString` method, for string input, try `toString`.
+
+Non-terminating under recent TS:
+
+types:
+- Array: ListFrom
+- Comp: Max, Min
+- Number: DivFloor, Modulo
+
+tests:
+- Array: ConcatNumObjs, IncIndexNumbObj
+- List: ConcatLists, IncIndex, Prepend
