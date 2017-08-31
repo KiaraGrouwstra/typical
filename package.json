@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "pretest": "tsst -b \"**/*.test.ts\" -d ./js-tests",
+    "pretest": "./node_modules/tsst/dist/build.js -b \"**/*.test.ts\" -d ./js-tests",
     "test": "mocha js-tests/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
     "build": "tsc"
   },
