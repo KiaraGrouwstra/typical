@@ -1,3 +1,9 @@
+### Installing
+
+```
+npm i typical-ts
+```
+
 ### tl;dr?
 
 Lodash for types.
