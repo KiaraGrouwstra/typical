@@ -8,17 +8,21 @@ export interface isT<T> {
   (v: any): '0';
 }
 
+export interface isT<T> {
+  (v: never): '0';
+  (v: T): '1';
+  (v: any): '0';
+}
 // export type Matches<V, T> = isT<T>(V);
-// // ^ this is where things fail until #6606
-// let isBool: isT<boolean>
-// let falseBool = isBool(false) // 1
-// let trueBool = isBool(true) // 1
-// let anyBool = isBool(<any> 0) // 0
-// let neverBool = isBool(<never> 0) // 1...
-// // ^ `never` qualifies as anything... may need to rethink this.
+// type isBool = isT<boolean>;
+// let falseBool: isBool(false); // 1
+// let trueBool: isBool(true); // 1
+// let strBool: isBool(string); // 0
+// let anyBool: isBool(any); // 0
+// let neverBool: isBool(never); // 0
 
-// export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
-// export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
+export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
+export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
 
 // export type PrototypeOf<V, T> = ...
 // ^ get the prototype (-> methods) of a type. `Partial` helps for e.g. tuple types if not object types, though `Symbol`-based keys get killed.

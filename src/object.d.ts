@@ -56,9 +56,8 @@ export interface ObjectHasStringIndex {
   (o: { [k: string]: any }): '1';
   (o: {}): '0';
 }
-// export type ObjectHasStringIndexTestT = ObjectHasStringIndex({ [k: string]: 123 }); // '1'
-// export type ObjectHasStringIndexTestF = ObjectHasStringIndex({ a: 123 }); // '0'
-// // ^ getting the return type of a function: proposal #6606
+// type ObjectHasStringIndexTestT = ObjectHasStringIndex({ [k: string]: 123 }); // '1'
+// type ObjectHasStringIndexTestF = ObjectHasStringIndex({ a: 123 }); // '0'
 
 export type Simplify<T> = Pick<T, keyof T>;
 
