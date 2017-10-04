@@ -1,6 +1,6 @@
 {
   "name": "typical-ts",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -13,10 +13,12 @@
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
+  "dependencies": {
+    "typescript": "*"
+  },
   "devDependencies": {
     "@types/mocha": "^2.2.41",
-    "mocha": "^3.5.0",
     "tsst": "github:TheOtherSamP/ts-semantic-testing",
-    "typescript": "github:microsoft/typescript"
+    "mocha": "^3.5.0"
   }
 }
