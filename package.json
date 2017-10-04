@@ -1,6 +1,6 @@
 {
   "name": "typical-ts",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -8,7 +8,8 @@
     "pretest": "./node_modules/tsst/dist/build.js -b \"**/*.test.ts\" -d ./lib",
     "test": "mocha lib/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
     "clean": "rm -rf lib/*",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc",
+    "install": "npm run clean && tsc"
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
