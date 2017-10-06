@@ -52,13 +52,6 @@ export type IntersectionObjects<A, B> = Pick<A, IntersectionObjectKeys<A, B>>;
 
 export type ObjectValsToUnion<O> = O[keyof O];
 
-export interface ObjectHasStringIndex {
-  (o: { [k: string]: any }): '1';
-  (o: {}): '0';
-}
-// type ObjectHasStringIndexTestT = ObjectHasStringIndex({ [k: string]: 123 }); // '1'
-// type ObjectHasStringIndexTestF = ObjectHasStringIndex({ a: 123 }); // '0'
-
 export type Simplify<T> = Pick<T, keyof T>;
 
 export type Swap<
@@ -70,9 +63,10 @@ export type Swap<
 // export type ObjectLength = ...
 // // check the length (number of keys) of a given heterogeneous object type. doable given `UnionLength` or (object iteration + `Inc`).
 
+export type ObjectHasStringIndex<O extends {}> = ({ 0: '0'; } & { [k: string]: '1'; })[UnionHasKey<keyof O, string>];
+
 // types not possible yet:
-// `ObjectHasStringIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
-// `ObjectHasNumberIndex`: ditto.
+// `ObjectHasNumberIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
 // `ObjectNumberKeys`: a `number` variant of `keyof`. could be pulled off given union iteration (`Partial` -> iterate to filter / cast back to number literals)... but still hard to scale past natural numbers.
 // `ObjectSymbolKeys`: a `Symbol` variant of `keyof`. no clue how to go about this unless by checking a whitelisted set such as those found in standard library prototype. this feels sorta useless though.
 // `ObjectHasElem`: check whether a heterogeneous object type contains a given type among its elements. This could be done given `TypesEq`.

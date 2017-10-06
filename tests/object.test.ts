@@ -426,6 +426,18 @@ describe(`object`, () => {
       }).expectToCompile();
     });
 
+    it(`the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>()`, () => {
+      tsst(() => {
+        the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', ObjectHasStringIndex<{ a: 123 }>>()`, () => {
+      tsst(() => {
+        the<'0', ObjectHasStringIndex<{ a: 123 }>>();
+      }).expectToCompile();
+    });
+
   });
 
 });
