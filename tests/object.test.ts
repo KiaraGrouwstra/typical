@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst';
 import { Obj } from './util';
-import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjProp, Omit, Overwrite,
+import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap } from './object';
 import { Diff } from './union';
 import { NumArr } from './fixtures';
@@ -201,42 +201,43 @@ describe(`object`, () => {
 
   });
 
-  describe(`ObjProp`, () => {
+  // if this works, I may need to replace string member access with this in other places...
+  describe(`ObjectProp`, () => {
 
-    it(`the<1, ObjProp<{ a: 1 }, 'a'>>()`, () => {
+    it(`the<1, ObjectProp<{ a: 1 }, 'a'>>()`, () => {
       tsst(() => {
-        the<1, ObjProp<{ a: 1 }, 'a'>>();
+        the<1, ObjectProp<{ a: 1 }, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<never, ObjProp<{ a: 1 }, 'b'>>()`, () => {
+    it(`the<never, ObjectProp<{ a: 1 }, 'b'>>()`, () => {
       tsst(() => {
-        the<never, ObjProp<{ a: 1 }, 'b'>>();
+        the<never, ObjectProp<{ a: 1 }, 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<never, ObjProp<{ a: 1 }, 'toString'>>()`, () => {
+    it(`the<never, ObjectProp<{ a: 1 }, 'toString'>>()`, () => {
       tsst(() => {
-        the<never, ObjProp<{ a: 1 }, 'toString'>>();
+        the<never, ObjectProp<{ a: 1 }, 'toString'>>();
       }).expectToCompile();
     });
 
-    it(`the<1, ObjProp<{ a: 1, toString(): string }, 'a'>>()`, () => {
+    it(`the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>()`, () => {
       tsst(() => {
-        the<1, ObjProp<{ a: 1, toString(): string }, 'a'>>();
+        the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>()`, () => {
+    it(`the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>()`, () => {
       tsst(() => {
-        the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>();
+        the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>();
       }).expectToCompile();
     });
     // error: any :(
 
-    it(`the<() => string, ObjProp<{ a: 1, toString(): string }, 'toString'>>()`, () => {
+    it(`the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>()`, () => {
       tsst(() => {
-        the<() => string, ObjProp<{ a: 1, toString(): string }, 'toString'>>();
+        the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>();
       }).expectToCompile();
     });
 

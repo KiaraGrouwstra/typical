@@ -1,4 +1,5 @@
 import { If, Obj, The, Intersection } from './util';
+import { And, Not } from './boolean';
 import { UnionHasKey, UnionsOverlap, Diff } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
 import { NumberToString, StringToNumber } from './cast';
@@ -26,14 +27,12 @@ export type HasKey<T, K extends number|string> = If<
 
 export type ObjectHasKeySafe<O extends object, K extends string> = UnionsOverlap<keyof O, K>;
 
-// export type ObjectProp<O extends Obj<any>, K extends string> =
-//     O[K]; // trivial, but breaks on `toString` key
-export type ObjectProp<O extends Obj<any>, K extends string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
-// export type ObjectProp<O extends Obj<any>, K extends string> =
-//     If<And<UnionsOverlap<keyof O, 'toString' | 'toLocaleString'>, And<ObjectHasStringIndex<O>, Not<UnionHasKey<keyof T, K>>>>, O[string], O[K]>
-// // ^ should prevent 'toString' issues, but ObjectHasStringIndex is not possible today yet though,
-// // while the current implementations of UnionHasKey and UnionsOverlap won't suffice as they suffer from the same bug.
-// // An alternative based on union iteration could potentially prevent this.
+// export type ObjectProp<O extends Obj<any>, K extends string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
+export type ObjectProp<O extends Obj<any>, K extends string> =
+    If<And<UnionsOverlap<keyof O, 'toString' | 'toLocaleString'>, And<ObjectHasStringIndex<O>, Not<UnionHasKey<keyof O, K>>>>, O[string], O[K]>
+// ^ should prevent 'toString' issues of O[K], but the current implementations of
+// UnionHasKey and UnionsOverlap won't suffice as they suffer from the same bug.
+// An alternative based on union iteration could potentially prevent this.
 
 export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>; // {[P in Diff<keyof T, K>]: T[P]}
 
