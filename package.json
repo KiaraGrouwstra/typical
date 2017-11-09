@@ -5,16 +5,14 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "pretest": "./node_modules/tsst/dist/build.js -b \"**/*.test.ts\" -d ./lib",
+    "pretest": "rm -rf lib/* && ./node_modules/tsst/dist/build.js -b \"**/*.test.ts\" -d ./lib",
     "test": "mocha lib/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
-    "clean": "rm -rf lib/*",
-    "build": "npm run clean && tsc",
-    "install": "npm run clean && tsc"
+    "clean": "rm -rf lib/*"
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
   "dependencies": {
-    "typescript": "*"
+    "typescript": "^2.5.3"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.41",
