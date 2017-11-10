@@ -55,3 +55,7 @@ types:
 tests:
 - Array: ConcatNumObjs, IncIndexNumbObj
 - List: ConcatLists, IncIndex, Prepend
+
+### Similar projects
+
+- [`typelevel-ts`](https://github.com/gcanti/typelevel-ts), another type library, less experimental
