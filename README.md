@@ -59,3 +59,4 @@ tests:
 ### Similar projects
 
 - [`typelevel-ts`](https://github.com/gcanti/typelevel-ts), another type library, less experimental
+- [`type-zoo`](https://github.com/pelotom/type-zoo), another recent type lib
