@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumObjs, Length,
+import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumObjs, Length, TupleProp,
 IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, FirstElem, TupleFirstIndex } from './array';
 import { TupleToObject } from './cast';
 import { NumArr, TestArr } from './fixtures';
@@ -11,12 +11,6 @@ describe(`array`, () => {
     it(`the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>()`, () => {
       tsst(() => {
         the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>();
-      }).expectToCompile();
-    });
-
-    it(`the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>()`, () => {
-      tsst(() => {
-        the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>(); // fails, it's broader
       }).expectToCompile();
     });
 
@@ -62,7 +56,7 @@ describe(`array`, () => {
 
   });
 
-  xdescribe(`TupleProp`, () => {
+  describe(`TupleProp`, () => {
 
     it(`the<0, TupleProp<[0], 0>>()`, () => {
       tsst(() => {

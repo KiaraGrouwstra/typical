@@ -15,8 +15,8 @@ type ArrPrototypeMethods = 'length' | 'push' | 'pop' | 'concat' | 'join' | 'reve
 
 export type ArrayProp<R extends List<any>> = R[-1];
 
-// export type TupleProp<Arr extends List<any>, I extends number> = Arr[I];
-// // ^ just use tpl[i]
+export type TupleProp<Arr extends List<any>, I extends number> = Arr[I];
+// ^ just use tpl[i]
 
 export type TupleHasIndex<
   Arr extends List<any>,

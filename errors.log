@@ -3,7 +3,6 @@
   array
     Vector
       ✓ the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>()
-      × the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>()
       ✓ the<Vector<number | string, 3>, { 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }>()
       ✓ the<{ 0: number | string, 1: number | string, 2: number | string, length: 3 }, Vector<number | string, 3>>()
       ✓ the<{ 0: number, 1: number, length: 2 } | { 0: number, 1: number, 2: number, length: 3 }, Vector<number, 2 | 3>>()
@@ -12,10 +11,10 @@
       ✓ the<0 | 1, ArrayProp<Array<0 | 1>>>()
       ✓ the<0 | 1, ArrayProp<Array<0> | Array<1>>>()
     TupleProp
-      - the<0, TupleProp<[0], 0>>()
-      - the<0, TupleProp<[0], 1>>()
-      - the<any, TupleProp<[], 0>>()
-      - the<number, TupleProp<number[], 0>>()
+      ✓ the<0, TupleProp<[0], 0>>()
+      ✓ the<0, TupleProp<[0], 1>>()
+      × the<any, TupleProp<[], 0>>()
+      ✓ the<number, TupleProp<number[], 0>>()
     TupleHasIndex
       ✓ the<'1', TupleHasIndex<NumArr, 1>>()
       ✓ the<'0', TupleHasIndex<NumArr, -1>>()
@@ -330,12 +329,12 @@
       ✓ intersects
 
 
-  185 passing (58ms)
-  6 pending
+  188 passing (63ms)
+  2 pending
   33 failing
 
-  × array Vector the<{ 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }, Vector<number | string, 3>>():
-     Error: the string "[object Object]" was thrown, throw an Error :)
+  × array TupleProp the<any, TupleProp<[], 0>>():
+     Error: the string "A tuple type element list cannot be empty." was thrown, throw an Error :)
   
 
   × array IsArrayType the<'1', IsArrayType<{ length: 2 }>>():
