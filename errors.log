@@ -265,9 +265,6 @@
       ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>()
       ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>()
 
-  repros
-    × 16018
-
   type
     ✓ compiles
 
@@ -328,9 +325,9 @@
       ✓ intersects
 
 
-  197 passing (41ms)
+  197 passing (39ms)
   6 pending
-  19 failing
+  18 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -378,10 +375,6 @@
 
   × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>():
      Error: Type 'any' does not satisfy the constraint 'never'.
-  
-
-  × repros 16018:
-     Error: Type 'I' does not satisfy the constraint 'string'.
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
