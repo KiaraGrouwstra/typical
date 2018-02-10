@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { Inc, Dec, Add, Subtract, Mult, Pow /*, DivFloor, Modulo*/ } from './number';
 
 describe(`number`, () => {

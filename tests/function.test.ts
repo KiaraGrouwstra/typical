@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { Fn } from './function';
 
 describe(`function`, () => {

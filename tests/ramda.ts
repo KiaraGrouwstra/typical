@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { If, List, Obj } from './util';
 import { StringToNumber } from './cast';
 import { TupleHasIndex } from './array';

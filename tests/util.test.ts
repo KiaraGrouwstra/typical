@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { If, The, Intersection } from './util';
 
 describe(`util`, () => {

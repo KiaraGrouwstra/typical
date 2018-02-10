@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { And } from './boolean';
 
 describe(`repros`, () => {

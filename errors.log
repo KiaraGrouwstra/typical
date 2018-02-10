@@ -223,13 +223,13 @@
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>()
-    ObjProp
-      ✓ the<1, ObjProp<{ a: 1 }, 'a'>>()
-      × the<never, ObjProp<{ a: 1 }, 'b'>>()
-      × the<never, ObjProp<{ a: 1 }, 'toString'>>()
-      ✓ the<1, ObjProp<{ a: 1, toString(): string }, 'a'>>()
-      × the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>()
-      ✓ the<() => string, ObjProp<{ a: 1, toString(): string }, 'toString'>>()
+    ObjectProp
+      ✓ the<1, ObjectProp<{ a: 1 }, 'a'>>()
+      × the<never, ObjectProp<{ a: 1 }, 'b'>>()
+      × the<never, ObjectProp<{ a: 1 }, 'toString'>>()
+      ✓ the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>()
+      × the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>()
+      ✓ the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>()
     Omit
       ✓ the<{ b: number, c: boolean }, Omit<Item1, "a">>()
       ✓ the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>()
@@ -245,6 +245,8 @@
       ✓ the<1|2, ObjectValsToUnion<Obj1>>()
     Simplify
       ✓ the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>()
+    Swap
+      ✓ the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>()
     toString experimenting
       ✓ the<{ a: 1, foo: () => string, toString: () => string }, Omit<abc, "b">>()
       ✓ the<{ a: 1, b: 2, foo: () => string }, Omit<abc, "toString">>()
@@ -261,6 +263,8 @@
       ✓ the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>()
       ✓ the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>()
       ✓ the<abc, Simplify<abc & { "toString": never }>>()
+      ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>()
+      ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>()
 
   repros
     × 16018
@@ -326,7 +330,7 @@
       ✓ intersects
 
 
-  182 passing (53ms)
+  185 passing (67ms)
   6 pending
   33 failing
 
@@ -426,20 +430,20 @@
      Error: the string "Type '\"1\"' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
   
 
-  × object ObjProp the<never, ObjProp<{ a: 1 }, 'b'>>():
+  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'b'>>():
      Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
-  × object ObjProp the<never, ObjProp<{ a: 1 }, 'toString'>>():
-     Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
+  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'toString'>>():
+     Error: the string "Type '() => string' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
-  × object ObjProp the<never, ObjProp<{ a: 1, toString(): string }, 'b'>>():
+  × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>():
      Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
   
 
   × repros 16018:
-     Error: the string "Type 'I' cannot be used to index type '[1, 2, 3, 4, 5]'." was thrown, throw an Error :)
+     Error: the string "[object Object]" was thrown, throw an Error :)
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():

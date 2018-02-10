@@ -5,18 +5,18 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "pretest": "rm -rf lib/* && ./node_modules/tsst/dist/build.js -b \"**/*.test.ts\" -d ./lib",
+    "pretest": "rm -rf lib/* && node ./node_modules/tsst-tycho/dist/build.js -b \"**/*.test.ts\" -d ./lib",
     "test": "mocha lib/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
     "clean": "rm -rf lib/*"
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^2.5.3"
+    "typescript": "^2.8.0-dev.20180210"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.41",
-    "tsst": "github:TheOtherSamP/ts-semantic-testing",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "tsst-tycho": "^0.3.4"
   }
 }

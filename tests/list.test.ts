@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { AppendList, ConcatLists, LengthList, ReverseList, FirstIndex, IncIndex, DecIndex, ZeroIndex, Prepend, ListTail, DifferenceLists } from './list';
 
 describe(`list`, () => {

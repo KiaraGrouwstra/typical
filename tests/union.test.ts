@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
 import { UnionHasKey, UnionToObject, IntersectionUnions, UnionContained, UnionEmpty, UnionsOverlap, IsUnion, Diff, UnionDiff } from './union';
 import { ObjectHasKey } from './object';

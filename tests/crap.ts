@@ -1,4 +1,4 @@
-import { tsst, the } from 'tsst';
+import { tsst, the } from 'tsst-tycho';
 import { List } from './util';
 import { Simplify } from './object';
 import { TupleToObject } from './cast';
