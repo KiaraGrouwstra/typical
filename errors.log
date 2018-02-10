@@ -186,9 +186,9 @@
       ✓ the<9, Pow<3, 2>>()
       ✓ the<8, Pow<2, 3>>()
     DivFloor
-      × the<2, DivFloor<5, 2>>()
+      ✓ the<2, DivFloor<5, 2>>()
     Modulo
-      × the<1, Modulo<5, 2>>()
+      ✓ the<1, Modulo<5, 2>>()
 
   object
     Keyed
@@ -329,9 +329,9 @@
       ✓ intersects
 
 
-  192 passing (39ms)
+  194 passing (38ms)
   2 pending
-  29 failing
+  27 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -387,14 +387,6 @@
 
   × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>():
      Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  
-
-  × number DivFloor the<2, DivFloor<5, 2>>():
-     Error: Cannot find name 'DivFloor'.
-  
-
-  × number Modulo the<1, Modulo<5, 2>>():
-     Error: Cannot find name 'Modulo'.
   
 
   × object HasKey the<'1', HasKey<NumArr, 2>>():
