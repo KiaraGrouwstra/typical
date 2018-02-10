@@ -51,14 +51,14 @@ export type Lte<
   0: If<NumbersEqual<0, B>, '0', Lte<Dec[A], Dec[B]>>,
 }[NumbersEqual<0, A>];
 
-// export type Max<
-//   A extends number,
-//   B extends number
-// > = If<Gt<A, B>, A, B>;
-// // Error: Excessive stack depth comparing types ... and ...
+export type Max<
+  A extends number,
+  B extends number
+> = If<Gt<A, B>, A, B>;
+// Error: Excessive stack depth comparing types ... and ...
 
-// export type Min<
-//   A extends number,
-//   B extends number
-// > = If<Lt<A, B>, A, B>;
-// // Error: Excessive stack depth comparing types ... and ...
+export type Min<
+  A extends number,
+  B extends number
+> = If<Lt<A, B>, A, B>;
+// Error: Excessive stack depth comparing types ... and ...

@@ -30,16 +30,16 @@ export type Pow<
   Acc extends number = 1
 > = { 1: Acc, 0: Pow<Base, Dec[Exp], Mult<Acc, Base>> }[NumbersEqual<0, Exp>];
 
-// export type DivFloor<
-//   A extends number,
-//   B extends number,
-//   Acc extends number = 0
-// > = { 0: Acc, 1: DivFloor<Subtract<A, B>, B, Inc[Acc]> }[Gt<A, B>];
-// // error `Type ... cannot be used to index type ...`
+export type DivFloor<
+  A extends number,
+  B extends number,
+  Acc extends number = 0
+> = { 0: Acc, 1: DivFloor<Subtract<A, B>, B, Inc[Acc]> }[Gt<A, B>];
+// error `Type ... cannot be used to index type ...`
 
-// export type Modulo<
-//   A extends number,
-//   B extends number,
-//   Acc extends number = 0
-// > = { 0: A, 1: Modulo<Subtract<A, B>, B, Inc[Acc]> }[Gt<A, B>];
-// // error `Type ... cannot be used to index type ...`
+export type Modulo<
+  A extends number,
+  B extends number,
+  Acc extends number = 0
+> = { 0: A, 1: Modulo<Subtract<A, B>, B, Inc[Acc]> }[Gt<A, B>];
+// error `Type ... cannot be used to index type ...`
