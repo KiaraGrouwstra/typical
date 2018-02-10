@@ -70,10 +70,10 @@
       ✓ Or<'1', '0'> -> '1'
       ✓ Or<'0', '0'> -> '0'
     UnionHasKey
-      × UnionHasKey<Bool,'0'> -> '1'
-      × UnionHasKey<Bool,'1'> -> '1'
-      × UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1'
-      × And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1'
+      ✓ UnionHasKey<Bool,'0'> -> '1'
+      ✓ UnionHasKey<Bool,'1'> -> '1'
+      ✓ UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1'
+      ✓ And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1'
     Indeterminate
       ✓ Indeterminate<Bool> -> '1'
       ✓ Indeterminate<'0'> -> '0'
@@ -329,9 +329,9 @@
       ✓ intersects
 
 
-  194 passing (38ms)
+  198 passing (40ms)
   2 pending
-  27 failing
+  23 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -359,22 +359,6 @@
 
   × boolean Not Not<false> -> '1':
      Error: Type 'false' does not satisfy the constraint '"0" | "1"'.
-  
-
-  × boolean UnionHasKey UnionHasKey<Bool,'0'> -> '1':
-     Error: Cannot find name 'UnionHasKey'.
-  
-
-  × boolean UnionHasKey UnionHasKey<Bool,'1'> -> '1':
-     Error: Cannot find name 'UnionHasKey'.
-  
-
-  × boolean UnionHasKey UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1':
-     Error: Cannot find name 'UnionHasKey'.
-  
-
-  × boolean UnionHasKey And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1':
-     Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
   × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
