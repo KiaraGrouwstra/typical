@@ -20,7 +20,8 @@ describe(`list`, () => {
     //     the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>();
     //   }).expectToCompile();
     // });
-    // // ^ error, fails
+    
+    // ^ does not terminate
 
   });
 
@@ -61,7 +62,8 @@ describe(`list`, () => {
     //     the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>();
     //   }).expectToCompile();
     // });
-    // // ^ won't terminate?
+
+    // ^ does not terminate
 
   });
 
@@ -105,7 +107,6 @@ describe(`list`, () => {
         the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>();
       }).expectToCompile();
     });
-    // ^ error: { length: -1; }
 
   });
 
@@ -116,7 +117,6 @@ describe(`list`, () => {
         the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>();
       }).expectToCompile();
     });
-    // ^ won't terminate?
 
   });
 

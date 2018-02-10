@@ -153,13 +153,11 @@ describe(`array`, () => {
       }).expectToCompile();
     });
 
-    it(`the<'1', IsArrayType<{ length: 2 }>>()`, () => {
+    it(`the<'0', IsArrayType<{ length: 2 }>>()`, () => {
       tsst(() => {
         the<'0', IsArrayType<{ length: 2 }>>();
       }).expectToCompile();
     });
-
-    // ^ all error: 0
 
   });
 
@@ -171,8 +169,6 @@ describe(`array`, () => {
       }).expectToCompile();
     });
 
-    // ^ error: missing prop 2
-
   });
 
   describe(`ConcatNumObjs`, () => {
@@ -183,7 +179,7 @@ describe(`array`, () => {
   //     }).expectToCompile();
   //   });
 
-    // ^ error: missing prop 2
+    // ^ does not terminate
 
   });
 
@@ -229,7 +225,7 @@ describe(`array`, () => {
     //   }).expectToCompile();
     // });
 
-    // ^ does not terminate?
+    // ^ does not terminate
 
   });
 

@@ -29,7 +29,6 @@ export type ReverseList<
 
 export type FirstIndex<R extends NumObj<any>, I extends number = 0> =
   { 1: I, 0: FirstIndex<R, Inc[I]> }[ObjectHasKey<R, NumberToString[I]>];
-// ^ error TS2550: Generic type instantiation is excessively deep and possibly infinite.
 
 export type IncIndex<R extends List<any>, N extends number, I extends number = 0 /*FirstIndex<R>*/, Acc = { length: R['length'] }> =
   { 0: Acc, 1: IncIndex<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];

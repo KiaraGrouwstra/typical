@@ -206,7 +206,6 @@ describe(`util`, () => {
         the<'b'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>();
       }).expectToCompile();
     });
-    // ^ ("toString" & (() => string))
 
     it(`the<'b', Diff<'a' | 'b', 'a' | 'toString'>>()`, () => {
       tsst(() => {
@@ -235,7 +234,6 @@ describe(`util`, () => {
         the<'b', UnionDiff<'a' | 'b', 'a' | 'toString'>>();
       }).expectToCompile();
     });
-    // ^ error: () => string
 
     it(`the<'0', ObjectHasKey<{ a: 1 }, "toString">>()`, () => {
       tsst(() => {
@@ -243,7 +241,6 @@ describe(`util`, () => {
       }).expectToCompile();
     });
     // ^ error: () => string
-    // ^ lost...
 
   });
 

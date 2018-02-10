@@ -16,8 +16,6 @@ export type NumbersEqual<
   NumberToString[A],
   NumberToString[B]
 >>;
-// > = UnionHasKey<NumberToString[A], NumberToString[B]>;
-// ^ #15768, TS2536 `X cannot be used to index Y` on generic
 
 export type Gt<
   A extends number,
@@ -55,10 +53,8 @@ export type Max<
   A extends number,
   B extends number
 > = If<Gt<A, B>, A, B>;
-// Error: Excessive stack depth comparing types ... and ...
 
 export type Min<
   A extends number,
   B extends number
 > = If<Lt<A, B>, A, B>;
-// Error: Excessive stack depth comparing types ... and ...

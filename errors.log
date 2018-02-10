@@ -27,7 +27,7 @@
     IsArrayType
       ✓ the<'1', IsArrayType<NumArr>>()
       ✓ the<'1', IsArrayType<any[]>>()
-      ✓ the<'1', IsArrayType<{ length: 2 }>>()
+      ✓ the<'0', IsArrayType<{ length: 2 }>>()
     AppendNumObj
       ✓ the<{ 0: 'a', 1: 'b', 2: 'c' }, AppendNumObj<{ 0: 'a', 1: 'b' }, 'c'>>()
     Length
@@ -54,42 +54,42 @@
 
   boolean
     Not
-      ✓ Not<'0'> -> '1'
-      ✓ Not<'1'> -> '0'
-      × Not<'2'> -> Bool
-      - Not<'true'> -> '0'
-      - Not<'false'> -> '1'
-      × Not<any> -> never
-      ✓ Not<never> -> Bool
-      × Not<true> -> '0'
-      × Not<false> -> '1'
+      ✓ the<'1', Not<'0'>>
+      ✓ the<'0', Not<'1'>>
+      - the<Bool, Not<'2'>>
+      - the<'0', Not<'true'>>
+      - the<'1', Not<'false'>>
+      - the<never, Not<any>>
+      ✓ the<Bool, Not<never>>
+      - the<'0', Not<true>>
+      - the<'1', Not<false>>
     And
-      ✓ And<'1', '1'> -> '1'
-      ✓ And<'0', '1'> -> '0'
+      ✓ the<'1', And<'1', '1'>>
+      ✓ the<'0', And<'0', '1'>>
     Or
-      ✓ Or<'1', '0'> -> '1'
-      ✓ Or<'0', '0'> -> '0'
+      ✓ the<'1', Or<'1', '0'>>
+      ✓ the<'0', Or<'0', '0'>>
     UnionHasKey
-      ✓ UnionHasKey<Bool,'0'> -> '1'
-      ✓ UnionHasKey<Bool,'1'> -> '1'
-      ✓ UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1'
-      ✓ And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1'
+      ✓ the<'1', UnionHasKey<Bool,'0'>>
+      ✓ the<'1', UnionHasKey<Bool,'1'>>
+      ✓ the<'1', UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'>>
+      ✓ the<'1', And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>>>
     Indeterminate
-      ✓ Indeterminate<Bool> -> '1'
-      ✓ Indeterminate<'0'> -> '0'
-      ✓ Indeterminate<'1'> -> '0'
+      ✓ the<'1', Indeterminate<Bool>>
+      ✓ the<'0', Indeterminate<'0'>>
+      ✓ the<'0', Indeterminate<'1'>>
     Determinate
-      ✓ Determinate<Bool> -> '0'
-      ✓ Determinate<'0'> -> '1'
-      ✓ Determinate<'1'> -> '1'
+      ✓ the<'0', Determinate<Bool>>
+      ✓ the<'1', Determinate<'0'>>
+      ✓ the<'1', Determinate<'1'>>
     DefinitelyYes
-      ✓ DefinitelyYes<Bool> -> '0'
-      ✓ DefinitelyYes<'0'> -> '0'
-      ✓ DefinitelyYes<'1'> -> '1'
+      ✓ the<'0', DefinitelyYes<Bool>>
+      ✓ the<'0', DefinitelyYes<'0'>>
+      ✓ the<'1', DefinitelyYes<'1'>>
     DefinitelyNo
-      ✓ DefinitelyNo<Bool> -> '0'
-      ✓ DefinitelyNo<'0'> -> '1'
-      ✓ DefinitelyNo<'1'> -> '0'
+      ✓ the<'0', DefinitelyNo<Bool>>
+      ✓ the<'1', DefinitelyNo<'0'>>
+      ✓ the<'0', DefinitelyNo<'1'>>
 
   cast
     NumberToString
@@ -267,7 +267,6 @@
 
   repros
     × 16018
-    ✓ 17908
 
   type
     ✓ compiles
@@ -329,9 +328,9 @@
       ✓ intersects
 
 
-  198 passing (40ms)
-  2 pending
-  23 failing
+  197 passing (41ms)
+  6 pending
+  19 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -343,22 +342,6 @@
 
   × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
      Error: Type 'number' does not satisfy the constraint '0'.
-  
-
-  × boolean Not Not<'2'> -> Bool:
-     Error: Type '"2"' does not satisfy the constraint '"0" | "1"'.
-  
-
-  × boolean Not Not<any> -> never:
-     Error: Type 'any' does not satisfy the constraint 'never'.
-  
-
-  × boolean Not Not<true> -> '0':
-     Error: Type 'true' does not satisfy the constraint '"0" | "1"'.
-  
-
-  × boolean Not Not<false> -> '1':
-     Error: Type 'false' does not satisfy the constraint '"0" | "1"'.
   
 
   × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():

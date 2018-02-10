@@ -258,7 +258,6 @@ describe(`object`, () => {
         the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>();
       }).expectToCompile();
     });
-    // ^ error: "a" | "b" | ("toString" & (() => string)) | "c"
 
     it(`the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>()`, () => {
       tsst(() => {

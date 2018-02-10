@@ -52,8 +52,6 @@ describe(`cast`, () => {
       }).expectToCompile();
     });
 
-    // ^ fixed by adding fallback `[k: string]: number;`, but causes a bunch of `Type 'StringToNumber[I]' cannot be used to index type ...`
-
   });
 
   describe(`TupleToUnion`, () => {
@@ -109,8 +107,6 @@ describe(`cast`, () => {
         the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>();
       }).expectToCompile();
     });
-
-    // ^ error, #17456
 
   });
 

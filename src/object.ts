@@ -22,8 +22,6 @@ export type HasKey<T, K extends number|string> = If<
   TupleHasIndex<T & { length: number }, Intersection<number, K>>,
   ObjectHasKey<T, Intersection<string, K>>
 >;
-// ^ Type 'T' does not satisfy the constraint 'any[]'.
-// ^ Type 'K' does not satisfy the constraint 'string'.
 
 export type ObjectHasKeySafe<O extends object, K extends string> = UnionsOverlap<keyof O, K>;
 
@@ -34,12 +32,12 @@ export type ObjectProp<O extends Obj<any>, K extends string> =
 // UnionHasKey and UnionsOverlap won't suffice as they suffer from the same bug.
 // An alternative based on union iteration could potentially prevent this.
 
-export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>; // {[P in Diff<keyof T, K>]: T[P]}
+export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
 
 // export type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U;
-// ^ no-dependency version by Anders, uses intersection
+// ^ no-dependency version by Anders, works fine but uses intersection, yielding verbose types
 // export type Overwrite<T, U, Int = { [P in Diff<keyof T, keyof U>]: T[P] } & U> = Pick<Int, keyof Int>;
-// ^ my attempt at cleaning out the intersection, somehow makes FromPairs/ZipObject fail
+// ^ my attempt at cleaning out the intersection, somehow makes AppendList/FromPairs/ZipObject fail
 export type Overwrite<
   K extends Obj<any>,
   T extends Obj<any>

@@ -18,27 +18,4 @@ describe(`repros`, () => {
       }).expectToCompile();
     });
 
-    it(`17908`, () => {
-      tsst(() => {
-        type Valueof<T> = T[keyof T];
-        type MappedKeyof<T> = {
-          [K in keyof T]: keyof T[K]
-        }
-        type Foo = {
-          one: { prop1: string },
-          two: { prop2: number }
-        }
-        the<'prop1' | 'prop2', Valueof<MappedKeyof<Foo>>>();
-        // hey, this "union of keys of properties of" operation would be useful for me,
-        // let's define the composition as follows:
-        type KeyofPropertyof<T> = Valueof<MappedKeyof<T>>;
-        // apply it to foo, and... it is broken!
-        type KeyofPropertyofFooBroken = KeyofPropertyof<Foo>; // never; broken
-        the<'prop1' | 'prop2', Valueof<KeyofPropertyof<Foo>>>();
-        the<Valueof<KeyofPropertyof<Foo>>, 'prop1' | 'prop2'>();
-        // something is very wrong here, `never` should explode in the last case yet doesn't
-      // }).expectToCompile();
-      }).expectToFailWith('does not satisfy');
-    });
-
 });

@@ -22,7 +22,6 @@ export type TupleHasIndex<
   Arr extends List<any>,
   I extends number
 > = ({[K in keyof Arr]: '1' } & Array<'0'>)[StringToNumber[I]];
-// ^ #15768, TS2536 `X cannot be used to index Y` on generic
 
 // export type TupleHasElem = ...
 // // check whether a tuple type contains a given type among its elements. This could be done given `TypesEq` (#6606)
@@ -36,7 +35,6 @@ export type AppendNumObj<
   T,
   Len extends number = Length<R>
 > = R & { [P in NumberToString[Len]]: T };
-// ^ #15768
 
 export type ConcatNumObjs<A extends NumObj<any>, B extends NumObj<any>> = 
   A & IncIndexNumbObj<B, Length<A>>;
@@ -86,12 +84,10 @@ export type TupleLastIndex<R extends List<any>, I extends number = 0> =
 // v useless type to demo backward iteration
 export type FirstElem<R extends List<any>, I extends number = Length<R>, Prev extends number = Dec[StringToNumber[I]]> =
   { 1: FirstElem<R, Prev>, 0: R[StringToNumber[I]] }[TupleHasIndex<R, Prev>];
-// ^ #15768, TS2536 `X cannot be used to index Y` on generic
 
 // v useless type to demo backward iteration
 export type TupleFirstIndex<R extends List<any>, I extends number = TupleLastIndex<R>> =
   { 1: TupleFirstIndex<R, Dec[I]>, 0: Inc[I] }[TupleHasIndex<R, I>];
-// ^ Generic type instantiation is excessively deep and possibly infinite
 
 // future: 
 

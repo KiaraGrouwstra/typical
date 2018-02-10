@@ -29,17 +29,6 @@ export type Diff<T extends string, U extends string> =
   ({[P in T]: P } &
   { [P in U]: never } & // toString: "toString"; toLocaleString: "toLocaleString"; 
   { [k: string]: never })[T]; // toString: "toString"; toLocaleString: "toLocaleString"; 
-// ^ needs TS 2.5
-
-// v alternative for older TS
-type UnionDiff_<Big extends string, Small extends string> =
-  {[K in Big]: { 1: (UnionToObject<Big> & Obj<never>)[K], 0: never }[Not<UnionHasKey<Small, K>>]}//[Big];
-
-export type UnionDiff<
-  Big extends string,
-  Small extends string,
-  Step extends UnionDiff_<Big, Small> = UnionDiff_<Big, Small>
-> = Step[Big];
 
 // todo:
 // - a way to access union elements, e.g. going from "a" | "b" | "c" to "a". this could enable union iteration using Diff if they're all string literals, which in turn could enable object iteration. or the other way around.
