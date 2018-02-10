@@ -49,12 +49,10 @@ Non-terminating under recent TS:
 
 types:
 - Array: ListFrom
-- Comp: Max, Min
-- Number: DivFloor, Modulo
 
 tests:
 - Array: ConcatNumObjs, IncIndexNumbObj
-- List: ConcatLists, IncIndex, Prepend
+- List: ConcatLists, IncIndex
 
 ### Similar projects
 
