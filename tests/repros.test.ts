@@ -38,7 +38,7 @@ describe(`repros`, () => {
         the<Valueof<KeyofPropertyof<Foo>>, 'prop1' | 'prop2'>();
         // something is very wrong here, `never` should explode in the last case yet doesn't
       // }).expectToCompile();
-      }).expectToFailWith('never does not satisfy');
+      }).expectToFailWith('does not satisfy');
     });
 
 });

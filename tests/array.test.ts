@@ -3,6 +3,7 @@ import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumO
 IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, FirstElem, TupleFirstIndex } from './array';
 import { TupleToObject } from './cast';
 import { NumArr, TestArr } from './fixtures';
+Error.stackTraceLimit = 0;
 
 describe(`array`, () => {
 

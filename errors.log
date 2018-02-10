@@ -321,7 +321,7 @@
       ✓ works with matching types
       ✓ fails with clashing types
       ✓ protects from never when flipped
-      ✓ protects from any
+      × protects from any
     If
       ✓ has then
       ✓ has else
@@ -329,136 +329,140 @@
       ✓ intersects
 
 
-  189 passing (76ms)
+  188 passing (39ms)
   2 pending
-  32 failing
+  33 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
-     Error: the string "A tuple type element list cannot be empty." was thrown, throw an Error :)
+     Error: A tuple type element list cannot be empty.
   
 
   × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>():
-     Error: the string "Type '{ length: 2; }' does not satisfy the constraint '{ 0: \"a\"; 1: \"b\"; length: 2; }'." was thrown, throw an Error :)
+     Error: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
   × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
-     Error: the string "Type 'number' does not satisfy the constraint '0'." was thrown, throw an Error :)
+     Error: Type 'number' does not satisfy the constraint '0'.
   
 
   × boolean Not Not<'2'> -> Bool:
-     Error: the string "Type '\"2\"' does not satisfy the constraint '\"0\" | \"1\"'." was thrown, throw an Error :)
+     Error: Type '"2"' does not satisfy the constraint '"0" | "1"'.
   
 
   × boolean Not Not<any> -> never:
-     Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
+     Error: Type 'any' does not satisfy the constraint 'never'.
   
 
   × boolean Not Not<true> -> '0':
-     Error: the string "Type 'true' does not satisfy the constraint '\"0\" | \"1\"'." was thrown, throw an Error :)
+     Error: Type 'true' does not satisfy the constraint '"0" | "1"'.
   
 
   × boolean Not Not<false> -> '1':
-     Error: the string "Type 'false' does not satisfy the constraint '\"0\" | \"1\"'." was thrown, throw an Error :)
+     Error: Type 'false' does not satisfy the constraint '"0" | "1"'.
   
 
   × boolean UnionHasKey UnionHasKey<Bool,'0'> -> '1':
-     Error: the string "Cannot find name 'UnionHasKey'." was thrown, throw an Error :)
+     Error: Cannot find name 'UnionHasKey'.
   
 
   × boolean UnionHasKey UnionHasKey<Bool,'1'> -> '1':
-     Error: the string "Cannot find name 'UnionHasKey'." was thrown, throw an Error :)
+     Error: Cannot find name 'UnionHasKey'.
   
 
   × boolean UnionHasKey UnionHasKey<Bool,'0'> | UnionHasKey<Bool,'1'> -> '1':
-     Error: the string "Cannot find name 'UnionHasKey'." was thrown, throw an Error :)
+     Error: Cannot find name 'UnionHasKey'.
   
 
   × boolean UnionHasKey And<UnionHasKey<Bool,'0'>, UnionHasKey<Bool,'1'>> -> '1':
-     Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
+     Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
   × comp Max the<6, Max<3, 6>>():
-     Error: the string "Cannot find name 'Max'." was thrown, throw an Error :)
+     Error: Cannot find name 'Max'.
   
 
   × comp Max the<5, Max<5, 2>>():
-     Error: the string "Cannot find name 'Max'." was thrown, throw an Error :)
+     Error: Cannot find name 'Max'.
   
 
   × comp Min the<3, Min<3, 6>>():
-     Error: the string "Cannot find name 'Min'." was thrown, throw an Error :)
+     Error: Cannot find name 'Min'.
   
 
   × comp Min the<2, Min<5, 2>>():
-     Error: the string "Cannot find name 'Min'." was thrown, throw an Error :)
+     Error: Cannot find name 'Min'.
   
 
   × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
-     Error: the string "Type 'Overwrite<{ length: number; } & { \"0\": \"a\" | \"b\"; } & { \"1\": \"a\" | \"b\"; }, { length: 2; }>' does not satisfy the constraint '{ 0: \"b\"; 1: \"a\"; length: 2; }'." was thrown, throw an Error :)
+     Error: Type 'Overwrite<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
   
 
   × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>():
-     Error: the string "Type '{ length: 2; } & { [x: string]: \"a\"; } & { [x: string]: \"b\"; }' does not satisfy the constraint '{ 0: \"a\"; 1: \"b\"; length: 2; }'." was thrown, throw an Error :)
+     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
   × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>():
-     Error: the string "Type '{ length: 2; } & { [x: string]: \"a\"; } & { [x: string]: \"b\"; }' does not satisfy the constraint '{ 0: \"a\"; 1: \"b\"; length: 2; }'." was thrown, throw an Error :)
+     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
   × number DivFloor the<2, DivFloor<5, 2>>():
-     Error: the string "Cannot find name 'DivFloor'." was thrown, throw an Error :)
+     Error: Cannot find name 'DivFloor'.
   
 
   × number Modulo the<1, Modulo<5, 2>>():
-     Error: the string "Cannot find name 'Modulo'." was thrown, throw an Error :)
+     Error: Cannot find name 'Modulo'.
   
 
   × object HasKey the<'1', HasKey<NumArr, 2>>():
-     Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
+     Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
   × object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>():
-     Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
+     Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
   × object ObjectHasKeySafe the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>():
-     Error: the string "Type '\"1\"' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
+     Error: Type '"1"' does not satisfy the constraint '"0"'.
   
 
   × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'b'>>():
-     Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
+     Error: Type 'any' does not satisfy the constraint 'never'.
   
 
   × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'toString'>>():
-     Error: the string "Type '() => string' does not satisfy the constraint 'never'." was thrown, throw an Error :)
+     Error: Type '() => string' does not satisfy the constraint 'never'.
   
 
   × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>():
-     Error: the string "Type 'any' does not satisfy the constraint 'never'." was thrown, throw an Error :)
+     Error: Type 'any' does not satisfy the constraint 'never'.
   
 
   × repros 16018:
-     Error: the string "Type 'I' does not satisfy the constraint 'string'." was thrown, throw an Error :)
+     Error: Type 'I' does not satisfy the constraint 'string'.
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
-     Error: the string "Type '() => string' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
+     Error: Type '() => string' does not satisfy the constraint '"0"'.
   
 
   × util IsUnion the<'1', IsUnion<'a' | 'b'>>():
-     Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
+     Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
   × util IsUnion the<'0', IsUnion<'a'>>():
-     Error: the string "Type '\"1\"' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
+     Error: Type '"1"' does not satisfy the constraint '"0"'.
   
 
   × util IsUnion the<'1', IsUnion<'a' | undefined>>():
-     Error: the string "Type '\"a\" | undefined' does not satisfy the constraint 'string'." was thrown, throw an Error :)
+     Error: Type '"a" | undefined' does not satisfy the constraint 'string'.
   
 
   × util UnionDiff the<'0', ObjectHasKey<{ a: 1 }, "toString">>():
-     Error: the string "Type '() => string' does not satisfy the constraint '\"0\"'." was thrown, throw an Error :)
+     Error: Type '() => string' does not satisfy the constraint '"0"'.
+  
+
+  × util the protects from any:
+     Error: No matching semantic failures, expected "does not satisfy"!
   
 
 
