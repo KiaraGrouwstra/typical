@@ -27,7 +27,7 @@
     IsArrayType
       ✓ the<'1', IsArrayType<NumArr>>()
       ✓ the<'1', IsArrayType<any[]>>()
-      × the<'1', IsArrayType<{ length: 2 }>>()
+      ✓ the<'1', IsArrayType<{ length: 2 }>>()
     AppendNumObj
       ✓ the<{ 0: 'a', 1: 'b', 2: 'c' }, AppendNumObj<{ 0: 'a', 1: 'b' }, 'c'>>()
     Length
@@ -329,20 +329,16 @@
       ✓ intersects
 
 
-  188 passing (63ms)
+  189 passing (76ms)
   2 pending
-  33 failing
+  32 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: the string "A tuple type element list cannot be empty." was thrown, throw an Error :)
   
 
-  × array IsArrayType the<'1', IsArrayType<{ length: 2 }>>():
-     Error: the string "Type '\"0\"' does not satisfy the constraint '\"1\"'." was thrown, throw an Error :)
-  
-
   × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>():
-     Error: the string "[object Object]" was thrown, throw an Error :)
+     Error: the string "Type '{ length: 2; }' does not satisfy the constraint '{ 0: \"a\"; 1: \"b\"; length: 2; }'." was thrown, throw an Error :)
   
 
   × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
@@ -398,15 +394,15 @@
   
 
   × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
-     Error: the string "[object Object]" was thrown, throw an Error :)
+     Error: the string "Type 'Overwrite<{ length: number; } & { \"0\": \"a\" | \"b\"; } & { \"1\": \"a\" | \"b\"; }, { length: 2; }>' does not satisfy the constraint '{ 0: \"b\"; 1: \"a\"; length: 2; }'." was thrown, throw an Error :)
   
 
   × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>():
-     Error: the string "[object Object]" was thrown, throw an Error :)
+     Error: the string "Type '{ length: 2; } & { [x: string]: \"a\"; } & { [x: string]: \"b\"; }' does not satisfy the constraint '{ 0: \"a\"; 1: \"b\"; length: 2; }'." was thrown, throw an Error :)
   
 
   × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>():
-     Error: the string "[object Object]" was thrown, throw an Error :)
+     Error: the string "Type '{ length: 2; } & { [x: string]: \"a\"; } & { [x: string]: \"b\"; }' does not satisfy the constraint '{ 0: \"a\"; 1: \"b\"; length: 2; }'." was thrown, throw an Error :)
   
 
   × number DivFloor the<2, DivFloor<5, 2>>():
@@ -442,7 +438,7 @@
   
 
   × repros 16018:
-     Error: the string "[object Object]" was thrown, throw an Error :)
+     Error: the string "Type 'I' does not satisfy the constraint 'string'." was thrown, throw an Error :)
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
@@ -458,7 +454,7 @@
   
 
   × util IsUnion the<'1', IsUnion<'a' | undefined>>():
-     Error: the string "[object Object]" was thrown, throw an Error :)
+     Error: the string "Type '\"a\" | undefined' does not satisfy the constraint 'string'." was thrown, throw an Error :)
   
 
   × util UnionDiff the<'0', ObjectHasKey<{ a: 1 }, "toString">>():

@@ -17,6 +17,6 @@
   "devDependencies": {
     "@types/mocha": "^2.2.41",
     "mocha": "^3.5.0",
-    "tsst-tycho": "^0.3.4"
+    "tsst-tycho": "^0.3.5"
   }
 }

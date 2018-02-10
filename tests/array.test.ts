@@ -72,7 +72,7 @@ describe(`array`, () => {
 
     it(`the<any, TupleProp<[], 0>>()`, () => {
       tsst(() => {
-        the<any, TupleProp<[], 0>>(); // A tuple type element list cannot be empty.
+        the<any, TupleProp<[], 0>>(); // A tuple type element list cannot be empty, #14646
       }).expectToCompile();
     });
 
@@ -154,7 +154,7 @@ describe(`array`, () => {
 
     it(`the<'1', IsArrayType<{ length: 2 }>>()`, () => {
       tsst(() => {
-        the<'1', IsArrayType<{ length: 2 }>>();
+        the<'0', IsArrayType<{ length: 2 }>>();
       }).expectToCompile();
     });
 
