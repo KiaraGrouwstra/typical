@@ -274,6 +274,28 @@
     Jsonified
       ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()
 
+  ramda
+    PathFn
+      ✓ the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>()
+      ✓ path
+    PathOrFn
+      × the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>()
+      ✓ the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>()
+    MergeAllFn
+      ✓ the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>()
+    FromPairsFn
+      ✓ the<{ a: 5, b: 2, c: 3 }, FromPairsFn<[['a', 1], ['b', 2], ['c', 3], ['a', 5]]>>()
+    ZipObjectFn
+      ✓ the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>()
+    #12838
+      ✓ identity
+      ✓ compose + generics
+      ✓ pipe + generics
+      ✓ compose + generics: concrete type first
+      ✓ pipe + generics: concrete type first
+      × compose + generics: concrete type last
+      × pipe + generics: concrete type last
+
   type
     InstanceType
       ✓ the<MyClass, InstanceType<typeof MyClass>>()
@@ -322,9 +344,9 @@
       ✓ intersects
 
 
-  194 passing (38ms)
+  205 passing (42ms)
   6 pending
-  17 failing
+  20 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -372,6 +394,18 @@
 
   × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>():
      Error: Type 'any' does not satisfy the constraint 'never'.
+  
+
+  × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>():
+     Error: Type '"oh"' does not satisfy the constraint '"e"'.
+  
+
+  × ramda #12838 compose + generics: concrete type last:
+     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'."!
+  
+
+  × ramda #12838 pipe + generics: concrete type last:
+     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'."!
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
