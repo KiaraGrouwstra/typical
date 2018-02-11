@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten } from './type';
+import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen } from './type';
 
 describe(`type`, () => {
 
@@ -137,6 +137,28 @@ describe(`type`, () => {
     it(`the<1, Flatten<[1, [1]]>>()`, () => {
       tsst(() => {
         the<1, Flatten<[1, [1]]>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Widen`, () => {
+
+    it(`the<Widen<1>, number>()`, () => {
+      tsst(() => {
+        the<Widen<1>, number>();
+      }).expectToCompile();
+    });
+
+    it(`the<Widen<true>, boolean>()`, () => {
+      tsst(() => {
+        the<Widen<true>, boolean>();
+      }).expectToCompile();
+    });
+
+    it(`the<Widen<'s'>, string>()`, () => {
+      tsst(() => {
+        the<Widen<'s'>, string>();
       }).expectToCompile();
     });
 

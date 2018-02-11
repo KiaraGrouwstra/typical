@@ -359,6 +359,10 @@
       ✓ the<1, Flatten<1>>()
       ✓ the<1, Flatten<[1, 1]>>()
       × the<1, Flatten<[1, [1]]>>()
+    Widen
+      ✓ the<Widen<1>, number>()
+      ✓ the<Widen<true>, boolean>()
+      ✓ the<Widen<'s'>, string>()
 
   util
     UnionHasKey
@@ -404,7 +408,7 @@
       ✓ intersects
 
 
-  240 passing (49ms)
+  243 passing (46ms)
   6 pending
   23 failing
 
