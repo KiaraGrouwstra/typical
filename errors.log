@@ -267,6 +267,8 @@
       ✓ the<abc, Simplify<abc & { "toString": never }>>()
       ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>()
       ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>()
+    Jsonified
+      ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()
 
   type
     ✓ compiles
@@ -315,7 +317,7 @@
       ✓ intersects
 
 
-  190 passing (39ms)
+  191 passing (40ms)
   6 pending
   17 failing
 

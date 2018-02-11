@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite,
-IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap } from './object';
+IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified } from './object';
 import { NumArr } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -441,6 +441,16 @@ describe(`object`, () => {
     it(`the<'0', ObjectHasStringIndex<{ a: 123 }>>()`, () => {
       tsst(() => {
         the<'0', ObjectHasStringIndex<{ a: 123 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Jsonified`, () => {
+
+    it(`the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()`, () => {
+      tsst(() => {
+        the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>();
       }).expectToCompile();
     });
 

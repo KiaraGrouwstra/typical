@@ -62,6 +62,15 @@ export type Swap<
 
 export type ObjectHasStringIndex<O extends {}> = ({ 0: '0'; } & { [k: string]: '1'; })[UnionHasKey<keyof O, string>];
 
+// https://github.com/Microsoft/TypeScript/issues/21838
+export type JsonifiedObject<T extends object> = { [K in keyof T]: Jsonified<T[K]> };
+export type Jsonified<T> =
+    T extends string | number | boolean | null ? T
+    : T extends undefined | Function ? undefined
+    : T extends { toJSON(): infer R } ? R
+    : T extends object ? JsonfifiedObject<T>
+    : "wat";
+
 // types not possible yet:
 // `ObjectHasNumberIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
 // `ObjectNumberKeys`: a `number` variant of `keyof`. could be pulled off given union iteration (`Partial` -> iterate to filter / cast back to number literals)... but still hard to scale past natural numbers.
