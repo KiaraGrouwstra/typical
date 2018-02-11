@@ -15,8 +15,6 @@ export type Or<
   B extends Bool
 > = ({ 0: { 0: '0' } & Obj<'1'> } & Obj<Obj<'1'>>)[A][B];
 
-// equality checks: use StringsEqual
-
 export type Indeterminate<T extends string> = And<
   Matches<'0', T>,
   Matches<'1', T>

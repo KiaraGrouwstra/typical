@@ -9,6 +9,7 @@ export type StringsEqual<
   A extends string,
   B extends string
 > = UnionHasKey<A, B>;
+// ^ deprecated: ditch for Matches
 
 export type NumbersEqual<
   A extends number,
@@ -17,6 +18,7 @@ export type NumbersEqual<
   NumberToString[A],
   NumberToString[B]
 >>;
+// ^ deprecated: ditch for Matches
 
 export type Gt<
   A extends number,

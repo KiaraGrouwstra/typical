@@ -97,7 +97,7 @@ export type TupleFirstIndex<R extends List<any>, I extends number = TupleLastInd
 //   { 0: Acc, 1: TupleFrom<T, Inc[I], [...Acc, T[I]]> }[TupleHasIndex<T, I>];
 // the<['c', 'd'], TupleFrom<['a', 'b', 'c', 'd'], 2>>();
 // export type TupleTo<T extends List<any>, To extends number, I extends number = 0, Acc extends List<any>=[]> =
-//   If<TupleHasIndex<T, I>, { 0: Acc; 1: TupleTo<T, To, Inc[I], [...Acc, T[I]]>; }[NumbersEqual<I, To>], T>;
+//   If<TupleHasIndex<T, I>, { 0: Acc; 1: TupleTo<T, To, Inc[I], [...Acc, T[I]]>; }[Matches<To, I>], T>;
 // the<['a', 'b'], TupleTo<['a', 'b', 'c', 'd'], 2>>();
 // export type TupleTail<R extends List<any>> = TupleFrom<R, 1>;
 // the<'c', TupleTail<['a', 'b', 'c']>>();
