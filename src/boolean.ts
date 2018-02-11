@@ -1,5 +1,5 @@
 import { Obj, Bool } from './util';
-import { UnionHasKey } from './union';
+import { Matches } from './type';
 
 export type Falsy = undefined | null | 0 | '' | void | never;
 
@@ -18,8 +18,8 @@ export type Or<
 // equality checks: use StringsEqual
 
 export type Indeterminate<T extends string> = And<
-  UnionHasKey<T, '0'>,
-  UnionHasKey<T, '1'>
+  Matches<'0', T>,
+  Matches<'1', T>
 >;
 
 export type Determinate<T extends Bool> = Not<Indeterminate<T>>;

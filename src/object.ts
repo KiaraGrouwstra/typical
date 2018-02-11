@@ -1,8 +1,10 @@
 import { If, Obj, The, Intersection } from './util';
 import { And, Not } from './boolean';
 import { UnionHasKey, UnionsOverlap } from './union';
+// import { UnionsOverlap } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
 import { NumberToString, StringToNumber } from './cast';
+import { Matches } from './type';
 
 type PrototypeMethods = 'toLocaleString' | 'toString' //| 'constructor' | 'hasOwnProperty' | 'isPrototypeOf' | 'propertyIsEnumerable' | 'valueOf' | '__defineGetter__' | '__defineSetter__' | '__lookupGetter__' | '__lookupSetter__' | '__proto__';
 type Prototype = {[K in PrototypeMethods]: K };
@@ -16,6 +18,7 @@ export type ObjectHasKey<
   O extends {},
   K extends string
 > = UnionHasKey<keyof O, K>;
+// > = Matches<K, keyof O>;
 
 export type HasKey<T, K extends number|string> = If<
   IsArrayType<T>,
@@ -27,7 +30,7 @@ export type ObjectHasKeySafe<O extends object, K extends string> = UnionsOverlap
 
 // export type ObjectProp<O extends Obj<any>, K extends string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
 export type ObjectProp<O extends Obj<any>, K extends string> =
-    If<And<UnionsOverlap<keyof O, 'toString' | 'toLocaleString'>, And<ObjectHasStringIndex<O>, Not<UnionHasKey<keyof O, K>>>>, O[string], O[K]>
+    If<And<UnionsOverlap<keyof O, 'toString' | 'toLocaleString'>, And<ObjectHasStringIndex<O>, Not<Matches<K, keyof O>>>>, O[string], O[K]>
 // ^ should prevent 'toString' issues of O[K], but the current implementations of
 // UnionHasKey and UnionsOverlap won't suffice as they suffer from the same bug.
 // An alternative based on union iteration could potentially prevent this.
@@ -56,12 +59,12 @@ export type Swap<
     T extends Obj<string>,
     Keys extends keyof T = keyof T,
     Vals extends string = T[Keys]
-> = {[P1 in Vals]: {[P2 in Keys]: If<UnionHasKey<T[P2], P1>, P2, never> }[Keys]};
+> = {[P1 in Vals]: {[P2 in Keys]: If<Matches<P1, T[P2]>, P2, never> }[Keys]};
 
 // export type ObjectLength = ...
 // // check the length (number of keys) of a given heterogeneous object type. doable given `UnionLength` or (object iteration + `Inc`).
 
-export type ObjectHasStringIndex<O extends {}> = ({ 0: '0'; } & { [k: string]: '1'; })[UnionHasKey<keyof O, string>];
+export type ObjectHasStringIndex<O extends {}> = ({ 0: '0'; } & { [k: string]: '1'; })[Matches<string, keyof O>];
 
 // #21838
 export type JsonifiedObject<T extends object> = { [K in keyof T]: Jsonified<T[K]> };

@@ -2,6 +2,7 @@ import { The, If } from './util';
 import { NumberToString, StringToNumber } from './cast';
 import { Dec } from './number';
 import { DefinitelyYes } from './boolean';
+import { Matches } from './type';
 import { UnionHasKey } from './union';
 
 export type StringsEqual<
@@ -22,32 +23,32 @@ export type Gt<
   B extends number
 > = {
   1: '0',
-  0: If<NumbersEqual<0, B>, '1', Gt<Dec[A], Dec[B]>>,
-}[NumbersEqual<0, A>];
+  0: If<Matches<B, 0>, '1', Gt<Dec[A], Dec[B]>>,
+}[Matches<A, 0>];
 
 export type Lt<
   A extends number,
   B extends number
 > = {
   1: '0',
-  0: If<NumbersEqual<0, A>, '1', Lt<Dec[A], Dec[B]>>,
-}[NumbersEqual<0, B>];
+  0: If<Matches<A, 0>, '1', Lt<Dec[A], Dec[B]>>,
+}[Matches<B, 0>];
 
 export type Gte<
   A extends number,
   B extends number
 > = {
   1: '1',
-  0: If<NumbersEqual<0, A>, '0', Gte<Dec[A], Dec[B]>>,
-}[NumbersEqual<0, B>];
+  0: If<Matches<A, 0>, '0', Gte<Dec[A], Dec[B]>>,
+}[Matches<B, 0>];
 
 export type Lte<
   A extends number,
   B extends number
 > = {
   1: '1',
-  0: If<NumbersEqual<0, B>, '0', Lte<Dec[A], Dec[B]>>,
-}[NumbersEqual<0, A>];
+  0: If<Matches<B, 0>, '0', Lte<Dec[A], Dec[B]>>,
+}[Matches<A, 0>];
 
 export type Max<
   A extends number,
