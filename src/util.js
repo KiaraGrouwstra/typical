@@ -18,6 +18,6 @@ export function the<T, V: T>(): '1' {};
 export type Intersection<A, B> = A & B;
 
 // failed attempt at widening literals; `&` actually leaves them intact
-// export type Widen<T> = T & (undefined | null | boolean | number | string | {} | void | never);
+// export type Widen<T> = T & (undefined | null | boolean | number | string | {} | void | empty);
 
 // export type Pick<T, K/*: keyof T*/> = { [P in K]: $ElementType<T, P> };

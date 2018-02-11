@@ -1,9 +1,9 @@
 // @flow
-import { List, Obj, NumObj } from './util';
-import { Not, Falsy } from './boolean';
-import { Inc } from './number';
-import { Length, TupleHasIndex } from './array';
-import { Simplify, Omit } from './object';
+import type { List, Obj, NumObj } from './util';
+import type { Not, Falsy } from './boolean';
+import type { Inc } from './number';
+import type { Length, TupleHasIndex } from './array';
+import type { Simplify, Omit } from './object';
 
 // boolean:
 
@@ -24,10 +24,10 @@ export type StringToNumber<S: string> = $ElementType<{ [k: string]: number; 0:0,
 
 // array:
 
-export type TupleToUnion<R: List<any>, I: number = 0, Acc = never> =
+export type TupleToUnion<R: List<any>, I: number = 0, Acc = empty> =
   $ElementType<{ 1: TupleToUnion<R, Inc<I>, Acc | $ElementType<R, I>>, 0: Acc }, TupleHasIndex<R, I>>;
 
-export type TupleIndicesToUnion<R: List<any>, I: number = 0, Acc = never> =
+export type TupleIndicesToUnion<R: List<any>, I: number = 0, Acc = empty> =
   $ElementType<{ 1: TupleIndicesToUnion<R, Inc<I>, Acc | I>, 0: Acc }, TupleHasIndex<R, I>>;
 
 export type TupleToObject<R: List<any>, I: number = 0, Acc = {}> =

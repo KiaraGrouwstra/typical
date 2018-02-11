@@ -1,6 +1,6 @@
 // @flow
-import { The } from './util';
-import { Length } from './array';
+import type { The } from './util';
+import type { Length } from './array';
 
 export type Fn<A: any[], R=void> = $ElementType<{
     0: ()=>R,
