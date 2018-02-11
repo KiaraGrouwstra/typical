@@ -25,7 +25,7 @@ export type Gt<
   B extends number
 > = {
   1: '0',
-  0: If<Matches<B, 0>, '1', Gt<Dec[A], Dec[B]>>,
+  0: B extends 0 ? '1' : Gt<Dec[A], Dec[B]>,
 }[Matches<A, 0>];
 
 export type Lt<
@@ -33,7 +33,7 @@ export type Lt<
   B extends number
 > = {
   1: '0',
-  0: If<Matches<A, 0>, '1', Lt<Dec[A], Dec[B]>>,
+  0: A extends 0 ? '1' : Lt<Dec[A], Dec[B]>,
 }[Matches<B, 0>];
 
 export type Gte<
@@ -41,7 +41,7 @@ export type Gte<
   B extends number
 > = {
   1: '1',
-  0: If<Matches<A, 0>, '0', Gte<Dec[A], Dec[B]>>,
+  0: A extends 0 ? '0' : Gte<Dec[A], Dec[B]>,
 }[Matches<B, 0>];
 
 export type Lte<
@@ -49,7 +49,7 @@ export type Lte<
   B extends number
 > = {
   1: '1',
-  0: If<Matches<B, 0>, '0', Lte<Dec[A], Dec[B]>>,
+  0: B extends 0 ? '0' : Lte<Dec[A], Dec[B]>,
 }[Matches<A, 0>];
 
 export type Max<
