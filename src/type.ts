@@ -1,5 +1,7 @@
 import { And, Not } from './boolean';
 
+export type InstanceType<T> = T extends new (...args: any[]) => infer U ? U : never;
+
 // // throwing Matches
 // let f = <T>(v: T) => true;
 

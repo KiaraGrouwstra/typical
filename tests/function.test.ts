@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { Fn, Arguments } from './function';
+import { Fn, Arguments, FnShape, Argument } from './function';
 
 describe(`function`, () => {
 
@@ -22,5 +22,37 @@ describe(`function`, () => {
     });
 
   });
+
+  describe(`Argument`, () => {
+
+    it(`the<1, Argument<0, (a: 1, b: 2) => 8>>()`, () => {
+      tsst(() => {
+        the<1, Argument<0, (a: 1, b: 2) => 8>>();
+      }).expectToCompile();
+    });
+
+    it(`the<2, Argument<1, (a: 1, ...args: 2[]) => 8>>()`, () => {
+      tsst(() => {
+        the<2, Argument<1, (a: 1, ...args: 2[]) => 8>>();
+      }).expectToCompile();
+    });
+
+    it(`the<2, Argument<1, (a: 1, b: 2, ...args: 3[]) => 8>>()`, () => {
+      tsst(() => {
+        the<2, Argument<1, (a: 1, b: 2, ...args: 3[]) => 8>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  // describe(``, () => {
+
+  //   it(``, () => {
+  //     tsst(() => {
+  //       the<, <>>();
+  //     }).expectToCompile();
+  //   });
+
+  // });
 
 });

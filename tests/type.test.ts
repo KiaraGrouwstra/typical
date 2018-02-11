@@ -1,15 +1,16 @@
 import { tsst, the } from 'tsst-tycho';
-import { isT } from './type';
+import { isT, InstanceType } from './type';
 
 describe(`type`, () => {
 
-  it(`compiles`, () => {
-    tsst(() => {
-      // compiles
-    }).expectToCompile();
-  });
+  describe(`InstanceType`, () => {
 
-  describe(`Matches`, () => {
+    it(`the<MyClass, InstanceType<typeof MyClass>>()`, () => {
+      tsst(() => {
+        class MyClass {}
+        the<MyClass, InstanceType<typeof MyClass>>();
+      }).expectToCompile();
+    });
 
   });
 

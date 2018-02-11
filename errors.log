@@ -154,6 +154,10 @@
       ✓ the<(v: number) => string, Fn<[number], string>>()
     Arguments
       ✓ the<[boolean, string], Arguments<(<S extends string>(a: boolean, s: S) => number)>>()
+    Argument
+      ✓ the<1, Argument<0, (a: 1, b: × => 8>>()
+      ✓ the<2, Argument<1, (a: 1, ...args: 2[]) => 8>>()
+      ✓ the<2, Argument<1, (a: 1, b: 2, ...args: 3[]) => 8>>()
 
   list
     AppendList
@@ -271,7 +275,8 @@
       ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()
 
   type
-    ✓ compiles
+    InstanceType
+      ✓ the<MyClass, InstanceType<typeof MyClass>>()
 
   util
     UnionHasKey
@@ -317,7 +322,7 @@
       ✓ intersects
 
 
-  191 passing (40ms)
+  194 passing (38ms)
   6 pending
   17 failing
 
