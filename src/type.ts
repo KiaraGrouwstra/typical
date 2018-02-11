@@ -2,6 +2,8 @@ import { And, Not } from './boolean';
 
 export type InstanceType<T> = T extends new (...args: any[]) => infer U ? U : never;
 
+export type Xor<T, A, B> = T extends A ? (T extends B ? never : T) : (T extends B ? T : never);
+
 // // throwing Matches
 // let f = <T>(v: T) => true;
 

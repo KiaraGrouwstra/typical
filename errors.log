@@ -325,6 +325,10 @@
   type
     InstanceType
       ✓ the<MyClass, InstanceType<typeof MyClass>>()
+    Xor
+      ✓ the<never, Xor<string, number, boolean>>()
+      ✓ the<{ name: 's' }, Xor<{ name: 's' }>>()
+      ✓ the<never, Person<{ name: 's', firstname: 'f', lastname: 'l' }>>()
 
   util
     UnionHasKey
@@ -370,7 +374,7 @@
       ✓ intersects
 
 
-  219 passing (44ms)
+  222 passing (45ms)
   6 pending
   21 failing
 
