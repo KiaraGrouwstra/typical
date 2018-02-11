@@ -80,9 +80,29 @@ export type DeepPartial<T> =
     T extends any[] ? DeepPartialArray<T[number]> :
     T extends object ? DeepPartialObject<T> :
     T;
-export type DeepPartialArray<T> = Array<DeepPartial<T>>;
+export interface DeepPartialArray<T> extends Array<DeepPartial<T>> {};
 export type DeepPartialObject<T> = {
     [P in keyof T]?: DeepPartial<T[P]>;
+};
+
+export type MatchingPropertyNames<T, X> = { [K in keyof T]: T[K] extends X ? K : never }[keyof T];
+export type MatchingProperties<T, X> = Pick<T, MatchingPropertyNames<T, X>>;
+export type NonMatchingPropertyNames<T, X> = { [K in keyof T]: T[K] extends X ? never : K }[keyof T];
+export type NonMatchingProperties<T, X> = Pick<T, NonMatchingPropertyNames<T, X>>;
+
+export type FunctionPropertyNames<T> = MatchingPropertyNames<T, Function>;
+export type FunctionProperties<T> = MatchingProperties<T, Function>;
+export type NonFunctionPropertyNames<T> = NonMatchingPropertyNames<T, Function>;
+export type NonFunctionProperties<T> = NonMatchingProperties<T, Function>;
+
+// make all (sub) properties of an object read-only
+export type DeepReadonly<T> =
+    T extends any[] ? DeepReadonlyArray<T[number]> :
+    T extends object ? DeepReadonlyObject<T> :
+    T;
+export interface DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
+export type DeepReadonlyObject<T> = {
+    readonly [P in NonFunctionPropertyNames<T>]: DeepReadonly<T[P]>;
 };
 
 // types not possible yet:

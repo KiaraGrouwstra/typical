@@ -1,8 +1,10 @@
 import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
-IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified, DeepPartial } from './object';
-import { NumArr } from './fixtures';
+IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
+DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
+MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties } from './object';
+import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
 type Item2 = { a: number };
@@ -478,16 +480,153 @@ describe(`object`, () => {
 
     it(`the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()`, () => {
       tsst(() => {
-        the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>();
-      }).expectToCompile();
-    });
-
-    it(`the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()`, () => {
-      tsst(() => {
-        the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>();
+        let o: DeepPartial<{ a: [{ b: 1 }] }> = null! as DeepPartial<{ a: [{ b: 1 }] }>;
+        if (typeof o.a === 'undefined') {} else {
+          let b = o.a[0].b;
+          if (typeof b === 'number') {
+            let c: 1 = b;
+          } else {
+            let c: undefined = b;
+          }
+        }
       }).expectToCompile();
     });
 
   });
+
+  describe(`DeepReadonly`, () => {
+
+    it(`still allows reading`, () => {
+      tsst(() => {
+        function f10(part: DeepReadonly<Part>) {
+          let name: string = part.name;
+          let id: number = part.subparts[0].id;
+        }
+      }).expectToCompile();
+    });
+
+    it(`disallows writing - layer 0`, () => {
+      tsst(() => {
+        function f10(part: DeepReadonly<Part>) {
+          part.id = part.id;
+        }
+      }).expectToFailWith('read-only');
+    });
+
+    it(`disallows writing - layer 1`, () => {
+      tsst(() => {
+        function f10(part: DeepReadonly<Part>) {
+          part.subparts[0] = part.subparts[0];
+        }
+      }).expectToFailWith('only permits reading');
+    });
+
+    it(`disallows writing - layer 2`, () => {
+      tsst(() => {
+        function f10(part: DeepReadonly<Part>) {
+          part.subparts[0].id = part.subparts[0].id;
+        }
+      }).expectToFailWith('read-only');
+    });
+
+    it(`strips out methods`, () => {
+      tsst(() => {
+        function f10(part: DeepReadonly<Part>) {
+          part.updatePart("hello");
+        }
+      }).expectToFailWith('does not exist');
+    });
+
+  });
+
+  describe(`FunctionPropertyNames`, () => {
+    
+    it(`the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>()`, () => {
+      tsst(() => {
+        the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`FunctionProperties`, () => {
+      
+    it(`the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>()`, () => {
+      tsst(() => {
+        the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`NonFunctionPropertyNames`, () => {
+      
+    it(`the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>()`, () => {
+      tsst(() => {
+        the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`NonFunctionProperties`, () => {
+      
+    it(`the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>()`, () => {
+      tsst(() => {
+        the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`MatchingPropertyNames`, () => {
+      
+    it(`the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>()`, () => {
+      tsst(() => {
+        the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`MatchingProperties`, () => {
+      
+    it(`the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>()`, () => {
+      tsst(() => {
+        the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`NonMatchingPropertyNames`, () => {
+      
+    it(`the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>()`, () => {
+      tsst(() => {
+        the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`NonMatchingProperties`, () => {
+      
+    it(`the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>()`, () => {
+      tsst(() => {
+        the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  // describe(``, () => {
+      
+  //   it(``, () => {
+  //     tsst(() => {
+  //       the<>();
+  //     }).expectToCompile();
+  //   });
+
+  // });
 
 });

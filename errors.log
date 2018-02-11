@@ -276,8 +276,29 @@
     IntersectValueOf
       × IntersectValueOf
     DeepPartial
-      × the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
-      × the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
+      ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
+    DeepReadonly
+      ✓ still allows reading
+      ✓ disallows writing - layer 0
+      ✓ disallows writing - layer 1
+      ✓ disallows writing - layer 2
+      ✓ strips out methods
+    FunctionPropertyNames
+      ✓ the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>()
+    FunctionProperties
+      ✓ the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>()
+    NonFunctionPropertyNames
+      ✓ the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>()
+    NonFunctionProperties
+      ✓ the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>()
+    MatchingPropertyNames
+      ✓ the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>()
+    MatchingProperties
+      ✓ the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>()
+    NonMatchingPropertyNames
+      ✓ the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>()
+    NonMatchingProperties
+      ✓ the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>()
 
   ramda
     PathFn
@@ -349,9 +370,9 @@
       ✓ intersects
 
 
-  205 passing (43ms)
+  219 passing (44ms)
   6 pending
-  23 failing
+  21 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -403,14 +424,6 @@
 
   × object IntersectValueOf IntersectValueOf:
      Error: Type 'number' does not satisfy the constraint 'string'.
-  
-
-  × object DeepPartial the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>():
-     Error: Type 'DeepPartial' is not generic.
-  
-
-  × object DeepPartial the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>():
-     Error: Type 'DeepPartial' is not generic.
   
 
   × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>():
