@@ -15,7 +15,7 @@ export type Add<
 export type Subtract<
   A extends number,
   B extends number
-> = { 1: A, 0: Subtract<Dec[A], Dec[B]> }[NumbersEqual<0, B>];
+> = { 1: A, 0: Subtract<Dec[A], Dec[B]> }[Matches<B, 0>];
 
 export type Mult<
   A extends number,

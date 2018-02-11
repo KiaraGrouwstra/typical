@@ -1,7 +1,6 @@
 import { If, Obj, The, Intersection } from './util';
 import { And, Not } from './boolean';
 import { UnionHasKey, UnionsOverlap } from './union';
-// import { UnionsOverlap } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
 import { NumberToString, StringToNumber } from './cast';
 import { Matches } from './type';
