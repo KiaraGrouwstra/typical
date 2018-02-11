@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { isT, InstanceType, Xor } from './type';
+import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf } from './type';
 
 describe(`type`, () => {
 
@@ -33,6 +33,66 @@ describe(`type`, () => {
     it(`the<never, Person<{ name: 's', firstname: 'f', lastname: 'l' }>>()`, () => {
       tsst(() => {
         the<never, Person<{ name: 's', firstname: 'f', lastname: 'l' }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Matches`, () => {
+
+    it(`the<'1', Matches<1, number>>()`, () => {
+      tsst(() => {
+        the<'1', Matches<1, number>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'1', Matches<number, number>>()`, () => {
+      tsst(() => {
+        the<'1', Matches<number, number>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', Matches<false, number>>()`, () => {
+      tsst(() => {
+        the<'0', Matches<false, number>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`TypesEqual`, () => {
+
+    it(`the<'0', TypesEqual<string, number>>()`, () => {
+      tsst(() => {
+        the<'0', TypesEqual<string, number>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'1', TypesEqual<string, string>>()`, () => {
+      tsst(() => {
+        the<'1', TypesEqual<string, string>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`InstanceOf`, () => {
+
+    it(`the<'1', InstanceOf<1, number>>()`, () => {
+      tsst(() => {
+        the<'1', InstanceOf<1, number>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', InstanceOf<number, number>>()`, () => {
+      tsst(() => {
+        the<'0', InstanceOf<number, number>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', InstanceOf<false, number>>()`, () => {
+      tsst(() => {
+        the<'0', InstanceOf<false, number>>();
       }).expectToCompile();
     });
 

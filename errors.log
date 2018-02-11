@@ -340,6 +340,17 @@
       ✓ the<never, Xor<string, number, boolean>>()
       ✓ the<{ name: 's' }, Xor<{ name: 's' }>>()
       ✓ the<never, Person<{ name: 's', firstname: 'f', lastname: 'l' }>>()
+    Matches
+      ✓ the<'1', Matches<1, number>>()
+      ✓ the<'1', Matches<number, number>>()
+      ✓ the<'0', Matches<false, number>>()
+    TypesEqual
+      ✓ the<'0', TypesEqual<string, number>>()
+      ✓ the<'1', TypesEqual<string, string>>()
+    InstanceOf
+      ✓ the<'1', InstanceOf<1, number>>()
+      ✓ the<'0', InstanceOf<number, number>>()
+      ✓ the<'0', InstanceOf<false, number>>()
 
   util
     UnionHasKey
@@ -385,7 +396,7 @@
       ✓ intersects
 
 
-  227 passing (55ms)
+  235 passing (50ms)
   6 pending
   22 failing
 
