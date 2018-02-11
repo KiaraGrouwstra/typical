@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf } from './type';
+import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf, Awaited } from './type';
 
 describe(`type`, () => {
 
@@ -93,6 +93,28 @@ describe(`type`, () => {
     it(`the<'0', InstanceOf<false, number>>()`, () => {
       tsst(() => {
         the<'0', InstanceOf<false, number>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Awaited`, () => {
+
+    it(`the<1, Awaited<1>>()`, () => {
+      tsst(() => {
+        the<1, Awaited<1>>();
+      }).expectToCompile();
+    });
+
+    it(`the<1, Awaited<Promise<1>>>()`, () => {
+      tsst(() => {
+        the<1, Awaited<Promise<1>>>();
+      }).expectToCompile();
+    });
+
+    it(`the<1, Awaited<Promise<Promise<1>>>>()`, () => {
+      tsst(() => {
+        the<1, Awaited<Promise<Promise<1>>>>();
       }).expectToCompile();
     });
 

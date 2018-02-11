@@ -351,6 +351,10 @@
       ✓ the<'1', InstanceOf<1, number>>()
       ✓ the<'0', InstanceOf<number, number>>()
       ✓ the<'0', InstanceOf<false, number>>()
+    Awaited
+      ✓ the<1, Awaited<1>>()
+      ✓ the<1, Awaited<Promise<1>>>()
+      ✓ the<1, Awaited<Promise<Promise<1>>>>()
 
   util
     UnionHasKey
@@ -396,7 +400,7 @@
       ✓ intersects
 
 
-  235 passing (50ms)
+  238 passing (50ms)
   6 pending
   22 failing
 
