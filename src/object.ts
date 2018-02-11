@@ -3,7 +3,7 @@ import { And, Not } from './boolean';
 import { UnionHasKey, UnionsOverlap } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
 import { NumberToString, StringToNumber } from './cast';
-import { Matches } from './type';
+import { Matches, Widen } from './type';
 
 type PrototypeMethods = 'toLocaleString' | 'toString' //| 'constructor' | 'hasOwnProperty' | 'isPrototypeOf' | 'propertyIsEnumerable' | 'valueOf' | '__defineGetter__' | '__defineSetter__' | '__lookupGetter__' | '__lookupSetter__' | '__proto__';
 type Prototype = {[K in PrototypeMethods]: K };
@@ -123,6 +123,16 @@ export type DeepReadonly<T> =
 export interface DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
 export type DeepReadonlyObject<T> = {
     readonly [P in NonFunctionPropertyNames<T>]: DeepReadonly<T[P]>;
+};
+
+// widen a type and all its (sub) properties
+export type DeepWiden<T> =
+    T extends any[] ? DeepWidenArray<T[number]> :
+    T extends object ? DeepWidenObject<T> :
+    T;
+export interface DeepWidenArray<T> extends Array<DeepWiden<T>> {}
+export type DeepWidenObject<T> = {
+    [P in keyof T]: DeepWiden<T[P]>;
 };
 
 // types not possible yet:

@@ -277,6 +277,8 @@
       × IntersectValueOf
     DeepPartial
       ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
+    DeepWiden
+      ✓ the<{ a: number }, DeepWiden<{ a: 1 }>>()
     DeepReadonly
       ✓ still allows reading
       ✓ disallows writing - layer 0
@@ -408,7 +410,7 @@
       ✓ intersects
 
 
-  243 passing (46ms)
+  244 passing (47ms)
   6 pending
   23 failing
 

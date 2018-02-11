@@ -4,7 +4,7 @@ import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, O
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
 DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
 MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties,
-OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread } from './object';
+OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden } from './object';
 import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -490,6 +490,16 @@ describe(`object`, () => {
             let c: undefined = b;
           }
         }
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DeepWiden`, () => {
+      
+    it(`the<{ a: number }, DeepWiden<{ a: 1 }>>()`, () => {
+      tsst(() => {
+        the<{ a: number }, DeepWiden<{ a: 1 }>>();
       }).expectToCompile();
     });
 
