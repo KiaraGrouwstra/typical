@@ -273,6 +273,8 @@
       ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>()
     Jsonified
       ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()
+    IntersectValueOf
+      × IntersectValueOf
 
   ramda
     PathFn
@@ -344,9 +346,9 @@
       ✓ intersects
 
 
-  205 passing (42ms)
+  205 passing (44ms)
   6 pending
-  20 failing
+  21 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -394,6 +396,10 @@
 
   × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>():
      Error: Type 'any' does not satisfy the constraint 'never'.
+  
+
+  × object IntersectValueOf IntersectValueOf:
+     Error: Type 'number' does not satisfy the constraint 'string'.
   
 
   × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>():

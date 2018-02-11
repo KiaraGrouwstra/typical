@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
-import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite,
+import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified } from './object';
 import { NumArr } from './fixtures';
 
@@ -451,6 +451,24 @@ describe(`object`, () => {
     it(`the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()`, () => {
       tsst(() => {
         the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`IntersectValueOf`, () => {
+
+    it(`IntersectValueOf`, () => {
+      tsst(() => {
+        type Thing = {
+          foo: {a: string},
+          bar: {b: number},
+          baz: {c: boolean}
+        }
+        type Everything = IntersectValueOf<Thing>;
+        the<string, Everything['a']>();
+        the<string, Everything['b']>();
+        the<string, Everything['c']>();
       }).expectToCompile();
     });
 

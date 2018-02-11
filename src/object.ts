@@ -62,7 +62,7 @@ export type Swap<
 
 export type ObjectHasStringIndex<O extends {}> = ({ 0: '0'; } & { [k: string]: '1'; })[UnionHasKey<keyof O, string>];
 
-// https://github.com/Microsoft/TypeScript/issues/21838
+// #21838
 export type JsonifiedObject<T extends object> = { [K in keyof T]: Jsonified<T[K]> };
 export type Jsonified<T> =
     T extends string | number | boolean | null ? T
@@ -70,6 +70,10 @@ export type Jsonified<T> =
     : T extends { toJSON(): infer R } ? R
     : T extends object ? JsonfifiedObject<T>
     : "wat";
+
+// #21496
+export type IntersectValueOf<T> =
+    ({[K in keyof T]: (x: T[K]) => void}) extends Record<keyof T, (x: infer V) => void> ? V: never;
 
 // types not possible yet:
 // `ObjectHasNumberIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
