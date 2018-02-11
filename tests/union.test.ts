@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
-import { UnionHasKey, UnionToObject, IntersectionUnions, UnionContained, UnionEmpty, UnionsOverlap, IsUnion, Diff, UnionDiff } from './union';
+import { UnionHasKey, UnionToObject, UnionContained, UnionEmpty, UnionsOverlap, IsUnion } from './union';
 import { ObjectHasKey } from './object';
 
 import { And } from './boolean';
@@ -59,28 +59,6 @@ describe(`util`, () => {
     it(`the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>()`, () => {
       tsst(() => {
         the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>();
-      }).expectToCompile();
-    });
-
-  });
-
-  describe(`IntersectionUnions`, () => {
-
-    it(`the<2|3, IntersectionUnions<1|2|3, 2|3|4>>()`, () => {
-      tsst(() => {
-        the<2|3, IntersectionUnions<1|2|3, 2|3|4>>(); // only strings allowed
-      }).expectToFail();
-    });
-
-    it(`the<'b'|'c', IntersectionUnions<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>()`, () => {
-      tsst(() => {
-        the<'b'|'c', IntersectionUnions<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>();
-      }).expectToCompile();
-    });
-
-    it(`the<never, IntersectionUnions<'a' | 'b' | 'c', 'x' | 'z' | 'd'>>()`, () => {
-      tsst(() => {
-        the<never, IntersectionUnions<'a' | 'b' | 'c', 'x' | 'z' | 'd'>>();
       }).expectToCompile();
     });
 
@@ -190,57 +168,6 @@ describe(`util`, () => {
       }).expectToCompile();
     });
     // ^ error: not all strings
-
-  });
-
-  describe(`Diff`, () => {
-
-    it(`the<'a'|'b', Diff<"a" | "b" | "c", "c" | "d">>()`, () => {
-      tsst(() => {
-        the<'a'|'b', Diff<"a" | "b" | "c", "c" | "d">>();
-      }).expectToCompile();
-    });
-
-    it(`the<'b'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>()`, () => {
-      tsst(() => {
-        the<'b'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>();
-      }).expectToCompile();
-    });
-
-    it(`the<'b', Diff<'a' | 'b', 'a' | 'toString'>>()`, () => {
-      tsst(() => {
-        the<'b', Diff<'a' | 'b', 'a' | 'toString'>>();
-      }).expectToCompile();
-    });
-
-  });
-
-  describe(`UnionDiff`, () => {
-
-    it(`the<'a', UnionDiff<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>()`, () => {
-      tsst(() => {
-        the<'a', UnionDiff<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>();
-      }).expectToCompile();
-    });
-
-    it(`the<'b'|'toString', UnionDiff<'a' | 'b' | 'toString', 'a'>>()`, () => {
-      tsst(() => {
-        the<'b'|'toString', UnionDiff<'a' | 'b' | 'toString', 'a'>>();
-      }).expectToCompile();
-    });
-
-    it(`the<'b', UnionDiff<'a' | 'b', 'a' | 'toString'>>()`, () => {
-      tsst(() => {
-        the<'b', UnionDiff<'a' | 'b', 'a' | 'toString'>>();
-      }).expectToCompile();
-    });
-
-    it(`the<'0', ObjectHasKey<{ a: 1 }, "toString">>()`, () => {
-      tsst(() => {
-        the<'0', ObjectHasKey<{ a: 1 }, "toString">>();
-      }).expectToCompile();
-    });
-    // ^ error: () => string
 
   });
 

@@ -1,6 +1,6 @@
 import { If, Obj, The, Intersection } from './util';
 import { And, Not } from './boolean';
-import { UnionHasKey, UnionsOverlap, Diff } from './union';
+import { UnionHasKey, UnionsOverlap } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
 import { NumberToString, StringToNumber } from './cast';
 
@@ -32,11 +32,11 @@ export type ObjectProp<O extends Obj<any>, K extends string> =
 // UnionHasKey and UnionsOverlap won't suffice as they suffer from the same bug.
 // An alternative based on union iteration could potentially prevent this.
 
-export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-// export type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U;
+// export type Overwrite<T, U> = { [P in Exclude<keyof T, keyof U>]: T[P] } & U;
 // ^ no-dependency version by Anders, works fine but uses intersection, yielding verbose types
-// export type Overwrite<T, U, Int = { [P in Diff<keyof T, keyof U>]: T[P] } & U> = Pick<Int, keyof Int>;
+// export type Overwrite<T, U, Int = { [P in Exclude<keyof T, keyof U>]: T[P] } & U> = Pick<Int, keyof Int>;
 // ^ my attempt at cleaning out the intersection, somehow makes AppendList/FromPairs/ZipObject fail
 export type Overwrite<
   K extends Obj<any>,

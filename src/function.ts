@@ -37,7 +37,6 @@ export type Fn<A extends any[], R=void> = {
 // current approach relies on overloads; might be alleviated as part of variadic kinds, see above.
 // - currying: see function composition.
 // - conditionally throwing 'custom' errors: given `ReturnType`, apply a function with arguments that would not match its requested param types
-// - pattern matching: given `ReturnType`, use overloaded type-level function application to emulate pattern matching from other languages.
 // - constraints: e.g. divisor of a division function may not be `0`. given pattern matching (above),
 // just add an extra generic to said division function using a default with pattern matching to only resolve for non-`0` input, e.g.:
 // `function div<B extends number, NotZero = { (v: '1') => 'whatever'; }({ (v: 0) => '0'; (v: number) => '1'; }(B))>(a: number, b: B)`

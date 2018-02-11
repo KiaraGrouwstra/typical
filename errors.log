@@ -152,6 +152,8 @@
   function
     Fn
       ✓ the<(v: number) => string, Fn<[number], string>>()
+    Arguments
+      ✓ the<[boolean, string], Arguments<(<S extends string>(a: boolean, s: S) => number)>>()
 
   list
     AppendList
@@ -201,6 +203,7 @@
       ✓ the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>()
       ✓ the<'1', ObjectHasKey<NumArr, 1>>()
       ✓ the<'0', ObjectHasKey<NumArr, -1>>()
+      × the<'0', ObjectHasKey<{ a: 1 }, "toString">>()
     HasKey
       ✓ the<'0', HasKey<any[], 2>>()
       × the<'1', HasKey<NumArr, 2>>()
@@ -212,7 +215,7 @@
       ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>()
-      × the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>()
+      ✓ the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>()
       ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>()
       ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>()
@@ -231,7 +234,7 @@
       ✓ the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>()
     Omit
       ✓ the<{ b: number, c: boolean }, Omit<Item1, "a">>()
-      ✓ the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>()
+      ✓ the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>()
       ✓ the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>()
     Overwrite
       ✓ the<{ a: number, b: number, c: boolean }, Overwrite<Item1, Item2>>()
@@ -279,10 +282,6 @@
       × the<'0', UnionHasKey<'a'|'b', 'toString'>>()
     UnionToObject
       ✓ the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>()
-    IntersectionUnions
-      ✓ the<2|3, IntersectionUnions<1|2|3, 2|3|4>>()
-      ✓ the<'b'|'c', IntersectionUnions<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>()
-      ✓ the<never, IntersectionUnions<'a' | 'b' | 'c', 'x' | 'z' | 'd'>>()
     UnionContained
       ✓ the<'1', UnionContained<never, 'a'>>()
       ✓ the<'1', UnionContained<'a', 'a'>>()
@@ -302,15 +301,6 @@
       × the<'0', IsUnion<'a'>>()
       ✓ the<'0', IsUnion<never>>()
       × the<'1', IsUnion<'a' | undefined>>()
-    Diff
-      ✓ the<'a'|'b', Diff<"a" | "b" | "c", "c" | "d">>()
-      ✓ the<'b'|'toString', Diff<'a' | 'b' | 'toString', 'a'>>()
-      ✓ the<'b', Diff<'a' | 'b', 'a' | 'toString'>>()
-    UnionDiff
-      ✓ the<'a', UnionDiff<'a' | 'b' | 'c', 'b' | 'c' | 'd'>>()
-      ✓ the<'b'|'toString', UnionDiff<'a' | 'b' | 'toString', 'a'>>()
-      ✓ the<'b', UnionDiff<'a' | 'b', 'a' | 'toString'>>()
-      × the<'0', ObjectHasKey<{ a: 1 }, "toString">>()
 
   util
     the
@@ -325,9 +315,9 @@
       ✓ intersects
 
 
-  197 passing (39ms)
+  190 passing (39ms)
   6 pending
-  18 failing
+  17 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -353,16 +343,16 @@
      Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
+  × object ObjectHasKey the<'0', ObjectHasKey<{ a: 1 }, "toString">>():
+     Error: Type '() => string' does not satisfy the constraint '"0"'.
+  
+
   × object HasKey the<'1', HasKey<NumArr, 2>>():
      Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
   × object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>():
      Error: Type '"0"' does not satisfy the constraint '"1"'.
-  
-
-  × object ObjectHasKeySafe the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>():
-     Error: Type '"1"' does not satisfy the constraint '"0"'.
   
 
   × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'b'>>():
@@ -391,10 +381,6 @@
 
   × util IsUnion the<'1', IsUnion<'a' | undefined>>():
      Error: Type '"a" | undefined' does not satisfy the constraint 'string'.
-  
-
-  × util UnionDiff the<'0', ObjectHasKey<{ a: 1 }, "toString">>():
-     Error: Type '() => string' does not satisfy the constraint '"0"'.
   
 
   × util the protects from any:

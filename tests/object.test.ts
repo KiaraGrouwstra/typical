@@ -2,7 +2,6 @@ import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap } from './object';
-import { Diff } from './union';
 import { NumArr } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -71,6 +70,13 @@ describe(`object`, () => {
         the<'0', ObjectHasKey<NumArr, -1>>();
       }).expectToFail();
     });
+
+    it(`the<'0', ObjectHasKey<{ a: 1 }, "toString">>()`, () => {
+      tsst(() => {
+        the<'0', ObjectHasKey<{ a: 1 }, "toString">>();
+      }).expectToCompile();
+    });
+    // ^ error: () => string
 
   });
 
@@ -252,10 +258,10 @@ describe(`object`, () => {
     });
 
 
-    it(`the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>()`, () => {
+    it(`the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>()`, () => {
       tsst(() => {
         type KeyedItem1 = keyof ItemA
-        the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>();
+        the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>();
       }).expectToCompile();
     });
 
