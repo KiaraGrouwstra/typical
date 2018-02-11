@@ -15,6 +15,20 @@ export type Fn<A extends any[], R=void> = {
     10: (a0:A[0], a1:A[1], a2:A[2], a3:A[3], a4:A[4], a5:A[5], a6:A[6], a7:A[7], a8:A[8], a9:A[9]) => R
 }[The<number, Length<A>>];
 
+export type Arguments<T> =
+    T extends () => any ? never[] :
+    T extends (a: infer A) => any ? [A] :
+    T extends (a: infer A, b: infer B) => any ? [A, B] :
+    T extends (a: infer A, b: infer B, c: infer C) => any ? [A, B, C] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D) => any ? [A, B, C, D] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E) => any ? [A, B, C, D, E] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E, f: infer F) => any ? [A, B, C, D, E, F] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E, f: infer F, g: infer G) => any ? [A, B, C, D, E, F, G] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E, f: infer F, g: infer G, h: infer H) => any ? [A, B, C, D, E, F, G, H] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E, f: infer F, g: infer G, h: infer H, i: infer I) => any ? [A, B, C, D, E, F, G, H, I] :
+    T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E, f: infer F, g: infer G, h: infer H, i: infer I, j: infer J) => any ? [A, B, C, D, E, F, G, H, I, J] :
+    never[];
+
 // // unbind: in TS already automatically happens when it should in JS (getting a method without directly applying it).
 // export type Unbind<F extends (this: This, ...args: Args) => R, This, Args extends any[], R> = Fn<[This, ...Args], R>;
 // // ^ can't capture params in generic until maybe #5453, error "A rest parameter must be of an array type."
