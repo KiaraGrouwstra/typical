@@ -1,8 +1,8 @@
 // @flow
-import { Obj, Bool } from './util';
-import { UnionHasKey } from './union';
+import type { Obj, Bool } from './util';
+import type { UnionHasKey } from './union';
 
-export type Falsy = undefined | null | 0 | '' | void | never;
+export type Falsy = null | 0 | '' | void | empty;
 
 export type Not<T: Bool> = $ElementType<{ '1': '0'; '0': '1'; }, T>;
 

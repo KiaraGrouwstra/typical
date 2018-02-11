@@ -1,9 +1,9 @@
 // @flow
-import { NumObj, List } from './util';
-import { Inc, Add } from './number';
-import { ObjectHasKey, Overwrite } from './object'; // , Simplify
-import { TupleHasIndex, ListFrom } from './array';
-import { NumberToString, StringToNumber } from './cast';
+import type { NumObj, List } from './util';
+import type { Inc, Add } from './number';
+import type { ObjectHasKey, Overwrite } from './object'; // , Simplify
+import type { TupleHasIndex, ListFrom } from './array';
+import type { NumberToString, StringToNumber } from './cast';
 
 // parallel to arrays / numerical objects
 

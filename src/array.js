@@ -1,10 +1,10 @@
 // @flow
-import { The, Obj, NumObj, List } from './util';
-import { Inc, Dec, Add, Subtract } from './number';
-import { NumbersEqual } from './comp';
-import { DefinitelyYes } from './boolean';
-import { ObjectHasKey } from './object';
-import { NumberToString, StringToNumber } from './cast';
+import type { The, Obj, NumObj, List } from './util';
+import type { Inc, Dec, Add, Subtract } from './number';
+import type { NumbersEqual } from './comp';
+import type { DefinitelyYes } from './boolean';
+import type { ObjectHasKey } from './object';
+import type { NumberToString, StringToNumber } from './cast';
 
 export type Vector<T, N: number, I: number = 0, Acc = { length: N }> =
   $ElementType<{ 1: Acc, 0: Vector<T, N, Inc<I>, Acc & { [P in NumberToString<I>]: T }> }, NumbersEqual<I, N>>;

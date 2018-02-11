@@ -1,9 +1,9 @@
 // @flow
-import { If, Obj, The, Intersection } from './util';
-import { And, Not } from './boolean';
-import { UnionHasKey, UnionsOverlap } from './union';
-import { TupleHasIndex, IsArrayType } from './array';
-import { NumberToString, StringToNumber } from './cast';
+import type { If, Obj, The, Intersection } from './util';
+import type { And, Not } from './boolean';
+import type { UnionHasKey, UnionsOverlap } from './union';
+import type { TupleHasIndex, IsArrayType } from './array';
+import type { NumberToString, StringToNumber } from './cast';
 
 type PrototypeMethods = 'toLocaleString' | 'toString' //| 'constructor' | 'hasOwnProperty' | 'isPrototypeOf' | 'propertyIsEnumerable' | 'valueOf' | '__defineGetter__' | '__defineSetter__' | '__lookupGetter__' | '__lookupSetter__' | '__proto__';
 type Prototype = {[K in PrototypeMethods]: K };
@@ -11,7 +11,7 @@ type Prototype = {[K in PrototypeMethods]: K };
 
 export type Keyed<T> = $ObjectMap<T, () => K>;
 
-export type KeyedSafe<T> = Keyed<T> & Obj<never>;
+export type KeyedSafe<T> = Keyed<T> & Obj<empty>;
 
 export type ObjectHasKey<
   O: {},
@@ -26,7 +26,7 @@ export type HasKey<T, K: number|string> = If<
 
 export type ObjectHasKeySafe<O: object, K: string> = UnionsOverlap<$Keys<O>, K>;
 
-// export type ObjectProp<O: Obj<any>, K: string, Default = never> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
+// export type ObjectProp<O: Obj<any>, K: string, Default = empty> = If<ObjectHasKeySafe<O, K>, O[K], Default>;
 export type ObjectProp<O: Obj<any>, K: string> =
     If<And<UnionsOverlap<$Keys<O>, 'toString' | 'toLocaleString'>, And<ObjectHasStringIndex<O>, Not<UnionHasKey<$Keys<O>, K>>>>, $ElementType<O, string>, $ElementType<O, K>>
 // ^ should prevent 'toString' issues of O[K], but the current implementations of
@@ -54,7 +54,7 @@ export type Swap<
     T: Obj<string>,
     Keys: $Keys<T> = $Keys<T>,
     Vals: string = $ElementType<T, Keys>
-> = {[P1 in Vals]: $ElementType<$ObjectMap<T, <P2>(P2) => If<UnionHasKey<$ElementType<T, P2>, P1>, P2, never>>, Keys>};
+> = {[P1 in Vals]: $ElementType<$ObjectMap<T, <P2>(P2) => If<UnionHasKey<$ElementType<T, P2>, P1>, P2, empty>>, Keys>};
 
 // export type ObjectLength = ...
 // // check the length (number of keys) of a given heterogeneous object type. doable given `UnionLength` or (object iteration + `Inc`).

@@ -1,5 +1,5 @@
 // @flow
-import { And, Not } from './boolean';
+import type { And, Not } from './boolean';
 
 // // throwing Matches
 // let f = <T>(v: T) => true;
@@ -10,7 +10,7 @@ export interface isT<T> {
 }
 
 export interface isT<T> {
-  (v: never): '0';
+  (v: empty): '0';
   (v: T): '1';
   (v: any): '0';
 }
@@ -20,7 +20,7 @@ export interface isT<T> {
 // let trueBool: $Call<isBool, true>; // 1
 // let strBool: $Call<isBool, string>; // 0
 // let anyBool: $Call<isBool, any>; // 0
-// let neverBool: $Call<isBool, never>; // 0
+// let emptyBool: $Call<isBool, empty>; // 0
 
 // export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
 // export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;

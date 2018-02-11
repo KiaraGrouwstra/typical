@@ -1,9 +1,9 @@
 // @flow
-import { The, If } from './util';
-import { NumberToString, StringToNumber } from './cast';
-import { Dec } from './number';
-import { DefinitelyYes } from './boolean';
-import { UnionHasKey } from './union';
+import type { The, If } from './util';
+import type { NumberToString, StringToNumber } from './cast';
+import type { Dec } from './number';
+import type { DefinitelyYes } from './boolean';
+import type { UnionHasKey } from './union';
 
 export type StringsEqual<
   A: string,

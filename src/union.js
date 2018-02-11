@@ -1,7 +1,7 @@
 // @flow
-import { the, Obj } from './util';
-import { Not, And, DefinitelyYes } from './boolean';
-import { ObjectHasKey, KeyedSafe } from './object';
+import { the, type Obj } from './util';
+import type { Not, And, DefinitelyYes } from './boolean';
+import type { ObjectHasKey, KeyedSafe } from './object';
 
 // note: all operations here are about unions of string literals.
 // could rename this module to `string`, but it operates on the unions, not the actual strings.
