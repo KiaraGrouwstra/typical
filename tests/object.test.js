@@ -1,8 +1,8 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite,
-IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap } from './object';
-import { Diff } from './union';
+IntersectionObjectKeys, IntersectionObjects, ObjectHasStringIndex, Simplify, Swap } from './object';
 import { NumArr } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -14,9 +14,6 @@ type Obj2 = { b: 'X', c: 'Z' };
 
 type abc = { a: 1, b: 2, foo: () => string, toString: () => string }; // , toLocaleString: () => string
 // https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-307871458
-// type sfsd = { [P in PrototypeMethods]: P;　[k: string]: never; };
-// type sdkjdsl = { toString: "toString"; [P in keyof "a"]: never };
-// type sdkjds2l = { [P in keyof U]: never; [K in keyof PrototypeMethods]: K; };
 
 describe(`object`, () => {
 
@@ -251,14 +248,6 @@ describe(`object`, () => {
       }).expectToCompile();
     });
 
-
-    it(`the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>()`, () => {
-      tsst(() => {
-        type KeyedItem1 = keyof ItemA
-        the<'b'|'c'|'toString', Diff<keyof ItemA, "a">>();
-      }).expectToCompile();
-    });
-
     it(`the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>()`, () => {
       tsst(() => {
         the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>();
@@ -299,16 +288,6 @@ describe(`object`, () => {
     it(`the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>()`, () => {
       tsst(() => {
         the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>();
-      }).expectToCompile();
-    });
-
-  });
-
-  describe(`ObjectValsToUnion`, () => {
-
-    it(`the<1|2, ObjectValsToUnion<Obj1>>()`, () => {
-      tsst(() => {
-        the<1|2, ObjectValsToUnion<Obj1>>();
       }).expectToCompile();
     });
 

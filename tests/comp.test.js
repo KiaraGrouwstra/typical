@@ -1,3 +1,4 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { StringsEqual, NumbersEqual, Gt, Lt, Gte, Lte, Max, Min } from './comp';
 

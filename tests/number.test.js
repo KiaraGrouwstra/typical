@@ -1,3 +1,4 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { Inc, Dec, Add, Subtract, Mult, Pow, DivFloor, Modulo } from './number';
 

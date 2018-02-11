@@ -1,3 +1,4 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { List } from './util';
 import { Simplify } from './object';

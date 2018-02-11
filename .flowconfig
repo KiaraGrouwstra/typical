@@ -1,0 +1,13 @@
+[ignore]
+
+[include]
+./src
+
+[libs]
+# ./lib
+
+[lints]
+
+[options]
+
+[strict]

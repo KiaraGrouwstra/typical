@@ -1,3 +1,4 @@
+// @flow
 export * from './util.test';
 export * from './boolean.test';
 export * from './type.test';

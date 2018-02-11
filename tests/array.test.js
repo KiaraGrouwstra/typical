@@ -1,5 +1,6 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
-import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumObjs, Length, TupleProp,
+import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumObjs, Length,
 IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, FirstElem, TupleFirstIndex } from './array';
 import { TupleToObject } from './cast';
 import { NumArr, TestArr } from './fixtures';
@@ -52,34 +53,6 @@ describe(`array`, () => {
     it(`the<0 | 1, ArrayProp<Array<0> | Array<1>>>()`, () => {
       tsst(() => {
         the<0 | 1, ArrayProp<Array<0> | Array<1>>>();
-      }).expectToCompile();
-    });
-
-  });
-
-  describe(`TupleProp`, () => {
-
-    it(`the<0, TupleProp<[0], 0>>()`, () => {
-      tsst(() => {
-        the<0, TupleProp<[0], 0>>();
-      }).expectToCompile();
-    });
-
-    it(`the<0, TupleProp<[0], 1>>()`, () => {
-      tsst(() => {
-        the<0, TupleProp<[0], 1>>();
-      }).expectToCompile();
-    });
-
-    it(`the<any, TupleProp<[], 0>>()`, () => {
-      tsst(() => {
-        the<any, TupleProp<[], 0>>(); // A tuple type element list cannot be empty, #14646
-      }).expectToCompile();
-    });
-
-    it(`the<number, TupleProp<number[], 0>>()`, () => {
-      tsst(() => {
-        the<number, TupleProp<number[], 0>>();
       }).expectToCompile();
     });
 

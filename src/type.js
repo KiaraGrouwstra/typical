@@ -1,3 +1,4 @@
+// @flow
 import { And, Not } from './boolean';
 
 // // throwing Matches
@@ -13,13 +14,13 @@ export interface isT<T> {
   (v: T): '1';
   (v: any): '0';
 }
-// export type Matches<V, T> = isT<T>(V);
+// export type Matches<V, T> = $Call<isT<T>, V>;
 // type isBool = isT<boolean>;
-// let falseBool: isBool(false); // 1
-// let trueBool: isBool(true); // 1
-// let strBool: isBool(string); // 0
-// let anyBool: isBool(any); // 0
-// let neverBool: isBool(never); // 0
+// let falseBool: $Call<isBool, false>; // 1
+// let trueBool: $Call<isBool, true>; // 1
+// let strBool: $Call<isBool, string>; // 0
+// let anyBool: $Call<isBool, any>; // 0
+// let neverBool: $Call<isBool, never>; // 0
 
 // export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
 // export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
@@ -28,5 +29,5 @@ export interface isT<T> {
 // ^ get the prototype (-> methods) of a type. `Partial` helps for e.g. tuple types if not object types, though `Symbol`-based keys get killed.
 
 // export type Lambda<K> = any;
-// export type TypeMap<F extends Lambda, Keys extends string> = Pick<F, Keys>[Keys];
+// export type TypeMap<F: Lambda, Keys: string> = $ElementType<Pick<F, Keys>, Keys>;
 // // nope, no type lambdas -- can't have unapplied types

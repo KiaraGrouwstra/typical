@@ -1,3 +1,4 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { If, The, Intersection } from './util';
 

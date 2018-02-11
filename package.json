@@ -1,22 +1,23 @@
 {
-  "name": "typical-ts",
+  "name": "typical-flow",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
   "scripts": {
-    "pretest": "rm -rf lib/* && node ./node_modules/tsst-tycho/dist/build.js -b \"**/*.test.ts\" -d ./lib",
+    "build": "babel src/ -d lib",
+    "flow": "flow",
+    "prepublish": "npm run build",
+    "pretest": "rm -rf lib/* && ./node_modules/.bin/babel src/ -d lib/ && node ./node_modules/tsst-tycho/dist/build.js -b \"**/*.test.js\" -d ./lib",
     "test": "mocha lib/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
     "clean": "rm -rf lib/*"
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
-  "dependencies": {
-    "typescript": "^2.8.0-dev.20180210"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/mocha": "^2.2.41",
-    "mocha": "^3.5.0",
-    "tsst-tycho": "^0.3.9"
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.65.0",
+    "mocha": "^3.5.0"
   }
 }

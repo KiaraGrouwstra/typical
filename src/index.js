@@ -1,3 +1,4 @@
+// @flow
 export * from './util';
 export * from './boolean';
 export * from './type';

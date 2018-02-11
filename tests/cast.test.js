@@ -1,3 +1,4 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { NumberToString, StringToNumber, TupleToUnion, TupleIndicesToUnion, TupleToObject, TupleToList, NumObjToList, ListToNumObj } from './cast';
 import { TestArr } from './fixtures';

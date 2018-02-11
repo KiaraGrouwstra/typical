@@ -1,3 +1,4 @@
+// @flow
 import { tsst, the } from 'tsst-tycho';
 import { Bool } from './util';
 import { Not, And, Or, Indeterminate, Determinate, DefinitelyYes, DefinitelyNo } from './boolean';
