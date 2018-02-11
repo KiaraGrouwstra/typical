@@ -1,4 +1,4 @@
-import { NumObj, List } from './util';
+import { NumObj, List, If } from './util';
 import { Inc, Add } from './number';
 import { ObjectHasKey, Spread } from './object';
 import { TupleHasIndex, ListFrom } from './array';
@@ -38,7 +38,7 @@ export type IncIndex<R extends List<any>, N extends number, I extends number = 0
 export type DecIndex<R extends List<any>, N extends number, I extends number = FirstIndex<R>, Acc = { length: R['length'] }> =
   { 0: Acc, 1: DecIndex<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
 
-export type ZeroIndex<R extends List<any>, I extends number = FirstIndex<R>> = /*If<ObjectHasKey<R, 0>, R,*/ DecIndex<R, I, I>//>;
+export type ZeroIndex<R extends List<any>, I extends number = FirstIndex<R>> = If<ObjectHasKey<R, 0>, R, DecIndex<R, I, I>>;
 
 export type Prepend<
   R extends List<any>,
