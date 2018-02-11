@@ -2,7 +2,7 @@ import { The, Obj, NumObj, List } from './util';
 import { Inc, Dec, Add, Subtract } from './number';
 import { NumbersEqual } from './comp';
 import { DefinitelyYes } from './boolean';
-import { ObjectHasKey } from './object';
+import { ObjectHasKey, Spread } from './object';
 import { NumberToString, StringToNumber } from './cast';
 
 export type Vector<T, N extends number, I extends number = 0, Acc = { length: N }> =
@@ -69,7 +69,7 @@ export type Reverse<
   I extends number = 0,
   J extends number = Length<R>,
   Acc extends List<any> = { length: J }
-> = { 0: Overwrite<Acc, { length: I }>, 1: Reverse<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
+> = { 0: Spread<Acc, { length: I }>, 1: Reverse<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
 // ^ take an ArrayLike, outputs a list with known length
 
 export type TupleLastElem<R extends List<any>, I extends number = 0> =

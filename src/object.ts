@@ -42,6 +42,7 @@ export type Overwrite<
   K extends Obj<any>,
   T extends Obj<any>
 > = {[P in keyof T | keyof K]: { 1: T[P], 0: K[P] }[ObjectHasKey<T, P>]};
+// ^ merge second object into the first. deprecated, switch to Spread.
 
 export type IntersectionObjectKeys<A, B> = Pick<KeyedSafe<B>, keyof A>[keyof A];
 
@@ -94,6 +95,25 @@ export type FunctionPropertyNames<T> = MatchingPropertyNames<T, Function>;
 export type FunctionProperties<T> = MatchingProperties<T, Function>;
 export type NonFunctionPropertyNames<T> = NonMatchingPropertyNames<T, Function>;
 export type NonFunctionProperties<T> = NonMatchingProperties<T, Function>;
+
+// Names of properties in T with types that include undefined
+export type OptionalPropertyNames<T> = { [K in keyof T]: undefined extends T[K] ? K : never }[keyof T];
+export type OptionalProperties<T> = Pick<T, OptionalPropertyNames<T>>;
+export type MandatoryPropertyNames<T> = { [K in keyof T]: undefined extends T[K] ? never : K }[keyof T];
+export type MandatoryProperties<T> = Pick<T, MandatoryPropertyNames<T>>;
+
+// Type of { ...L, ...R } / Object.assign(L, R)
+export type Spread<L, R> =
+    // Properties in L that don't exist in R
+      Pick<L, Exclude<keyof L, keyof R>>
+    // Properties in R with types that exclude undefined
+    & Pick<R, Exclude<keyof R, OptionalPropertyNames<R>>>
+    // Properties in R, with types that include undefined, that don't exist in L
+    & Pick<R, Exclude<OptionalPropertyNames<R>, keyof L>>
+    // Properties in R, with types that include undefined, that exist in L
+    & SpreadProperties<L, R, OptionalPropertyNames<R> & keyof L>;
+// Common properties from L and R with undefined in R[K] replaced by type in L[K]
+export type SpreadProperties<L, R, K extends keyof L & keyof R> = { [P in K]: L[P] | Exclude<R[P], undefined> };
 
 // make all (sub) properties of an object read-only
 export type DeepReadonly<T> =

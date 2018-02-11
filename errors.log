@@ -41,7 +41,7 @@
     ListTo
       × the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>()
     Reverse
-      ✓ the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>()
+      × the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>()
     TupleLastElem
       ✓ the<'c', TupleLastElem<TestArr>>()
     TupleLastIndex
@@ -299,6 +299,17 @@
       ✓ the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>()
     NonMatchingProperties
       ✓ the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>()
+    OptionalPropertyNames
+      ✓ the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>()
+    OptionalProperties
+      ✓ the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>()
+    MandatoryPropertyNames
+      ✓ the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>()
+    MandatoryProperties
+      ✓ the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>()
+    Spread
+      ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>()
+      ✓ the<AB, Spread<A, B>>()
 
   ramda
     PathFn
@@ -374,9 +385,9 @@
       ✓ intersects
 
 
-  222 passing (45ms)
+  227 passing (55ms)
   6 pending
-  21 failing
+  22 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -386,12 +397,16 @@
      Error: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
+  × array Reverse the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>():
+     Error: Type 'Spread<{ length: 2; } & { "0": "a" | "b"; } & { "1": "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+  
+
   × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
      Error: Type 'number' does not satisfy the constraint '0'.
   
 
   × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
-     Error: Type 'Overwrite<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+     Error: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
   
 
   × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>():

@@ -1,9 +1,10 @@
 import { tsst, the } from 'tsst-tycho';
-import { Obj } from './util';
+import { Obj, List } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
 DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
-MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties } from './object';
+MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties,
+OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread } from './object';
 import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -614,6 +615,81 @@ describe(`object`, () => {
     it(`the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>()`, () => {
       tsst(() => {
         the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`OptionalPropertyNames`, () => {
+      
+    it(`the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>()`, () => {
+      tsst(() => {
+        the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`OptionalProperties`, () => {
+      
+    it(`the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>()`, () => {
+      tsst(() => {
+        the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`MandatoryPropertyNames`, () => {
+      
+    it(`the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>()`, () => {
+      tsst(() => {
+        the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`MandatoryProperties`, () => {
+      
+    it(`the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>()`, () => {
+      tsst(() => {
+        the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Spread`, () => {
+      
+    it(`the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>()`, () => {
+      tsst(() => {
+        the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>();
+      }).expectToCompile();
+    });
+    // keys optional in 2nd arg: works without `strictNullChecks`
+      
+    it(`the<AB, Spread<A, B>>()`, () => {
+      tsst(() => {
+        type A = {
+          a: boolean;
+          b: number;
+          c: string;
+        };
+        type B = {
+          b: number[];
+          c: string[] | undefined;
+          d: string;
+          e: number | undefined;
+        };
+        type AB = {
+            a: boolean;
+            b: number[];
+            c: string | string[];
+            d: string;
+            e: number | undefined;
+        };
+        the<AB, Spread<A, B>>();
       }).expectToCompile();
     });
 

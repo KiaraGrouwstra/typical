@@ -1,6 +1,6 @@
 import { NumObj, List } from './util';
 import { Inc, Add } from './number';
-import { ObjectHasKey, Overwrite } from './object'; // , Simplify
+import { ObjectHasKey, Spread } from './object';
 import { TupleHasIndex, ListFrom } from './array';
 import { NumberToString, StringToNumber } from './cast';
 
@@ -10,10 +10,10 @@ export type AppendList<
   R extends List<any>,
   T,
   Len extends number = LengthList<R>
-> = Overwrite<R & { [P in NumberToString[Len]]: T }, { length: Inc[StringToNumber[Len]] }>;
+> = Spread<R & { [P in NumberToString[Len]]: T }, { length: Inc[StringToNumber[Len]] }>;
 
 export type ConcatLists<A extends List<any>, B extends List<any>> = 
-  Overwrite<A & IncIndex<B, A['length']>, { length: Add<A['length'], B['length']> }>;
+  Spread<A & IncIndex<B, A['length']>, { length: Add<A['length'], B['length']> }>;
 
 export type LengthList<R extends List<any>> = R['length'];
 
@@ -22,7 +22,7 @@ export type ReverseList<
   I extends number = 0,
   J extends number = LengthList<R>,
   Acc extends List<any> = { length: number }
-> = { 0: Overwrite<Acc, { length: I }>, 1: ReverseList<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
+> = { 0: Spread<Acc, { length: I }>, 1: ReverseList<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
 // ^ take an ArrayLike, outputs a list with known length
 
 // shared between numerical objects, including lists with known length
