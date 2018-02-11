@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst-tycho';
 import { Obj } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
-IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified } from './object';
+IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified, DeepPartial } from './object';
 import { NumArr } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -469,6 +469,22 @@ describe(`object`, () => {
         the<string, Everything['a']>();
         the<string, Everything['b']>();
         the<string, Everything['c']>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DeepPartial`, () => {
+
+    it(`the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()`, () => {
+      tsst(() => {
+        the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>();
+      }).expectToCompile();
+    });
+
+    it(`the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()`, () => {
+      tsst(() => {
+        the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>();
       }).expectToCompile();
     });
 

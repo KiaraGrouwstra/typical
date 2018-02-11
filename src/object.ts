@@ -75,6 +75,16 @@ export type Jsonified<T> =
 export type IntersectValueOf<T> =
     ({[K in keyof T]: (x: T[K]) => void}) extends Record<keyof T, (x: infer V) => void> ? V: never;
 
+// make all (sub) properties of an object optional
+export type DeepPartial<T> =
+    T extends any[] ? DeepPartialArray<T[number]> :
+    T extends object ? DeepPartialObject<T> :
+    T;
+export type DeepPartialArray<T> = Array<DeepPartial<T>>;
+export type DeepPartialObject<T> = {
+    [P in keyof T]?: DeepPartial<T[P]>;
+};
+
 // types not possible yet:
 // `ObjectHasNumberIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
 // `ObjectNumberKeys`: a `number` variant of `keyof`. could be pulled off given union iteration (`Partial` -> iterate to filter / cast back to number literals)... but still hard to scale past natural numbers.

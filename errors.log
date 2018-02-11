@@ -275,6 +275,9 @@
       ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()
     IntersectValueOf
       × IntersectValueOf
+    DeepPartial
+      × the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
+      × the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
 
   ramda
     PathFn
@@ -346,9 +349,9 @@
       ✓ intersects
 
 
-  205 passing (44ms)
+  205 passing (43ms)
   6 pending
-  21 failing
+  23 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>():
      Error: A tuple type element list cannot be empty.
@@ -400,6 +403,14 @@
 
   × object IntersectValueOf IntersectValueOf:
      Error: Type 'number' does not satisfy the constraint 'string'.
+  
+
+  × object DeepPartial the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>():
+     Error: Type 'DeepPartial' is not generic.
+  
+
+  × object DeepPartial the<undefined, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>():
+     Error: Type 'DeepPartial' is not generic.
   
 
   × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>():
