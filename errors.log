@@ -126,6 +126,8 @@
       ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>
     ListToNumObj
       ✓ the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>
+    BoolToString
+      ✓ the<'1', BoolToString<true>>
 
   comp
     StringsEqual

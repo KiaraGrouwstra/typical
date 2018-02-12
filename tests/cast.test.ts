@@ -1,5 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
-import { NumberToString, StringToNumber, TupleToUnion, TupleIndicesToUnion, TupleToObject, TupleToList, NumObjToList, ListToNumObj } from './cast';
+import { NumberToString, StringToNumber, TupleToUnion, TupleIndicesToUnion,
+  TupleToObject, TupleToList, NumObjToList, ListToNumObj, BoolToString } from './cast';
 import { TestArr } from './fixtures';
 
 describe(`cast`, () => {
@@ -115,6 +116,16 @@ describe(`cast`, () => {
     it(`the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`BoolToString`, () => {
+
+    it(`the<'1', BoolToString<true>>`, () => {
+      tsst(() => {
+        the<'1', BoolToString<true>>();
       }).expectToCompile();
     });
 

@@ -1,14 +1,23 @@
-import { List, Obj, NumObj } from './util';
-import { Not, Falsy } from './boolean';
+import { List, Obj, NumObj, Bool } from './util';
+import { Not, Falsy, IsTruthy } from './boolean';
 import { Inc } from './number';
 import { Length, TupleHasIndex } from './array';
 import { Simplify, Omit } from './object';
 
 // boolean:
 
-// export type ToBool = IsTruthy;
+export type ToBool<T> = IsTruthy<T>;
 
-// BoolToString: mapping from non-strings could be done given `ReturnType`.
+// map a boolean type to a string-based boolean.
+// now we can do conditionals from real booleans like this,
+// these could be used to replace string-based booleans.
+// however, string bools still have a great use, as `{ 0: ..., 1: ... }` 
+// constructions create a wrapper that enables type recursion.
+export type BoolToString<T extends boolean> =
+    T extends true ? '1' :
+    T extends false ? '0' :
+    T extends boolean ? Bool :
+    never;
 
 // number:
 
