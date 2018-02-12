@@ -13,7 +13,7 @@
   "author": "Tycho Grouwstra",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^2.8.0-dev.20180210"
+    "typescript": "github:Microsoft/TypeScript"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.41",
