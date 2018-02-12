@@ -9,5 +9,5 @@ export * from './object';
 export * from './array';
 export * from './list';
 export * from './function';
-// export * from './ramda';
+export * from './ramda';
 // export * from './crap';

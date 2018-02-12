@@ -4,6 +4,9 @@ import { ObjectHasKey, Spread } from './object';
 import { TupleHasIndex, ListFrom } from './array';
 import { NumberToString, StringToNumber } from './cast';
 
+// type operations for 'lists' -- numerically-indexed types (tuple/object) with explicit `length`.
+// outputs are not tuple types but similar 'list' objects, because we can't manipulate tuples yet.
+
 // parallel to arrays / numerical objects
 
 export type AppendList<

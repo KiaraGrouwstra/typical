@@ -54,21 +54,16 @@ export type Arguments<T extends (...args: any[]) => any> =
 // export type Unbind<F extends (this: This, t1: T1) => R, This, R, T1> = Fn<[This, T1], R>;
 // export type Unbind<F extends (this: This, t1: T1, t2: T2) => R, This, R, T1, T2> = Fn<[This, T1, T2], R>;
 // export type Unbind<F extends (this: This, t1: T1, t2: T2, t3: T3) => R, This, R, T1, T2, T3> = Fn<[This, T1, T2, T3], R>;
-// // ...
-// // ^ wait, discriminating generic `F` type probably needs #6606 overloads
 // // complication: most stdlib methods don't have the `this` param specified. fix that. wonder why it isn't added implicitly...
 
 // export type Bind<F extends (this: This, ...args: Args) => R, This, Args, R, T extends This> = Fn<Args, R>;
-// // ^ doesn't handle other params yet. `unbind` notes above apply as well.
+// // ^ doesn't handle other params yet. `unbind` notes above apply as well. only useful after #6606.
 // // ^ accurate return type over `R`: `F(this: T, ...Args)`.
 
 // todo:
-// - `ReturnType`: get the return type of function expressions -- #6606 (dupes: #4233, #6239, #16372)
+// - `ReturnType`: get the return type of function expressions for given parameter types -- #6606 (dupes: #4233, #6239, #16372)
 // - conversion of parameters from/to tuple types: see variadic kinds at #5453
-// - function composition -- still issues with generics, see #9366.
-// current approach relies on overloads; might be alleviated as part of variadic kinds, see above.
-// - currying: see function composition.
+// - currying, parameter-sensitive function composition, needs #5453
 // - conditionally throwing 'custom' errors: given `ReturnType`, apply a function with arguments that would not match its requested param types
-// - constraints: e.g. divisor of a division function may not be `0`. given pattern matching (above),
-// just add an extra generic to said division function using a default with pattern matching to only resolve for non-`0` input, e.g.:
+// - constraints: e.g. divisor of a division function may not be `0`. extra generic to only resolve for good input, e.g.:
 // `function div<B extends number, NotZero = { (v: '1') => 'whatever'; }({ (v: 0) => '0'; (v: number) => '1'; }(B))>(a: number, b: B)`

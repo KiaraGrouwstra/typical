@@ -15,6 +15,3 @@ export declare function the<T, V extends T>(): '1';
 
 // just make an intersection type -- this wrapper helps to beat error `Type ... does not satisfy the constraint ...`
 export type Intersection<A, B> = A & B;
-
-// failed attempt at widening literals; `&` actually leaves them intact
-// export type Widen<T> = T & (undefined | null | boolean | number | string | {} | void | never);

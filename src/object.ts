@@ -140,7 +140,6 @@ export type DeepWidenObject<T> = {
 // `ObjectNumberKeys`: a `number` variant of `keyof`. could be pulled off given union iteration (`Partial` -> iterate to filter / cast back to number literals)... but still hard to scale past natural numbers.
 // `ObjectSymbolKeys`: a `Symbol` variant of `keyof`. no clue how to go about this unless by checking a whitelisted set such as those found in standard library prototype. this feels sorta useless though.
 // `ObjectHasElem`: check whether a heterogeneous object type contains a given type among its elements. This could be done given `TypesEq`.
-// `FilterObject`: can be done already for fixed conditions; using a predicate function needs `ReturnType`
 // `map` over heterogeneous objects: probably just needs `ReturnType`.
 // object iteration: useful for e.g. `ObjectToArray`. This could enable union iteration, or the other way around.
 // One strategy that comes to mind relies on converting keys to tuple (given UnionToArray) then using array iteration.
