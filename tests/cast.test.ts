@@ -6,25 +6,25 @@ describe(`cast`, () => {
 
   describe(`NumberToString`, () => {
 
-    it(`the<'3', NumberToString[3]>()`, () => {
+    it(`the<'3', NumberToString[3]>`, () => {
       tsst(() => {
         the<'3', NumberToString[3]>();
       }).expectToCompile();
     });
 
-    it(`the<'3', NumberToString['3']>()`, () => {
+    it(`the<'3', NumberToString['3']>`, () => {
       tsst(() => {
         the<'3', NumberToString['3']>();
       }).expectToCompile();
     });
 
-    it(`the<'3', NumberToString<3>>()`, () => {
+    it(`the<'3', NumberToString<3>>`, () => {
       tsst(() => {
         the<'3', NumberToString<3>>();
       }).expectToFail();
     });
 
-    it(`the<string, NumberToString[number]>()`, () => {
+    it(`the<string, NumberToString[number]>`, () => {
       tsst(() => {
         the<string, NumberToString[number]>();
       }).expectToCompile();
@@ -34,19 +34,19 @@ describe(`cast`, () => {
 
   describe(`StringToNumber`, () => {
 
-    it(`the<3, StringToNumber['3']>()`, () => {
+    it(`the<3, StringToNumber['3']>`, () => {
       tsst(() => {
         the<3, StringToNumber['3']>();
       }).expectToCompile();
     });
 
-    it(`the<3, StringToNumber[3]>()`, () => {
+    it(`the<3, StringToNumber[3]>`, () => {
       tsst(() => {
         the<3, StringToNumber[3]>();
       }).expectToCompile();
     });
 
-    it(`the<number, StringToNumber[string]>()`, () => {
+    it(`the<number, StringToNumber[string]>`, () => {
       tsst(() => {
         the<number, StringToNumber[string]>();
       }).expectToCompile();
@@ -56,7 +56,7 @@ describe(`cast`, () => {
 
   describe(`TupleToUnion`, () => {
 
-    it(`the<"a" | "b" | "c", TupleToUnion<TestArr>>()`, () => {
+    it(`the<"a" | "b" | "c", TupleToUnion<TestArr>>`, () => {
       tsst(() => {
         the<"a" | "b" | "c", TupleToUnion<TestArr>>();
       }).expectToCompile();
@@ -66,7 +66,7 @@ describe(`cast`, () => {
 
   describe(`TupleIndicesToUnion`, () => {
 
-    it(`the<0 | 1 | 2, TupleIndicesToUnion<TestArr>>()`, () => {
+    it(`the<0 | 1 | 2, TupleIndicesToUnion<TestArr>>`, () => {
       tsst(() => {
         the<0 | 1 | 2, TupleIndicesToUnion<TestArr>>();
       }).expectToCompile();
@@ -76,7 +76,7 @@ describe(`cast`, () => {
 
   describe(`TupleToObject`, () => {
 
-    it(`the<{ 0: "a"; 1: "b"; 2: "c"; }, TupleToObject<TestArr>>()`, () => {
+    it(`the<{ 0: "a"; 1: "b"; 2: "c"; }, TupleToObject<TestArr>>`, () => {
       tsst(() => {
         the<{ 0: "a"; 1: "b"; 2: "c"; }, TupleToObject<TestArr>>();
       }).expectToCompile();
@@ -86,7 +86,7 @@ describe(`cast`, () => {
 
   describe(`TupleToList`, () => {
 
-    it(`the<{ 0: "a"; 1: "b"; 2: "c"; length: 3; }, TupleToList<TestArr>>()`, () => {
+    it(`the<{ 0: "a"; 1: "b"; 2: "c"; length: 3; }, TupleToList<TestArr>>`, () => {
       tsst(() => {
         the<{ 0: "a"; 1: "b"; 2: "c"; length: 3; }, TupleToList<TestArr>>();
       }).expectToCompile();
@@ -96,13 +96,13 @@ describe(`cast`, () => {
 
   describe(`NumObjToList`, () => {
 
-    it(`the<{ 0: 'a', 1: 'b', length: 2 }, NumObjToList<{ 0: 'a', 1: 'b' }>>()`, () => {
+    it(`the<{ 0: 'a', 1: 'b', length: 2 }, NumObjToList<{ 0: 'a', 1: 'b' }>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b', length: 2 }, NumObjToList<{ 0: 'a', 1: 'b' }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>()`, () => {
+    it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>();
       }).expectToCompile();
@@ -112,7 +112,7 @@ describe(`cast`, () => {
 
   describe(`ListToNumObj`, () => {
 
-    it(`the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>()`, () => {
+    it(`the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>();
       }).expectToCompile();

@@ -5,7 +5,7 @@ describe(`number`, () => {
 
   describe(`Inc`, () => {
 
-    it(`the<2, Inc[1]>()`, () => {
+    it(`the<2, Inc[1]>`, () => {
       tsst(() => {
         the<2, Inc[1]>();
       }).expectToCompile();
@@ -15,7 +15,7 @@ describe(`number`, () => {
 
   describe(`Dec`, () => {
 
-    it(`the<1, Dec[2]>()`, () => {
+    it(`the<1, Dec[2]>`, () => {
       tsst(() => {
         the<1, Dec[2]>();
       }).expectToCompile();
@@ -25,7 +25,7 @@ describe(`number`, () => {
 
   describe(`Add`, () => {
 
-    it(`the<5, Add<3, 2>>()`, () => {
+    it(`the<5, Add<3, 2>>`, () => {
       tsst(() => {
         the<5, Add<3, 2>>();
       }).expectToCompile();
@@ -35,7 +35,7 @@ describe(`number`, () => {
 
   describe(`Subtract`, () => {
 
-    it(`the<1, Subtract<3, 2>>()`, () => {
+    it(`the<1, Subtract<3, 2>>`, () => {
       tsst(() => {
         the<1, Subtract<3, 2>>();
       }).expectToCompile();
@@ -45,7 +45,7 @@ describe(`number`, () => {
 
   describe(`Mult`, () => {
 
-    it(`the<6, Mult<3, 2>>()`, () => {
+    it(`the<6, Mult<3, 2>>`, () => {
       tsst(() => {
         the<6, Mult<3, 2>>();
       }).expectToCompile();
@@ -55,13 +55,13 @@ describe(`number`, () => {
 
   describe(`Pow`, () => {
 
-    it(`the<9, Pow<3, 2>>()`, () => {
+    it(`the<9, Pow<3, 2>>`, () => {
       tsst(() => {
         the<9, Pow<3, 2>>();
       }).expectToCompile();
     });
 
-    it(`the<8, Pow<2, 3>>()`, () => {
+    it(`the<8, Pow<2, 3>>`, () => {
       tsst(() => {
         the<8, Pow<2, 3>>();
       }).expectToCompile();
@@ -71,7 +71,7 @@ describe(`number`, () => {
 
   describe(`DivFloor`, () => {
 
-    it(`the<2, DivFloor<5, 2>>()`, () => {
+    it(`the<2, DivFloor<5, 2>>`, () => {
       tsst(() => {
         the<2, DivFloor<5, 2>>();
       }).expectToCompile();
@@ -81,7 +81,7 @@ describe(`number`, () => {
 
   describe(`Modulo`, () => {
 
-    it(`the<1, Modulo<5, 2>>()`, () => {
+    it(`the<1, Modulo<5, 2>>`, () => {
       tsst(() => {
         the<1, Modulo<5, 2>>();
       }).expectToCompile();

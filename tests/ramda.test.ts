@@ -7,7 +7,7 @@ describe(`ramda`, () => {
 
   describe(`PathFn`, () => {
 
-    it(`the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>()`, () => {
+    it(`the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>`, () => {
       tsst(() => {
         the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>();
       }).expectToCompile();
@@ -25,7 +25,7 @@ describe(`ramda`, () => {
 
   describe(`PathOrFn`, () => {
 
-    it(`the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>()`, () => {
+    it(`the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>`, () => {
       tsst(() => {
         the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>();
         // ^ error: 'oh'
@@ -33,7 +33,7 @@ describe(`ramda`, () => {
       }).expectToCompile();
     });
 
-    it(`the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>()`, () => {
+    it(`the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>`, () => {
       tsst(() => {
         the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>();
       }).expectToCompile();
@@ -43,7 +43,7 @@ describe(`ramda`, () => {
 
   describe(`MergeAllFn`, () => {
 
-    it(`the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>()`, () => {
+    it(`the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>();
       }).expectToCompile();
@@ -54,7 +54,7 @@ describe(`ramda`, () => {
 
   describe(`FromPairsFn`, () => {
 
-    it(`the<{ a: 5, b: 2, c: 3 }, FromPairsFn<[['a', 1], ['b', 2], ['c', 3], ['a', 5]]>>()`, () => {
+    it(`the<{ a: 5, b: 2, c: 3 }, FromPairsFn<[['a', 1], ['b', 2], ['c', 3], ['a', 5]]>>`, () => {
       tsst(() => {
         the<{ a: 5, b: 2, c: 3 }, FromPairsFn<[['a', 1], ['b', 2], ['c', 3], ['a', 5]]>>();
       }).expectToCompile();
@@ -64,7 +64,7 @@ describe(`ramda`, () => {
 
   describe(`ZipObjectFn`, () => {
 
-    it(`the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>()`, () => {
+    it(`the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>();
       }).expectToCompile();

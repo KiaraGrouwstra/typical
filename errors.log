@@ -2,55 +2,55 @@
 
   array
     Vector
-      ✓ the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>()
-      ✓ the<Vector<number | string, 3>, { 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }>()
-      ✓ the<{ 0: number | string, 1: number | string, 2: number | string, length: 3 }, Vector<number | string, 3>>()
-      ✓ the<{ 0: number, 1: number, length: 2 } | { 0: number, 1: number, 2: number, length: 3 }, Vector<number, 2 | 3>>()
+      ✓ the<{ 0: number, 1: number, 2: number, length: 3 }, Vector<number, 3>>
+      ✓ the<Vector<number | string, 3>, { 0: number, 1: number, 2: number, length: 3 } | { 0: string, 1: string, 2: string, length: 3 }>
+      ✓ the<{ 0: number | string, 1: number | string, 2: number | string, length: 3 }, Vector<number | string, 3>>
+      ✓ the<{ 0: number, 1: number, length: 2 } | { 0: number, 1: number, 2: number, length: 3 }, Vector<number, 2 | 3>>
     ArrayProp
-      ✓ the<0, ArrayProp<Array<0>>>()
-      ✓ the<0 | 1, ArrayProp<Array<0 | 1>>>()
-      ✓ the<0 | 1, ArrayProp<Array<0> | Array<1>>>()
+      ✓ the<0, ArrayProp<Array<0>>>
+      ✓ the<0 | 1, ArrayProp<Array<0 | 1>>>
+      ✓ the<0 | 1, ArrayProp<Array<0> | Array<1>>>
     TupleProp
-      ✓ the<0, TupleProp<[0], 0>>()
-      ✓ the<0, TupleProp<[0], 1>>()
-      × the<any, TupleProp<[], 0>>()
-      ✓ the<number, TupleProp<number[], 0>>()
+      ✓ the<0, TupleProp<[0], 0>>
+      ✓ the<0, TupleProp<[0], 1>>
+      × the<any, TupleProp<[], 0>>
+      ✓ the<number, TupleProp<number[], 0>>
     TupleHasIndex
-      ✓ the<'1', TupleHasIndex<NumArr, 1>>()
-      ✓ the<'0', TupleHasIndex<NumArr, -1>>()
-      ✓ the<'0'|'1', TupleHasIndex<NumArr, -1|1>>()
-      ✓ the<'0'|'1', TupleHasIndex<NumArr | ['a'], 1>>()
-      ✓ the<'1', TupleHasIndex<{a:1}, 'a'>>()
-      ✓ the<'0', TupleHasIndex<{a:1}, 'b'>>()
-      ✓ the<'1', TupleHasIndex<{ 1: "hi" }, 1>>()
-      ✓ the<'0', TupleHasIndex<{ 1: "hi" }, -1>>()
+      ✓ the<'1', TupleHasIndex<NumArr, 1>>
+      ✓ the<'0', TupleHasIndex<NumArr, -1>>
+      ✓ the<'0'|'1', TupleHasIndex<NumArr, -1|1>>
+      ✓ the<'0'|'1', TupleHasIndex<NumArr | ['a'], 1>>
+      ✓ the<'1', TupleHasIndex<{a:1}, 'a'>>
+      ✓ the<'0', TupleHasIndex<{a:1}, 'b'>>
+      ✓ the<'1', TupleHasIndex<{ 1: "hi" }, 1>>
+      ✓ the<'0', TupleHasIndex<{ 1: "hi" }, -1>>
     IsArrayType
-      ✓ the<'1', IsArrayType<NumArr>>()
-      ✓ the<'1', IsArrayType<any[]>>()
-      ✓ the<'0', IsArrayType<{ length: 2 }>>()
+      ✓ the<'1', IsArrayType<NumArr>>
+      ✓ the<'1', IsArrayType<any[]>>
+      ✓ the<'0', IsArrayType<{ length: 2 }>>
     AppendNumObj
-      ✓ the<{ 0: 'a', 1: 'b', 2: 'c' }, AppendNumObj<{ 0: 'a', 1: 'b' }, 'c'>>()
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c' }, AppendNumObj<{ 0: 'a', 1: 'b' }, 'c'>>
     Length
-      ✓ the<3, Length<TupleToObject<TestArr>>>()
-      ✓ the<3, Length<TestArr>>()
-      ✓ the<0, Length<any[]>>()
-      ✓ the<2, Length<{ 0: 'a', 1: 'b' }>>()
-      ✓ the<0|3, Length<any[]|TestArr>>()
+      ✓ the<3, Length<TupleToObject<TestArr>>>
+      ✓ the<3, Length<TestArr>>
+      ✓ the<0, Length<any[]>>
+      ✓ the<2, Length<{ 0: 'a', 1: 'b' }>>
+      ✓ the<0|3, Length<any[]|TestArr>>
     ListFrom
-      ✓ the<{ 0: 'c', 1: 'd', length: 2 }, ListFrom<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>()
+      ✓ the<{ 0: 'c', 1: 'd', length: 2 }, ListFrom<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>
     ListTo
-      × the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>()
+      × the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>
     Reverse
-      × the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>()
+      × the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>
     TupleLastElem
-      ✓ the<'c', TupleLastElem<TestArr>>()
+      ✓ the<'c', TupleLastElem<TestArr>>
     TupleLastIndex
-      ✓ the<2, TupleLastIndex<TestArr>>()
-      ✓ the<-1, TupleLastIndex<any[]>>()
+      ✓ the<2, TupleLastIndex<TestArr>>
+      ✓ the<-1, TupleLastIndex<any[]>>
     FirstElem
-      ✓ the<'a', FirstElem<TestArr>>()
+      ✓ the<'a', FirstElem<TestArr>>
     TupleFirstIndex
-      × the<0, TupleFirstIndex<TestArr>>()
+      × the<0, TupleFirstIndex<TestArr>>
 
   boolean
     Not
@@ -93,192 +93,192 @@
 
   cast
     NumberToString
-      ✓ the<'3', NumberToString[3]>()
-      ✓ the<'3', NumberToString['3']>()
-      ✓ the<'3', NumberToString<3>>()
-      ✓ the<string, NumberToString[number]>()
+      ✓ the<'3', NumberToString[3]>
+      ✓ the<'3', NumberToString['3']>
+      ✓ the<'3', NumberToString<3>>
+      ✓ the<string, NumberToString[number]>
     StringToNumber
-      ✓ the<3, StringToNumber['3']>()
-      ✓ the<3, StringToNumber[3]>()
-      ✓ the<number, StringToNumber[string]>()
+      ✓ the<3, StringToNumber['3']>
+      ✓ the<3, StringToNumber[3]>
+      ✓ the<number, StringToNumber[string]>
     TupleToUnion
-      ✓ the<"a" | "b" | "c", TupleToUnion<TestArr>>()
+      ✓ the<"a" | "b" | "c", TupleToUnion<TestArr>>
     TupleIndicesToUnion
-      ✓ the<0 | 1 | 2, TupleIndicesToUnion<TestArr>>()
+      ✓ the<0 | 1 | 2, TupleIndicesToUnion<TestArr>>
     TupleToObject
-      ✓ the<{ 0: "a"; 1: "b"; 2: "c"; }, TupleToObject<TestArr>>()
+      ✓ the<{ 0: "a"; 1: "b"; 2: "c"; }, TupleToObject<TestArr>>
     TupleToList
-      ✓ the<{ 0: "a"; 1: "b"; 2: "c"; length: 3; }, TupleToList<TestArr>>()
+      ✓ the<{ 0: "a"; 1: "b"; 2: "c"; length: 3; }, TupleToList<TestArr>>
     NumObjToList
-      ✓ the<{ 0: 'a', 1: 'b', length: 2 }, NumObjToList<{ 0: 'a', 1: 'b' }>>()
-      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>()
+      ✓ the<{ 0: 'a', 1: 'b', length: 2 }, NumObjToList<{ 0: 'a', 1: 'b' }>>
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, NumObjToList<TupleToObject<TestArr>>>
     ListToNumObj
-      ✓ the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>()
+      ✓ the<{ 0: 'a', 1: 'b' }, ListToNumObj<{ 0: 'a', 1: 'b', length: 2 }>>
 
   comp
     StringsEqual
-      ✓ the<'1', StringsEqual<'a', 'a'>>()
-      ✓ the<'0', StringsEqual<'a', 'b'>>()
+      ✓ the<'1', StringsEqual<'a', 'a'>>
+      ✓ the<'0', StringsEqual<'a', 'b'>>
     NumbersEqual
-      ✓ the<'1', NumbersEqual<123, 123>>()
-      ✓ the<'0', NumbersEqual<123, 456>>()
-      ✓ the<'1', NumbersEqual<123, '123'>>()
-      ✓ the<'1', NumbersEqual<'123', 123>>()
-      ✓ the<'0', NumbersEqual<0, 5>>()
-      ✓ the<'0', NumbersEqual<5, 0>>()
+      ✓ the<'1', NumbersEqual<123, 123>>
+      ✓ the<'0', NumbersEqual<123, 456>>
+      ✓ the<'1', NumbersEqual<123, '123'>>
+      ✓ the<'1', NumbersEqual<'123', 123>>
+      ✓ the<'0', NumbersEqual<0, 5>>
+      ✓ the<'0', NumbersEqual<5, 0>>
     Gt
-      ✓ the<'1', Gt<3, 2>>()
-      ✓ the<'0', Gt<2, 3>>()
-      ✓ the<'0', Gt<3, 3>>()
+      ✓ the<'1', Gt<3, 2>>
+      ✓ the<'0', Gt<2, 3>>
+      ✓ the<'0', Gt<3, 3>>
     Lt
-      ✓ the<'0', Lt<3, 2>>()
-      ✓ the<'1', Lt<2, 3>>()
-      ✓ the<'0', Lt<3, 3>>()
+      ✓ the<'0', Lt<3, 2>>
+      ✓ the<'1', Lt<2, 3>>
+      ✓ the<'0', Lt<3, 3>>
     Gte
-      ✓ the<'1', Gte<3, 2>>()
-      ✓ the<'0', Gte<2, 3>>()
-      ✓ the<'1', Gte<3, 3>>()
+      ✓ the<'1', Gte<3, 2>>
+      ✓ the<'0', Gte<2, 3>>
+      ✓ the<'1', Gte<3, 3>>
     Lte
-      ✓ the<'0', Lte<3, 2>>()
-      ✓ the<'1', Lte<2, 3>>()
-      ✓ the<'1', Lte<3, 3>>()
+      ✓ the<'0', Lte<3, 2>>
+      ✓ the<'1', Lte<2, 3>>
+      ✓ the<'1', Lte<3, 3>>
     Max
-      ✓ the<6, Max<3, 6>>()
-      ✓ the<5, Max<5, 2>>()
+      ✓ the<6, Max<3, 6>>
+      ✓ the<5, Max<5, 2>>
     Min
-      ✓ the<3, Min<3, 6>>()
-      ✓ the<2, Min<5, 2>>()
+      ✓ the<3, Min<3, 6>>
+      ✓ the<2, Min<5, 2>>
 
   function
     Fn
-      ✓ the<(v: number) => string, Fn<[number], string>>()
+      ✓ the<(v: number) => string, Fn<[number], string>>
     Arguments
-      ✓ the<[boolean, string], Arguments<(<S extends string>(a: boolean, s: S) => number)>>()
+      ✓ the<[boolean, string], Arguments<(<S extends string>(a: boolean, s: S) => number)>>
     Argument
-      ✓ the<1, Argument<0, (a: 1, b: × => 8>>()
-      ✓ the<2, Argument<1, (a: 1, ...args: 2[]) => 8>>()
-      ✓ the<2, Argument<1, (a: 1, b: 2, ...args: 3[]) => 8>>()
+      ✓ the<1, Argument<0, (a: 1, b: × => 8>>
+      ✓ the<2, Argument<1, (a: 1, ...args: 2[]) => 8>>
+      ✓ the<2, Argument<1, (a: 1, b: 2, ...args: 3[]) => 8>>
 
   list
     AppendList
-      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>()
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>
     LengthList
-      ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>()
+      ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>
     ReverseList
-      × the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>()
+      × the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>
     FirstIndex
-      ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>()
+      ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>
     DecIndex
-      × the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>()
+      × the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>
     ZeroIndex
-      × the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>()
+      × the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>
     ListTail
-      ✓ the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>()
+      ✓ the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>
     DifferenceLists
-      ✓ the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>()
+      ✓ the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>
 
   number
     Inc
-      ✓ the<2, Inc[1]>()
+      ✓ the<2, Inc[1]>
     Dec
-      ✓ the<1, Dec[2]>()
+      ✓ the<1, Dec[2]>
     Add
-      ✓ the<5, Add<3, 2>>()
+      ✓ the<5, Add<3, 2>>
     Subtract
-      ✓ the<1, Subtract<3, 2>>()
+      ✓ the<1, Subtract<3, 2>>
     Mult
-      ✓ the<6, Mult<3, 2>>()
+      ✓ the<6, Mult<3, 2>>
     Pow
-      ✓ the<9, Pow<3, 2>>()
-      ✓ the<8, Pow<2, 3>>()
+      ✓ the<9, Pow<3, 2>>
+      ✓ the<8, Pow<2, 3>>
     DivFloor
-      ✓ the<2, DivFloor<5, 2>>()
+      ✓ the<2, DivFloor<5, 2>>
     Modulo
-      ✓ the<1, Modulo<5, 2>>()
+      ✓ the<1, Modulo<5, 2>>
 
   object
     Keyed
-      ✓ the<{a:'a',b:'b'}, Keyed<{a:1,b:2}>>()
+      ✓ the<{a:'a',b:'b'}, Keyed<{a:1,b:2}>>
     KeyedSafe
-      ✓ the<{a:'a',b:'b'} & Obj<never>, KeyedSafe<{a:1} & {b:2}>>()
+      ✓ the<{a:'a',b:'b'} & Obj<never>, KeyedSafe<{a:1} & {b:2}>>
     ObjectHasKey
-      ✓ the<'1', ObjectHasKey<{a:1}, 'a'>>()
-      ✓ the<'0', ObjectHasKey<{a:1}, 'b'>>()
-      ✓ the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>()
-      ✓ the<'1', ObjectHasKey<NumArr, 1>>()
-      ✓ the<'0', ObjectHasKey<NumArr, -1>>()
-      × the<'0', ObjectHasKey<{ a: 1 }, "toString">>()
+      ✓ the<'1', ObjectHasKey<{a:1}, 'a'>>
+      ✓ the<'0', ObjectHasKey<{a:1}, 'b'>>
+      ✓ the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>
+      ✓ the<'1', ObjectHasKey<NumArr, 1>>
+      ✓ the<'0', ObjectHasKey<NumArr, -1>>
+      × the<'0', ObjectHasKey<{ a: 1 }, "toString">>
     HasKey
-      ✓ the<'0', HasKey<any[], 2>>()
-      × the<'1', HasKey<NumArr, 2>>()
-      ✓ the<'0', HasKey<NumArr, 5>>()
-      × the<'1', HasKey<{ a: 1 }, 'a'>>()
-      ✓ the<'0', HasKey<{ a: 1 }, 'b'>>()
+      ✓ the<'0', HasKey<any[], 2>>
+      × the<'1', HasKey<NumArr, 2>>
+      ✓ the<'0', HasKey<NumArr, 5>>
+      × the<'1', HasKey<{ a: 1 }, 'a'>>
+      ✓ the<'0', HasKey<{ a: 1 }, 'b'>>
     ObjectHasKeySafe
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>()
-      ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>()
-      ✓ the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>()
-      ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>()
-      ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'b'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a' | 'b'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'b'>>()
-      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>()
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>
+      ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>
+      ✓ the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>
+      ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>
+      ✓ the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'b'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a' | 'b'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'b'>>
+      ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>
     ObjectProp
-      ✓ the<1, ObjectProp<{ a: 1 }, 'a'>>()
-      × the<never, ObjectProp<{ a: 1 }, 'b'>>()
-      × the<never, ObjectProp<{ a: 1 }, 'toString'>>()
-      ✓ the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>()
-      × the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>()
-      ✓ the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>()
+      ✓ the<1, ObjectProp<{ a: 1 }, 'a'>>
+      × the<never, ObjectProp<{ a: 1 }, 'b'>>
+      × the<never, ObjectProp<{ a: 1 }, 'toString'>>
+      ✓ the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>
+      × the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>
+      ✓ the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>
     Omit
-      ✓ the<{ b: number, c: boolean }, Omit<Item1, "a">>()
-      ✓ the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>()
-      ✓ the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>()
+      ✓ the<{ b: number, c: boolean }, Omit<Item1, "a">>
+      ✓ the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>
+      ✓ the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>
     Overwrite
-      ✓ the<{ a: number, b: number, c: boolean }, Overwrite<Item1, Item2>>()
+      ✓ the<{ a: number, b: number, c: boolean }, Overwrite<Item1, Item2>>
     IntersectionObjectKeys
-      ✓ the<'b', IntersectionObjectKeys<Obj1, Obj2>>()
+      ✓ the<'b', IntersectionObjectKeys<Obj1, Obj2>>
     IntersectionObjects
-      ✓ the<{ b: 2 }, IntersectionObjects<Obj1, Obj2>>()
-      ✓ the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>()
+      ✓ the<{ b: 2 }, IntersectionObjects<Obj1, Obj2>>
+      ✓ the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>
     ObjectValsToUnion
-      ✓ the<1|2, ObjectValsToUnion<Obj1>>()
+      ✓ the<1|2, ObjectValsToUnion<Obj1>>
     Simplify
-      ✓ the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>()
+      ✓ the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>
     Swap
-      ✓ the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>()
+      ✓ the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>
     toString experimenting
-      ✓ the<{ a: 1, foo: () => string, toString: () => string }, Omit<abc, "b">>()
-      ✓ the<{ a: 1, b: 2, foo: () => string }, Omit<abc, "toString">>()
-      ✓ the<abc, Simplify<abc & { "b": never }>>()
-      ✓ the<{ a: 1, b: any, foo: () => string, toString: () => string }, Simplify<abc & { "b": any }>>()
-      ✓ the<abc, Simplify<abc & { "toString": never }>>()
-      ✓ the<{ a: 1, b: 2, foo: () => string, toString: any }, Simplify<abc & { "toString": any }>>()
-      ✓ the<abc, Simplify<abc & { "foo": never }>>()
-      ✓ the<{ a: 1, b: 2, foo: any, toString: () => string }, Simplify<abc & { "foo": any }>>()
-      ✓ the<{ a: 1, b: never, foo: () => string, toString: () => string }, Overwrite<abc, { "b": never }>>()
-      ✓ the<{ a: 1, b: any, foo: () => string, toString: () => string }, Overwrite<abc, { "b": any }>>()
-      ✓ the<{ a: 1, b: 2, foo: () => string }, Overwrite<abc, { "toString": never }>>()
-      ✓ the<{ a: 1, b: 2, foo: () => string, toString: any }, Overwrite<abc, { "toString": any }>>()
-      ✓ the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>()
-      ✓ the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>()
-      ✓ the<abc, Simplify<abc & { "toString": never }>>()
-      ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>()
-      ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>()
+      ✓ the<{ a: 1, foo: () => string, toString: () => string }, Omit<abc, "b">>
+      ✓ the<{ a: 1, b: 2, foo: () => string }, Omit<abc, "toString">>
+      ✓ the<abc, Simplify<abc & { "b": never }>>
+      ✓ the<{ a: 1, b: any, foo: () => string, toString: () => string }, Simplify<abc & { "b": any }>>
+      ✓ the<abc, Simplify<abc & { "toString": never }>>
+      ✓ the<{ a: 1, b: 2, foo: () => string, toString: any }, Simplify<abc & { "toString": any }>>
+      ✓ the<abc, Simplify<abc & { "foo": never }>>
+      ✓ the<{ a: 1, b: 2, foo: any, toString: () => string }, Simplify<abc & { "foo": any }>>
+      ✓ the<{ a: 1, b: never, foo: () => string, toString: () => string }, Overwrite<abc, { "b": never }>>
+      ✓ the<{ a: 1, b: any, foo: () => string, toString: () => string }, Overwrite<abc, { "b": any }>>
+      ✓ the<{ a: 1, b: 2, foo: () => string }, Overwrite<abc, { "toString": never }>>
+      ✓ the<{ a: 1, b: 2, foo: () => string, toString: any }, Overwrite<abc, { "toString": any }>>
+      ✓ the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>
+      ✓ the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>
+      ✓ the<abc, Simplify<abc & { "toString": never }>>
+      ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>
+      ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>
     Jsonified
-      ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()
+      ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>
     IntersectValueOf
       × IntersectValueOf
     DeepPartial
-      ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()
+      ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>
     DeepWiden
-      ✓ the<{ a: number }, DeepWiden<{ a: 1 }>>()
+      ✓ the<{ a: number }, DeepWiden<{ a: 1 }>>
     DeepReadonly
       ✓ still allows reading
       ✓ disallows writing - layer 0
@@ -286,46 +286,46 @@
       ✓ disallows writing - layer 2
       ✓ strips out methods
     FunctionPropertyNames
-      ✓ the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>()
+      ✓ the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>
     FunctionProperties
-      ✓ the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>()
+      ✓ the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>
     NonFunctionPropertyNames
-      ✓ the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>()
+      ✓ the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>
     NonFunctionProperties
-      ✓ the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>()
+      ✓ the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>
     MatchingPropertyNames
-      ✓ the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>()
+      ✓ the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>
     MatchingProperties
-      ✓ the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>()
+      ✓ the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>
     NonMatchingPropertyNames
-      ✓ the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>()
+      ✓ the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>
     NonMatchingProperties
-      ✓ the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>()
+      ✓ the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>
     OptionalPropertyNames
-      ✓ the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>()
+      ✓ the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>
     OptionalProperties
-      ✓ the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>()
+      ✓ the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>
     MandatoryPropertyNames
-      ✓ the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>()
+      ✓ the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>
     MandatoryProperties
-      ✓ the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>()
+      ✓ the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>
     Spread
-      ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>()
-      ✓ the<AB, Spread<A, B>>()
+      ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>
+      ✓ the<AB, Spread<A, B>>
 
   ramda
     PathFn
-      ✓ the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>()
+      ✓ the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>
       ✓ path
     PathOrFn
-      × the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>()
-      ✓ the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>()
+      × the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>
+      ✓ the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>
     MergeAllFn
-      ✓ the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>()
+      ✓ the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>
     FromPairsFn
-      ✓ the<{ a: 5, b: 2, c: 3 }, FromPairsFn<[['a', 1], ['b', 2], ['c', 3], ['a', 5]]>>()
+      ✓ the<{ a: 5, b: 2, c: 3 }, FromPairsFn<[['a', 1], ['b', 2], ['c', 3], ['a', 5]]>>
     ZipObjectFn
-      ✓ the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>()
+      ✓ the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>
     #12838
       ✓ identity
       ✓ compose + generics
@@ -337,65 +337,65 @@
 
   type
     InstanceType
-      ✓ the<MyClass, InstanceType<typeof MyClass>>()
+      ✓ the<MyClass, InstanceType<typeof MyClass>>
     Xor
-      ✓ the<never, Xor<string, number, boolean>>()
-      ✓ the<{ name: 's' }, Xor<{ name: 's' }>>()
-      ✓ the<never, Person<{ name: 's', firstname: 'f', lastname: 'l' }>>()
+      ✓ the<never, Xor<string, number, boolean>>
+      ✓ the<{ name: 's' }, Xor<{ name: 's' }>>
+      ✓ the<never, Person<{ name: 's', firstname: 'f', lastname: 'l' }>>
     Matches
-      ✓ the<'1', Matches<1, number>>()
-      ✓ the<'1', Matches<number, number>>()
-      ✓ the<'0', Matches<false, number>>()
+      ✓ the<'1', Matches<1, number>>
+      ✓ the<'1', Matches<number, number>>
+      ✓ the<'0', Matches<false, number>>
     TypesEqual
-      ✓ the<'0', TypesEqual<string, number>>()
-      ✓ the<'1', TypesEqual<string, string>>()
+      ✓ the<'0', TypesEqual<string, number>>
+      ✓ the<'1', TypesEqual<string, string>>
     InstanceOf
-      ✓ the<'1', InstanceOf<1, number>>()
-      ✓ the<'0', InstanceOf<number, number>>()
-      ✓ the<'0', InstanceOf<false, number>>()
+      ✓ the<'1', InstanceOf<1, number>>
+      ✓ the<'0', InstanceOf<number, number>>
+      ✓ the<'0', InstanceOf<false, number>>
     Awaited
-      ✓ the<1, Awaited<1>>()
-      ✓ the<1, Awaited<Promise<1>>>()
-      ✓ the<1, Awaited<Promise<Promise<1>>>>()
+      ✓ the<1, Awaited<1>>
+      ✓ the<1, Awaited<Promise<1>>>
+      ✓ the<1, Awaited<Promise<Promise<1>>>>
     Flatten
-      ✓ the<1, Flatten<1>>()
-      ✓ the<1, Flatten<[1, 1]>>()
-      × the<1, Flatten<[1, [1]]>>()
+      ✓ the<1, Flatten<1>>
+      ✓ the<1, Flatten<[1, 1]>>
+      × the<1, Flatten<[1, [1]]>>
     Widen
-      ✓ the<Widen<1>, number>()
-      ✓ the<Widen<true>, boolean>()
-      ✓ the<Widen<'s'>, string>()
+      ✓ the<Widen<1>, number>
+      ✓ the<Widen<true>, boolean>
+      ✓ the<Widen<'s'>, string>
 
   util
     UnionHasKey
-      ✓ the<'1', UnionHasKey<'a'|'b', 'b'>>()
-      ✓ the<'0', UnionHasKey<'a'|'b', 'c'>>()
-      ✓ the<'1', UnionHasKey<'a'|'b', 'a'|'b'>>()
-      ✓ the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>()
-      ✓ the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>()
-      ✓ the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>()
-      × the<'0', UnionHasKey<'a'|'b', 'toString'>>()
+      ✓ the<'1', UnionHasKey<'a'|'b', 'b'>>
+      ✓ the<'0', UnionHasKey<'a'|'b', 'c'>>
+      ✓ the<'1', UnionHasKey<'a'|'b', 'a'|'b'>>
+      ✓ the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>
+      ✓ the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>
+      ✓ the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>
+      × the<'0', UnionHasKey<'a'|'b', 'toString'>>
     UnionToObject
-      ✓ the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>()
+      ✓ the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>
     UnionContained
-      ✓ the<'1', UnionContained<never, 'a'>>()
-      ✓ the<'1', UnionContained<'a', 'a'>>()
-      ✓ the<'0', UnionContained<'b', 'a'>>()
-      ✓ the<'0', UnionContained<'a' | 'b', 'a'>>()
+      ✓ the<'1', UnionContained<never, 'a'>>
+      ✓ the<'1', UnionContained<'a', 'a'>>
+      ✓ the<'0', UnionContained<'b', 'a'>>
+      ✓ the<'0', UnionContained<'a' | 'b', 'a'>>
     UnionEmpty
-      ✓ the<'1', UnionEmpty<never>>()
-      ✓ the<'0', UnionEmpty<'a'>>()
-      ✓ the<'0', UnionEmpty<'a' | 'b'>>()
-      ✓ the<'0', UnionEmpty<'toString'>>()
-      ✓ the<'0', UnionEmpty<'toString' | 'a'>>()
+      ✓ the<'1', UnionEmpty<never>>
+      ✓ the<'0', UnionEmpty<'a'>>
+      ✓ the<'0', UnionEmpty<'a' | 'b'>>
+      ✓ the<'0', UnionEmpty<'toString'>>
+      ✓ the<'0', UnionEmpty<'toString' | 'a'>>
     UnionsOverlap
-      ✓ the<'1', UnionsOverlap<'a', 'a' | 'b'>>()
-      ✓ the<'0', UnionsOverlap<'a', 'c'>>()
+      ✓ the<'1', UnionsOverlap<'a', 'a' | 'b'>>
+      ✓ the<'0', UnionsOverlap<'a', 'c'>>
     IsUnion
-      × the<'1', IsUnion<'a' | 'b'>>()
-      × the<'0', IsUnion<'a'>>()
-      ✓ the<'0', IsUnion<never>>()
-      × the<'1', IsUnion<'a' | undefined>>()
+      × the<'1', IsUnion<'a' | 'b'>>
+      × the<'0', IsUnion<'a'>>
+      ✓ the<'0', IsUnion<never>>
+      × the<'1', IsUnion<'a' | undefined>>
 
   util
     the
@@ -410,59 +410,59 @@
       ✓ intersects
 
 
-  244 passing (47ms)
+  244 passing (44ms)
   6 pending
   23 failing
 
-  × array TupleProp the<any, TupleProp<[], 0>>():
+  × array TupleProp the<any, TupleProp<[], 0>>:
      Error: A tuple type element list cannot be empty.
   
 
-  × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>():
+  × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>:
      Error: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
-  × array Reverse the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>():
+  × array Reverse the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>:
      Error: Type 'Spread<{ length: 2; } & { "0": "a" | "b"; } & { "1": "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
   
 
-  × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>():
+  × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>:
      Error: Type 'number' does not satisfy the constraint '0'.
   
 
-  × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>():
+  × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>:
      Error: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
   
 
-  × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>():
+  × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>:
      Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
-  × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>():
+  × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>:
      Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
-  × object ObjectHasKey the<'0', ObjectHasKey<{ a: 1 }, "toString">>():
+  × object ObjectHasKey the<'0', ObjectHasKey<{ a: 1 }, "toString">>:
      Error: Type '() => string' does not satisfy the constraint '"0"'.
   
 
-  × object HasKey the<'1', HasKey<NumArr, 2>>():
+  × object HasKey the<'1', HasKey<NumArr, 2>>:
      Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
-  × object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>():
+  × object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>:
      Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
-  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'b'>>():
+  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'b'>>:
      Error: Type 'any' does not satisfy the constraint 'never'.
   
 
-  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'toString'>>():
+  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'toString'>>:
      Error: Type '() => string' does not satisfy the constraint 'never'.
   
 
-  × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>():
+  × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>:
      Error: Type 'any' does not satisfy the constraint 'never'.
   
 
@@ -470,7 +470,7 @@
      Error: Type 'number' does not satisfy the constraint 'string'.
   
 
-  × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>():
+  × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>:
      Error: Type '"oh"' does not satisfy the constraint '"e"'.
   
 
@@ -482,23 +482,23 @@
      Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'."!
   
 
-  × type Flatten the<1, Flatten<[1, [1]]>>():
+  × type Flatten the<1, Flatten<[1, [1]]>>:
      Error: Type '1 | "wat" | [1]' does not satisfy the constraint '1'.
   
 
-  × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>():
+  × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>:
      Error: Type '() => string' does not satisfy the constraint '"0"'.
   
 
-  × util IsUnion the<'1', IsUnion<'a' | 'b'>>():
+  × util IsUnion the<'1', IsUnion<'a' | 'b'>>:
      Error: Type '"0"' does not satisfy the constraint '"1"'.
   
 
-  × util IsUnion the<'0', IsUnion<'a'>>():
+  × util IsUnion the<'0', IsUnion<'a'>>:
      Error: Type '"1"' does not satisfy the constraint '"0"'.
   
 
-  × util IsUnion the<'1', IsUnion<'a' | undefined>>():
+  × util IsUnion the<'1', IsUnion<'a' | undefined>>:
      Error: Type '"a" | undefined' does not satisfy the constraint 'string'.
   
 

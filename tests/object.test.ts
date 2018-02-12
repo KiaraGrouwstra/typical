@@ -24,7 +24,7 @@ describe(`object`, () => {
 
   describe(`Keyed`, () => {
 
-    it(`the<{a:'a',b:'b'}, Keyed<{a:1,b:2}>>()`, () => {
+    it(`the<{a:'a',b:'b'}, Keyed<{a:1,b:2}>>`, () => {
       tsst(() => {
         the<{a:'a',b:'b'}, Keyed<{a:1,b:2}>>();
       }).expectToCompile();
@@ -34,7 +34,7 @@ describe(`object`, () => {
 
   describe(`KeyedSafe`, () => {
 
-    it(`the<{a:'a',b:'b'} & Obj<never>, KeyedSafe<{a:1} & {b:2}>>()`, () => {
+    it(`the<{a:'a',b:'b'} & Obj<never>, KeyedSafe<{a:1} & {b:2}>>`, () => {
       tsst(() => {
         the<{a:'a',b:'b'} & Obj<never>, KeyedSafe<{a:1} & {b:2}>>();
       }).expectToCompile();
@@ -44,37 +44,37 @@ describe(`object`, () => {
 
   describe(`ObjectHasKey`, () => {
 
-    it(`the<'1', ObjectHasKey<{a:1}, 'a'>>()`, () => {
+    it(`the<'1', ObjectHasKey<{a:1}, 'a'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKey<{a:1}, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', ObjectHasKey<{a:1}, 'b'>>()`, () => {
+    it(`the<'0', ObjectHasKey<{a:1}, 'b'>>`, () => {
       tsst(() => {
         the<'0', ObjectHasKey<{a:1}, 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>()`, () => {
+    it(`the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>`, () => {
       tsst(() => {
         the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKey<NumArr, 1>>()`, () => {
+    it(`the<'1', ObjectHasKey<NumArr, 1>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKey<NumArr, 1>>();
       }).expectToFail();
     });
 
-    it(`the<'0', ObjectHasKey<NumArr, -1>>()`, () => {
+    it(`the<'0', ObjectHasKey<NumArr, -1>>`, () => {
       tsst(() => {
         the<'0', ObjectHasKey<NumArr, -1>>();
       }).expectToFail();
     });
 
-    it(`the<'0', ObjectHasKey<{ a: 1 }, "toString">>()`, () => {
+    it(`the<'0', ObjectHasKey<{ a: 1 }, "toString">>`, () => {
       tsst(() => {
         the<'0', ObjectHasKey<{ a: 1 }, "toString">>();
       }).expectToCompile();
@@ -85,13 +85,13 @@ describe(`object`, () => {
 
   describe(`HasKey`, () => {
 
-    it(`the<'0', HasKey<any[], 2>>()`, () => {
+    it(`the<'0', HasKey<any[], 2>>`, () => {
       tsst(() => {
         the<'0', HasKey<any[], 2>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', HasKey<NumArr, 2>>()`, () => {
+    it(`the<'1', HasKey<NumArr, 2>>`, () => {
       tsst(() => {
         the<'1', HasKey<NumArr, 2>>();
       }).expectToCompile();
@@ -99,13 +99,13 @@ describe(`object`, () => {
 
     // ^ error: 0
 
-    it(`the<'0', HasKey<NumArr, 5>>()`, () => {
+    it(`the<'0', HasKey<NumArr, 5>>`, () => {
       tsst(() => {
         the<'0', HasKey<NumArr, 5>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', HasKey<{ a: 1 }, 'a'>>()`, () => {
+    it(`the<'1', HasKey<{ a: 1 }, 'a'>>`, () => {
       tsst(() => {
         the<'1', HasKey<{ a: 1 }, 'a'>>();
       }).expectToCompile();
@@ -113,7 +113,7 @@ describe(`object`, () => {
 
     // ^ error: 0
 
-    it(`the<'0', HasKey<{ a: 1 }, 'b'>>()`, () => {
+    it(`the<'0', HasKey<{ a: 1 }, 'b'>>`, () => {
       tsst(() => {
         the<'0', HasKey<{ a: 1 }, 'b'>>();
       }).expectToCompile();
@@ -123,86 +123,86 @@ describe(`object`, () => {
 
   describe(`ObjectHasKeySafe`, () => {
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>()`, () => {
+    it(`the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>`, () => {
       tsst(() => {
         the<'0', ObjectHasKeySafe<{ a: 1 }, 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1 }, 'a' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>()`, () => {
+    it(`the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>`, () => {
       tsst(() => {
         the<'0', ObjectHasKeySafe<{ a: 1, toString(): string }, 'b'>>();
       }).expectToCompile();
     });
     // error: 1 :(
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'a' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>()`, () => {
+    it(`the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>`, () => {
       tsst(() => {
         the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString'>>(); // what do I want?
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'b'>>()`, () => {
+    it(`the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'b'>>`, () => {
       tsst(() => {
         the<'0', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'b'>>(); // what do I want?
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a' | 'b'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a' | 'b'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1 }, 'toString' | 'a' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'b'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'b'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>()`, () => {
+    it(`the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>`, () => {
       tsst(() => {
         the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>();
       }).expectToCompile();
@@ -213,38 +213,38 @@ describe(`object`, () => {
   // if this works, I may need to replace string member access with this in other places...
   describe(`ObjectProp`, () => {
 
-    it(`the<1, ObjectProp<{ a: 1 }, 'a'>>()`, () => {
+    it(`the<1, ObjectProp<{ a: 1 }, 'a'>>`, () => {
       tsst(() => {
         the<1, ObjectProp<{ a: 1 }, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<never, ObjectProp<{ a: 1 }, 'b'>>()`, () => {
+    it(`the<never, ObjectProp<{ a: 1 }, 'b'>>`, () => {
       tsst(() => {
         the<never, ObjectProp<{ a: 1 }, 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<never, ObjectProp<{ a: 1 }, 'toString'>>()`, () => {
+    it(`the<never, ObjectProp<{ a: 1 }, 'toString'>>`, () => {
       tsst(() => {
         the<never, ObjectProp<{ a: 1 }, 'toString'>>();
       }).expectToCompile();
     });
 
-    it(`the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>()`, () => {
+    it(`the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>`, () => {
       tsst(() => {
         the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>()`, () => {
+    it(`the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>`, () => {
       tsst(() => {
         the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>();
       }).expectToCompile();
     });
     // error: any :(
 
-    it(`the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>()`, () => {
+    it(`the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>`, () => {
       tsst(() => {
         the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>();
       }).expectToCompile();
@@ -254,21 +254,21 @@ describe(`object`, () => {
 
   describe(`Omit`, () => {
 
-    it(`the<{ b: number, c: boolean }, Omit<Item1, "a">>()`, () => {
+    it(`the<{ b: number, c: boolean }, Omit<Item1, "a">>`, () => {
       tsst(() => {
         the<{ b: number, c: boolean }, Omit<Item1, "a">>();
       }).expectToCompile();
     });
 
 
-    it(`the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>()`, () => {
+    it(`the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>`, () => {
       tsst(() => {
         type KeyedItem1 = keyof ItemA
         the<'b'|'c'|'toString', Exclude<keyof ItemA, "a">>();
       }).expectToCompile();
     });
 
-    it(`the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>()`, () => {
+    it(`the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>`, () => {
       tsst(() => {
         the<{ b: number, c: boolean, toString(): string }, Omit<ItemA, "a">>();
       }).expectToCompile();
@@ -278,7 +278,7 @@ describe(`object`, () => {
 
   describe(`Overwrite`, () => {
 
-    it(`the<{ a: number, b: number, c: boolean }, Overwrite<Item1, Item2>>()`, () => {
+    it(`the<{ a: number, b: number, c: boolean }, Overwrite<Item1, Item2>>`, () => {
       tsst(() => {
         the<{ a: number, b: number, c: boolean }, Overwrite<Item1, Item2>>();
       }).expectToCompile();
@@ -289,7 +289,7 @@ describe(`object`, () => {
 
   describe(`IntersectionObjectKeys`, () => {
 
-    it(`the<'b', IntersectionObjectKeys<Obj1, Obj2>>()`, () => {
+    it(`the<'b', IntersectionObjectKeys<Obj1, Obj2>>`, () => {
       tsst(() => {
         the<'b', IntersectionObjectKeys<Obj1, Obj2>>();
       }).expectToCompile();
@@ -299,13 +299,13 @@ describe(`object`, () => {
 
   describe(`IntersectionObjects`, () => {
 
-    it(`the<{ b: 2 }, IntersectionObjects<Obj1, Obj2>>()`, () => {
+    it(`the<{ b: 2 }, IntersectionObjects<Obj1, Obj2>>`, () => {
       tsst(() => {
         the<{ b: 2 }, IntersectionObjects<Obj1, Obj2>>();
       }).expectToCompile();
     });
 
-    it(`the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>()`, () => {
+    it(`the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>`, () => {
       tsst(() => {
         the<{ b: 'X' }, IntersectionObjects<Obj2, Obj1>>();
       }).expectToCompile();
@@ -315,7 +315,7 @@ describe(`object`, () => {
 
   describe(`ObjectValsToUnion`, () => {
 
-    it(`the<1|2, ObjectValsToUnion<Obj1>>()`, () => {
+    it(`the<1|2, ObjectValsToUnion<Obj1>>`, () => {
       tsst(() => {
         the<1|2, ObjectValsToUnion<Obj1>>();
       }).expectToCompile();
@@ -325,7 +325,7 @@ describe(`object`, () => {
 
   describe(`Simplify`, () => {
 
-    it(`the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>()`, () => {
+    it(`the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2}, Simplify<{ a: 1 } & { b: 2}>>();
       }).expectToCompile();
@@ -335,7 +335,7 @@ describe(`object`, () => {
 
   describe(`Swap`, () => {
 
-    it(`the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>()`, () => {
+    it(`the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>`, () => {
       tsst(() => {
         the<{ b: 'a', d: 'c' }, Swap<{ a: 'b', c: 'd' }>>();
       }).expectToCompile();
@@ -345,103 +345,103 @@ describe(`object`, () => {
 
   describe(`toString experimenting`, () => {
 
-    it(`the<{ a: 1, foo: () => string, toString: () => string }, Omit<abc, "b">>()`, () => {
+    it(`the<{ a: 1, foo: () => string, toString: () => string }, Omit<abc, "b">>`, () => {
       tsst(() => {
         the<{ a: 1, foo: () => string, toString: () => string }, Omit<abc, "b">>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: () => string }, Omit<abc, "toString">>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: () => string }, Omit<abc, "toString">>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: () => string }, Omit<abc, "toString">>();
       }).expectToCompile();
     });
 
-    it(`the<abc, Simplify<abc & { "b": never }>>()`, () => {
+    it(`the<abc, Simplify<abc & { "b": never }>>`, () => {
       tsst(() => {
         the<abc, Simplify<abc & { "b": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: any, foo: () => string, toString: () => string }, Simplify<abc & { "b": any }>>()`, () => {
+    it(`the<{ a: 1, b: any, foo: () => string, toString: () => string }, Simplify<abc & { "b": any }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: any, foo: () => string, toString: () => string }, Simplify<abc & { "b": any }>>();
       }).expectToCompile();
     });
 
-    it(`the<abc, Simplify<abc & { "toString": never }>>()`, () => {
+    it(`the<abc, Simplify<abc & { "toString": never }>>`, () => {
       tsst(() => {
         the<abc, Simplify<abc & { "toString": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: () => string, toString: any }, Simplify<abc & { "toString": any }>>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: () => string, toString: any }, Simplify<abc & { "toString": any }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: () => string, toString: any }, Simplify<abc & { "toString": any }>>();
       }).expectToCompile();
     });
 
-    it(`the<abc, Simplify<abc & { "foo": never }>>()`, () => {
+    it(`the<abc, Simplify<abc & { "foo": never }>>`, () => {
       tsst(() => {
         the<abc, Simplify<abc & { "foo": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: any, toString: () => string }, Simplify<abc & { "foo": any }>>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: any, toString: () => string }, Simplify<abc & { "foo": any }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: any, toString: () => string }, Simplify<abc & { "foo": any }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: never, foo: () => string, toString: () => string }, Overwrite<abc, { "b": never }>>()`, () => {
+    it(`the<{ a: 1, b: never, foo: () => string, toString: () => string }, Overwrite<abc, { "b": never }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: never, foo: () => string, toString: () => string }, Overwrite<abc, { "b": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: any, foo: () => string, toString: () => string }, Overwrite<abc, { "b": any }>>()`, () => {
+    it(`the<{ a: 1, b: any, foo: () => string, toString: () => string }, Overwrite<abc, { "b": any }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: any, foo: () => string, toString: () => string }, Overwrite<abc, { "b": any }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: () => string }, Overwrite<abc, { "toString": never }>>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: () => string }, Overwrite<abc, { "toString": never }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: () => string }, Overwrite<abc, { "toString": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: () => string, toString: any }, Overwrite<abc, { "toString": any }>>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: () => string, toString: any }, Overwrite<abc, { "toString": any }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: () => string, toString: any }, Overwrite<abc, { "toString": any }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: never, toString: () => string }, Overwrite<abc, { "foo": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>()`, () => {
+    it(`the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>`, () => {
       tsst(() => {
         the<{ a: 1, b: 2, foo: any, toString: () => string }, Overwrite<abc, { "foo": any }>>();
       }).expectToCompile();
     });
 
-    it(`the<abc, Simplify<abc & { "toString": never }>>()`, () => {
+    it(`the<abc, Simplify<abc & { "toString": never }>>`, () => {
       tsst(() => {
         the<abc, Simplify<abc & { "toString": never }>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>()`, () => {
+    it(`the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>`, () => {
       tsst(() => {
         the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', ObjectHasStringIndex<{ a: 123 }>>()`, () => {
+    it(`the<'0', ObjectHasStringIndex<{ a: 123 }>>`, () => {
       tsst(() => {
         the<'0', ObjectHasStringIndex<{ a: 123 }>>();
       }).expectToCompile();
@@ -451,7 +451,7 @@ describe(`object`, () => {
 
   describe(`Jsonified`, () => {
 
-    it(`the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>()`, () => {
+    it(`the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>`, () => {
       tsst(() => {
         the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>();
       }).expectToCompile();
@@ -479,7 +479,7 @@ describe(`object`, () => {
 
   describe(`DeepPartial`, () => {
 
-    it(`the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>()`, () => {
+    it(`the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>`, () => {
       tsst(() => {
         let o: DeepPartial<{ a: [{ b: 1 }] }> = null! as DeepPartial<{ a: [{ b: 1 }] }>;
         if (typeof o.a === 'undefined') {} else {
@@ -497,7 +497,7 @@ describe(`object`, () => {
 
   describe(`DeepWiden`, () => {
       
-    it(`the<{ a: number }, DeepWiden<{ a: 1 }>>()`, () => {
+    it(`the<{ a: number }, DeepWiden<{ a: 1 }>>`, () => {
       tsst(() => {
         the<{ a: number }, DeepWiden<{ a: 1 }>>();
       }).expectToCompile();
@@ -552,7 +552,7 @@ describe(`object`, () => {
 
   describe(`FunctionPropertyNames`, () => {
     
-    it(`the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>()`, () => {
+    it(`the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
         the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>();
       }).expectToCompile();
@@ -562,7 +562,7 @@ describe(`object`, () => {
 
   describe(`FunctionProperties`, () => {
       
-    it(`the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>()`, () => {
+    it(`the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
         the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>();
       }).expectToCompile();
@@ -572,7 +572,7 @@ describe(`object`, () => {
 
   describe(`NonFunctionPropertyNames`, () => {
       
-    it(`the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>()`, () => {
+    it(`the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
         the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>();
       }).expectToCompile();
@@ -582,7 +582,7 @@ describe(`object`, () => {
 
   describe(`NonFunctionProperties`, () => {
       
-    it(`the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>()`, () => {
+    it(`the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
         the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>();
       }).expectToCompile();
@@ -592,7 +592,7 @@ describe(`object`, () => {
 
   describe(`MatchingPropertyNames`, () => {
       
-    it(`the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>()`, () => {
+    it(`the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
         the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
@@ -602,7 +602,7 @@ describe(`object`, () => {
 
   describe(`MatchingProperties`, () => {
       
-    it(`the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>()`, () => {
+    it(`the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
         the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
@@ -612,7 +612,7 @@ describe(`object`, () => {
 
   describe(`NonMatchingPropertyNames`, () => {
       
-    it(`the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>()`, () => {
+    it(`the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
         the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
@@ -622,7 +622,7 @@ describe(`object`, () => {
 
   describe(`NonMatchingProperties`, () => {
       
-    it(`the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>()`, () => {
+    it(`the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
         the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
@@ -632,7 +632,7 @@ describe(`object`, () => {
 
   describe(`OptionalPropertyNames`, () => {
       
-    it(`the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>()`, () => {
+    it(`the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
         the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
@@ -642,7 +642,7 @@ describe(`object`, () => {
 
   describe(`OptionalProperties`, () => {
       
-    it(`the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>()`, () => {
+    it(`the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
         the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
@@ -652,7 +652,7 @@ describe(`object`, () => {
 
   describe(`MandatoryPropertyNames`, () => {
       
-    it(`the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>()`, () => {
+    it(`the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
         the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
@@ -662,7 +662,7 @@ describe(`object`, () => {
 
   describe(`MandatoryProperties`, () => {
       
-    it(`the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>()`, () => {
+    it(`the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
         the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
@@ -672,14 +672,14 @@ describe(`object`, () => {
 
   describe(`Spread`, () => {
       
-    it(`the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>()`, () => {
+    it(`the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>`, () => {
       tsst(() => {
         the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>();
       }).expectToCompile();
     });
     // keys optional in 2nd arg: works without `strictNullChecks`
       
-    it(`the<AB, Spread<A, B>>()`, () => {
+    it(`the<AB, Spread<A, B>>`, () => {
       tsst(() => {
         type A = {
           a: boolean;

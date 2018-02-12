@@ -9,43 +9,43 @@ describe(`util`, () => {
 
   describe(`UnionHasKey`, () => {
 
-    it(`the<'1', UnionHasKey<'a'|'b', 'b'>>()`, () => {
+    it(`the<'1', UnionHasKey<'a'|'b', 'b'>>`, () => {
       tsst(() => {
         the<'1', UnionHasKey<'a'|'b', 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionHasKey<'a'|'b', 'c'>>()`, () => {
+    it(`the<'0', UnionHasKey<'a'|'b', 'c'>>`, () => {
       tsst(() => {
         the<'0', UnionHasKey<'a'|'b', 'c'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', UnionHasKey<'a'|'b', 'a'|'b'>>()`, () => {
+    it(`the<'1', UnionHasKey<'a'|'b', 'a'|'b'>>`, () => {
       tsst(() => {
         the<'1', UnionHasKey<'a'|'b', 'a'|'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>()`, () => {
+    it(`the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>`, () => {
       tsst(() => {
         the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>()`, () => {
+    it(`the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>`, () => {
       tsst(() => {
         the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>()`, () => {
+    it(`the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>`, () => {
       tsst(() => {
         the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionHasKey<'a'|'b', 'toString'>>()`, () => {
+    it(`the<'0', UnionHasKey<'a'|'b', 'toString'>>`, () => {
       tsst(() => {
         the<'0', UnionHasKey<'a'|'b', 'toString'>>();
       }).expectToCompile();
@@ -56,7 +56,7 @@ describe(`util`, () => {
 
   describe(`UnionToObject`, () => {
 
-    it(`the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>()`, () => {
+    it(`the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>`, () => {
       tsst(() => {
         the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>();
       }).expectToCompile();
@@ -66,25 +66,25 @@ describe(`util`, () => {
 
   describe(`UnionContained`, () => {
 
-    it(`the<'1', UnionContained<never, 'a'>>()`, () => {
+    it(`the<'1', UnionContained<never, 'a'>>`, () => {
       tsst(() => {
         the<'1', UnionContained<never, 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', UnionContained<'a', 'a'>>()`, () => {
+    it(`the<'1', UnionContained<'a', 'a'>>`, () => {
       tsst(() => {
         the<'1', UnionContained<'a', 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionContained<'b', 'a'>>()`, () => {
+    it(`the<'0', UnionContained<'b', 'a'>>`, () => {
       tsst(() => {
         the<'0', UnionContained<'b', 'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionContained<'a' | 'b', 'a'>>()`, () => {
+    it(`the<'0', UnionContained<'a' | 'b', 'a'>>`, () => {
       tsst(() => {
         the<'0', UnionContained<'a' | 'b', 'a'>>();
       }).expectToCompile();
@@ -94,31 +94,31 @@ describe(`util`, () => {
 
   describe(`UnionEmpty`, () => {
 
-    it(`the<'1', UnionEmpty<never>>()`, () => {
+    it(`the<'1', UnionEmpty<never>>`, () => {
       tsst(() => {
         the<'1', UnionEmpty<never>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionEmpty<'a'>>()`, () => {
+    it(`the<'0', UnionEmpty<'a'>>`, () => {
       tsst(() => {
         the<'0', UnionEmpty<'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionEmpty<'a' | 'b'>>()`, () => {
+    it(`the<'0', UnionEmpty<'a' | 'b'>>`, () => {
       tsst(() => {
         the<'0', UnionEmpty<'a' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionEmpty<'toString'>>()`, () => {
+    it(`the<'0', UnionEmpty<'toString'>>`, () => {
       tsst(() => {
         the<'0', UnionEmpty<'toString'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionEmpty<'toString' | 'a'>>()`, () => {
+    it(`the<'0', UnionEmpty<'toString' | 'a'>>`, () => {
       tsst(() => {
         the<'0', UnionEmpty<'toString' | 'a'>>();
       }).expectToCompile();
@@ -128,13 +128,13 @@ describe(`util`, () => {
 
   describe(`UnionsOverlap`, () => {
 
-    it(`the<'1', UnionsOverlap<'a', 'a' | 'b'>>()`, () => {
+    it(`the<'1', UnionsOverlap<'a', 'a' | 'b'>>`, () => {
       tsst(() => {
         the<'1', UnionsOverlap<'a', 'a' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', UnionsOverlap<'a', 'c'>>()`, () => {
+    it(`the<'0', UnionsOverlap<'a', 'c'>>`, () => {
       tsst(() => {
         the<'0', UnionsOverlap<'a', 'c'>>();
       }).expectToCompile();
@@ -144,25 +144,25 @@ describe(`util`, () => {
 
   describe(`IsUnion`, () => {
 
-    it(`the<'1', IsUnion<'a' | 'b'>>()`, () => {
+    it(`the<'1', IsUnion<'a' | 'b'>>`, () => {
       tsst(() => {
         the<'1', IsUnion<'a' | 'b'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', IsUnion<'a'>>()`, () => {
+    it(`the<'0', IsUnion<'a'>>`, () => {
       tsst(() => {
         the<'0', IsUnion<'a'>>();
       }).expectToCompile();
     });
 
-    it(`the<'0', IsUnion<never>>()`, () => {
+    it(`the<'0', IsUnion<never>>`, () => {
       tsst(() => {
         the<'0', IsUnion<never>>();
       }).expectToCompile();
     });
 
-    it(`the<'1', IsUnion<'a' | undefined>>()`, () => {
+    it(`the<'1', IsUnion<'a' | undefined>>`, () => {
       tsst(() => {
         the<'1', IsUnion<'a' | undefined>>();
       }).expectToCompile();

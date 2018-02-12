@@ -5,7 +5,7 @@ describe(`list`, () => {
 
   describe(`AppendList`, () => {
 
-    it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>()`, () => {
+    it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>();
       }).expectToCompile();
@@ -15,7 +15,7 @@ describe(`list`, () => {
 
   describe(`ConcatLists`, () => {
 
-    // it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>()`, () => {
+    // it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>`, () => {
     //   tsst(() => {
     //     the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>();
     //   }).expectToCompile();
@@ -27,7 +27,7 @@ describe(`list`, () => {
 
   describe(`LengthList`, () => {
 
-    it(`the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>()`, () => {
+    it(`the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>`, () => {
       tsst(() => {
         the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>();
       }).expectToCompile();
@@ -37,7 +37,7 @@ describe(`list`, () => {
 
   describe(`ReverseList`, () => {
 
-    it(`the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>()`, () => {
+    it(`the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>`, () => {
       tsst(() => {
         the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>();
       }).expectToCompile();
@@ -47,7 +47,7 @@ describe(`list`, () => {
 
   describe(`FirstIndex`, () => {
 
-    it(`the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>()`, () => {
+    it(`the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>`, () => {
       tsst(() => {
         the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>();
       }).expectToCompile();
@@ -57,7 +57,7 @@ describe(`list`, () => {
 
   describe(`IncIndex`, () => {
 
-    // it(`the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>()`, () => {
+    // it(`the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>`, () => {
     //   tsst(() => {
     //     the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>();
     //   }).expectToCompile();
@@ -69,7 +69,7 @@ describe(`list`, () => {
 
   describe(`DecIndex`, () => {
 
-    it(`the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>()`, () => {
+    it(`the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>();
       }).expectToCompile();
@@ -80,7 +80,7 @@ describe(`list`, () => {
 
   describe(`ZeroIndex`, () => {
 
-    it(`the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>()`, () => {
+    it(`the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>`, () => {
       tsst(() => {
         the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>();
       }).expectToCompile();
@@ -91,7 +91,7 @@ describe(`list`, () => {
 
   describe(`Prepend`, () => {
 
-    // it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>()`, () => {
+    // it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>`, () => {
     //   tsst(() => {
     //     the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>();
     //   }).expectToCompile();
@@ -102,7 +102,7 @@ describe(`list`, () => {
 
   describe(`ListTail`, () => {
 
-    it(`the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>()`, () => {
+    it(`the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>`, () => {
       tsst(() => {
         the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>();
       }).expectToCompile();
@@ -112,7 +112,7 @@ describe(`list`, () => {
 
   describe(`DifferenceLists`, () => {
 
-    it(`the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>()`, () => {
+    it(`the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>`, () => {
       tsst(() => {
         the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>();
       }).expectToCompile();
