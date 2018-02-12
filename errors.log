@@ -90,6 +90,18 @@
       ✓ the<'0', DefinitelyNo<Bool>>
       ✓ the<'1', DefinitelyNo<'0'>>
       ✓ the<'0', DefinitelyNo<'1'>>
+    IsTruthy
+      ✓ the<'1', IsTruthy<true>>
+      ✓ the<'0', IsTruthy<false>>
+      ✓ the<'1', IsTruthy<123>>
+      ✓ the<'0', IsTruthy<0>>
+      ✓ the<IsTruthy<'s' | null>, Bool>
+    IsFalsy
+      ✓ the<'0', IsFalsy<true>>
+      ✓ the<'1', IsFalsy<false>>
+      ✓ the<'0', IsFalsy<123>>
+      ✓ the<'1', IsFalsy<0>>
+      ✓ the<IsFalsy<'s' | null>, Bool>
 
   cast
     NumberToString
@@ -410,7 +422,7 @@
       ✓ intersects
 
 
-  244 passing (44ms)
+  254 passing (62ms)
   6 pending
   23 failing
 

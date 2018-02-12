@@ -1,7 +1,7 @@
 import { Obj, Bool } from './util';
 import { Matches } from './type';
 
-export type Falsy = undefined | null | 0 | '' | void | never;
+export type Falsy = undefined | null | 0 | '' | false | void | never;
 
 export type Not<T extends Bool> = { '1': '0'; '0': '1'; }[T];
 
@@ -26,5 +26,5 @@ export type DefinitelyYes<T extends Bool> = And<T, Determinate<T>>;
 
 export type DefinitelyNo<T extends Bool> = And<Not<T>, Determinate<T>>;
 
-// export type IsFalsy<V> = Matches<V, Falsy>;
-// export type IsTruthy<V> = Not<IsFalsy<V>>;
+export type IsFalsy<V> = Matches<V, Falsy>;
+export type IsTruthy<V> = Not<IsFalsy<V>>;

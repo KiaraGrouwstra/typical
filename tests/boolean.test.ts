@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
 import { Bool } from './util';
-import { Not, And, Or, Indeterminate, Determinate, DefinitelyYes, DefinitelyNo } from './boolean';
+import { Not, And, Or, Indeterminate, Determinate, DefinitelyYes, DefinitelyNo, IsTruthy, IsFalsy } from './boolean';
 import { UnionHasKey } from './union';
 
 describe(`boolean`, () => {
@@ -208,6 +208,74 @@ describe(`boolean`, () => {
     it(`the<'0', DefinitelyNo<'1'>>`, () => {
       tsst(() => {
         the<'0', DefinitelyNo<'1'>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`IsTruthy`, () => {
+
+    it(`the<'1', IsTruthy<true>>`, () => {
+      tsst(() => {
+        the<'1', IsTruthy<true>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', IsTruthy<false>>`, () => {
+      tsst(() => {
+        the<'0', IsTruthy<false>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'1', IsTruthy<123>>`, () => {
+      tsst(() => {
+        the<'1', IsTruthy<123>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', IsTruthy<0>>`, () => {
+      tsst(() => {
+        the<'0', IsTruthy<0>>();
+      }).expectToCompile();
+    });
+
+    it(`the<IsTruthy<'s' | null>, Bool>`, () => {
+      tsst(() => {
+        the<IsTruthy<'s' | null>, Bool>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`IsFalsy`, () => {
+
+    it(`the<'0', IsFalsy<true>>`, () => {
+      tsst(() => {
+        the<'0', IsFalsy<true>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'1', IsFalsy<false>>`, () => {
+      tsst(() => {
+        the<'1', IsFalsy<false>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', IsFalsy<123>>`, () => {
+      tsst(() => {
+        the<'0', IsFalsy<123>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'1', IsFalsy<0>>`, () => {
+      tsst(() => {
+        the<'1', IsFalsy<0>>();
+      }).expectToCompile();
+    });
+
+    it(`the<IsFalsy<'s' | null>, Bool>`, () => {
+      tsst(() => {
+        the<IsFalsy<'s' | null>, Bool>();
       }).expectToCompile();
     });
 
