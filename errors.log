@@ -326,6 +326,9 @@
     Spread
       ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>
       ✓ the<AB, Spread<A, B>>
+    ObjectHasElem
+      ✓ the<'1', ObjectHasElem<{ a: 1 }, 1>>
+      ✓ the<'0', ObjectHasElem<{ a: 1 }, 0>>
 
   ramda
     PathFn

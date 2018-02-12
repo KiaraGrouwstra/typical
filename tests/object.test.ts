@@ -705,6 +705,22 @@ describe(`object`, () => {
 
   });
 
+  describe(`ObjectHasElem`, () => {
+      
+    it(`the<'1', ObjectHasElem<{ a: 1 }, 1>>`, () => {
+      tsst(() => {
+        the<'1', ObjectHasElem<{ a: 1 }, 1>>();
+      }).expectToCompile();
+    });
+
+    it(`the<'0', ObjectHasElem<{ a: 1 }, 0>>`, () => {
+      tsst(() => {
+        the<'0', ObjectHasElem<{ a: 1 }, 0>>();
+      }).expectToCompile();
+    });
+
+  });
+
   // describe(``, () => {
       
   //   it(``, () => {
