@@ -118,6 +118,12 @@ describe(`type`, () => {
       }).expectToCompile();
     });
 
+    it(`the<1, Awaited<1 | Promise<1>>>`, () => {
+      tsst(() => {
+        the<1, Awaited<1 | Promise<1>>>();
+      }).expectToCompile();
+    });
+
   });
 
   describe(`Flatten`, () => {

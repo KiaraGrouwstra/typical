@@ -10,13 +10,13 @@ export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
 
 export type Awaited<T> = {
   '0': T;
-  '1': Awaited<T extends { then(onfulfilled: (value: infer U) => any): any; } ? U : 'wat'>;
+  '1': T extends { then(onfulfilled: (value: infer U) => any): any; } ? Awaited<U> : T;
 }[Matches<T, { then(onfulfilled: (value: any) => any): any; }>];
 
 // flatten a structure of nested tuples/arrays into a flat array type
 export type Flatten<T> = {
   '0': T;
-  '1': Flatten<T extends Array<infer U> ? U : 'wat'>;
+  '1': Flatten<T extends Array<infer U> ? U : T>;
 }[Matches<T, any[]>];
 
 // widen scalar types from literals to their parent types
