@@ -4,7 +4,8 @@ import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, O
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
 DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
 MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties,
-OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden } from './object';
+OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden,
+ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys } from './object';
 import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -705,6 +706,34 @@ describe(`object`, () => {
 
   });
 
+  describe(`ObjectHasNumberIndex`, () => {
+      
+    it(`the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>`, () => {
+      tsst(() => {
+        the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>();
+      }).expectToCompile();
+    });
+      
+    it(`the<'0', ObjectHasNumberIndex<['a']>>`, () => {
+      tsst(() => {
+        the<'0', ObjectHasNumberIndex<['a']>>();
+      }).expectToCompile();
+    });
+      
+    it(`the<'1', ObjectHasNumberIndex<{ [i: number]: 'a' }>>`, () => {
+      tsst(() => {
+        the<'1', ObjectHasNumberIndex<{ [i: number]: 'a' }>>();
+      }).expectToCompile();
+    });
+      
+    it(`the<'1', ObjectHasNumberIndex<'a'[]>>`, () => {
+      tsst(() => {
+        the<'1', ObjectHasNumberIndex<'a'[]>>();
+      }).expectToCompile();
+    });
+
+  });
+
   describe(`ObjectHasElem`, () => {
       
     it(`the<'1', ObjectHasElem<{ a: 1 }, 1>>`, () => {
@@ -716,6 +745,22 @@ describe(`object`, () => {
     it(`the<'0', ObjectHasElem<{ a: 1 }, 0>>`, () => {
       tsst(() => {
         the<'0', ObjectHasElem<{ a: 1 }, 0>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`ObjectNumberKeys`, () => {
+      
+    it(`the<'0'|'1', ObjectNumberKeys<['a','b']>>`, () => {
+      tsst(() => {
+        the<'0'|'1', ObjectNumberKeys<['a','b']>>();
+      }).expectToCompile();
+    });
+      
+    it(`the<'0'|'1', ObjectNumberKeys<{0:'a',1:'b',length:2}>>`, () => {
+      tsst(() => {
+        the<'0'|'1', ObjectNumberKeys<{0:'a',1:'b',length:2}>>();
       }).expectToCompile();
     });
 

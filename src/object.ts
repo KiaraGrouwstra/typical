@@ -2,7 +2,7 @@ import { If, Obj, The, Intersection } from './util';
 import { And, Not } from './boolean';
 import { UnionHasKey, UnionsOverlap } from './union';
 import { TupleHasIndex, IsArrayType } from './array';
-import { NumberToString, StringToNumber } from './cast';
+import { NumberToString, StringToNumber, NumberToNumber } from './cast';
 import { Matches, Widen } from './type';
 
 type PrototypeMethods = 'toLocaleString' | 'toString' //| 'constructor' | 'hasOwnProperty' | 'isPrototypeOf' | 'propertyIsEnumerable' | 'valueOf' | '__defineGetter__' | '__defineSetter__' | '__lookupGetter__' | '__lookupSetter__' | '__proto__';
@@ -135,12 +135,16 @@ export type DeepWidenObject<T> = {
     [P in keyof T]: DeepWiden<T[P]>;
 };
 
+export type ObjectHasNumberIndex<T> = T extends { [i: number]: any } ? '1' : '0';
+
 // check whether a heterogeneous object type contains a given type among its elements
 export type ObjectHasElem<T, E> = Matches<E, ObjectValsToUnion<T>>;
 
+// a `number` variant of `keyof`, giving a union of a tuple/object with number-like keys.
+// technically returns string literals e.g. `"3"` rather than `3` -- works for element access.
+export type ObjectNumberKeys<T> = Extract<keyof T, keyof NumberToNumber>;
+
 // types not possible yet:
-// `ObjectHasNumberIndex`: accessing it works or throws, checking presence requires `ReturnType` to pattern-match and swallow these errors
-// `ObjectNumberKeys`: a `number` variant of `keyof`. could be pulled off given union iteration (`Partial` -> iterate to filter / cast back to number literals)... but still hard to scale past natural numbers.
 // `ObjectSymbolKeys`: a `Symbol` variant of `keyof`. no clue how to go about this unless by checking a whitelisted set such as those found in standard library prototype. this feels sorta useless though.
 // `map` over heterogeneous objects: probably just needs `ReturnType`.
 // object iteration: useful for e.g. `ObjectToArray`. This could enable union iteration, or the other way around.

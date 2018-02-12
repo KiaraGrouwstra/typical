@@ -326,9 +326,17 @@
     Spread
       ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>
       ✓ the<AB, Spread<A, B>>
+    ObjectHasNumberIndex
+      × the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>
+      × the<'0', ObjectHasNumberIndex<['a']>>
+      ✓ the<'1', ObjectHasNumberIndex<{ [i: number]: 'a' }>>
+      ✓ the<'1', ObjectHasNumberIndex<'a'[]>>
     ObjectHasElem
       ✓ the<'1', ObjectHasElem<{ a: 1 }, 1>>
       ✓ the<'0', ObjectHasElem<{ a: 1 }, 0>>
+    ObjectNumberKeys
+      ✓ the<'0'|'1', ObjectNumberKeys<['a','b']>>
+      ✓ the<'0'|'1', ObjectNumberKeys<{0:'a',1:'b',length:2}>>
 
   ramda
     PathFn
@@ -427,9 +435,9 @@
       ✓ intersects
 
 
-  254 passing (62ms)
+  261 passing (63ms)
   6 pending
-  23 failing
+  25 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>:
      Error: A tuple type element list cannot be empty.
@@ -485,6 +493,14 @@
 
   × object IntersectValueOf IntersectValueOf:
      Error: Type 'number' does not satisfy the constraint 'string'.
+  
+
+  × object ObjectHasNumberIndex the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>:
+     Error: Type '"1"' does not satisfy the constraint '"0"'.
+  
+
+  × object ObjectHasNumberIndex the<'0', ObjectHasNumberIndex<['a']>>:
+     Error: Type '"1"' does not satisfy the constraint '"0"'.
   
 
   × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>:
