@@ -391,6 +391,8 @@
       ✓ the<Widen<1>, number>
       ✓ the<Widen<true>, boolean>
       ✓ the<Widen<'s'>, string>
+    DiscriminateUnion
+      ✓ the<Rectangle, DiscriminateShape<'rectangle'>>
 
   util
     UnionHasKey
@@ -436,7 +438,7 @@
       ✓ intersects
 
 
-  261 passing (61ms)
+  262 passing (59ms)
   6 pending
   26 failing
 

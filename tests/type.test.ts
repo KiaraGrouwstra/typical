@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen } from './type';
+import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen, DiscriminateUnion } from './type';
 
 describe(`type`, () => {
 
@@ -165,6 +165,31 @@ describe(`type`, () => {
     it(`the<Widen<'s'>, string>`, () => {
       tsst(() => {
         the<Widen<'s'>, string>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DiscriminateUnion`, () => {
+
+    it(`the<Rectangle, DiscriminateShape<'rectangle'>>`, () => {
+      tsst(() => {
+        interface Square {
+            kind: "square";
+            size: number;
+        }
+        interface Rectangle {
+            kind: "rectangle";
+            width: number;
+            height: number;
+        }
+        interface Circle {
+            kind: "circle";
+            radius: number;
+        }
+        type Shape = Square | Rectangle | Circle;
+        type DiscriminateShape<V extends Shape['kind']> = DiscriminateUnion<Shape, 'kind', V>;
+        the<Rectangle, DiscriminateShape<'rectangle'>>();
       }).expectToCompile();
     });
 
