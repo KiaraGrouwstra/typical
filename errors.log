@@ -293,6 +293,8 @@
       ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>
     DeepWiden
       ✓ the<{ a: number }, DeepWiden<{ a: 1 }>>
+    DeepAssert
+      ✓ the<{ a: 1 }, DeepAssert<{ a: 1|null }>>
     DeepReadonly
       ✓ still allows reading
       ✓ disallows writing - layer 0

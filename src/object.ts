@@ -135,6 +135,16 @@ export type DeepWidenObject<T> = {
     [P in keyof T]: DeepWiden<T[P]>;
 };
 
+// strip null/undefined from a type and all its (sub) properties
+export type DeepAssert<T> =
+    T extends any[] ? DeepAssertArray<T[number]> :
+    T extends object ? DeepAssertObject<T> :
+    NonNullable<T>;
+export interface DeepAssertArray<T> extends Array<DeepAssert<T>> {}
+export type DeepAssertObject<T> = {
+    [P in keyof T]: DeepAssert<T[P]>;
+};
+
 export type ObjectHasNumberIndex<T> = T extends { [i: number]: any } ? '1' : '0';
 
 // check whether a heterogeneous object type contains a given type among its elements

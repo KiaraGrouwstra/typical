@@ -4,7 +4,7 @@ import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, O
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
 DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
 MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties,
-OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden,
+OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden, DeepAssert,
 ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys } from './object';
 import { NumArr, Part } from './fixtures';
 
@@ -501,6 +501,16 @@ describe(`object`, () => {
     it(`the<{ a: number }, DeepWiden<{ a: 1 }>>`, () => {
       tsst(() => {
         the<{ a: number }, DeepWiden<{ a: 1 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DeepAssert`, () => {
+      
+    it(`the<{ a: 1 }, DeepAssert<{ a: 1|null }>>`, () => {
+      tsst(() => {
+        the<{ a: 1 }, DeepAssert<{ a: 1|null }>>();
       }).expectToCompile();
     });
 
