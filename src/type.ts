@@ -8,6 +8,8 @@ export type Matches<V, T> = V extends T ? '1' : '0';
 export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
 export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
 
+export type Const<A, B> = A;
+
 export type Awaited<T> = {
   '1': T extends { then(onfulfilled: (value: infer U) => any): any; } ? Awaited<U> : T;
 }[T extends number ? '1' : '1'];
