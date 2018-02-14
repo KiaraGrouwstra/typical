@@ -360,6 +360,26 @@
       × compose + generics: concrete type last
       × pipe + generics: concrete type last
 
+  stdlib
+    InstanceType
+      ✓ the<string, InstanceType<new () => string>>
+    ReturnType
+      ✓ the<string, ReturnType<() => string>>
+    NonNullable
+      ✓ the<1, NonNullable<1 | null>>
+    Extract
+      ✓ the<2|3, Extract<1|2|3, 2|3|4>>
+    Exclude
+      ✓ the<1|2, Exclude<1|2|3, 3|4>>
+    Record
+      ✓ the<{ a: 1, b: 1 }, Record<'a' | 'b', 1>>
+    Pick
+      ✓ the<{ a: 1 }, Pick<{ a: 1, b: 2 }, 'a'>>
+    Readonly
+      ✓ the<{ readonly a: 1 }, Readonly<{ a: 1 }>>
+    Partial
+      ✓ the<{ a?: 1, b?: 2 }, Partial<{ a: 1, b: 2 }>>
+
   type
     InstanceType
       ✓ the<MyClass, InstanceType<typeof MyClass>>
