@@ -51,6 +51,9 @@
       ✓ the<'a', FirstElem<TestArr>>
     TupleFirstIndex
       × the<0, TupleFirstIndex<TestArr>>
+    IsTuple
+      ✓ the<'1', IsTuple<[0]>>
+      ✓ the<'0', IsTuple<string[]>>
 
   boolean
     Not

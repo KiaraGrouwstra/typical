@@ -1,10 +1,10 @@
 import { The, Obj, NumObj, List } from './util';
 import { Inc, Dec, Add, Subtract } from './number';
 import { NumbersEqual } from './comp';
-import { DefinitelyYes } from './boolean';
+import { And, DefinitelyYes } from './boolean';
 import { ObjectHasKey, Spread } from './object';
 import { NumberToString, StringToNumber } from './cast';
-import { Matches } from './type';
+import { Matches, InstanceOf } from './type';
 
 export type Vector<T, N extends number, I extends number = 0, Acc = { length: N }> =
   { 1: Acc, 0: Vector<T, N, Inc[I], Acc & { [P in NumberToString[I]]: T }> }[NumbersEqual<I, N>];
@@ -28,6 +28,8 @@ export type TupleHasIndex<
 // // check whether a tuple type contains a given type among its elements. This could be done given `TypesEq` (#6606)
 
 export type IsArrayType<T> = Matches<T, any[]>;
+
+export type IsTuple<T extends { length: number }> = And<IsArrayType<T>, InstanceOf<T['length'], number>>;
 
 // parallel to lists with known length
 
