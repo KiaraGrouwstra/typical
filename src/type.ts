@@ -9,15 +9,13 @@ export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
 export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
 
 export type Awaited<T> = {
-  '0': T;
   '1': T extends { then(onfulfilled: (value: infer U) => any): any; } ? Awaited<U> : T;
-}[Matches<T, { then(onfulfilled: (value: any) => any): any; }>];
+}[T extends number ? '1' : '1'];
 
 // flatten a structure of nested tuples/arrays into a flat array type
 export type Flatten<T> = {
-  '0': T;
   '1': Flatten<T extends Array<infer U> ? U : T>;
-}[Matches<T, any[]>];
+}[T extends number ? '1' : '1'];
 
 // widen scalar types from literals to their parent types
 export type Widen<T> =

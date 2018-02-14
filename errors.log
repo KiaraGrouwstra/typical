@@ -407,11 +407,11 @@
       ✓ the<1, Awaited<1>>
       ✓ the<1, Awaited<Promise<1>>>
       ✓ the<1, Awaited<Promise<Promise<1>>>>
-      × the<1, Awaited<1 | Promise<1>>>
+      ✓ the<1, Awaited<1 | Promise<1>>>
     Flatten
       ✓ the<1, Flatten<1>>
       ✓ the<1, Flatten<[1, 1]>>
-      × the<1, Flatten<[1, [1]]>>
+      ✓ the<1, Flatten<[1, [1]]>>
     Widen
       ✓ the<Widen<1>, number>
       ✓ the<Widen<true>, boolean>
@@ -463,9 +463,9 @@
       ✓ intersects
 
 
-  262 passing (59ms)
+  276 passing (63ms)
   6 pending
-  26 failing
+  24 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>:
      Error: A tuple type element list cannot be empty.
@@ -541,14 +541,6 @@
 
   × ramda #12838 pipe + generics: concrete type last:
      Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'."!
-  
-
-  × type Awaited the<1, Awaited<1 | Promise<1>>>:
-     Error: Type '1 | Promise<1>' does not satisfy the constraint '1'.
-  
-
-  × type Flatten the<1, Flatten<[1, [1]]>>:
-     Error: Type '1 | [1]' does not satisfy the constraint '1'.
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>:
