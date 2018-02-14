@@ -1,18 +1,7 @@
 import { tsst, the } from 'tsst-tycho';
-import { isT, InstanceType, Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen, DiscriminateUnion, Const } from './type';
+import { Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen, DiscriminateUnion, Const } from './type';
 
 describe(`type`, () => {
-
-  describe(`InstanceType`, () => {
-
-    it(`the<MyClass, InstanceType<typeof MyClass>>`, () => {
-      tsst(() => {
-        class MyClass {}
-        the<MyClass, InstanceType<typeof MyClass>>();
-      }).expectToCompile();
-    });
-
-  });
 
   describe(`Xor`, () => {
 

@@ -368,6 +368,7 @@
   stdlib
     InstanceType
       ✓ the<string, InstanceType<new () => string>>
+      ✓ the<MyClass, InstanceType<typeof MyClass>>
     ReturnType
       ✓ the<string, ReturnType<() => string>>
     NonNullable
@@ -386,8 +387,6 @@
       ✓ the<{ a?: 1, b?: 2 }, Partial<{ a: 1, b: 2 }>>
 
   type
-    InstanceType
-      ✓ the<MyClass, InstanceType<typeof MyClass>>
     Xor
       ✓ the<never, Xor<string, number, boolean>>
       ✓ the<{ name: 's' }, Xor<{ name: 's' }>>
@@ -465,7 +464,7 @@
       ✓ intersects
 
 
-  277 passing (69ms)
+  277 passing (72ms)
   6 pending
   24 failing
 

@@ -67,11 +67,20 @@ describe(`stdlib`, () => {
   }
 
   describe(`InstanceType`, () => {
+
     it(`the<string, InstanceType<new () => string>>`, () => {
       tsst(() => {
         the<string, InstanceType<new () => string>>();
       }).expectToCompile();
     });
+ 
+    it(`the<MyClass, InstanceType<typeof MyClass>>`, () => {
+      tsst(() => {
+        class MyClass {}
+        the<MyClass, InstanceType<typeof MyClass>>();
+      }).expectToCompile();
+    });
+
   }
 
   // describe(``, () => {

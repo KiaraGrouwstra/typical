@@ -1,15 +1,19 @@
 import { And, Not } from './boolean';
 
-export type InstanceType<T> = T extends new (...args: any[]) => infer U ? U : never;
-
+// obtain the disjoint union of two types, yielding never for types satisfying neither/both
 export type Xor<T, A, B> = T extends A ? (T extends B ? never : T) : (T extends B ? T : never);
 
+// check a type (<=)
 export type Matches<V, T> = V extends T ? '1' : '0';
+// check a type (=)
 export type TypesEqual<A, B> = And<Matches<A, B>, Matches<B, A>>;
+// check a type (<)
 export type InstanceOf<V, T> = And<Matches<V, T>, Not<Matches<T, V>>>;
 
+// return the first of two types
 export type Const<A, B> = A;
 
+// unwrap a Promise to obtain its return value
 export type Awaited<T> = {
   '1': T extends { then(onfulfilled: (value: infer U) => any): any; } ? Awaited<U> : T;
 }[T extends number ? '1' : '1'];
