@@ -129,7 +129,7 @@ export type DeepReadonlyObject<T> = {
 export type DeepWiden<T> =
     T extends any[] ? DeepWidenArray<T[number]> :
     T extends object ? DeepWidenObject<T> :
-    T;
+    Widen<T>;
 export interface DeepWidenArray<T> extends Array<DeepWiden<T>> {}
 export type DeepWidenObject<T> = {
     [P in keyof T]: DeepWiden<T[P]>;
