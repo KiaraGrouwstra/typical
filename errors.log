@@ -288,6 +288,8 @@
       ✓ the<abc, Simplify<abc & { "toString": never }>>
       ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>
       ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>
+    StripIndex
+      × the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>
     Jsonified
       ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>
     IntersectValueOf
@@ -304,6 +306,10 @@
       ✓ disallows writing - layer 1
       ✓ disallows writing - layer 2
       ✓ strips out methods
+    LiteralPropertyNames
+      × the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>
+    LiteralProperties
+      × the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>
     FunctionPropertyNames
       ✓ the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>
     FunctionProperties
@@ -464,9 +470,9 @@
       ✓ intersects
 
 
-  277 passing (72ms)
+  277 passing (64ms)
   6 pending
-  24 failing
+  27 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>:
      Error: A tuple type element list cannot be empty.
@@ -520,8 +526,20 @@
      Error: Type 'any' does not satisfy the constraint 'never'.
   
 
+  × object StripIndex the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>:
+     Error: Type '{ a: 1; }' does not satisfy the constraint 'StripIndex<{ [k: string]: number; a: 1; }>'.
+  
+
   × object IntersectValueOf IntersectValueOf:
      Error: Type 'number' does not satisfy the constraint 'string'.
+  
+
+  × object LiteralPropertyNames the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>:
+     Error: Type 'string' does not satisfy the constraint '"a"'.
+  
+
+  × object LiteralProperties the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>:
+     Error: Type 'Pick<{ [k: string]: number; a: 1; }, any>' does not satisfy the constraint '{ a: 1; }'.
   
 
   × object ObjectHasNumberIndex the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>:

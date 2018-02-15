@@ -63,6 +63,8 @@ export type Swap<
 
 export type ObjectHasStringIndex<O extends {}> = ({ 0: '0'; } & { [k: string]: '1'; })[Matches<string, keyof O>];
 
+export type StripIndex<T> = { [P in keyof T]: string extends P ? never : T[P] };
+
 // #21838
 export type JsonifiedObject<T extends object> = { [K in keyof T]: Jsonified<T[K]> };
 export type Jsonified<T> =
@@ -85,6 +87,9 @@ export interface DeepPartialArray<T> extends Array<DeepPartial<T>> {};
 export type DeepPartialObject<T> = {
     [P in keyof T]?: DeepPartial<T[P]>;
 };
+
+export type LiteralPropertyNames<T> = { [K in keyof T]: string extends T[K] ? never : K }[keyof T];
+export type LiteralProperties<T> = Pick<T, LiteralPropertyNames<T, X>>;
 
 export type MatchingPropertyNames<T, X> = { [K in keyof T]: T[K] extends X ? K : never }[keyof T];
 export type MatchingProperties<T, X> = Pick<T, MatchingPropertyNames<T, X>>;

@@ -3,9 +3,9 @@ import { Obj, List } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
 DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
-MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties,
+MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties, StripIndex,
 OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden, DeepAssert,
-ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys } from './object';
+ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys, LiteralPropertyNames, LiteralProperties } from './object';
 import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -450,6 +450,16 @@ describe(`object`, () => {
 
   });
 
+  describe(`StripIndex`, () => {
+
+    it(`the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>`, () => {
+      tsst(() => {
+        the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>();
+      }).expectToCompile();
+    });
+
+  });
+
   describe(`Jsonified`, () => {
 
     it(`the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>`, () => {
@@ -557,6 +567,26 @@ describe(`object`, () => {
           part.updatePart("hello");
         }
       }).expectToFailWith('does not exist');
+    });
+
+  });
+
+  describe(`LiteralPropertyNames`, () => {
+    
+    it(`the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>`, () => {
+      tsst(() => {
+        the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`LiteralProperties`, () => {
+      
+    it(`the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>`, () => {
+      tsst(() => {
+        the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>();
+      }).expectToCompile();
     });
 
   });
