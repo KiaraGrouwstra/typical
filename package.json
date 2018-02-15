@@ -12,12 +12,11 @@
   },
   "author": "Tycho Grouwstra",
   "license": "MIT",
-  "dependencies": {
-    "typescript": "^2.8.0-dev.20180210"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/mocha": "^2.2.41",
     "mocha": "^3.5.0",
-    "tsst-tycho": "^0.3.9"
+    "tsst-tycho": "^0.3.9",
+    "typescript": "^2.8.0-dev.20180213"
   }
 }
