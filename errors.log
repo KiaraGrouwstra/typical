@@ -494,6 +494,8 @@
 
   × array Reverse the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>:
      Error: Type 'Spread<{ length: 2; } & { "0": "a" | "b"; } & { "1": "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+Types of property '0' are incompatible.
+Type '"a" | "b"' is not assignable to type '"b"'.
   
 
   × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>:
@@ -502,6 +504,8 @@
 
   × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>:
      Error: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+Types of property '0' are incompatible.
+Type '"a" | "b"' is not assignable to type '"b"'.
   
 
   × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>:
@@ -538,6 +542,7 @@
 
   × object StripIndex the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>:
      Error: Type '{ a: 1; }' does not satisfy the constraint 'StripIndex<{ [k: string]: number; a: 1; }>'.
+Property 'a' is incompatible with index signature.
   
 
   × object IntersectValueOf IntersectValueOf:
@@ -577,11 +582,13 @@
   
 
   × ramda #12838 compose + generics: concrete type last:
-     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'."!
+     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'.
+Types of parameters 'n' and 'x' are incompatible."!
   
 
   × ramda #12838 pipe + generics: concrete type last:
-     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'."!
+     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'.
+Types of parameters 'n' and 'x' are incompatible."!
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>:
