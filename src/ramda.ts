@@ -1,9 +1,11 @@
 import { tsst, the } from 'tsst-tycho';
 import { If, List, Obj } from './util';
 import { StringToNumber } from './cast';
-import { TupleHasIndex } from './array';
+import { TupleHasIndex } from './array'; //, ListFrom
 import { Spread, HasKey } from './object';
 import { Inc } from './number';
+import { Arguments, Fn } from './function';
+import { ReverseList } from './index';
 
 // Ramda functions listed in #12512 redone with iteration:
 export type PathFn<T extends { [k: string]: any }, R extends Array<string>, I extends string = '0'> =
@@ -89,3 +91,10 @@ export type ZipObjectFn<R extends List<string>, R2 extends List<any>, I extends 
 //     ): (this: any, ...rest: Left) => R;
 //     // ^ `R` alt. to calc return type based on input (needs #6606): `F(this: T, ...[...Args, ...Left])`
 // }
+
+// type Pipe<Fs extends List<(...args: any[]) => any>, F = Fs[0], Args = Arguments<F>> = Fn<Args, ApplyFns<ListFrom<Fs, 1>, F(...Args)>>;
+// // ^ todo: use generics so as to plug in not the static `Args` but base return value on the actual input types
+// type ApplyFns<Fs extends List<(...args: any[]) => any>, V> = {
+//   '1': Fs['length'] extends 0 ? V : ApplyFns<ListFrom<Fs, 1>, Fs[0](V)>
+// }[V extends number ? '1' : '1'];
+// type Compose<Fs extends List<(...args: any[]) => any>> = Pipe<ReverseList<Fs>>;
