@@ -17,6 +17,6 @@
     "@types/mocha": "^2.2.41",
     "mocha": "^3.5.0",
     "tsst-tycho": "^0.3.9",
-    "typescript": "^2.8.0-dev.20180213"
+    "typescript": "^2.8.0-dev.20180214"
   }
 }

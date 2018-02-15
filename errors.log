@@ -327,11 +327,11 @@
     NonMatchingProperties
       ✓ the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>
     OptionalPropertyNames
-      ✓ the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>
+      × the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>
     OptionalProperties
       ✓ the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>
     MandatoryPropertyNames
-      ✓ the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>
+      × the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>
     MandatoryProperties
       ✓ the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>
     Spread
@@ -470,9 +470,9 @@
       ✓ intersects
 
 
-  277 passing (64ms)
+  275 passing (65ms)
   6 pending
-  27 failing
+  29 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>:
      Error: A tuple type element list cannot be empty.
@@ -540,6 +540,14 @@
 
   × object LiteralProperties the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>:
      Error: Type 'Pick<{ [k: string]: number; a: 1; }, any>' does not satisfy the constraint '{ a: 1; }'.
+  
+
+  × object OptionalPropertyNames the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>:
+     Error: Type '"a" | undefined' does not satisfy the constraint '"a"'.
+  
+
+  × object MandatoryPropertyNames the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>:
+     Error: Type '"b" | undefined' does not satisfy the constraint '"b"'.
   
 
   × object ObjectHasNumberIndex the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>:
