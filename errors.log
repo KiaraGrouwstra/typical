@@ -375,6 +375,8 @@
     InstanceType
       ✓ the<string, InstanceType<new () => string>>
       ✓ the<MyClass, InstanceType<typeof MyClass>>
+      Required
+        ✓ the<{ a: 1 }, Required<{ a?: 1 }>>
     ReturnType
       ✓ the<string, ReturnType<() => string>>
     NonNullable

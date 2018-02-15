@@ -81,6 +81,14 @@ describe(`stdlib`, () => {
       }).expectToCompile();
     });
 
+    describe(`Required`, () => {
+      it(`the<{ a: 1 }, Required<{ a?: 1 }>>`, () => {
+        tsst(() => {
+          the<{ a: 1 }, Required<{ a?: 1 }>>();
+        }).expectToCompile();
+      });
+    }
+
   }
 
   // describe(``, () => {
