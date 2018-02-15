@@ -314,34 +314,34 @@
       ✓ disallows writing - layer 1
       ✓ disallows writing - layer 2
       ✓ strips out methods
-    LiteralPropertyNames
-      × the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>
-    LiteralProperties
-      × the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>
-    FunctionPropertyNames
-      ✓ the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>
-    FunctionProperties
-      ✓ the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>
-    NonFunctionPropertyNames
-      ✓ the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>
-    NonFunctionProperties
-      ✓ the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>
-    MatchingPropertyNames
-      ✓ the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>
-    MatchingProperties
-      ✓ the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>
-    NonMatchingPropertyNames
-      ✓ the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>
-    NonMatchingProperties
-      ✓ the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>
-    OptionalPropertyNames
-      × the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>
-    OptionalProperties
-      ✓ the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>
-    MandatoryPropertyNames
-      × the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>
-    MandatoryProperties
-      ✓ the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>
+    LiteralPropNames
+      × the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>
+    LiteralProps
+      × the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>
+    FunctionPropNames
+      ✓ the<'f', FunctionPropNames<{ a: 1, f: () => void }>>
+    FunctionProps
+      ✓ the<{ f: () => void }, FunctionProps<{ a: 1, f: () => void }>>
+    NonFunctionPropNames
+      ✓ the<'a', NonFunctionPropNames<{ a: 1, f: () => void }>>
+    NonFunctionProps
+      ✓ the<{ a: 1 }, NonFunctionProps<{ a: 1, f: () => void }>>
+    MatchingPropNames
+      ✓ the<'f', MatchingPropNames<{ a: 1, f: true }, boolean>>
+    MatchingProps
+      ✓ the<{ f: true }, MatchingProps<{ a: 1, f: true }, boolean>>
+    NonMatchingPropNames
+      ✓ the<'a', NonMatchingPropNames<{ a: 1, f: true }, boolean>>
+    NonMatchingProps
+      ✓ the<{ a: 1 }, NonMatchingProps<{ a: 1, f: true }, boolean>>
+    OptionalPropNames
+      × the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>
+    OptionalProps
+      ✓ the<{ a?: 1 }, OptionalProps<{ a?: 1, b: 2 }>>
+    RequiredPropNames
+      × the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>
+    RequiredProps
+      ✓ the<{ b: 2 }, RequiredProps<{ a?: 1, b: 2 }>>
     Spread
       ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>
       ✓ the<AB, Spread<A, B>>
@@ -480,7 +480,7 @@
       ✓ intersects
 
 
-  279 passing (74ms)
+  279 passing (64ms)
   6 pending
   30 failing
 
@@ -548,19 +548,19 @@
      Error: Type 'DeepRequired' is not generic.
   
 
-  × object LiteralPropertyNames the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>:
+  × object LiteralPropNames the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>:
      Error: Type 'string' does not satisfy the constraint '"a"'.
   
 
-  × object LiteralProperties the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>:
+  × object LiteralProps the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>:
      Error: Type 'Pick<{ [k: string]: number; a: 1; }, any>' does not satisfy the constraint '{ a: 1; }'.
   
 
-  × object OptionalPropertyNames the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>:
+  × object OptionalPropNames the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>:
      Error: Type '"a" | undefined' does not satisfy the constraint '"a"'.
   
 
-  × object MandatoryPropertyNames the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>:
+  × object RequiredPropNames the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>:
      Error: Type '"b" | undefined' does not satisfy the constraint '"b"'.
   
 

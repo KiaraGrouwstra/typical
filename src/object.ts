@@ -88,37 +88,37 @@ export type DeepPartialObject<T> = {
     [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-export type LiteralPropertyNames<T> = { [K in keyof T]: string extends T[K] ? never : K }[keyof T];
-export type LiteralProperties<T> = Pick<T, LiteralPropertyNames<T, X>>;
+export type LiteralPropNames<T> = { [K in keyof T]: string extends T[K] ? never : K }[keyof T];
+export type LiteralProps<T> = Pick<T, LiteralPropNames<T, X>>;
 
-export type MatchingPropertyNames<T, X> = { [K in keyof T]: T[K] extends X ? K : never }[keyof T];
-export type MatchingProperties<T, X> = Pick<T, MatchingPropertyNames<T, X>>;
-export type NonMatchingPropertyNames<T, X> = { [K in keyof T]: T[K] extends X ? never : K }[keyof T];
-export type NonMatchingProperties<T, X> = Pick<T, NonMatchingPropertyNames<T, X>>;
+export type MatchingPropNames<T, X> = { [K in keyof T]: T[K] extends X ? K : never }[keyof T];
+export type MatchingProps<T, X> = Pick<T, MatchingPropNames<T, X>>;
+export type NonMatchingPropNames<T, X> = { [K in keyof T]: T[K] extends X ? never : K }[keyof T];
+export type NonMatchingProps<T, X> = Pick<T, NonMatchingPropNames<T, X>>;
 
-export type FunctionPropertyNames<T> = MatchingPropertyNames<T, Function>;
-export type FunctionProperties<T> = MatchingProperties<T, Function>;
-export type NonFunctionPropertyNames<T> = NonMatchingPropertyNames<T, Function>;
-export type NonFunctionProperties<T> = NonMatchingProperties<T, Function>;
+export type FunctionPropNames<T> = MatchingPropNames<T, Function>;
+export type FunctionProps<T> = MatchingProps<T, Function>;
+export type NonFunctionPropNames<T> = NonMatchingPropNames<T, Function>;
+export type NonFunctionProps<T> = NonMatchingProps<T, Function>;
 
 // Names of properties in T with types that include undefined
-export type OptionalPropertyNames<T> = { [K in keyof T]: undefined extends T[K] ? K : never }[keyof T];
-export type OptionalProperties<T> = Pick<T, OptionalPropertyNames<T>>;
-export type MandatoryPropertyNames<T> = { [K in keyof T]: undefined extends T[K] ? never : K }[keyof T];
-export type MandatoryProperties<T> = Pick<T, MandatoryPropertyNames<T>>;
+export type OptionalPropNames<T> = { [K in keyof T]: undefined extends T[K] ? K : never }[keyof T];
+export type OptionalProps<T> = Pick<T, OptionalPropNames<T>>;
+export type RequiredPropNames<T> = { [K in keyof T]: undefined extends T[K] ? never : K }[keyof T];
+export type RequiredProps<T> = Pick<T, RequiredPropNames<T>>;
 
 // Type of { ...L, ...R } / Object.assign(L, R)
 export type Spread<L, R> =
-    // Properties in L that don't exist in R
+    // properties in L that don't exist in R
       Pick<L, Exclude<keyof L, keyof R>>
-    // Properties in R with types that exclude undefined
-    & Pick<R, Exclude<keyof R, OptionalPropertyNames<R>>>
-    // Properties in R, with types that include undefined, that don't exist in L
-    & Pick<R, Exclude<OptionalPropertyNames<R>, keyof L>>
-    // Properties in R, with types that include undefined, that exist in L
-    & SpreadProperties<L, R, OptionalPropertyNames<R> & keyof L>;
+    // properties in R with types that exclude undefined
+    & Pick<R, Exclude<keyof R, OptionalPropNames<R>>>
+    // properties in R, with types that include undefined, that don't exist in L
+    & Pick<R, Exclude<OptionalPropNames<R>, keyof L>>
+    // properties in R, with types that include undefined, that exist in L
+    & SpreadProps<L, R, OptionalPropNames<R> & keyof L>;
 // Common properties from L and R with undefined in R[K] replaced by type in L[K]
-export type SpreadProperties<L, R, K extends keyof L & keyof R> = { [P in K]: L[P] | Exclude<R[P], undefined> };
+export type SpreadProps<L, R, K extends keyof L & keyof R> = { [P in K]: L[P] | Exclude<R[P], undefined> };
 
 // mark a type and all its (sub) properties as read-only
 export type DeepReadonly<T> =
@@ -127,7 +127,7 @@ export type DeepReadonly<T> =
     T;
 export interface DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
 export type DeepReadonlyObject<T> = {
-    +readonly [P in NonFunctionPropertyNames<T>]: DeepReadonly<T[P]>;
+    +readonly [P in NonFunctionPropNames<T>]: DeepReadonly<T[P]>;
 };
 
 export type Mutable<T> = { -readonly [P in keyof T]: T[P] };  // Remove readonly
@@ -139,7 +139,7 @@ export type DeepMutable<T> =
     T;
 export interface DeepMutableArray<T> extends MutableArray<DeepMutable<T>> {}
 export type DeepMutableObject<T> = {
-    -readonly [P in NonFunctionPropertyNames<T>]: DeepMutable<T[P]>;
+    -readonly [P in NonFunctionPropNames<T>]: DeepMutable<T[P]>;
 };
 
 // widen a type and all its (sub) properties

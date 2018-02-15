@@ -2,10 +2,10 @@ import { tsst, the } from 'tsst-tycho';
 import { Obj, List } from './util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
-DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
-MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties, StripIndex,
-OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden, DeepAssert,
-ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys, LiteralPropertyNames, LiteralProperties, DeepRequired, Mutable,
+DeepPartial, DeepReadonly, FunctionPropNames, FunctionProps, NonFunctionPropNames, NonFunctionProps,
+MatchingPropNames, MatchingProps, NonMatchingPropNames, NonMatchingProps, StripIndex,
+OptionalPropNames, OptionalProps, RequiredPropNames, RequiredProps, Spread, DeepWiden, DeepAssert,
+ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys, LiteralPropNames, LiteralProps, DeepRequired, Mutable,
 DeepMutable } from './object';
 import { NumArr, Part } from './fixtures';
 
@@ -612,141 +612,141 @@ describe(`object`, () => {
 
   });
 
-  describe(`LiteralPropertyNames`, () => {
+  describe(`LiteralPropNames`, () => {
     
-    it(`the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>`, () => {
+    it(`the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>`, () => {
       tsst(() => {
-        the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>();
+        the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`LiteralProperties`, () => {
+  describe(`LiteralProps`, () => {
       
-    it(`the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>`, () => {
+    it(`the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>`, () => {
       tsst(() => {
-        the<{ a: 1 }, LiteralProperties<{ a: 1, [k: string]: number }>>();
+        the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`FunctionPropertyNames`, () => {
+  describe(`FunctionPropNames`, () => {
     
-    it(`the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>`, () => {
+    it(`the<'f', FunctionPropNames<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
-        the<'f', FunctionPropertyNames<{ a: 1, f: () => void }>>();
+        the<'f', FunctionPropNames<{ a: 1, f: () => void }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`FunctionProperties`, () => {
+  describe(`FunctionProps`, () => {
       
-    it(`the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>`, () => {
+    it(`the<{ f: () => void }, FunctionProps<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
-        the<{ f: () => void }, FunctionProperties<{ a: 1, f: () => void }>>();
+        the<{ f: () => void }, FunctionProps<{ a: 1, f: () => void }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`NonFunctionPropertyNames`, () => {
+  describe(`NonFunctionPropNames`, () => {
       
-    it(`the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>`, () => {
+    it(`the<'a', NonFunctionPropNames<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
-        the<'a', NonFunctionPropertyNames<{ a: 1, f: () => void }>>();
+        the<'a', NonFunctionPropNames<{ a: 1, f: () => void }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`NonFunctionProperties`, () => {
+  describe(`NonFunctionProps`, () => {
       
-    it(`the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>`, () => {
+    it(`the<{ a: 1 }, NonFunctionProps<{ a: 1, f: () => void }>>`, () => {
       tsst(() => {
-        the<{ a: 1 }, NonFunctionProperties<{ a: 1, f: () => void }>>();
+        the<{ a: 1 }, NonFunctionProps<{ a: 1, f: () => void }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`MatchingPropertyNames`, () => {
+  describe(`MatchingPropNames`, () => {
       
-    it(`the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>`, () => {
+    it(`the<'f', MatchingPropNames<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
-        the<'f', MatchingPropertyNames<{ a: 1, f: true }, boolean>>();
+        the<'f', MatchingPropNames<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`MatchingProperties`, () => {
+  describe(`MatchingProps`, () => {
       
-    it(`the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>`, () => {
+    it(`the<{ f: true }, MatchingProps<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
-        the<{ f: true }, MatchingProperties<{ a: 1, f: true }, boolean>>();
+        the<{ f: true }, MatchingProps<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`NonMatchingPropertyNames`, () => {
+  describe(`NonMatchingPropNames`, () => {
       
-    it(`the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>`, () => {
+    it(`the<'a', NonMatchingPropNames<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
-        the<'a', NonMatchingPropertyNames<{ a: 1, f: true }, boolean>>();
+        the<'a', NonMatchingPropNames<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`NonMatchingProperties`, () => {
+  describe(`NonMatchingProps`, () => {
       
-    it(`the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>`, () => {
+    it(`the<{ a: 1 }, NonMatchingProps<{ a: 1, f: true }, boolean>>`, () => {
       tsst(() => {
-        the<{ a: 1 }, NonMatchingProperties<{ a: 1, f: true }, boolean>>();
+        the<{ a: 1 }, NonMatchingProps<{ a: 1, f: true }, boolean>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`OptionalPropertyNames`, () => {
+  describe(`OptionalPropNames`, () => {
       
-    it(`the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>`, () => {
+    it(`the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
-        the<'a', OptionalPropertyNames<{ a?: 1, b: 2 }>>();
+        the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`OptionalProperties`, () => {
+  describe(`OptionalProps`, () => {
       
-    it(`the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>`, () => {
+    it(`the<{ a?: 1 }, OptionalProps<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
-        the<{ a?: 1 }, OptionalProperties<{ a?: 1, b: 2 }>>();
+        the<{ a?: 1 }, OptionalProps<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`MandatoryPropertyNames`, () => {
+  describe(`RequiredPropNames`, () => {
       
-    it(`the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>`, () => {
+    it(`the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
-        the<'b', MandatoryPropertyNames<{ a?: 1, b: 2 }>>();
+        the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
     });
 
   });
 
-  describe(`MandatoryProperties`, () => {
+  describe(`RequiredProps`, () => {
       
-    it(`the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>`, () => {
+    it(`the<{ b: 2 }, RequiredProps<{ a?: 1, b: 2 }>>`, () => {
       tsst(() => {
-        the<{ b: 2 }, MandatoryProperties<{ a?: 1, b: 2 }>>();
+        the<{ b: 2 }, RequiredProps<{ a?: 1, b: 2 }>>();
       }).expectToCompile();
     });
 
