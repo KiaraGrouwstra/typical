@@ -5,7 +5,8 @@ IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringI
 DeepPartial, DeepReadonly, FunctionPropertyNames, FunctionProperties, NonFunctionPropertyNames, NonFunctionProperties,
 MatchingPropertyNames, MatchingProperties, NonMatchingPropertyNames, NonMatchingProperties, StripIndex,
 OptionalPropertyNames, OptionalProperties, MandatoryPropertyNames, MandatoryProperties, Spread, DeepWiden, DeepAssert,
-ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys, LiteralPropertyNames, LiteralProperties } from './object';
+ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys, LiteralPropertyNames, LiteralProperties, DeepRequired, Mutable,
+DeepMutable } from './object';
 import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };
@@ -511,6 +512,46 @@ describe(`object`, () => {
     it(`the<{ a: number }, DeepWiden<{ a: 1 }>>`, () => {
       tsst(() => {
         the<{ a: number }, DeepWiden<{ a: 1 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DeepPartial`, () => {
+      
+    it(`the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>`, () => {
+      tsst(() => {
+        the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DeepRequired`, () => {
+      
+    it(`the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>`, () => {
+      tsst(() => {
+        the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`Mutable`, () => {
+      
+    it(`the<{ a: 1 }, Mutable<{ readonly a: 1 }>>`, () => {
+      tsst(() => {
+        the<{ a: 1 }, Mutable<{ readonly a: 1 }>>();
+      }).expectToCompile();
+    });
+
+  });
+
+  describe(`DeepMutable`, () => {
+      
+    it(`the<{ a: { b: 1 } }, DeepMutable<{ readonly a: { readonly b: 1 } }>>`, () => {
+      tsst(() => {
+        the<{ a: { b: 1 } }, DeepMutable<{ readonly a: { readonly b: 1 } }>>();
       }).expectToCompile();
     });
 

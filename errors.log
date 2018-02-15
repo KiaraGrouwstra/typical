@@ -298,6 +298,14 @@
       ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>
     DeepWiden
       ✓ the<{ a: number }, DeepWiden<{ a: 1 }>>
+    DeepPartial
+      ✓ the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>
+    DeepRequired
+      × the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>
+    Mutable
+      ✓ the<{ a: 1 }, Mutable<{ readonly a: 1 }>>
+    DeepMutable
+      ✓ the<{ a: { b: 1 } }, DeepMutable<{ readonly a: { readonly b: 1 } }>>
     DeepAssert
       ✓ the<{ a: 1 }, DeepAssert<{ a: 1|null }>>
     DeepReadonly
@@ -472,9 +480,9 @@
       ✓ intersects
 
 
-  275 passing (65ms)
+  279 passing (74ms)
   6 pending
-  29 failing
+  30 failing
 
   × array TupleProp the<any, TupleProp<[], 0>>:
      Error: A tuple type element list cannot be empty.
@@ -534,6 +542,10 @@
 
   × object IntersectValueOf IntersectValueOf:
      Error: Type 'number' does not satisfy the constraint 'string'.
+  
+
+  × object DeepRequired the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>:
+     Error: Type 'DeepRequired' is not generic.
   
 
   × object LiteralPropertyNames the<'a', LiteralPropertyNames<{ a: 1, [k: string]: number }>>:

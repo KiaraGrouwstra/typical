@@ -120,14 +120,26 @@ export type Spread<L, R> =
 // Common properties from L and R with undefined in R[K] replaced by type in L[K]
 export type SpreadProperties<L, R, K extends keyof L & keyof R> = { [P in K]: L[P] | Exclude<R[P], undefined> };
 
-// make all (sub) properties of an object read-only
+// mark a type and all its (sub) properties as read-only
 export type DeepReadonly<T> =
     T extends any[] ? DeepReadonlyArray<T[number]> :
     T extends object ? DeepReadonlyObject<T> :
     T;
 export interface DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
 export type DeepReadonlyObject<T> = {
-    readonly [P in NonFunctionPropertyNames<T>]: DeepReadonly<T[P]>;
+    +readonly [P in NonFunctionPropertyNames<T>]: DeepReadonly<T[P]>;
+};
+
+export type Mutable<T> = { -readonly [P in keyof T]: T[P] };  // Remove readonly
+
+// mark a type and all its (sub) properties as mutable
+export type DeepMutable<T> =
+    T extends any[] ? DeepMutableArray<T[number]> :
+    T extends object ? DeepMutableObject<T> :
+    T;
+export interface DeepMutableArray<T> extends MutableArray<DeepMutable<T>> {}
+export type DeepMutableObject<T> = {
+    -readonly [P in NonFunctionPropertyNames<T>]: DeepMutable<T[P]>;
 };
 
 // widen a type and all its (sub) properties
@@ -138,6 +150,27 @@ export type DeepWiden<T> =
 export interface DeepWidenArray<T> extends Array<DeepWiden<T>> {}
 export type DeepWidenObject<T> = {
     [P in keyof T]: DeepWiden<T[P]>;
+};
+
+// make a type and all its (sub) properties optional
+export type DeepPartial<T> =
+    T extends any[] ? DeepPartialArray<T[number]> :
+    T extends object ? DeepPartialObject<T> :
+    T;
+export interface DeepPartialArray<T> extends Array<DeepPartial<T>> {}
+export type DeepPartialObject<T> = {
+    [P in keyof T]+?: DeepPartial<T[P]>;
+};
+
+// make a type and all its (sub) properties required
+export type DeepRequired<T> = NonNullable<
+    T extends any[] ? DeepRequiredArray<T[number]> :
+    T extends object ? DeepRequiredObject<T> :
+    T
+>;
+export interface DeepRequiredArray<T> extends Array<DeepRequired<T>> {}
+export type DeepRequiredObject<T> = {
+    [P in keyof T]+?: DeepRequired<T[P]>;
 };
 
 // strip null/undefined from a type and all its (sub) properties
