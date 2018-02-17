@@ -1,5 +1,5 @@
 import { NumObj, List, If } from './util';
-import { Inc, Add } from './number';
+import { Inc, Dec, Add, Subtract } from './number';
 import { ObjectHasKey, Spread } from './object';
 import { TupleHasIndex, ListFrom } from './array';
 import { NumberToString, StringToNumber } from './cast';
