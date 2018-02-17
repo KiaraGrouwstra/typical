@@ -282,7 +282,7 @@
     DeepPartial
       ✓ the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>
     DeepRequired
-      × the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>
+      ✓ the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>
     Mutable
       ✓ the<{ a: 1 }, Mutable<{ readonly a: 1 }>>
     DeepMutable
@@ -493,9 +493,9 @@
       ✓ intersects
 
 
-  285 passing (67ms)
+  286 passing (76ms)
   6 pending
-  30 failing
+  28 failing
 
   × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>:
      Error: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
@@ -542,10 +542,6 @@ Property 'a' is incompatible with index signature.
 
   × object IntersectValueOf IntersectValueOf:
      Error: Type 'number' does not satisfy the constraint 'string'.
-  
-
-  × object DeepRequired the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>:
-     Error: Type 'DeepRequired' is not generic.
   
 
   × object LiteralPropNames the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>:

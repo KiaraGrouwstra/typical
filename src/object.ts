@@ -297,7 +297,7 @@ export type DeepRequired<T> = NonNullable<
     T extends object ? DeepRequiredObject<T> :
     T
 >;
-interface DeepRequiredArray<T> extends Array<DeepRequired<T>> {}
+// interface DeepRequiredArray<T> extends Array<DeepRequired<T>> {}
 type DeepRequiredObject<T> = {
     [P in keyof T]+?: DeepRequired<T[P]>;
 };
