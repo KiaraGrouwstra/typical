@@ -7,6 +7,6 @@ export * from './comp';
 export * from './union';
 export * from './object';
 export * from './array';
-export * from './list';
+export * from './tuple';
 export * from './function';
 export * from './ramda';
