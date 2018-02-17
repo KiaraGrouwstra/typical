@@ -402,6 +402,20 @@
     Partial
       ✓ the<{ a?: 1, b?: 2 }, Partial<{ a: 1, b: 2 }>>
 
+  built-in syntax
+    extends
+      ✓ the<1, true extends boolean ? 1 : 0>
+    in
+      ✓ the<{ a: 'a' }, { [P in 'a']: P }>
+    keyof
+      ✓ the<'a'|'b', keyof { a: 1, b: 2 }>
+    []
+      ✓ the<1, {a:1}['a']>
+    &
+      ✓ the<1, 1&2>
+    |
+      ✓ the<1|2, 2>
+
   type
     Xor
       ✓ the<never, Xor<string, number, boolean>>
@@ -480,7 +494,7 @@
       ✓ intersects
 
 
-  279 passing (64ms)
+  285 passing (72ms)
   6 pending
   30 failing
 
