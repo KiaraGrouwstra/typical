@@ -2,7 +2,7 @@ import { The } from './util';
 import { Length } from './array';
 import { StringToNumber } from './cast';
 
-// get the nth argument of a function
+/** get the nth argument of a function */
 export type Argument<N extends StringToNumber[keyof FnShape<any>], T extends FnShape<any>[N]> = T extends FnShape<infer R>[N] ? R: T
 // helper for Argument
 export interface FnShape<N> {
@@ -19,6 +19,7 @@ export interface FnShape<N> {
     10: (a0: any, a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any, a9: any, a10: N, ...args: any[]) => any;
 }
 
+/** Create a function from a tuple of parameter types and a return type. */
 export type Fn<A extends any[], R=void> = {
     0: ()=>R
     1: (a0:A[0]) => R
@@ -33,6 +34,7 @@ export type Fn<A extends any[], R=void> = {
     10: (a0:A[0], a1:A[1], a2:A[2], a3:A[3], a4:A[4], a5:A[5], a6:A[6], a7:A[7], a8:A[8], a9:A[9]) => R
 }[The<number, Length<A>>];
 
+/** Get the parameter types of a function. */
 export type Arguments<T extends (...args: any[]) => any> =
     T extends () => any ? never[] :
     T extends (a: infer A) => any ? [A] :
@@ -47,6 +49,7 @@ export type Arguments<T extends (...args: any[]) => any> =
     T extends (a: infer A, b: infer B, c: infer C, d: infer D, e: infer E, f: infer F, g: infer G, h: infer H, i: infer I, j: infer J) => any ? [A, B, C, D, E, F, G, H, I, J] :
     never[];
 
+// /** Strip the `this` object off a function, returning a function where the first argument is used as `this`, the others as the remaining arguments. */
 // // unbind: in TS already automatically happens when it should in JS (getting a method without directly applying it).
 // export type Unbind<F extends (this: This, ...args: Args) => R, This, Args extends any[], R> = Fn<[This, ...Args], R>;
 // // ^ can't capture params in generic until maybe #5453, error "A rest parameter must be of an array type."
@@ -56,6 +59,7 @@ export type Arguments<T extends (...args: any[]) => any> =
 // export type Unbind<F extends (this: This, t1: T1, t2: T2, t3: T3) => R, This, R, T1, T2, T3> = Fn<[This, T1, T2, T3], R>;
 // // complication: most stdlib methods don't have the `this` param specified. fix that. wonder why it isn't added implicitly...
 
+// /** Bind a type to a function's `this` object. */
 // export type Bind<F extends (this: This, ...args: Args) => R, This, Args, R, T extends This> = Fn<Args, R>;
 // // ^ doesn't handle other params yet. `unbind` notes above apply as well. only useful after #6606.
 // // ^ accurate return type over `R`: `F(this: T, ...Args)`.

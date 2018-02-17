@@ -4,22 +4,28 @@ import { ObjectHasKey, Spread } from './object';
 import { TupleHasIndex, ListFrom } from './array';
 import { NumberToString, StringToNumber } from './cast';
 
-// type operations for 'lists' -- numerically-indexed types (tuple/object) with explicit `length`.
-// outputs are not tuple types but similar 'list' objects, because we can't manipulate tuples yet.
+/**
+ * type operations for 'lists' -- numerically-indexed types (tuple/object) with explicit `length`.
+ * outputs are not tuple types but similar 'list' objects, because we can't manipulate tuples yet.
+ */
 
 // parallel to arrays / numerical objects
 
+/** Append a value (type) to a numerically indexed type with explicit `length`, e.g. tuple. Returns a numerical object type. */
 export type AppendList<
   R extends List<any>,
   T,
   Len extends number = LengthList<R>
 > = Spread<R & { [P in NumberToString[Len]]: T }, { length: Inc[StringToNumber[Len]] }>;
 
+/** Append two numerically indexed types with explicit `length`, e.g. tuple types. Returns a numerical object type. */
 export type ConcatLists<A extends List<any>, B extends List<any>> = 
   Spread<A & IncIndex<B, A['length']>, { length: Add<A['length'], B['length']> }>;
 
+/** Returns the length of a numerically indexed type with explicit `length`, e.g. tuple. */
 export type LengthList<R extends List<any>> = R['length'];
 
+// /** Reverse a numerically indexed type with explicit `length`, e.g. tuple. Returns an object with numerical keys. */
 export type ReverseList<
   R extends List<any>,
   I extends number = 0,
@@ -30,6 +36,7 @@ export type ReverseList<
 
 // shared between numerical objects, including lists with known length
 
+/** Get the first index of a tuple-like type. Should yield `0`, useless type intended to demonstrate backward iteration. */
 export type FirstIndex<R extends NumObj<any>, I extends number = 0> =
   { 1: I, 0: FirstIndex<R, Inc[I]> }[ObjectHasKey<R, NumberToString[I]>];
 
