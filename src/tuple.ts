@@ -24,7 +24,7 @@ export type AppendList<
   R extends List<any>,
   T,
   Len extends number = LengthList<R>
-> = Spread<R & { [P in NumberToString[Len]]: T }, { length: Inc[StringToNumber[Len]] }>;
+> = Spread<R & { [P in NumberToString[Len]]: T }, { length: Inc[Len] }>;
 
 /**
  * Append two numerically indexed types with explicit `length`, e.g. tuple types. Returns a numerical object type.
@@ -62,7 +62,7 @@ export type FirstIndex<R extends NumObj<any>, I extends number = 0> =
  * Increase the indexes on a numerically indexed object by a given amount.
  */
 export type IncIndex<R extends List<any>, N extends number, I extends number = 0 /*FirstIndex<R>*/, Acc = { length: R['length'] }> =
-  { 0: Acc, 1: IncIndex<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
+  { 0: Acc, 1: IncIndex<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, NumberToString[I]>];
 
 // unique
 
@@ -70,13 +70,13 @@ export type IncIndex<R extends List<any>, N extends number, I extends number = 0
  * Decrease the indexes on a numerically indexed object by a given amount.
  */
 export type DecIndex<R extends List<any>, N extends number, I extends number = FirstIndex<R>, Acc = { length: R['length'] }> =
-  { 0: Acc, 1: DecIndex<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
+  { 0: Acc, 1: DecIndex<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[ObjectHasKey<R, NumberToString[I]>];
 
 /**
  * Decrease the indexes on a numerically indexed object such an amount as
  * to lower the first one to `0`.
  */
-export type ZeroIndex<R extends List<any>, I extends number = FirstIndex<R>> = If<ObjectHasKey<R, 0>, R, DecIndex<R, I, I>>;
+export type ZeroIndex<R extends List<any>, I extends number = FirstIndex<R>> = If<ObjectHasKey<R, NumberToString[0]>, R, DecIndex<R, I, I>>;
 
 /**
  * Prepend an element to a tuple-like type, returning a numerical object.

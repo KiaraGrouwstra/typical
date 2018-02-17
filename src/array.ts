@@ -27,8 +27,15 @@ import { Matches, InstanceOf } from './type';
  * @param N vector size
  * @returns a tuple type
  */
-export type Vector<T, N extends number, I extends number = 0, Acc = { length: N }> =
-  { 1: Acc, 0: Vector<T, N, Inc[I], Acc & { [P in NumberToString[I]]: T }> }[NumbersEqual<I, N>];
+export type Vector<
+    T,
+    N extends number,
+    I extends number = 0,
+    Acc = { length: N }
+> = {
+    1: Acc,
+    0: Vector<T, N, Inc[I], Acc & { [P in NumberToString[I]]: T }>
+}[NumbersEqual<I, N>];
 
 /**
  * Unions of keys used to access prototype methods on array/tuple types.
