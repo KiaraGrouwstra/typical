@@ -8,7 +8,7 @@ describe(`stdlib`, () => {
         the<{ a?: 1, b?: 2 }, Partial<{ a: 1, b: 2 }>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`Readonly`, () => {
     it(`the<{ readonly a: 1 }, Readonly<{ a: 1 }>>`, () => {
@@ -16,7 +16,7 @@ describe(`stdlib`, () => {
         the<{ readonly a: 1 }, Readonly<{ a: 1 }>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`Pick`, () => {
     it(`the<{ a: 1 }, Pick<{ a: 1, b: 2 }, 'a'>>`, () => {
@@ -24,7 +24,7 @@ describe(`stdlib`, () => {
         the<{ a: 1 }, Pick<{ a: 1, b: 2 }, 'a'>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`Record`, () => {
     it(`the<{ a: 1, b: 1 }, Record<'a' | 'b', 1>>`, () => {
@@ -32,7 +32,7 @@ describe(`stdlib`, () => {
         the<{ a: 1, b: 1 }, Record<'a' | 'b', 1>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`Exclude`, () => {
     it(`the<1|2, Exclude<1|2|3, 3|4>>`, () => {
@@ -40,7 +40,7 @@ describe(`stdlib`, () => {
         the<1|2, Exclude<1|2|3, 3|4>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`Extract`, () => {
     it(`the<2|3, Extract<1|2|3, 2|3|4>>`, () => {
@@ -48,7 +48,7 @@ describe(`stdlib`, () => {
         the<2|3, Extract<1|2|3, 2|3|4>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`NonNullable`, () => {
     it(`the<1, NonNullable<1 | null>>`, () => {
@@ -56,7 +56,7 @@ describe(`stdlib`, () => {
         the<1, NonNullable<1 | null>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`ReturnType`, () => {
     it(`the<string, ReturnType<() => string>>`, () => {
@@ -64,7 +64,7 @@ describe(`stdlib`, () => {
         the<string, ReturnType<() => string>>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`InstanceType`, () => {
 
@@ -87,9 +87,9 @@ describe(`stdlib`, () => {
           the<{ a: 1 }, Required<{ a?: 1 }>>();
         }).expectToCompile();
       });
-    }
+    });
 
-  }
+  });
 
   // describe(``, () => {
   //   it(``, () => {
@@ -97,6 +97,6 @@ describe(`stdlib`, () => {
   //       the<, <>>();
   //     }).expectToCompile();
   //   });
-  // }
+  // });
 
 });

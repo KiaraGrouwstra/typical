@@ -8,7 +8,7 @@ describe(`built-in syntax`, () => {
         the<1|2, 2>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`&`, () => {
     it(`the<1, 1&2>`, () => {
@@ -16,7 +16,7 @@ describe(`built-in syntax`, () => {
         the<1, 1&2>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`[]`, () => {
     it(`the<1, {a:1}['a']>`, () => {
@@ -24,7 +24,7 @@ describe(`built-in syntax`, () => {
         the<1, {a:1}['a']>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`keyof`, () => {
     it(`the<'a'|'b', keyof { a: 1, b: 2 }>`, () => {
@@ -32,7 +32,7 @@ describe(`built-in syntax`, () => {
         the<'a'|'b', keyof { a: 1, b: 2 }>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`in`, () => {
     it(`the<{ a: 'a' }, { [P in 'a']: P }>`, () => {
@@ -40,7 +40,7 @@ describe(`built-in syntax`, () => {
         the<{ a: 'a' }, { [P in 'a']: P }>();
       }).expectToCompile();
     });
-  }
+  });
 
   describe(`extends`, () => {
     it(`the<1, true extends boolean ? 1 : 0>`, () => {
@@ -48,7 +48,7 @@ describe(`built-in syntax`, () => {
         the<1, true extends boolean ? 1 : 0>();
       }).expectToCompile();
     });
-  }
+  });
 
   // describe(``, () => {
   //   it(``, () => {
@@ -56,6 +56,6 @@ describe(`built-in syntax`, () => {
   //       the<, <>>();
   //     }).expectToCompile();
   //   });
-  // }
+  // });
 
 });
