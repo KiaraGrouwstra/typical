@@ -18,7 +18,6 @@ src/tuple.ts(65,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matche
 src/tuple.ts(73,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/type.ts(52,3): error TS2502: ''1'' is referenced directly or indirectly in its own type annotation.
 tests/array.test.ts(6,7): error TS2339: Property 'stackTraceLimit' does not exist on type 'ErrorConstructor'.
-tests/array.test.ts(86,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/array.test.ts(110,32): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'ArrayLike<any>'.
   Property 'length' is missing in type '{ a: 1; }'.
 tests/array.test.ts(116,32): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'ArrayLike<any>'.
@@ -27,11 +26,8 @@ tests/array.test.ts(122,32): error TS2344: Type '{ 1: "hi"; }' does not satisfy 
   Property 'length' is missing in type '{ 1: "hi"; }'.
 tests/array.test.ts(128,32): error TS2344: Type '{ 1: "hi"; }' does not satisfy the constraint 'ArrayLike<any>'.
   Property 'length' is missing in type '{ 1: "hi"; }'.
-tests/array.test.ts(140,18): error TS2344: Type 'Bool' does not satisfy the constraint '"1"'.
-  Type '"0"' is not assignable to type '"1"'.
 tests/array.test.ts(172,49): error TS2344: Type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; }'.
   Property '2' is missing in type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>'.
-tests/array.test.ts(184,16): error TS2344: Type '0' does not satisfy the constraint '3'.
 tests/array.test.ts(218,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 2: "a"; 3: "b"; length: 2; }'.
   Property '2' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
 tests/array.test.ts(230,44): error TS2344: Type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }' does not satisfy the constraint '{ 0: "c"; 1: "d"; length: 2; }'.
@@ -42,7 +38,6 @@ tests/array.test.ts(251,44): error TS2344: Type 'Spread<{ length: 2; } & { "0": 
   Types of property '0' are incompatible.
     Type '"a" | "b"' is not assignable to type '"b"'.
       Type '"a"' is not assignable to type '"b"'.
-tests/array.test.ts(271,16): error TS2344: Type '-1' does not satisfy the constraint '2'.
 tests/array.test.ts(297,16): error TS2344: Type 'number' does not satisfy the constraint '0'.
 tests/boolean.test.ts(24,23): error TS2344: Type '"2"' does not satisfy the constraint 'Bool'.
 tests/boolean.test.ts(30,22): error TS2344: Type '"true"' does not satisfy the constraint 'Bool'.
