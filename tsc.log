@@ -4,9 +4,6 @@ src/comp.ts(42,3): error TS2502: '0' is referenced directly or indirectly in its
 src/comp.ts(53,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/comp.ts(64,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/comp.ts(75,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/function.ts(13,78): error TS2536: Type 'N' cannot be used to index type 'FnShape<any>'.
-src/function.ts(13,107): error TS2536: Type 'N' cannot be used to index type 'FnShape<R>'.
-src/function.ts(34,43): error TS2536: Type '{ 1: any[({ [S in keyof A]: "1"; } & Obj<"0">)["1"]]; 0: 0; }[({ [S in keyof A]: "1"; } & Obj<"0"...' cannot be used to index type '{ 0: () => R; 1: (a0: A[0]) => R; 2: (a0: A[0], a1: A[1]) => R; 3: (a0: A[0], a1: A[1], a2: A[2])...'.
 src/number.ts(30,13): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/number.ts(38,13): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/number.ts(47,15): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
