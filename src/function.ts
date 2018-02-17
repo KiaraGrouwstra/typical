@@ -2,9 +2,18 @@ import { The } from './util';
 import { Length } from './array';
 import { StringToNumber } from './cast';
 
-/** get the nth argument of a function */
+/**
+ * Type functions operating on function types.
+ * @preferred
+ */
+
+/**
+ * Get the nth argument of a function.
+ */
 export type Argument<N extends StringToNumber[keyof FnShape<any>], T extends FnShape<any>[N]> = T extends FnShape<infer R>[N] ? R: T
-// helper for Argument
+/**
+ * helper for `Argument`
+ */
 export interface FnShape<N> {
     0: (a0: N, ...args: any[]) => any;
     1: (a0: any, a1: N, ...args: any[]) => any;
@@ -19,7 +28,9 @@ export interface FnShape<N> {
     10: (a0: any, a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any, a9: any, a10: N, ...args: any[]) => any;
 }
 
-/** Create a function from a tuple of parameter types and a return type. */
+/**
+ * Create a function from a tuple of parameter types and a return type.
+ */
 export type Fn<A extends any[], R=void> = {
     0: ()=>R
     1: (a0:A[0]) => R
@@ -34,7 +45,9 @@ export type Fn<A extends any[], R=void> = {
     10: (a0:A[0], a1:A[1], a2:A[2], a3:A[3], a4:A[4], a5:A[5], a6:A[6], a7:A[7], a8:A[8], a9:A[9]) => R
 }[The<number, Length<A>>];
 
-/** Get the parameter types of a function. */
+/**
+ * Get the parameter types of a function.
+ */
 export type Arguments<T extends (...args: any[]) => any> =
     T extends () => any ? never[] :
     T extends (a: infer A) => any ? [A] :

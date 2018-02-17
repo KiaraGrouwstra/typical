@@ -2,20 +2,46 @@ import { the, Obj } from './util';
 import { Not, And, DefinitelyYes } from './boolean';
 import { ObjectHasKey } from './object';
 
-// note: all operations here are about unions of string literals.
-// could rename this module to `string`, but it operates on the unions, not the actual strings.
+/**
+ * Type functions to operate on unions.
+ * Note: all operations here are about unions of string literals.
+ * I could rename this module to `string`, but it operates on the unions, not the actual strings.
+ * @preferred
+ */
 
+/**
+ * Check if a union contains a given string literal.
+ * Deprecated, ditch for `Matches`.
+ * @deprecated
+ */
 export type UnionHasKey<Union extends string, K extends string> = ({[S in Union]: '1' } & Obj<'0'>)[K];
-// ^ deprecated: ditch for Matches
 
+/**
+ * Use a union of string literals to make an object using those
+ * strings as both keys and values.
+ */
 export type UnionToObject<Keys extends string> = { [K in Keys]: K };
 
+/**
+ * Check if a union is wholly contained in another one.
+ * Deprecated, ditch for `Matches`.
+ * @deprecated
+ */
 export type UnionContained<T extends string, U extends string> = DefinitelyYes<({ [P in U]: '1' } & Obj<'0'>)[T | U]>;
 
+/**
+ * Check if a union is empty, that is, if a type is `never`.
+ */
 export type UnionEmpty<T extends string> =　And<UnionContained<T, 'foo'>, UnionContained<T, 'bar'>>;
 
+/**
+ * Check if there is any overlap between two unions of string literals.
+ */
 export type UnionsOverlap<Big extends string, Small extends string> = Not<UnionEmpty<Extract<Big, Small>>>;
 
+/**
+ * Check whether a type is a union (of string literals).
+ */
 // export type IsUnion<T extends string> = { [P in T]: UnionContained<T, P> }//[T];
 export type IsUnion<
 T extends string,
