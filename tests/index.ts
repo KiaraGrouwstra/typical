@@ -7,7 +7,7 @@ export * from './comp.test';
 export * from './union.test';
 export * from './object.test';
 export * from './array.test';
-export * from './list.test';
+export * from './tuple.test';
 export * from './function.test';
 // export * from './ramda.test';
 // export * from './crap.test';

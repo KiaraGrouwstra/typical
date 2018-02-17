@@ -1,3 +1,4 @@
+src/array.ts(37,5): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/array.ts(119,60): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/array.ts(131,55): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/comp.ts(42,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
@@ -15,33 +16,77 @@ src/ramda.ts(45,49): error TS2322: Type 'R[I][0]' is not assignable to type 'str
     Type 'number' is not assignable to type 'string'.
 src/tuple.ts(65,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/tuple.ts(73,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
-tests/array.test.ts(3,119): error TS2307: Cannot find module './array'.
-tests/array.test.ts(4,31): error TS2307: Cannot find module './cast'.
+src/type.ts(52,3): error TS2502: ''1'' is referenced directly or indirectly in its own type annotation.
+tests/array.test.ts(5,33): error TS2307: Cannot find module '../src/fixtures'.
 tests/array.test.ts(6,7): error TS2339: Property 'stackTraceLimit' does not exist on type 'ErrorConstructor'.
-tests/boolean.test.ts(2,22): error TS2307: Cannot find module './util'.
-tests/boolean.test.ts(3,106): error TS2307: Cannot find module './boolean'.
-tests/boolean.test.ts(4,29): error TS2307: Cannot find module './union'.
+tests/array.test.ts(86,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/array.test.ts(110,32): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'ArrayLike<any>'.
+  Property 'length' is missing in type '{ a: 1; }'.
+tests/array.test.ts(116,32): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'ArrayLike<any>'.
+  Property 'length' is missing in type '{ a: 1; }'.
+tests/array.test.ts(122,32): error TS2344: Type '{ 1: "hi"; }' does not satisfy the constraint 'ArrayLike<any>'.
+  Property 'length' is missing in type '{ 1: "hi"; }'.
+tests/array.test.ts(128,32): error TS2344: Type '{ 1: "hi"; }' does not satisfy the constraint 'ArrayLike<any>'.
+  Property 'length' is missing in type '{ 1: "hi"; }'.
+tests/array.test.ts(140,18): error TS2344: Type 'Bool' does not satisfy the constraint '"1"'.
+  Type '"0"' is not assignable to type '"1"'.
+tests/array.test.ts(172,49): error TS2344: Type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; }'.
+  Property '2' is missing in type 'ConcatNumObjs<{ 0: "a"; 1: "b"; }, { 0: "c"; 1: "d"; }>'.
+tests/array.test.ts(184,16): error TS2344: Type '0' does not satisfy the constraint '3'.
+tests/array.test.ts(218,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 2: "a"; 3: "b"; length: 2; }'.
+  Property '2' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
+tests/array.test.ts(230,44): error TS2344: Type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }' does not satisfy the constraint '{ 0: "c"; 1: "d"; length: 2; }'.
+  Property '0' is missing in type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }'.
+tests/array.test.ts(240,44): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+tests/array.test.ts(251,44): error TS2344: Type 'Spread<{ length: 2; } & { "0": "a" | "b"; } & { "1": "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+  Types of property '0' are incompatible.
+    Type '"a" | "b"' is not assignable to type '"b"'.
+      Type '"a"' is not assignable to type '"b"'.
+tests/array.test.ts(271,16): error TS2344: Type '-1' does not satisfy the constraint '2'.
+tests/array.test.ts(297,16): error TS2344: Type 'number' does not satisfy the constraint '0'.
+tests/boolean.test.ts(24,23): error TS2344: Type '"2"' does not satisfy the constraint 'Bool'.
+tests/boolean.test.ts(30,22): error TS2344: Type '"true"' does not satisfy the constraint 'Bool'.
+tests/boolean.test.ts(36,22): error TS2344: Type '"false"' does not satisfy the constraint 'Bool'.
 tests/boolean.test.ts(42,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
-tests/cast.test.ts(3,79): error TS2307: Cannot find module './cast'.
-tests/comp.test.ts(2,72): error TS2307: Cannot find module './comp'.
-tests/crap.ts(2,22): error TS2307: Cannot find module './util'.
-tests/crap.ts(3,26): error TS2307: Cannot find module './object'.
-tests/crap.ts(4,31): error TS2307: Cannot find module './cast'.
-tests/crap.ts(33,45): error TS2536: Type '-1' cannot be used to index type 'T'.
-tests/crap.ts(35,20): error TS2536: Type '-1' cannot be used to index type 'T'.
+tests/boolean.test.ts(54,22): error TS2344: Type 'true' does not satisfy the constraint 'Bool'.
+tests/boolean.test.ts(60,22): error TS2344: Type 'false' does not satisfy the constraint 'Bool'.
+tests/cast.test.ts(24,18): error TS2315: Type 'NumberToString' is not generic.
+tests/comp.test.ts(38,36): error TS2344: Type '"123"' does not satisfy the constraint 'number'.
+tests/comp.test.ts(44,31): error TS2344: Type '"123"' does not satisfy the constraint 'number'.
 tests/crap.ts(45,5): error TS2322: Type '[number, string, string]' is not assignable to type '[number, string]'.
   Types of property 'length' are incompatible.
     Type '3' is not assignable to type '2'.
-tests/function.test.ts(2,41): error TS2307: Cannot find module './function'.
-tests/index.ts(10,15): error TS2307: Cannot find module './list.test'.
-tests/number.test.ts(2,70): error TS2307: Cannot find module './number'.
-tests/object.test.ts(2,27): error TS2307: Cannot find module './util'.
-tests/object.test.ts(9,20): error TS2307: Cannot find module './object'.
+tests/crap.ts(46,5): error TS2322: Type 'ArrProto<[1, "a", "b"]>' is not assignable to type '[number, string]'.
+  Types of property 'length' are incompatible.
+    Type '3' is not assignable to type '2'.
+tests/object.test.ts(69,39): error TS2344: Type '1' does not satisfy the constraint 'string'.
+tests/object.test.ts(75,39): error TS2344: Type '-1' does not satisfy the constraint 'string'.
+tests/object.test.ts(81,18): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
+tests/object.test.ts(98,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/object.test.ts(112,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/object.test.ts(226,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
-tests/object.test.ts(232,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
+tests/object.test.ts(232,20): error TS2344: Type '() => string' does not satisfy the constraint 'never'.
 tests/object.test.ts(244,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
-tests/object.test.ts(516,17): error TS2322: Type 'number' is not assignable to type '1'.
-tests/ramda.test.ts(2,72): error TS2307: Cannot find module './ramda'.
+tests/object.test.ts(458,56): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'StripIndex<{ [k: string]: number; a: 1; }>'.
+  Property 'a' is incompatible with index signature.
+    Type '1' is not assignable to type 'never'.
+tests/object.test.ts(485,21): error TS2344: Type 'number' does not satisfy the constraint 'string'.
+tests/object.test.ts(486,21): error TS2344: Type 'boolean' does not satisfy the constraint 'string'.
+tests/object.test.ts(580,16): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
+tests/object.test.ts(588,11): error TS2542: Index signature in type 'DeepReadonlyArray<Part>' only permits reading.
+tests/object.test.ts(596,28): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
+tests/object.test.ts(604,16): error TS2339: Property 'updatePart' does not exist on type 'DeepReadonlyObject<Part>'.
+tests/object.test.ts(615,18): error TS2344: Type 'string' does not satisfy the constraint '"a"'.
+tests/object.test.ts(625,23): error TS2344: Type 'Pick<{ [k: string]: number; a: 1; }, string>' does not satisfy the constraint '{ a: 1; }'.
+  Property 'a' is missing in type 'Pick<{ [k: string]: number; a: 1; }, string>'.
+tests/object.test.ts(715,18): error TS2344: Type '"a" | undefined' does not satisfy the constraint '"a"'.
+  Type 'undefined' is not assignable to type '"a"'.
+tests/object.test.ts(735,18): error TS2344: Type '"b" | undefined' does not satisfy the constraint '"b"'.
+  Type 'undefined' is not assignable to type '"b"'.
+tests/object.test.ts(790,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+tests/object.test.ts(796,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+tests/ramda.test.ts(30,18): error TS2344: Type '"oh"' does not satisfy the constraint '"e"'.
 tests/ramda.test.ts(90,13): error TS2322: Type '0' is not assignable to type 'string'.
 tests/ramda.test.ts(98,13): error TS2322: Type '{}' is not assignable to type 'string'.
 tests/ramda.test.ts(104,13): error TS2322: Type '{}' is not assignable to type 'string'.
@@ -53,16 +98,28 @@ tests/ramda.test.ts(126,33): error TS2345: Argument of type '(n: number) => numb
 tests/ramda.test.ts(132,43): error TS2345: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'.
   Types of parameters 'n' and 'x' are incompatible.
     Type '{}' is not assignable to type 'number'.
-tests/repros.test.ts(2,21): error TS2307: Cannot find module './boolean'.
-tests/repros.test.ts(3,32): error TS2307: Cannot find module './cast'.
-tests/tuple.test.ts(2,145): error TS2307: Cannot find module './tuple'.
-tests/type.test.ts(2,105): error TS2307: Cannot find module './type'.
-tests/type.test.ts(12,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
-tests/type.test.ts(24,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
-tests/union.test.ts(2,21): error TS2307: Cannot find module './util'.
-tests/union.test.ts(3,96): error TS2307: Cannot find module './union'.
-tests/union.test.ts(4,30): error TS2307: Cannot find module './object'.
+tests/tuple.test.ts(20,60): error TS2344: Type 'Spread<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; } & { [x: string]: "c"; } & { [x: string]: "...' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; 3: "d"; length: 4; }'.
+  Property '0' is missing in type 'Spread<{ 0: "a"; 1: "b"; length: 2; } & { length: 2; } & { [x: string]: "c"; } & { [x: string]: "...'.
+tests/tuple.test.ts(42,44): error TS2344: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+  Types of property '0' are incompatible.
+    Type '"a" | "b"' is not assignable to type '"b"'.
+      Type '"a"' is not assignable to type '"b"'.
+tests/tuple.test.ts(62,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 2: "a"; 3: "b"; length: 2; }'.
+  Property '2' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
+tests/tuple.test.ts(74,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
+tests/tuple.test.ts(85,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
+tests/tuple.test.ts(96,52): error TS2344: Type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
+  Property '1' is missing in type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">'.
+tests/tuple.test.ts(107,18): error TS2344: Type '{ length: any; } & { [x: string]: "b"; } & { [x: string]: "c"; }' does not satisfy the constraint '"c"'.
+tests/tuple.test.ts(117,44): error TS2344: Type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }' does not satisfy the constraint '{ 0: "c"; 1: "d"; length: 2; }'.
+  Property '0' is missing in type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }'.
 tests/union.test.ts(6,21): error TS2307: Cannot find module './boolean'.
-tests/util.test.ts(2,39): error TS2307: Cannot find module './util'.
+tests/union.test.ts(50,18): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
+tests/union.test.ts(149,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/union.test.ts(155,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+tests/union.test.ts(167,26): error TS2344: Type '"a" | undefined' does not satisfy the constraint 'string'.
+  Type 'undefined' is not assignable to type 'string'.
 tests/util.test.ts(16,21): error TS2344: Type '123' does not satisfy the constraint 'string'.
 tests/util.test.ts(22,20): error TS2344: Type 'string' does not satisfy the constraint 'never'.

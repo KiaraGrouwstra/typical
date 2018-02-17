@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen, DiscriminateUnion, Const } from './type';
+import { Xor, Matches, TypesEqual, InstanceOf, Awaited, Flatten, Widen, DiscriminateUnion, Const } from '../src/type';
 
 describe(`type`, () => {
 

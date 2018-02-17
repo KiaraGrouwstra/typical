@@ -1,8 +1,8 @@
 import { tsst, the } from 'tsst-tycho';
 import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumObjs, Length, TupleProp,
-IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, FirstElem, TupleFirstIndex, IsTuple } from './array';
-import { TupleToObject } from './cast';
-import { NumArr, TestArr } from './fixtures';
+IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, FirstElem, TupleFirstIndex, IsTuple } from '../src/array';
+import { TupleToObject } from '../src/cast';
+import { NumArr, TestArr } from '../src/fixtures';
 Error.stackTraceLimit = 0;
 
 describe(`array`, () => {

@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { Fn, Arguments, Argument } from './function';
+import { Fn, Arguments, Argument } from '../src/function';
 
 describe(`function`, () => {
 

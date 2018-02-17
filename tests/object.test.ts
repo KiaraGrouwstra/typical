@@ -1,12 +1,12 @@
 import { tsst, the } from 'tsst-tycho';
-import { Obj, List } from './util';
+import { Obj, List } from '../src/util';
 import { KeyedSafe, Keyed, ObjectHasKey, HasKey, ObjectHasKeySafe, ObjectProp, Omit, Overwrite, IntersectValueOf,
 IntersectionObjectKeys, IntersectionObjects, ObjectValsToUnion, ObjectHasStringIndex, Simplify, Swap, Jsonified,
 DeepPartial, DeepReadonly, FunctionPropNames, FunctionProps, NonFunctionPropNames, NonFunctionProps,
 MatchingPropNames, MatchingProps, NonMatchingPropNames, NonMatchingProps, StripIndex,
 OptionalPropNames, OptionalProps, RequiredPropNames, RequiredProps, Spread, DeepWiden, DeepAssert,
 ObjectHasNumberIndex, ObjectHasElem, ObjectNumberKeys, LiteralPropNames, LiteralProps, DeepRequired, Mutable,
-DeepMutable } from './object';
+DeepMutable } from '../src/object';
 import { NumArr, Part } from './fixtures';
 
 type Item1 = { a: string, b: number, c: boolean };

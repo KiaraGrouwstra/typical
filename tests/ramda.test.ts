@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { PathFn, PathOrFn, MergeAllFn, FromPairsFn, ZipObjectFn } from './ramda'; //, MapFn
+import { PathFn, PathOrFn, MergeAllFn, FromPairsFn, ZipObjectFn } from '../src/ramda'; //, MapFn
 
 declare function path<T extends { [k: string]: any }, R extends Array<string>>(obj: T, path: R): PathFn<T, R>;
 

@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { If, The, Intersection } from './util';
+import { If, The, Intersection } from '../src/util';
 
 describe(`util`, () => {
 

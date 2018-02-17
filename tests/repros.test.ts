@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
-import { And } from './boolean';
-import { NumberToString } from './cast';
+import { And } from '../src/boolean';
+import { NumberToString } from '../src/cast';
 
 describe(`repros`, () => {
 

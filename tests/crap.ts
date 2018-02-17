@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst-tycho';
-import { List } from './util';
-import { Simplify } from './object';
-import { TupleToObject } from './cast';
+import { List } from '../src/util';
+import { Simplify } from '../src/object';
+import { TupleToObject } from '../src/cast';
 
 /*
 // regex find-replace pair to turn `the` statements into `tsst` tests:

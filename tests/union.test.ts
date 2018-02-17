@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst-tycho';
-import { Obj } from './util';
-import { UnionHasKey, UnionToObject, UnionContained, UnionEmpty, UnionsOverlap, IsUnion } from './union';
-import { ObjectHasKey } from './object';
+import { Obj } from '../src/util';
+import { UnionHasKey, UnionToObject, UnionContained, UnionEmpty, UnionsOverlap, IsUnion } from '../src/union';
+import { ObjectHasKey } from '../src/object';
 
 import { And } from './boolean';
 

@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
 import { NumberToString, StringToNumber, TupleToUnion, TupleIndicesToUnion,
-  TupleToObject, TupleToList, NumObjToList, ListToNumObj, BoolToString } from './cast';
+  TupleToObject, TupleToList, NumObjToList, ListToNumObj, BoolToString } from '../src/cast';
 import { TestArr } from './fixtures';
 
 describe(`cast`, () => {

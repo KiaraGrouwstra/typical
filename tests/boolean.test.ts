@@ -1,7 +1,7 @@
 import { tsst, the } from 'tsst-tycho';
-import { Bool } from './util';
-import { Not, And, Or, Indeterminate, Determinate, DefinitelyYes, DefinitelyNo, IsTruthy, IsFalsy } from './boolean';
-import { UnionHasKey } from './union';
+import { Bool } from '../src/util';
+import { Not, And, Or, Indeterminate, Determinate, DefinitelyYes, DefinitelyNo, IsTruthy, IsFalsy } from '../src/boolean';
+import { UnionHasKey } from '../src/union';
 
 describe(`boolean`, () => {
 
