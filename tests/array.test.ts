@@ -167,11 +167,11 @@ describe(`array`, () => {
 
   describe(`ConcatNumObjs`, () => {
 
-  //   it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd' }, ConcatNumObjs<{ 0: 'a', 1: 'b' }, { 0: 'c', 1: 'd' }>>`, () => {
-  //     tsst(() => {
-  //       the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd' }, ConcatNumObjs<{ 0: 'a', 1: 'b' }, { 0: 'c', 1: 'd' }>>();
-  //     }).expectToCompile();
-  //   });
+    it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd' }, ConcatNumObjs<{ 0: 'a', 1: 'b' }, { 0: 'c', 1: 'd' }>>`, () => {
+      tsst(() => {
+        the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd' }, ConcatNumObjs<{ 0: 'a', 1: 'b' }, { 0: 'c', 1: 'd' }>>();
+      }).expectToCompile();
+    });
 
     // ^ does not terminate
 
@@ -213,11 +213,11 @@ describe(`array`, () => {
 
   describe(`IncIndexNumbObj`, () => {
 
-    // it(`the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>`, () => {
-    //   tsst(() => {
-    //     the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>();
-    //   }).expectToCompile();
-    // });
+    it(`the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>`, () => {
+      tsst(() => {
+        the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>();
+      }).expectToCompile();
+    });
 
     // ^ does not terminate
 

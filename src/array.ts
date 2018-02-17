@@ -116,13 +116,12 @@ export type IncIndexNumbObj<R extends NumObj<any>, N extends number, I extends n
 /**
  * From a tuple-like type, get the subset starting from a certain index
  */
-// export type ListFrom<
-//   R extends List<any>,
-//   N extends number,
-//   I extends number = N,
-//   Acc extends List<any> = { length: Subtract<Length<R>, I> }
-// > = { 0: Acc, 1: ListFrom<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[TupleHasIndex<R, I>];
-// // ^ error: Excessive stack depth comparing types ... and ...
+export type ListFrom<
+  R extends List<any>,
+  N extends number,
+  I extends number = N,
+  Acc extends List<any> = { length: Subtract<Length<R>, I> }
+> = { 0: Acc, 1: ListFrom<R, N, Inc[I], Acc & { [P in NumberToString[Subtract<I, N>]]: R[I] }> }[TupleHasIndex<R, I>];
 
 /**
  * From a tuple-like type, get the subset up to a certain index

@@ -15,11 +15,11 @@ describe(`tuple`, () => {
 
   describe(`ConcatLists`, () => {
 
-    // it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>`, () => {
-    //   tsst(() => {
-    //     the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>();
-    //   }).expectToCompile();
-    // });
+    it(`the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>`, () => {
+      tsst(() => {
+        the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>();
+      }).expectToCompile();
+    });
     
     // ^ does not terminate
 
@@ -57,11 +57,11 @@ describe(`tuple`, () => {
 
   describe(`IncIndex`, () => {
 
-    // it(`the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>`, () => {
-    //   tsst(() => {
-    //     the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>();
-    //   }).expectToCompile();
-    // });
+    it(`the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>`, () => {
+      tsst(() => {
+        the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>();
+      }).expectToCompile();
+    });
 
     // ^ does not terminate
 
@@ -91,12 +91,12 @@ describe(`tuple`, () => {
 
   describe(`Prepend`, () => {
 
-    // it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>`, () => {
-    //   tsst(() => {
-    //     the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>();
-    //   }).expectToCompile();
-    // });
-    // // ^ error: { length: 2; }
+    it(`the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>`, () => {
+      tsst(() => {
+        the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>();
+      }).expectToCompile();
+    });
+    // ^ error: { length: 2; }
 
   });
 
