@@ -71,12 +71,6 @@ describe(`array`, () => {
       }).expectToCompile();
     });
 
-    it(`the<any, TupleProp<[], 0>>`, () => {
-      tsst(() => {
-        the<any, TupleProp<[], 0>>(); // A tuple type element list cannot be empty, #14646
-      }).expectToCompile();
-    });
-
     it(`the<number, TupleProp<number[], 0>>`, () => {
       tsst(() => {
         the<number, TupleProp<number[], 0>>();

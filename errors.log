@@ -13,7 +13,6 @@
     TupleProp
       ✓ the<0, TupleProp<[0], 0>>
       ✓ the<0, TupleProp<[0], 1>>
-      × the<any, TupleProp<[], 0>>
       ✓ the<number, TupleProp<number[], 0>>
     TupleHasIndex
       ✓ the<'1', TupleHasIndex<NumArr, 1>>
@@ -362,41 +361,41 @@
       × pipe + generics: concrete type last
 
   stdlib
+    Partial
+      ✓ the<{ a?: 1, b?: 2 }, Partial<{ a: 1, b: 2 }>>
+    Readonly
+      ✓ the<{ readonly a: 1 }, Readonly<{ a: 1 }>>
+    Pick
+      ✓ the<{ a: 1 }, Pick<{ a: 1, b: 2 }, 'a'>>
+    Record
+      ✓ the<{ a: 1, b: 1 }, Record<'a' | 'b', 1>>
+    Exclude
+      ✓ the<1|2, Exclude<1|2|3, 3|4>>
+    Extract
+      ✓ the<2|3, Extract<1|2|3, 2|3|4>>
+    NonNullable
+      ✓ the<1, NonNullable<1 | null>>
+    ReturnType
+      ✓ the<string, ReturnType<() => string>>
     InstanceType
       ✓ the<string, InstanceType<new () => string>>
       ✓ the<MyClass, InstanceType<typeof MyClass>>
       Required
         ✓ the<{ a: 1 }, Required<{ a?: 1 }>>
-    ReturnType
-      ✓ the<string, ReturnType<() => string>>
-    NonNullable
-      ✓ the<1, NonNullable<1 | null>>
-    Extract
-      ✓ the<2|3, Extract<1|2|3, 2|3|4>>
-    Exclude
-      ✓ the<1|2, Exclude<1|2|3, 3|4>>
-    Record
-      ✓ the<{ a: 1, b: 1 }, Record<'a' | 'b', 1>>
-    Pick
-      ✓ the<{ a: 1 }, Pick<{ a: 1, b: 2 }, 'a'>>
-    Readonly
-      ✓ the<{ readonly a: 1 }, Readonly<{ a: 1 }>>
-    Partial
-      ✓ the<{ a?: 1, b?: 2 }, Partial<{ a: 1, b: 2 }>>
 
   built-in syntax
-    extends
-      ✓ the<1, true extends boolean ? 1 : 0>
-    in
-      ✓ the<{ a: 'a' }, { [P in 'a']: P }>
-    keyof
-      ✓ the<'a'|'b', keyof { a: 1, b: 2 }>
-    []
-      ✓ the<1, {a:1}['a']>
-    &
-      ✓ the<1, 1&2>
     |
       ✓ the<1|2, 2>
+    &
+      ✓ the<1, 1&2>
+    []
+      ✓ the<1, {a:1}['a']>
+    keyof
+      ✓ the<'a'|'b', keyof { a: 1, b: 2 }>
+    in
+      ✓ the<{ a: 'a' }, { [P in 'a']: P }>
+    extends
+      ✓ the<1, true extends boolean ? 1 : 0>
 
   tuple
     AppendList
@@ -497,10 +496,6 @@
   285 passing (67ms)
   6 pending
   30 failing
-
-  × array TupleProp the<any, TupleProp<[], 0>>:
-     Error: A tuple type element list cannot be empty.
-  
 
   × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>:
      Error: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
