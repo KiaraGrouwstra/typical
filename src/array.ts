@@ -89,7 +89,7 @@ export type Reverse<
 > = { 0: Spread<Acc, { length: I }>, 1: Reverse<R, Inc[I], Dec[J], Acc & { [P in NumberToString[I]]: R[J] }> }[TupleHasIndex<R, I>];
 // ^ take an ArrayLike, outputs a list with known length
 
-/** Get the last elemnt of a tuple-like type */
+/** Get the last element of a tuple-like type */
 export type TupleLastElem<R extends List<any>, I extends number = 0> =
   { 1: TupleLastElem<R, Inc[I]>, 0: R[Dec[I]] }[TupleHasIndex<R, I>];
 
