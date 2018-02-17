@@ -17,7 +17,6 @@ src/ramda.ts(45,49): error TS2322: Type 'R[I][0]' is not assignable to type 'str
 src/tuple.ts(65,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/tuple.ts(73,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/type.ts(52,3): error TS2502: ''1'' is referenced directly or indirectly in its own type annotation.
-tests/array.test.ts(5,33): error TS2307: Cannot find module '../src/fixtures'.
 tests/array.test.ts(6,7): error TS2339: Property 'stackTraceLimit' does not exist on type 'ErrorConstructor'.
 tests/array.test.ts(86,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/array.test.ts(110,32): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'ArrayLike<any>'.
