@@ -176,24 +176,6 @@
       ✓ the<2, Argument<1, (a: 1, ...args: 2[]) => 8>>
       ✓ the<2, Argument<1, (a: 1, b: 2, ...args: 3[]) => 8>>
 
-  list
-    AppendList
-      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>
-    LengthList
-      ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>
-    ReverseList
-      × the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>
-    FirstIndex
-      ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>
-    DecIndex
-      × the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>
-    ZeroIndex
-      × the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>
-    ListTail
-      ✓ the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>
-    DifferenceLists
-      ✓ the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>
-
   number
     Inc
       ✓ the<2, Inc[1]>
@@ -416,6 +398,24 @@
     |
       ✓ the<1|2, 2>
 
+  tuple
+    AppendList
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>
+    LengthList
+      ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>
+    ReverseList
+      × the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>
+    FirstIndex
+      ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>
+    DecIndex
+      × the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>
+    ZeroIndex
+      × the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>
+    ListTail
+      ✓ the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>
+    DifferenceLists
+      ✓ the<{ 0: 'c', 1: 'd', length: 2 }, DifferenceLists<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, { 0: 123, 1: 456, length: 2 }>>
+
   type
     Xor
       ✓ the<never, Xor<string, number, boolean>>
@@ -494,7 +494,7 @@
       ✓ intersects
 
 
-  285 passing (72ms)
+  285 passing (67ms)
   6 pending
   30 failing
 
@@ -514,20 +514,6 @@ Type '"a" | "b"' is not assignable to type '"b"'.
 
   × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>:
      Error: Type 'number' does not satisfy the constraint '0'.
-  
-
-  × list ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>:
-     Error: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
-Types of property '0' are incompatible.
-Type '"a" | "b"' is not assignable to type '"b"'.
-  
-
-  × list DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>:
-     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  
-
-  × list ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>:
-     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
   × object ObjectHasKey the<'0', ObjectHasKey<{ a: 1 }, "toString">>:
@@ -603,6 +589,20 @@ Types of parameters 'n' and 'x' are incompatible."!
   × ramda #12838 pipe + generics: concrete type last:
      Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'.
 Types of parameters 'n' and 'x' are incompatible."!
+  
+
+  × tuple ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>:
+     Error: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
+Types of property '0' are incompatible.
+Type '"a" | "b"' is not assignable to type '"b"'.
+  
+
+  × tuple DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>:
+     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  
+
+  × tuple ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>:
+     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
   
 
   × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>:
