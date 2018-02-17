@@ -74,12 +74,16 @@ describe(`ramda`, () => {
 
   describe(`#12838`, () => {
 
-    declare function inc(n: number): number; // +1
-    declare function identity<T>(a: T): T;
-    declare function compose<V0, T1>(fn0: (x0: V0) => T1): (x0: V0) => T1;
-    declare function compose<V0, T1, T2>(fn1: (x: T1) => T2, fn0: (x: V0) => T1): (x: V0) => T2;
-    declare function pipe   <V0, T1>(fn0: (x0: V0) => T1): (x0: V0) => T1;                           // arity 1: same as compose
-    declare function pipe   <V0, T1, T2>(fn0: (x: V0) => T1, fn1: (x: T1) => T2): (x: V0) => T2;     // arity 2: params swapped
+    let inc: (n: number) => number; // +1
+    let identity: <T>(a: T) => T;
+    let compose: {
+      <V0, T1>(fn0: (x0: V0) => T1): (x0: V0) => T1;
+      <V0, T1, T2>(fn1: (x: T1) => T2, fn0: (x: V0) => T1): (x: V0) => T2;
+    }
+    let pipe: {
+      <V0, T1>(fn0: (x0: V0) => T1): (x0: V0) => T1;                           // arity 1: same as compose
+      <V0, T1, T2>(fn0: (x: V0) => T1, fn1: (x: T1) => T2): (x: V0) => T2;     // arity 2: params swapped
+    }
   
     it(`identity`, () => {
       tsst(() => {
