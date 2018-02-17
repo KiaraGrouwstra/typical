@@ -7,6 +7,11 @@ import { NumberToString, StringToNumber } from './cast';
 /**
  * type operations for 'lists' -- numerically-indexed types (tuple/object) with explicit `length`.
  * outputs are not tuple types but similar 'list' objects, because we can't manipulate tuples yet.
+ * 
+ * Examples:
+ * - `[number, string]` (tuple: fixed-length array)
+ * - `{ 0: number, 1: string, length: 2 }` (`ArrayLike` with known `length`, which includes tuples)
+ * 
  * @preferred
  */
 
