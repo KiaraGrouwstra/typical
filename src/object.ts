@@ -145,7 +145,7 @@ export type Jsonified<T> =
     T extends string | number | boolean | null ? T
     : T extends undefined | Function ? undefined
     : T extends { toJSON(): infer R } ? R
-    : T extends object ? JsonfifiedObject<T>
+    : T extends object ? JsonifiedObject<T>
     : "wat";
 type JsonifiedObject<T extends object> = { [K in keyof T]: Jsonified<T[K]> };
 
@@ -158,25 +158,13 @@ export type IntersectValueOf<T> = (
 ) extends Record<keyof T, (x: infer V) => void> ? V: never;
 
 /**
- * Make all (sub) properties of an object optional.
- */
-export type DeepPartial<T> =
-    T extends any[] ? DeepPartialArray<T[number]> :
-    T extends object ? DeepPartialObject<T> :
-    T;
-interface DeepPartialArray<T> extends Array<DeepPartial<T>> {};
-type DeepPartialObject<T> = {
-    [P in keyof T]?: DeepPartial<T[P]>;
-};
-
-/**
  * Get all property names that are literals, i.e. all but the (string) index.
  */
 export type LiteralPropNames<T> = { [K in keyof T]: string extends T[K] ? never : K }[keyof T];
 /**
  * Get all properties with names that are literals, i.e. for all but the (string) index.
  */
-export type LiteralProps<T> = Pick<T, LiteralPropNames<T, X>>;
+export type LiteralProps<T> = Pick<T, LiteralPropNames<T>>;
 
 /**
  * Get all property names matching a type.
@@ -272,7 +260,7 @@ export type DeepMutable<T> =
     T extends any[] ? DeepMutableArray<T[number]> :
     T extends object ? DeepMutableObject<T> :
     T;
-interface DeepMutableArray<T> extends MutableArray<DeepMutable<T>> {}
+interface DeepMutableArray<T> extends Array<DeepMutable<T>> {}
 type DeepMutableObject<T> = {
     -readonly [P in NonFunctionPropNames<T>]: DeepMutable<T[P]>;
 };

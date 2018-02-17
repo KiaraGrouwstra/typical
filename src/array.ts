@@ -62,7 +62,7 @@ export type TupleProp<Arr extends List<any>, I extends number> = Arr[I];
 export type TupleHasIndex<
   Arr extends List<any>,
   I extends number
-> = ({[K in keyof Arr]: '1' } & Array<'0'>)[StringToNumber[I]];
+> = ({[K in keyof Arr]: '1' } & Array<'0'>)[I];
 
 /**
  * check whether a tuple type contains a given type among its elements.
@@ -109,7 +109,7 @@ export type Length<R extends NumObj<any>, I extends number = 0> =
  * Increase the number keys of an object type by the given amount
  */
 export type IncIndexNumbObj<R extends NumObj<any>, N extends number, I extends number = 0 /*FirstIndex<R>*/, Acc = { length: Length<R> }> =
-  { 0: Acc, 1: IncIndexNumbObj<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, I>];
+  { 0: Acc, 1: IncIndexNumbObj<R, N, Inc[I], Acc & { [P in NumberToString[Add<I, N>]]: R[I] }> }[ObjectHasKey<R, NumberToString[I]>];
 
 // shared with both numerical objects and lists with known length
 
@@ -163,8 +163,8 @@ export type TupleLastIndex<R extends List<any>, I extends number = 0> =
 /**
  * Get the first element of a tuple-like type. Same as `T[0]`, useless type intended to demo backward iteration.
  */
-export type FirstElem<R extends List<any>, I extends number = Length<R>, Prev extends number = Dec[StringToNumber[I]]> =
-  { 1: FirstElem<R, Prev>, 0: R[StringToNumber[I]] }[TupleHasIndex<R, Prev>];
+export type FirstElem<R extends List<any>, I extends number = Length<R>, Prev extends number = Dec[I]> =
+  { 1: FirstElem<R, Prev>, 0: R[I] }[TupleHasIndex<R, Prev>];
 
 /**
  * Get the first index of a tuple-like type. Should yield `0`, useless type intended to demonstrate backward iteration.

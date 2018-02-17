@@ -489,24 +489,6 @@ describe(`object`, () => {
 
   });
 
-  describe(`DeepPartial`, () => {
-
-    it(`the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>`, () => {
-      tsst(() => {
-        let o: DeepPartial<{ a: [{ b: 1 }] }> = null! as DeepPartial<{ a: [{ b: 1 }] }>;
-        if (typeof o.a === 'undefined') {} else {
-          let b = o.a[0].b;
-          if (typeof b === 'number') {
-            let c: 1 = b;
-          } else {
-            let c: undefined = b;
-          }
-        }
-      }).expectToCompile();
-    });
-
-  });
-
   describe(`DeepWiden`, () => {
       
     it(`the<{ a: number }, DeepWiden<{ a: 1 }>>`, () => {
@@ -522,6 +504,20 @@ describe(`object`, () => {
     it(`the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>`, () => {
       tsst(() => {
         the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>();
+      }).expectToCompile();
+    });
+
+    it(`the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>`, () => {
+      tsst(() => {
+        let o: DeepPartial<{ a: [{ b: 1 }] }> = null! as DeepPartial<{ a: [{ b: 1 }] }>;
+        if (typeof o.a === 'undefined') {} else {
+          let b = o.a[0].b;
+          if (typeof b === 'number') {
+            let c: 1 = b;
+          } else {
+            let c: undefined = b;
+          }
+        }
       }).expectToCompile();
     });
 
