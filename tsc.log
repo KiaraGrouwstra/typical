@@ -97,6 +97,10 @@ tests/object.test.ts(458,56): error TS2344: Type '{ a: 1; }' does not satisfy th
     Type '1' is not assignable to type 'never'.
 tests/object.test.ts(485,21): error TS2344: Type 'number' does not satisfy the constraint 'string'.
 tests/object.test.ts(486,21): error TS2344: Type 'boolean' does not satisfy the constraint 'string'.
+tests/object.test.ts(530,30): error TS2344: Type 'DeepRequiredObject<{ a?: { b?: 1 | undefined; } | undefined; }>' does not satisfy the constraint '{ a: { b: 1; }; }'.
+  Types of property 'a' are incompatible.
+    Type 'DeepRequiredObject<{ b?: 1 | undefined; }> | undefined' is not assignable to type '{ b: 1; }'.
+      Type 'undefined' is not assignable to type '{ b: 1; }'.
 tests/object.test.ts(580,16): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
 tests/object.test.ts(588,11): error TS2542: Index signature in type 'DeepReadonlyArray<Part>' only permits reading.
 tests/object.test.ts(596,28): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
