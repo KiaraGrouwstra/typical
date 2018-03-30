@@ -1,6 +1,6 @@
 import { tsst, the } from 'tsst-tycho';
 import { Vector, ArrayProp, TupleHasIndex, IsArrayType, AppendNumObj, ConcatNumObjs, Length, TupleProp,
-IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, FirstElem, TupleFirstIndex, IsTuple } from '../src/array';
+IncIndexNumbObj, ListFrom, ListTo, Reverse, TupleLastElem, TupleLastIndex, IsTuple } from '../src/array';
 import { TupleToObject } from '../src/cast';
 import { NumArr, TestArr } from './fixtures';
 Error.stackTraceLimit = 0;
@@ -277,28 +277,6 @@ describe(`array`, () => {
         the<-1, TupleLastIndex<any[]>>();
       }).expectToCompile();
     });
-
-  });
-
-  describe(`FirstElem`, () => {
-
-    it(`the<'a', FirstElem<TestArr>>`, () => {
-      tsst(() => {
-        the<'a', FirstElem<TestArr>>();
-      }).expectToCompile();
-    });
-
-  });
-
-  describe(`TupleFirstIndex`, () => {
-
-    it(`the<0, TupleFirstIndex<TestArr>>`, () => {
-      tsst(() => {
-        the<0, TupleFirstIndex<TestArr>>();
-      }).expectToCompile();
-    });
-
-    // ^ error: 1
 
   });
 

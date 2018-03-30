@@ -1,5 +1,5 @@
 import { tsst, the } from 'tsst-tycho';
-import { AppendList, ConcatLists, LengthList, ReverseList, FirstIndex, IncIndex, DecIndex, ZeroIndex, Prepend, ListTail, DifferenceLists } from '../src/tuple';
+import { AppendList, ConcatLists, LengthList, ReverseList, IncIndex, DecIndex, ZeroIndex, Prepend, ListTail, DifferenceLists } from '../src/tuple';
 
 describe(`tuple`, () => {
 
@@ -40,16 +40,6 @@ describe(`tuple`, () => {
     it(`the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>`, () => {
       tsst(() => {
         the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>();
-      }).expectToCompile();
-    });
-
-  });
-
-  describe(`FirstIndex`, () => {
-
-    it(`the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>`, () => {
-      tsst(() => {
-        the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>();
       }).expectToCompile();
     });
 

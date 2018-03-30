@@ -50,10 +50,6 @@
     TupleLastIndex
       ✓ the<2, TupleLastIndex<TestArr>>
       ✓ the<-1, TupleLastIndex<any[]>>
-    FirstElem
-      ✓ the<'a', FirstElem<TestArr>>
-    TupleFirstIndex
-      ✓ the<0, TupleFirstIndex<TestArr>>
     IsTuple
       ✓ the<'1', IsTuple<[0]>>
       ✓ the<'0', IsTuple<string[]>>
@@ -409,8 +405,6 @@
       ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>
     ReverseList
       ✓ the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>
-    FirstIndex
-      ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>
     IncIndex
       ✓ the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>
     DecIndex

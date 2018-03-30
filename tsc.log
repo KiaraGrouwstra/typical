@@ -1,31 +1,7 @@
-src/array.ts(37,1): error TS2542: Index signature in type '{ 0: any; length: 2; } & ReadonlyArray<string>' only permits reading.
-src/array.ts(38,1): error TS2322: Type '[string]' is not assignable to type 'FixedSizeArray<2, string>'.
-  Type '[string]' is not assignable to type '{ 0: any; length: 2; }'.
-    Types of property 'length' are incompatible.
-      Type '1' is not assignable to type '2'.
-src/array.ts(39,1): error TS2322: Type '[string, string, string]' is not assignable to type 'FixedSizeArray<2, string>'.
-  Type '[string, string, string]' is not assignable to type '{ 0: any; length: 2; }'.
-    Types of property 'length' are incompatible.
-      Type '3' is not assignable to type '2'.
-src/array.ts(40,1): error TS2322: Type '[string, boolean]' is not assignable to type 'FixedSizeArray<2, string>'.
-  Type '[string, boolean]' is not assignable to type 'ReadonlyArray<string>'.
-    Types of property 'flatMap' are incompatible.
-      Type '<U, This = undefined>(callback: (this: This, value: string | boolean, index: number, array: (stri...' is not assignable to type '<U, This = undefined>(callback: (this: This, value: string, index: number, array: string[]) => U ...'.
-        Types of parameters 'callback' and 'callback' are incompatible.
-          Types of parameters 'value' and 'value' are incompatible.
-            Type 'string | boolean' is not assignable to type 'string'.
-              Type 'true' is not assignable to type 'string'.
-src/array.ts(41,3): error TS2339: Property 'push' does not exist on type 'FixedSizeArray<2, string>'.
-src/array.ts(56,5): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/array.ts(138,60): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
-src/array.ts(150,55): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/array/IncIndexNumbObj.ts(12,60): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/array/ListFrom.ts(16,55): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
+src/array/Vector.ts(18,5): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/boolean/Determinate.ts(3,10): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/boolean/Determinate"' has no exported member 'Indeterminate'.
-src/comp.ts(42,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/comp.ts(53,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/comp.ts(64,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/comp.ts(75,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/comp/Gt.ts(12,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/comp/Gte.ts(12,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/comp/Lt.ts(12,3): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
@@ -40,59 +16,19 @@ src/function/NumberOfArgs.ts(13,9): error TS2304: Cannot find name 'IsValidArg'.
 src/function/NumberOfArgs.ts(14,9): error TS2304: Cannot find name 'IsValidArg'.
 src/function/NumberOfArgs.ts(15,9): error TS2304: Cannot find name 'IsValidArg'.
 src/function/NumberOfArgs.ts(16,9): error TS2304: Cannot find name 'IsValidArg'.
-src/number.ts(30,13): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/number.ts(38,13): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/number.ts(47,15): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/number.ts(56,15): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/number/Add.ts(11,13): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/number/Mult.ts(12,15): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/number/Pow.ts(12,15): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
 src/number/Subtract.ts(10,13): error TS2502: '0' is referenced directly or indirectly in its own type annotation.
-src/object.ts(296,23): error TS2304: Cannot find name 'DeepRequiredArray'.
 src/object/DeepRequired.ts(5,23): error TS2304: Cannot find name 'DeepRequiredArray'.
 src/object/DeepWiden.ts(7,5): error TS2304: Cannot find name 'Widen'.
-src/ramda.ts(30,37): error TS2536: Type 'R[I]' cannot be used to index type 'T'.
-src/ramda.ts(45,49): error TS2322: Type 'R[I][0]' is not assignable to type 'string'.
+src/ramda/FromPairsFn.ts(12,49): error TS2322: Type 'R[I][0]' is not assignable to type 'string'.
   Type 'string | number' is not assignable to type 'string'.
     Type 'number' is not assignable to type 'string'.
-src/ramda/FromPairsFn.ts(6,35): error TS2304: Cannot find name 'List'.
-src/ramda/FromPairsFn.ts(7,23): error TS2304: Cannot find name 'Inc'.
-src/ramda/FromPairsFn.ts(7,31): error TS2304: Cannot find name 'Spread'.
-src/ramda/FromPairsFn.ts(7,79): error TS2304: Cannot find name 'TupleHasIndex'.
-src/ramda/FromPairsFn.ts(7,79): error TS2538: Type 'any' cannot be used as an index type.
-src/ramda/MergeAllFn.ts(5,34): error TS2304: Cannot find name 'List'.
-src/ramda/MergeAllFn.ts(5,39): error TS2304: Cannot find name 'Obj'.
-src/ramda/MergeAllFn.ts(6,22): error TS2304: Cannot find name 'Inc'.
-src/ramda/MergeAllFn.ts(6,30): error TS2304: Cannot find name 'Spread'.
-src/ramda/MergeAllFn.ts(6,55): error TS2304: Cannot find name 'TupleHasIndex'.
-src/ramda/MergeAllFn.ts(6,55): error TS2538: Type 'any' cannot be used as an index type.
-src/ramda/PathFn.ts(6,29): error TS2304: Cannot find name 'Inc'.
-src/ramda/PathFn.ts(6,45): error TS2304: Cannot find name 'TupleHasIndex'.
-src/ramda/PathFn.ts(6,45): error TS2538: Type 'any' cannot be used as an index type.
-src/ramda/PathOrFn.ts(6,40): error TS2304: Cannot find name 'List'.
-src/ramda/PathOrFn.ts(7,8): error TS2304: Cannot find name 'If'.
-src/ramda/PathOrFn.ts(7,11): error TS2304: Cannot find name 'HasKey'.
-src/ramda/PathOrFn.ts(7,54): error TS2304: Cannot find name 'Inc'.
-src/ramda/PathOrFn.ts(7,76): error TS2304: Cannot find name 'TupleHasIndex'.
-src/ramda/PathOrFn.ts(7,76): error TS2538: Type 'any' cannot be used as an index type.
-src/ramda/ZipObjectFn.ts(5,35): error TS2304: Cannot find name 'List'.
-src/ramda/ZipObjectFn.ts(5,60): error TS2304: Cannot find name 'List'.
-src/ramda/ZipObjectFn.ts(6,27): error TS2304: Cannot find name 'Inc'.
-src/ramda/ZipObjectFn.ts(6,35): error TS2304: Cannot find name 'Spread'.
-src/ramda/ZipObjectFn.ts(6,78): error TS2304: Cannot find name 'TupleHasIndex'.
-src/ramda/ZipObjectFn.ts(6,78): error TS2538: Type 'any' cannot be used as an index type.
-src/ramda/index.ts(2,31): error TS2307: Cannot find module './util'.
-src/ramda/index.ts(3,32): error TS2307: Cannot find module './cast'.
-src/ramda/index.ts(4,31): error TS2307: Cannot find module './array'.
-src/ramda/index.ts(5,32): error TS2307: Cannot find module './object'.
-src/ramda/index.ts(6,21): error TS2307: Cannot find module './number'.
-src/ramda/index.ts(7,31): error TS2307: Cannot find module './function'.
-src/ramda/index.ts(8,10): error TS2305: Module '"/media/tycho/Drogon/Coding/js/typical/src/ramda/index"' has no exported member 'ReverseList'.
-src/tuple.ts(65,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
-src/tuple.ts(73,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
+src/ramda/PathOrFn.ts(13,37): error TS2536: Type 'R[I]' cannot be used to index type 'T'.
 src/tuple/DecIndex.ts(11,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
 src/tuple/IncIndex.ts(11,53): error TS2322: Type 'NumberToString[{ 1: I; 0: any; }[Matches<N, 0>]]' is not assignable to type 'string'.
-src/type.ts(52,3): error TS2502: ''1'' is referenced directly or indirectly in its own type annotation.
+src/type/Flatten.ts(5,5): error TS2502: ''1'' is referenced directly or indirectly in its own type annotation.
 src/util/index.ts(9,21): error TS1149: File name '/media/tycho/Drogon/Coding/js/typical/src/util/the.ts' differs from already included file name '/media/tycho/Drogon/Coding/js/typical/src/util/The.ts' only in casing.
 tests/array.test.ts(6,7): error TS2339: Property 'stackTraceLimit' does not exist on type 'ErrorConstructor'.
 tests/array.test.ts(110,32): error TS2344: Type '{ a: 1; }' does not satisfy the constraint 'ArrayLike<any>'.
@@ -115,15 +51,19 @@ tests/array.test.ts(251,44): error TS2344: Type 'Spread<{ length: 2; } & { "0": 
   Types of property '0' are incompatible.
     Type '"a" | "b"' is not assignable to type '"b"'.
       Type '"a"' is not assignable to type '"b"'.
-tests/array.test.ts(297,16): error TS2344: Type 'number' does not satisfy the constraint '0'.
 tests/boolean.test.ts(24,23): error TS2344: Type '"2"' does not satisfy the constraint 'Bool'.
 tests/boolean.test.ts(30,22): error TS2344: Type '"true"' does not satisfy the constraint 'Bool'.
 tests/boolean.test.ts(36,22): error TS2344: Type '"false"' does not satisfy the constraint 'Bool'.
 tests/boolean.test.ts(42,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
 tests/boolean.test.ts(54,22): error TS2344: Type 'true' does not satisfy the constraint 'Bool'.
 tests/boolean.test.ts(60,22): error TS2344: Type 'false' does not satisfy the constraint 'Bool'.
+tests/boolean.test.ts(188,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/boolean.test.ts(204,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/cast.test.ts(24,18): error TS2315: Type 'NumberToString' is not generic.
+tests/comp.test.ts(26,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/comp.test.ts(38,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/comp.test.ts(38,36): error TS2344: Type '"123"' does not satisfy the constraint 'number'.
+tests/comp.test.ts(44,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/comp.test.ts(44,31): error TS2344: Type '"123"' does not satisfy the constraint 'number'.
 tests/crap.ts(45,5): error TS2322: Type '[number, string, string]' is not assignable to type '[number, string]'.
   Types of property 'length' are incompatible.
@@ -136,6 +76,10 @@ tests/object.test.ts(75,39): error TS2344: Type '-1' does not satisfy the constr
 tests/object.test.ts(81,18): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
 tests/object.test.ts(98,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
 tests/object.test.ts(112,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/object.test.ts(136,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+tests/object.test.ts(154,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+tests/object.test.ts(167,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
+tests/object.test.ts(179,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
 tests/object.test.ts(226,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
 tests/object.test.ts(232,20): error TS2344: Type '() => string' does not satisfy the constraint 'never'.
 tests/object.test.ts(244,20): error TS2344: Type 'any' does not satisfy the constraint 'never'.
@@ -175,21 +119,24 @@ tests/tuple.test.ts(42,44): error TS2344: Type 'Spread<{ length: number; } & { "
   Types of property '0' are incompatible.
     Type '"a" | "b"' is not assignable to type '"b"'.
       Type '"a"' is not assignable to type '"b"'.
-tests/tuple.test.ts(62,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 2: "a"; 3: "b"; length: 2; }'.
+tests/tuple.test.ts(52,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 2: "a"; 3: "b"; length: 2; }'.
   Property '2' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
-tests/tuple.test.ts(74,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  Property '0' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
-tests/tuple.test.ts(85,44): error TS2344: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  Property '0' is missing in type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }'.
-tests/tuple.test.ts(96,52): error TS2344: Type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
+tests/tuple.test.ts(64,44): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+tests/tuple.test.ts(75,44): error TS2344: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  Property '0' is missing in type '{ length: 2; }'.
+tests/tuple.test.ts(86,52): error TS2344: Type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">' does not satisfy the constraint '{ 0: "a"; 1: "b"; 2: "c"; length: 3; }'.
   Property '1' is missing in type 'Prepend<{ 0: "b"; 1: "c"; length: 2; }, "a">'.
-tests/tuple.test.ts(107,18): error TS2344: Type '{ length: any; } & { [x: string]: "b"; } & { [x: string]: "c"; }' does not satisfy the constraint '"c"'.
-tests/tuple.test.ts(117,44): error TS2344: Type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }' does not satisfy the constraint '{ 0: "c"; 1: "d"; length: 2; }'.
+tests/tuple.test.ts(97,18): error TS2344: Type '{ length: any; } & { [x: string]: "b"; } & { [x: string]: "c"; }' does not satisfy the constraint '"c"'.
+tests/tuple.test.ts(107,44): error TS2344: Type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }' does not satisfy the constraint '{ 0: "c"; 1: "d"; length: 2; }'.
   Property '0' is missing in type '{ length: any; } & { [x: string]: "c"; } & { [x: string]: "d"; }'.
 tests/union.test.ts(6,21): error TS2307: Cannot find module './boolean'.
 tests/union.test.ts(50,18): error TS2344: Type '() => string' does not satisfy the constraint '"0"'.
+tests/union.test.ts(71,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/union.test.ts(77,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/union.test.ts(99,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
+tests/union.test.ts(139,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
 tests/union.test.ts(149,18): error TS2344: Type '"0"' does not satisfy the constraint '"1"'.
-tests/union.test.ts(155,18): error TS2344: Type '"1"' does not satisfy the constraint '"0"'.
 tests/union.test.ts(167,26): error TS2344: Type '"a" | undefined' does not satisfy the constraint 'string'.
   Type 'undefined' is not assignable to type 'string'.
 tests/util.test.ts(16,21): error TS2344: Type '123' does not satisfy the constraint 'string'.
