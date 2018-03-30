@@ -19,28 +19,32 @@
       ✓ the<'0', TupleHasIndex<NumArr, -1>>
       ✓ the<'0'|'1', TupleHasIndex<NumArr, -1|1>>
       ✓ the<'0'|'1', TupleHasIndex<NumArr | ['a'], 1>>
-      ✓ the<'1', TupleHasIndex<{a:1}, 'a'>>
-      ✓ the<'0', TupleHasIndex<{a:1}, 'b'>>
-      ✓ the<'1', TupleHasIndex<{ 1: "hi" }, 1>>
-      ✓ the<'0', TupleHasIndex<{ 1: "hi" }, -1>>
+      × the<'1', TupleHasIndex<{a:1}, 'a'>>
+      × the<'0', TupleHasIndex<{a:1}, 'b'>>
+      × the<'1', TupleHasIndex<{ 1: "hi" }, 1>>
+      × the<'0', TupleHasIndex<{ 1: "hi" }, -1>>
     IsArrayType
       ✓ the<'1', IsArrayType<NumArr>>
       ✓ the<'1', IsArrayType<any[]>>
       ✓ the<'0', IsArrayType<{ length: 2 }>>
     AppendNumObj
       ✓ the<{ 0: 'a', 1: 'b', 2: 'c' }, AppendNumObj<{ 0: 'a', 1: 'b' }, 'c'>>
+    ConcatNumObjs
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd' }, ConcatNumObjs<{ 0: 'a', 1: 'b' }, { 0: 'c', 1: 'd' }>>
     Length
       ✓ the<3, Length<TupleToObject<TestArr>>>
       ✓ the<3, Length<TestArr>>
       ✓ the<0, Length<any[]>>
       ✓ the<2, Length<{ 0: 'a', 1: 'b' }>>
       ✓ the<0|3, Length<any[]|TestArr>>
+    IncIndexNumbObj
+      ✓ the<{ 2: 'a', 3: 'b', length: 2 }, IncIndexNumbObj<{ 0: 'a', 1: 'b' }, 2>>
     ListFrom
       ✓ the<{ 0: 'c', 1: 'd', length: 2 }, ListFrom<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>
     ListTo
-      × the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>
+      ✓ the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>
     Reverse
-      × the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>
+      ✓ the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>
     TupleLastElem
       ✓ the<'c', TupleLastElem<TestArr>>
     TupleLastIndex
@@ -49,7 +53,7 @@
     FirstElem
       ✓ the<'a', FirstElem<TestArr>>
     TupleFirstIndex
-      × the<0, TupleFirstIndex<TestArr>>
+      ✓ the<0, TupleFirstIndex<TestArr>>
     IsTuple
       ✓ the<'1', IsTuple<[0]>>
       ✓ the<'0', IsTuple<string[]>>
@@ -109,7 +113,7 @@
     NumberToString
       ✓ the<'3', NumberToString[3]>
       ✓ the<'3', NumberToString['3']>
-      ✓ the<'3', NumberToString<3>>
+      × the<'3', NumberToString<3>>
       ✓ the<string, NumberToString[number]>
     StringToNumber
       ✓ the<3, StringToNumber['3']>
@@ -138,8 +142,8 @@
     NumbersEqual
       ✓ the<'1', NumbersEqual<123, 123>>
       ✓ the<'0', NumbersEqual<123, 456>>
-      ✓ the<'1', NumbersEqual<123, '123'>>
-      ✓ the<'1', NumbersEqual<'123', 123>>
+      × the<'1', NumbersEqual<123, '123'>>
+      × the<'1', NumbersEqual<'123', 123>>
       ✓ the<'0', NumbersEqual<0, 5>>
       ✓ the<'0', NumbersEqual<5, 0>>
     Gt
@@ -203,14 +207,14 @@
       ✓ the<'1', ObjectHasKey<{a:1}, 'a'>>
       ✓ the<'0', ObjectHasKey<{a:1}, 'b'>>
       ✓ the<'0'|'1', ObjectHasKey<{a?:1}, 'a'>>
-      ✓ the<'1', ObjectHasKey<NumArr, 1>>
-      ✓ the<'0', ObjectHasKey<NumArr, -1>>
-      × the<'0', ObjectHasKey<{ a: 1 }, "toString">>
+      × the<'1', ObjectHasKey<NumArr, 1>>
+      × the<'0', ObjectHasKey<NumArr, -1>>
+      ✓ the<'0', ObjectHasKey<{ a: 1 }, "toString">>
     HasKey
       ✓ the<'0', HasKey<any[], 2>>
-      × the<'1', HasKey<NumArr, 2>>
+      ✓ the<'1', HasKey<NumArr, 2>>
       ✓ the<'0', HasKey<NumArr, 5>>
-      × the<'1', HasKey<{ a: 1 }, 'a'>>
+      ✓ the<'1', HasKey<{ a: 1 }, 'a'>>
       ✓ the<'0', HasKey<{ a: 1 }, 'b'>>
     ObjectHasKeySafe
       ✓ the<'1', ObjectHasKeySafe<{ a: 1 }, 'a'>>
@@ -229,10 +233,10 @@
       ✓ the<'1', ObjectHasKeySafe<{ a: 1, toString(): string }, 'toString' | 'a' | 'b'>>
     ObjectProp
       ✓ the<1, ObjectProp<{ a: 1 }, 'a'>>
-      × the<never, ObjectProp<{ a: 1 }, 'b'>>
-      × the<never, ObjectProp<{ a: 1 }, 'toString'>>
+      ✓ the<never, ObjectProp<{ a: 1 }, 'b'>>
+      ✓ the<never, ObjectProp<{ a: 1 }, 'toString'>>
       ✓ the<1, ObjectProp<{ a: 1, toString(): string }, 'a'>>
-      × the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>
+      ✓ the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>
       ✓ the<() => string, ObjectProp<{ a: 1, toString(): string }, 'toString'>>
     Omit
       ✓ the<{ b: number, c: boolean }, Omit<Item1, "a">>
@@ -270,17 +274,16 @@
       ✓ the<'1', ObjectHasStringIndex<{ [k: string]: 123 }>>
       ✓ the<'0', ObjectHasStringIndex<{ a: 123 }>>
     StripIndex
-      × the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>
+      ✓ the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>
     Jsonified
       ✓ the<{ b: 'a' }, Jsonified<{ b: 'a', d: undefined, f: () => void }>>
     IntersectValueOf
-      × IntersectValueOf
-    DeepPartial
-      ✓ the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>
+      ✓ IntersectValueOf
     DeepWiden
       ✓ the<{ a: number }, DeepWiden<{ a: 1 }>>
     DeepPartial
       ✓ the<{ a?: { b?: 1 } }, DeepPartial<{ a: { b: 1 } }>>
+      × the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>
     DeepRequired
       ✓ the<{ a: { b: 1 } }, DeepRequired<{ a?: { b?: 1 } }>>
     Mutable
@@ -291,14 +294,14 @@
       ✓ the<{ a: 1 }, DeepAssert<{ a: 1|null }>>
     DeepReadonly
       ✓ still allows reading
-      ✓ disallows writing - layer 0
-      ✓ disallows writing - layer 1
-      ✓ disallows writing - layer 2
-      ✓ strips out methods
+      × disallows writing - layer 0
+      × disallows writing - layer 1
+      × disallows writing - layer 2
+      × strips out methods
     LiteralPropNames
-      × the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>
+      ✓ the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>
     LiteralProps
-      × the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>
+      ✓ the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>
     FunctionPropNames
       ✓ the<'f', FunctionPropNames<{ a: 1, f: () => void }>>
     FunctionProps
@@ -316,19 +319,19 @@
     NonMatchingProps
       ✓ the<{ a: 1 }, NonMatchingProps<{ a: 1, f: true }, boolean>>
     OptionalPropNames
-      × the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>
+      ✓ the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>
     OptionalProps
       ✓ the<{ a?: 1 }, OptionalProps<{ a?: 1, b: 2 }>>
     RequiredPropNames
-      × the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>
+      ✓ the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>
     RequiredProps
       ✓ the<{ b: 2 }, RequiredProps<{ a?: 1, b: 2 }>>
     Spread
       ✓ the<{ a: number, b: number, c: boolean }, Spread<Item1, Item2>>
       ✓ the<AB, Spread<A, B>>
     ObjectHasNumberIndex
-      × the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>
-      × the<'0', ObjectHasNumberIndex<['a']>>
+      ✓ the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>
+      ✓ the<'0', ObjectHasNumberIndex<['a']>>
       ✓ the<'1', ObjectHasNumberIndex<{ [i: number]: 'a' }>>
       ✓ the<'1', ObjectHasNumberIndex<'a'[]>>
     ObjectHasElem
@@ -341,9 +344,9 @@
   ramda
     PathFn
       ✓ the<'e', PathFn<{ a: { b: ['c', { d: 'e' }] } }, ['a', 'b', '1', 'd']>>
-      ✓ path
+      × path
     PathOrFn
-      × the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>
+      ✓ the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>
       ✓ the<'oh', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 4]>>
     MergeAllFn
       ✓ the<{ a: 1, b: 3, c: 4, d: 5 }, MergeAllFn<[{ a: 1, b: 2 }, { b: 3, c: 4 }, { d: 5 }]>>
@@ -352,11 +355,11 @@
     ZipObjectFn
       ✓ the<{ a: 1, b: 2, c: 3 }, ZipObjectFn<['a', 'b', 'c'], [1, 2, 3]>>
     #12838
-      ✓ identity
-      ✓ compose + generics
-      ✓ pipe + generics
-      ✓ compose + generics: concrete type first
-      ✓ pipe + generics: concrete type first
+      × identity
+      × compose + generics
+      × pipe + generics
+      × compose + generics: concrete type first
+      × pipe + generics: concrete type first
       × compose + generics: concrete type last
       × pipe + generics: concrete type last
 
@@ -400,16 +403,22 @@
   tuple
     AppendList
       ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, AppendList<{ 0: 'a', 1: 'b', length: 2 }, 'c'>>
+    ConcatLists
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, ConcatLists<{ 0: 'a', 1: 'b', length: 2 }, { 0: 'c', 1: 'd', length: 2 }>>
     LengthList
       ✓ the<2, LengthList<{ 0: 'a', 1: 'b', length: 2 }>>
     ReverseList
-      × the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>
+      ✓ the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>
     FirstIndex
       ✓ the<2, FirstIndex<{ 2: 'a', 3: 'b' }>>
+    IncIndex
+      ✓ the<{ 2: 'a', 3: 'b', length: 2 }, IncIndex<{ 0: 'a', 1: 'b', length: 2 }, 2>>
     DecIndex
-      × the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>
+      ✓ the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>
     ZeroIndex
-      × the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>
+      ✓ the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>
+    Prepend
+      ✓ the<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }, Prepend<{ 0: 'b', 1: 'c', length: 2 }, 'a'>>
     ListTail
       ✓ the<'c', ListTail<{ 0: 'a', 1: 'b', 2: 'c', length: 3 }>>
     DifferenceLists
@@ -457,7 +466,7 @@
       ✓ the<'0', UnionHasKey<'a'|'b', 'c'|'d'>>
       ✓ the<'0'|'1', UnionHasKey<'a'|'b', 'b'|'c'>>
       ✓ the<'1', UnionHasKey<'a'|'b'|'toString', 'toString'>>
-      × the<'0', UnionHasKey<'a'|'b', 'toString'>>
+      ✓ the<'0', UnionHasKey<'a'|'b', 'toString'>>
     UnionToObject
       ✓ the<{ b: 'b', c: 'c' }, UnionToObject<'b' | 'c'>>
     UnionContained
@@ -475,16 +484,16 @@
       ✓ the<'1', UnionsOverlap<'a', 'a' | 'b'>>
       ✓ the<'0', UnionsOverlap<'a', 'c'>>
     IsUnion
-      × the<'1', IsUnion<'a' | 'b'>>
-      × the<'0', IsUnion<'a'>>
+      ✓ the<'1', IsUnion<'a' | 'b'>>
+      ✓ the<'0', IsUnion<'a'>>
       ✓ the<'0', IsUnion<never>>
-      × the<'1', IsUnion<'a' | undefined>>
+      ✓ the<'1', IsUnion<'a' | undefined>>
 
   util
     the
       ✓ works with matching types
-      ✓ fails with clashing types
-      ✓ protects from never when flipped
+      × fails with clashing types
+      × protects from never when flipped
       × protects from any
     If
       ✓ has then
@@ -493,123 +502,104 @@
       ✓ intersects
 
 
-  286 passing (76ms)
+  294 passing (99ms)
   6 pending
-  28 failing
+  25 failing
 
-  × array ListTo the<{ 0: 'a', 1: 'b', length: 2 }, ListTo<{ 0: 'a', 1: 'b', 2: 'c', 3: 'd', length: 4 }, 2>>:
-     Error: Type '{ length: 2; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
+  × array TupleHasIndex the<'1', TupleHasIndex<{a:1}, 'a'>>:
+     Error: No semantic failures
   
 
-  × array Reverse the<{ 0: 'b', 1: 'a', length: 2 }, Reverse<['a', 'b']>>:
-     Error: Type 'Spread<{ length: 2; } & { "0": "a" | "b"; } & { "1": "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
-Types of property '0' are incompatible.
-Type '"a" | "b"' is not assignable to type '"b"'.
+  × array TupleHasIndex the<'0', TupleHasIndex<{a:1}, 'b'>>:
+     Error: No semantic failures
   
 
-  × array TupleFirstIndex the<0, TupleFirstIndex<TestArr>>:
-     Error: Type 'number' does not satisfy the constraint '0'.
+  × array TupleHasIndex the<'1', TupleHasIndex<{ 1: "hi" }, 1>>:
+     Error: No semantic failures
   
 
-  × object ObjectHasKey the<'0', ObjectHasKey<{ a: 1 }, "toString">>:
-     Error: Type '() => string' does not satisfy the constraint '"0"'.
+  × array TupleHasIndex the<'0', TupleHasIndex<{ 1: "hi" }, -1>>:
+     Error: No semantic failures
   
 
-  × object HasKey the<'1', HasKey<NumArr, 2>>:
-     Error: Type '"0"' does not satisfy the constraint '"1"'.
+  × cast NumberToString the<'3', NumberToString<3>>:
+     Error: No semantic failures
   
 
-  × object HasKey the<'1', HasKey<{ a: 1 }, 'a'>>:
-     Error: Type '"0"' does not satisfy the constraint '"1"'.
+  × comp NumbersEqual the<'1', NumbersEqual<123, '123'>>:
+     Error: No semantic failures
   
 
-  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'b'>>:
-     Error: Type 'any' does not satisfy the constraint 'never'.
+  × comp NumbersEqual the<'1', NumbersEqual<'123', 123>>:
+     Error: No semantic failures
   
 
-  × object ObjectProp the<never, ObjectProp<{ a: 1 }, 'toString'>>:
-     Error: Type '() => string' does not satisfy the constraint 'never'.
+  × object ObjectHasKey the<'1', ObjectHasKey<NumArr, 1>>:
+     Error: No semantic failures
   
 
-  × object ObjectProp the<never, ObjectProp<{ a: 1, toString(): string }, 'b'>>:
-     Error: Type 'any' does not satisfy the constraint 'never'.
+  × object ObjectHasKey the<'0', ObjectHasKey<NumArr, -1>>:
+     Error: No semantic failures
   
 
-  × object StripIndex the<StripIndex<{ a: 1, [k: string]: number }>, { a: 1 }>:
-     Error: Type '{ a: 1; }' does not satisfy the constraint 'StripIndex<{ [k: string]: number; a: 1; }>'.
-Property 'a' is incompatible with index signature.
+  × object DeepPartial the<1, DeepPartial<{ a: [{ b: 1 }] }>['a'][0]['b']>:
+     TypeError: Cannot read property 'a' of null
   
 
-  × object IntersectValueOf IntersectValueOf:
-     Error: Type 'number' does not satisfy the constraint 'string'.
+  × object DeepReadonly disallows writing - layer 0:
+     Error: No matching semantic failures, expected "read-only"!
   
 
-  × object LiteralPropNames the<'a', LiteralPropNames<{ a: 1, [k: string]: number }>>:
-     Error: Type 'string' does not satisfy the constraint '"a"'.
+  × object DeepReadonly disallows writing - layer 1:
+     Error: No matching semantic failures, expected "only permits reading"!
   
 
-  × object LiteralProps the<{ a: 1 }, LiteralProps<{ a: 1, [k: string]: number }>>:
-     Error: Type 'Pick<{ [k: string]: number; a: 1; }, any>' does not satisfy the constraint '{ a: 1; }'.
+  × object DeepReadonly disallows writing - layer 2:
+     Error: No matching semantic failures, expected "read-only"!
   
 
-  × object OptionalPropNames the<'a', OptionalPropNames<{ a?: 1, b: 2 }>>:
-     Error: Type '"a" | undefined' does not satisfy the constraint '"a"'.
+  × object DeepReadonly strips out methods:
+     Error: No matching semantic failures, expected "does not exist"!
   
 
-  × object RequiredPropNames the<'b', RequiredPropNames<{ a?: 1, b: 2 }>>:
-     Error: Type '"b" | undefined' does not satisfy the constraint '"b"'.
+  × ramda PathFn path:
+     ReferenceError: path is not defined
   
 
-  × object ObjectHasNumberIndex the<'0', ObjectHasNumberIndex<{ 0: 'a' }>>:
-     Error: Type '"1"' does not satisfy the constraint '"0"'.
+  × ramda #12838 identity:
+     TypeError: identity is not a function
   
 
-  × object ObjectHasNumberIndex the<'0', ObjectHasNumberIndex<['a']>>:
-     Error: Type '"1"' does not satisfy the constraint '"0"'.
+  × ramda #12838 compose + generics:
+     TypeError: compose is not a function
   
 
-  × ramda PathOrFn the<'e', PathOrFn<{ a: { b: ['c', { d: 'e' }] } }, "oh", ['a', 'b', 1, 'd']>>:
-     Error: Type '"oh"' does not satisfy the constraint '"e"'.
+  × ramda #12838 pipe + generics:
+     TypeError: pipe is not a function
+  
+
+  × ramda #12838 compose + generics: concrete type first:
+     TypeError: compose is not a function
+  
+
+  × ramda #12838 pipe + generics: concrete type first:
+     TypeError: pipe is not a function
   
 
   × ramda #12838 compose + generics: concrete type last:
-     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'.
-Types of parameters 'n' and 'x' are incompatible."!
+     TypeError: compose is not a function
   
 
   × ramda #12838 pipe + generics: concrete type last:
-     Error: Expected failure "not assignable to type 'string'", got failure "Error: Argument of type '(n: number) => number' is not assignable to parameter of type '(x: {}) => number'.
-Types of parameters 'n' and 'x' are incompatible."!
+     TypeError: pipe is not a function
   
 
-  × tuple ReverseList the<{ 0: 'b', 1: 'a', length: 2 }, ReverseList<['a', 'b']>>:
-     Error: Type 'Spread<{ length: number; } & { "0": "a" | "b"; } & { "1": "a" | "b"; }, { length: 2; }>' does not satisfy the constraint '{ 0: "b"; 1: "a"; length: 2; }'.
-Types of property '0' are incompatible.
-Type '"a" | "b"' is not assignable to type '"b"'.
+  × util the fails with clashing types:
+     Error: No matching semantic failures, expected "does not satisfy"!
   
 
-  × tuple DecIndex the<{ 0: 'a', 1: 'b', length: 2 }, DecIndex<{ 2: 'a', 3: 'b', length: 2 }, 2>>:
-     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  
-
-  × tuple ZeroIndex the<{ 0: 'a', 1: 'b', length: 2 }, ZeroIndex<{ 2: 'a', 3: 'b', length: 2 }>>:
-     Error: Type '{ length: 2; } & { [x: string]: "a"; } & { [x: string]: "b"; }' does not satisfy the constraint '{ 0: "a"; 1: "b"; length: 2; }'.
-  
-
-  × util UnionHasKey the<'0', UnionHasKey<'a'|'b', 'toString'>>:
-     Error: Type '() => string' does not satisfy the constraint '"0"'.
-  
-
-  × util IsUnion the<'1', IsUnion<'a' | 'b'>>:
-     Error: Type '"0"' does not satisfy the constraint '"1"'.
-  
-
-  × util IsUnion the<'0', IsUnion<'a'>>:
-     Error: Type '"1"' does not satisfy the constraint '"0"'.
-  
-
-  × util IsUnion the<'1', IsUnion<'a' | undefined>>:
-     Error: Type '"a" | undefined' does not satisfy the constraint 'string'.
+  × util the protects from never when flipped:
+     Error: No matching semantic failures, expected "does not satisfy"!
   
 
   × util the protects from any:
