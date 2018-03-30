@@ -22,6 +22,25 @@ import { Matches, InstanceOf } from './type';
  */
 
 /**
+ * we use numeric literal types for length as TS 2.7 does for fixed size tuples
+ * @param N the length of the array
+ * @param T the type of array elements
+ * @param M a dummy type inizialized to '0', we need it to trick the compiler
+ * @see https://github.com/mstn/fixed-size-array/
+ */
+export type FixedSizeArray<N extends number, T> =
+    { 0: any, length: N } & ReadonlyArray<T>;
+
+let d: FixedSizeArray<2, string>;
+d = ['a', 'b']; // ok
+d[0] = 'a2'; // ok
+d[2] = 'c2'; // type error
+d = ['a']; // type error
+d = ['a', 'b', 'c']; // type error
+d = ['a', true]; // type error
+d.push('d'); // type error
+
+/**
  * Create a homogeneous tuple for a given type and size
  * @param T element type
  * @param N vector size
