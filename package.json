@@ -19,6 +19,6 @@
     "mocha": "^3.5.0",
     "tsst-tycho": "^0.4.0",
     "typedoc-peer": "^0.10.0",
-    "typescript": "^2.8.0-dev.20180217"
+    "typescript": "^2.8.0-dev.20180221"
   }
 }
