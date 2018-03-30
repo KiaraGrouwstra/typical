@@ -6,7 +6,7 @@ import { List } from '../util/List';
  * @param I the index to check
  * @returns a string bool
  */
-export type TupleHasIndex<
-  Arr extends List<any>,
-  I extends number
-> = ({[K in keyof Arr]: '1' } & Array<'0'>)[I];
+// export type TupleHasIndex<
+//   Arr extends List<any>,
+//   I extends number
+// > = ({[K in keyof Arr]: '1' } & Array<'0'>)[I];
