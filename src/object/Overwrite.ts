@@ -14,3 +14,7 @@ export type Overwrite<
   K extends Obj<any>,
   T extends Obj<any>
 > = {[P in keyof T | keyof K]: { 1: T[P], 0: K[P] }[ObjectHasKey<T, P>]};
+// type Overwrite<T1, T2> = {
+//   [P in Exclude<keyof T1, keyof T2>]: T1[P]
+// } & T2;
+// https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-377692897
