@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "prepublish": "npm test",
+    "prepare": "npm test",
     "pretest": "rm -rf lib/* && node ./node_modules/tsst-tycho/dist/build.js -b \"**/*.test.ts\" -d ./lib",
     "test": "tsc | tee tsc.log && mocha lib/**/*.test.js 2>&1 | sed 's/[0-9]\\+)/×/g' | tee errors.log",
     "posttest": "typedoc --out docs/ src/ --ignoreCompilerErrors --excludeNotExported --exclude index.ts",
