@@ -34,3 +34,4 @@ These can be rerun with `npm test`.
 - [`type-zoo`](https://github.com/pelotom/type-zoo), a modest type lib usable today
 - [`typelevel-ts`](https://github.com/gcanti/typelevel-ts), a type lib by [@gcanti](https://github.com/gcanti), author of several FP libs in TS
 - [`typepark`](https://github.com/kgtkr/typepark), a new type collection offering tuple manipulation and `Pipe`
+- [`type-plus`](https://github.com/unional/type-plus), additional types and types adjusted utilities for TS
